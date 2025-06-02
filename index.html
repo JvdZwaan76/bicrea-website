@@ -1,0 +1,2363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bicrea LLC | Premier Real Estate Acquisition & Mineral Title Reports</title>
+    
+    <meta name="description" content="bicrea LLC - Premier real estate acquisition company with Florida focus serving nationwide. Expert mineral title reports and property acquisition services.">
+    <meta name="keywords" content="real estate acquisition, mineral title reports, Florida real estate, Tampa Bay, Clearwater, Sarasota">
+    <meta name="author" content="bicrea LLC">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #c9a961;
+            --accent-hover: #b8963d;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #888888;
+            --background: #0a0a0a;
+            --surface: #151515;
+            --border: #333333;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.7);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hidden { display: none; }
+        .block { display: block; }
+        .flex { display: flex; }
+        .grid { display: grid; }
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .fixed { position: fixed; }
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+        .min-h-screen { min-height: 100vh; }
+        .text-center { text-align: center; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .font-medium { font-weight: 500; }
+        .text-white { color: #ffffff; }
+        .text-black { color: #000000; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .rounded-xl { border-radius: 0.75rem; }
+        .rounded-full { border-radius: 9999px; }
+        .border { border-width: 1px; }
+        .p-4 { padding: 1rem; }
+        .p-6 { padding: 1.5rem; }
+        .p-8 { padding: 2rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+        .pt-20 { padding-top: 5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-16 { margin-bottom: 4rem; }
+        .mt-8 { margin-top: 2rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 10, 10, 0.98);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #c9a961 0%, #b8963d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #c9a961 0%, #b8963d 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.98);
+            border-top: 1px solid var(--border);
+            padding: 1rem 2rem;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
+            color: var(--accent-color);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #c9a961 0%, #b8963d 100%);
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border: 2px solid var(--accent-color);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle, rgba(201, 169, 97, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            color: white;
+        }
+
+        .play-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--gray-800);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #c9a961 0%, #b8963d 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-color);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #c9a961 0%, #b8963d 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--gray-800);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-status {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .project-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .project-value {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 1.125rem;
+        }
+
+        .project-location {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #c9a961 0%, #b8963d 100%);
+            padding: 5rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            color: var(--primary-color);
+        }
+
+        .stat-item svg {
+            width: 2rem;
+            height: 2rem;
+            margin: 0 auto 1rem;
+        }
+
+        .stat-item .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-item .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            color: var(--primary-color);
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--gray-800);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: var(--accent-color);
+            fill: currentColor;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 3rem;
+            height: 3rem;
+            background: var(--border);
+            border-radius: 50%;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .author-company {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Form Styles */
+        .contact-form {
+            background: var(--gray-800);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: var(--gray-900);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Contact Info */
+        .contact-info-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--gray-800);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .contact-icon {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, #c9a961 0%, #b8963d 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: var(--gray-800);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .team-avatar {
+            width: 6rem;
+            height: 6rem;
+            background: var(--border);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+        }
+
+        .team-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .team-position {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-experience {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-bio {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .team-specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .specialty-tag {
+            background: var(--gray-900);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            border-top: 1px solid var(--border);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--text-primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--gray-800);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, #c9a961 0%, #b8963d 100%);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 40;
+            opacity: 0;
+            transform: translateY(100px);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--gray-800);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            width: 100%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow: auto;
+            position: relative;
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.open .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-color);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        /* Search and Filter */
+        .search-filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-input {
+            position: relative;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .search-input input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            background: var(--gray-800);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .search-input input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .filter-select {
+            padding: 0.75rem 1rem;
+            background: var(--gray-800);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        /* Blog Styles */
+        .blog-featured {
+            background: var(--gray-800);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .blog-featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .blog-featured-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+        }
+
+        .blog-featured-text {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .blog-tag {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            width: fit-content;
+            margin-bottom: 1rem;
+        }
+
+        .blog-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: var(--gray-800);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .blog-card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+        }
+
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .blog-category {
+            background: var(--gray-900);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .blog-read-time {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .blog-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card:hover .blog-title {
+            color: var(--accent-color);
+        }
+
+        .blog-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .blog-author-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .newsletter-signup {
+            background: linear-gradient(135deg, #c9a961 0%, #b8963d 100%);
+            border-radius: 15px;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--primary-color);
+            margin-top: 4rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .newsletter-button {
+            background: var(--primary-color);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-button:hover {
+            background: var(--gray-800);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 2rem;
+            background: var(--gray-800);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1rem;
+            max-width: 300px;
+            z-index: 60;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            border-left-color: #10b981;
+        }
+
+        .notification.error {
+            border-left-color: #ef4444;
+        }
+
+        .notification.info {
+            border-left-color: #3b82f6;
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .blog-featured-content {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-featured-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .quick-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .services-grid,
+            .projects-grid,
+            .testimonials-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .search-filter-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-input {
+                min-width: auto;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .newsletter-input {
+                min-width: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .py-20 {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .service-card,
+            .project-card,
+            .testimonial-card,
+            .team-card {
+                padding: 1.5rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .modal-content {
+                margin: 1rem;
+            }
+
+            .modal-header,
+            .modal-body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="navigateToPage('home')">bicrea</div>
+            
+            <ul class="nav-menu">
+                <li><a class="nav-link active" data-page="home" onclick="navigateToPage('home')">Home</a></li>
+                <li><a class="nav-link" data-page="services" onclick="navigateToPage('services')">Services</a></li>
+                <li><a class="nav-link" data-page="about" onclick="navigateToPage('about')">About</a></li>
+                <li><a class="nav-link" data-page="portfolio" onclick="navigateToPage('portfolio')">Portfolio</a></li>
+                <li><a class="nav-link" data-page="blog" onclick="navigateToPage('blog')">Insights</a></li>
+                <li><a class="nav-link" data-page="contact" onclick="navigateToPage('contact')">Contact</a></li>
+                <li><button class="btn-primary" onclick="openClientPortal()">Client Portal</button></li>
+            </ul>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <div class="mobile-menu" id="mobileMenu">
+                <a class="mobile-nav-link active" data-page="home" onclick="navigateToPage('home')">Home</a>
+                <a class="mobile-nav-link" data-page="services" onclick="navigateToPage('services')">Services</a>
+                <a class="mobile-nav-link" data-page="about" onclick="navigateToPage('about')">About</a>
+                <a class="mobile-nav-link" data-page="portfolio" onclick="navigateToPage('portfolio')">Portfolio</a>
+                <a class="mobile-nav-link" data-page="blog" onclick="navigateToPage('blog')">Insights</a>
+                <a class="mobile-nav-link" data-page="contact" onclick="navigateToPage('contact')">Contact</a>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;" onclick="openClientPortal()">Client Portal</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page-section active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Premier Real Estate <br><span style="background: linear-gradient(135deg, #c9a961 0%, #b8963d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Acquisition Nationwide</span></h1>
+                    <p class="subtitle">Florida-focused expertise with nationwide reach. Specializing in strategic property investments and comprehensive mineral title reports across the United States.</p>
+                    
+                    <div class="cta-buttons">
+                        <button class="btn-primary" onclick="navigateToPage('contact')">
+                            Get Started <i data-lucide="arrow-right"></i>
+                        </button>
+                        <button class="btn-secondary" onclick="navigateToPage('services')">Our Services</button>
+                    </div>
+
+                    <div class="quick-stats">
+                        <div>
+                            <span class="stat-number">250+</span>
+                            <div class="stat-label">Properties Acquired</div>
+                        </div>
+                        <div>
+                            <span class="stat-number">$75M+</span>
+                            <div class="stat-label">Total Investment</div>
+                        </div>
+                        <div>
+                            <span class="stat-number">24.5%</span>
+                            <div class="stat-label">Average ROI</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="video-container">
+                        <div class="video-placeholder" id="videoPlaceholder">
+                            <button class="play-button" onclick="playVideo()">
+                                <i data-lucide="play" style="margin-left: 4px;"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Services -->
+        <section class="py-20" style="background: var(--gray-800);">
+            <div class="container">
+                <div class="text-center mb-16">
+                    <h2 style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 1rem;">Our Expertise</h2>
+                    <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">
+                        Comprehensive real estate solutions nationwide, with specialized expertise in Florida markets
+                    </p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i data-lucide="building" style="width: 32px; height: 32px; color: black;"></i>
+                        </div>
+                        <h3 class="service-title">Real Estate Acquisition</h3>
+                        <p class="service-description">Strategic property acquisition across nationwide markets with Florida expertise</p>
+                        <div style="color: var(--accent-color); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem;" onclick="navigateToPage('services')">
+                            <span style="font-weight: 500;">Learn More</span>
+                            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                        </div>
+                    </div>
+
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i data-lucide="file-text" style="width: 32px; height: 32px; color: black;"></i>
+                        </div>
+                        <h3 class="service-title">Mineral Title Reports</h3>
+                        <p class="service-description">Comprehensive mineral rights research and verification services</p>
+                        <div style="color: var(--accent-color); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem;" onclick="navigateToPage('services')">
+                            <span style="font-weight: 500;">Learn More</span>
+                            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                        </div>
+                    </div>
+
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i data-lucide="trending-up" style="width: 32px; height: 32px; color: black;"></i>
+                        </div>
+                        <h3 class="service-title">Investment Consulting</h3>
+                        <p class="service-description">Expert market analysis and portfolio optimization strategies</p>
+                        <div style="color: var(--accent-color); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem;" onclick="navigateToPage('services')">
+                            <span style="font-weight: 500;">Learn More</span>
+                            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                        </div>
+                    </div>
+
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i data-lucide="search" style="width: 32px; height: 32px; color: black;"></i>
+                        </div>
+                        <h3 class="service-title">Due Diligence</h3>
+                        <p class="service-description">Thorough property evaluation and comprehensive risk assessment</p>
+                        <div style="color: var(--accent-color); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem;" onclick="navigateToPage('services')">
+                            <span style="font-weight: 500;">Learn More</span>
+                            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects -->
+        <section class="py-20" style="background: var(--gray-900);">
+            <div class="container">
+                <div class="text-center mb-16">
+                    <h2 style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 1rem;">Recent Success Stories</h2>
+                    <p style="font-size: 1.25rem; color: var(--text-secondary);">Showcasing our latest acquisition and development projects</p>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <div class="project-status">Completed</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Tampa Bay Commercial Complex</h3>
+                            <p class="project-description">Mixed-use development featuring retail and office spaces in prime Tampa Bay location.</p>
+                            <div class="project-details">
+                                <span class="project-value">$2.8M</span>
+                                <span class="project-location">Tampa, FL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <div class="project-status">Active</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Clearwater Investment Portfolio</h3>
+                            <p class="project-description">Strategic acquisition of 12 residential properties for rental investment portfolio.</p>
+                            <div class="project-details">
+                                <span class="project-value">$1.2M</span>
+                                <span class="project-location">Clearwater, FL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <div class="project-status">Completed</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Sarasota Retail Development</h3>
+                            <p class="project-description">Premium retail center development in high-traffic Sarasota corridor.</p>
+                            <div class="project-details">
+                                <span class="project-value">$3.5M</span>
+                                <span class="project-location">Sarasota, FL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <button class="btn-primary" onclick="navigateToPage('portfolio')">View All Projects</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <i data-lucide="building"></i>
+                        <span class="stat-number">250+</span>
+                        <div class="stat-label">Properties Acquired</div>
+                    </div>
+                    <div class="stat-item">
+                        <i data-lucide="dollar-sign"></i>
+                        <span class="stat-number">$75M+</span>
+                        <div class="stat-label">Total Investment Value</div>
+                    </div>
+                    <div class="stat-item">
+                        <i data-lucide="trending-up"></i>
+                        <span class="stat-number">24.5%</span>
+                        <div class="stat-label">Average ROI</div>
+                    </div>
+                    <div class="stat-item">
+                        <i data-lucide="star"></i>
+                        <span class="stat-number">98%</span>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <i data-lucide="globe"></i>
+                        <span class="stat-number">15+</span>
+                        <div class="stat-label">Markets Served</div>
+                    </div>
+                    <div class="stat-item">
+                        <i data-lucide="award"></i>
+                        <span class="stat-number">15+</span>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-20" style="background: var(--gray-800);">
+            <div class="container">
+                <div class="text-center mb-16">
+                    <h2 style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 1rem;">Client Success Stories</h2>
+                    <p style="font-size: 1.25rem; color: var(--text-secondary);">What our clients say about working with bicrea</p>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial-card fade-in">
+                        <div class="testimonial-rating">
+                            <i data-lucide="star" class="star"></i>
+                            <i data-lucide="star" class="star"></i>
+                            <i data-lucide="star" class="star"></i>
+                            <i data-lucide="star" class="star"></i>
+                            <i data-lucide="star" class="star"></i>
+                        </div>
+                        <p class="testimonial-text">"bicrea helped us acquire our first commercial property in Tampa. Their expertise and local knowledge were invaluable."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"></div>
+                            <div>
+                                <div class="author-name">Robert Johnson</div>
+                                <div class="author-company">Johnson Investments</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card fade-in">
+                        <div class="testimonial-rating">
+                            <i data-lucide="star" class="star"></i>
+                            <i data-lucide="star" class="star"></i>
+                            <i data-lucide="star" class="star"></i>
+                            <i data-lucide="star" class="star"></i>
+                            <i data-lucide="star" class="star"></i>
+                        </div>
+                        <p class="testimonial-text">"The mineral title reports from bicrea saved us from a costly mistake. Thorough, professional, and reliable."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"></div>
+                            <div>
+                                <div class="author-name">Maria Garcia</div>
+                                <div class="author-company">Garcia Development Group</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card fade-in">
+                        <div class="testimonial-rating">
+                            <i data-lucide="star" class="star"></i>
+                            <i data-lucide="star" class="star"></i>
+                            <i data-lucide="star" class="star"></i>
+                            <i data-lucide="star" class="star"></i>
+                            <i data-lucide="star" class="star"></i>
+                        </div>
+                        <p class="testimonial-text">"Outstanding due diligence services. bicrea's team identified opportunities we would have missed."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"></div>
+                            <div>
+                                <div class="author-name">William Davis</div>
+                                <div class="author-company">Atlantic Real Estate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="servicesPage" class="page-section">
+        <div class="pt-20" style="background: var(--gray-900);">
+            <!-- Hero -->
+            <section class="py-20" style="background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);">
+                <div class="container text-center">
+                    <h1 style="font-size: 3rem; font-weight: 700; color: white; margin-bottom: 1.5rem;">Our Services</h1>
+                    <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">
+                        Comprehensive real estate solutions tailored to your investment goals
+                    </p>
+                </div>
+            </section>
+
+            <!-- Service Details -->
+            <section class="py-20">
+                <div class="container">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i data-lucide="building" style="width: 32px; height: 32px; color: black;"></i>
+                            </div>
+                            <h3 class="service-title">Real Estate Acquisition</h3>
+                            <p class="service-description">Strategic property acquisition across nationwide markets with Florida expertise. We identify undervalued properties and maximize investment returns through our proven methodologies.</p>
+                            <ul style="text-align: left; color: var(--text-secondary); margin: 1rem 0;">
+                                <li>Market Analysis & Research</li>
+                                <li>Property Due Diligence</li>
+                                <li>Negotiation & Closing</li>
+                                <li>Post-Acquisition Support</li>
+                            </ul>
+                            <div style="background: var(--gray-900); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                                <strong style="color: var(--accent-color);">Starting at: Custom Consultation</strong>
+                            </div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i data-lucide="file-text" style="width: 32px; height: 32px; color: black;"></i>
+                            </div>
+                            <h3 class="service-title">Mineral Title Reports</h3>
+                            <p class="service-description">Comprehensive mineral rights research and verification services. Our legal team ensures clear ownership and identifies potential risks before investment.</p>
+                            <ul style="text-align: left; color: var(--text-secondary); margin: 1rem 0;">
+                                <li>Title Research & Documentation</li>
+                                <li>Chain of Title Analysis</li>
+                                <li>Risk Assessment</li>
+                                <li>Legal Compliance Review</li>
+                            </ul>
+                            <div style="background: var(--gray-900); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                                <strong style="color: var(--accent-color);">Starting at: $1,500</strong>
+                            </div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i data-lucide="trending-up" style="width: 32px; height: 32px; color: black;"></i>
+                            </div>
+                            <h3 class="service-title">Investment Consulting</h3>
+                            <p class="service-description">Expert market analysis and portfolio optimization strategies. We provide data-driven insights to maximize your real estate investment returns.</p>
+                            <ul style="text-align: left; color: var(--text-secondary); margin: 1rem 0;">
+                                <li>Portfolio Review & Analysis</li>
+                                <li>Market Trend Insights</li>
+                                <li>Risk Management</li>
+                                <li>ROI Optimization</li>
+                            </ul>
+                            <div style="background: var(--gray-900); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                                <strong style="color: var(--accent-color);">Starting at: Hourly or Retainer</strong>
+                            </div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i data-lucide="search" style="width: 32px; height: 32px; color: black;"></i>
+                            </div>
+                            <h3 class="service-title">Due Diligence Services</h3>
+                            <p class="service-description">Thorough property evaluation and comprehensive risk assessment. We uncover potential issues before they become costly problems.</p>
+                            <ul style="text-align: left; color: var(--text-secondary); margin: 1rem 0;">
+                                <li>Property Inspection</li>
+                                <li>Financial Analysis</li>
+                                <li>Legal Review</li>
+                                <li>Environmental Assessment</li>
+                            </ul>
+                            <div style="background: var(--gray-900); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                                <strong style="color: var(--accent-color);">Starting at: Project-based</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="aboutPage" class="page-section">
+        <div class="pt-20" style="background: var(--gray-900);">
+            <!-- Hero -->
+            <section class="py-20" style="background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);">
+                <div class="container">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+                        <div>
+                            <h1 style="font-size: 3rem; font-weight: 700; color: white; margin-bottom: 1.5rem;">About bicrea</h1>
+                            <p style="font-size: 1.25rem; color: var(--text-secondary); line-height: 1.6;">
+                                Founded on the principle of delivering exceptional real estate investment opportunities, 
+                                bicrea has established itself as a premier acquisition company with deep expertise in 
+                                Florida markets and nationwide reach.
+                            </p>
+                        </div>
+                        <div style="height: 300px; background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%); border-radius: 15px;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team Section -->
+            <section class="py-20" style="background: var(--gray-800);">
+                <div class="container">
+                    <div class="text-center mb-16">
+                        <h2 style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 1rem;">Leadership Team</h2>
+                        <p style="font-size: 1.25rem; color: var(--text-secondary);">Meet the experts driving our success</p>
+                    </div>
+
+                    <div class="team-grid">
+                        <div class="team-card fade-in">
+                            <div class="team-avatar"></div>
+                            <h3 class="team-name">Sarah Mitchell</h3>
+                            <p class="team-position">CEO & Founder</p>
+                            <p class="team-experience">15+ years</p>
+                            <p class="team-bio">Former VP at major real estate investment firm with expertise in Florida markets.</p>
+                        </div>
+
+                        <div class="team-card fade-in">
+                            <div class="team-avatar"></div>
+                            <h3 class="team-name">Michael Rodriguez</h3>
+                            <p class="team-position">COO</p>
+                            <p class="team-experience">12+ years</p>
+                            <p class="team-bio">Operations expert with extensive background in property management and development.</p>
+                        </div>
+
+                        <div class="team-card fade-in">
+                            <div class="team-avatar"></div>
+                            <h3 class="team-name">Jennifer Chen</h3>
+                            <p class="team-position">Head of Legal</p>
+                            <p class="team-experience">10+ years</p>
+                            <p class="team-bio">Real estate attorney specializing in commercial transactions and mineral rights.</p>
+                        </div>
+
+                        <div class="team-card fade-in">
+                            <div class="team-avatar"></div>
+                            <h3 class="team-name">David Thompson</h3>
+                            <p class="team-position">Senior Analyst</p>
+                            <p class="team-experience">8+ years</p>
+                            <p class="team-bio">Financial analysis expert with CFA certification and market research background.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Portfolio Page -->
+    <div id="portfolioPage" class="page-section">
+        <div class="pt-20" style="background: var(--gray-900);">
+            <!-- Hero -->
+            <section class="py-20" style="background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);">
+                <div class="container text-center">
+                    <h1 style="font-size: 3rem; font-weight: 700; color: white; margin-bottom: 1.5rem;">Our Portfolio</h1>
+                    <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto 2rem;">
+                        Showcasing our successful acquisitions and developments across multiple markets
+                    </p>
+
+                    <!-- Search and Filter -->
+                    <div class="search-filter-container">
+                        <div class="search-input">
+                            <i data-lucide="search" class="search-icon"></i>
+                            <input type="text" id="portfolioSearch" placeholder="Search projects..." oninput="filterProjects()">
+                        </div>
+                        <select class="filter-select" id="portfolioFilter" onchange="filterProjects()">
+                            <option value="all">All Types</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="residential">Residential</option>
+                            <option value="retail">Retail</option>
+                            <option value="industrial">Industrial</option>
+                            <option value="medical">Medical</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Grid -->
+            <section class="py-20">
+                <div class="container">
+                    <div class="projects-grid" id="portfolioGrid">
+                        <!-- Projects will be populated by JavaScript -->
+                    </div>
+
+                    <div id="noResults" class="text-center py-12 hidden">
+                        <i data-lucide="building" style="width: 64px; height: 64px; color: var(--text-muted); margin: 0 auto 1rem;"></i>
+                        <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.5rem;">No projects found</h3>
+                        <p style="color: var(--text-muted);">Try adjusting your search or filter criteria</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contactPage" class="page-section">
+        <div class="pt-20" style="background: var(--gray-900);">
+            <!-- Hero -->
+            <section class="py-20" style="background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);">
+                <div class="container text-center">
+                    <h1 style="font-size: 3rem; font-weight: 700; color: white; margin-bottom: 1.5rem;">Get In Touch</h1>
+                    <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">
+                        Ready to explore your next real estate investment opportunity? Let's discuss how our expertise can benefit your portfolio.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Contact Form & Info -->
+            <section class="py-20">
+                <div class="container">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+                        <!-- Contact Form -->
+                        <div class="contact-form">
+                            <h2 style="font-size: 1.5rem; font-weight: 700; color: white; margin-bottom: 1.5rem;">Send us a message</h2>
+                            
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-input" id="contactName" placeholder="Your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-input" id="contactEmail" placeholder="your@email.com">
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-input" id="contactPhone" placeholder="(555) 123-4567">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Service Interest</label>
+                                    <select class="form-select" id="contactService">
+                                        <option value="">Select a service</option>
+                                        <option value="acquisition">Real Estate Acquisition</option>
+                                        <option value="mineral">Mineral Title Reports</option>
+                                        <option value="consulting">Investment Consulting</option>
+                                        <option value="due-diligence">Due Diligence</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-textarea" id="contactMessage" rows="6" placeholder="Tell us about your project or requirements..."></textarea>
+                            </div>
+
+                            <button class="btn-primary" style="width: 100%;" onclick="submitContactForm()">
+                                Send Message
+                            </button>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div>
+                            <h2 style="font-size: 1.5rem; font-weight: 700; color: white; margin-bottom: 1.5rem;">Contact Information</h2>
+                            
+                            <div class="contact-info-grid">
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i data-lucide="map-pin"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h3>Primary Markets</h3>
+                                        <p>Tampa Bay, Clearwater, Sarasota FL<br>Nationwide Service Available</p>
+                                    </div>
+                                </div>
+
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i data-lucide="mail"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h3>Email</h3>
+                                        <p>info@bicrea.com<br>acquisitions@bicrea.com</p>
+                                    </div>
+                                </div>
+
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i data-lucide="phone"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h3>Phone</h3>
+                                        <p>+1 (813) 555-0100<br>Monday - Friday, 9AM - 6PM EST</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Blog Page -->
+    <div id="blogPage" class="page-section">
+        <div class="pt-20" style="background: var(--gray-900);">
+            <!-- Hero -->
+            <section class="py-20" style="background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);">
+                <div class="container text-center">
+                    <h1 style="font-size: 3rem; font-weight: 700; color: white; margin-bottom: 1.5rem;">Industry Insights</h1>
+                    <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">
+                        Stay informed with the latest trends, analysis, and opportunities in real estate investment
+                    </p>
+                </div>
+            </section>
+
+            <!-- Featured Article & Blog Grid -->
+            <section class="py-20">
+                <div class="container">
+                    <div class="blog-featured">
+                        <div class="blog-featured-content">
+                            <div class="blog-featured-image"></div>
+                            <div class="blog-featured-text">
+                                <span class="blog-tag">Featured Article</span>
+                                <h2 style="font-size: 2rem; font-weight: 700; color: white; margin-bottom: 1rem;">
+                                    Florida Real Estate Market Outlook 2025
+                                </h2>
+                                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                                    Comprehensive analysis of emerging trends, investment opportunities, and market dynamics 
+                                    shaping Florida's real estate landscape in the coming year.
+                                </p>
+                                <button class="btn-primary">Read More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-posts-grid">
+                        <article class="blog-card fade-in">
+                            <div class="blog-card-image"></div>
+                            <div class="blog-card-content">
+                                <div class="blog-meta">
+                                    <span class="blog-category">Market Analysis</span>
+                                    <span class="blog-read-time">5 min read</span>
+                                </div>
+                                <h3 class="blog-title">Understanding Mineral Rights in Property Acquisition</h3>
+                                <p class="blog-excerpt">A comprehensive guide to navigating mineral rights during real estate transactions.</p>
+                                <div class="blog-author-info">
+                                    <span>By Jennifer Chen • 2025-01-10</span>
+                                    <i data-lucide="arrow-right" style="color: var(--accent-color);"></i>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="blog-card fade-in">
+                            <div class="blog-card-image"></div>
+                            <div class="blog-card-content">
+                                <div class="blog-meta">
+                                    <span class="blog-category">Investment</span>
+                                    <span class="blog-read-time">6 min read</span>
+                                </div>
+                                <h3 class="blog-title">Commercial Real Estate Investment Strategies</h3>
+                                <p class="blog-excerpt">Proven strategies for maximizing returns in commercial property investments.</p>
+                                <div class="blog-author-info">
+                                    <span>By David Thompson • 2025-01-05</span>
+                                    <i data-lucide="arrow-right" style="color: var(--accent-color);"></i>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="newsletter-signup">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Stay Updated</h3>
+                        <p style="margin-bottom: 1.5rem; opacity: 0.8;">
+                            Get the latest market insights and investment opportunities delivered to your inbox
+                        </p>
+                        <div class="newsletter-form">
+                            <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Enter your email">
+                            <button class="newsletter-button" onclick="subscribeNewsletter()">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="logo" style="font-size: 1.5rem; margin-bottom: 1rem;">bicrea</h3>
+                    <p>Premier real estate acquisition and mineral title services - Florida focused, nationwide reach.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i data-lucide="linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i data-lucide="twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i data-lucide="facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i data-lucide="instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Real Estate Acquisition</a></li>
+                        <li><a href="#" class="footer-link">Mineral Title Reports</a></li>
+                        <li><a href="#" class="footer-link">Investment Consulting</a></li>
+                        <li><a href="#" class="footer-link">Due Diligence</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a class="footer-link" onclick="navigateToPage('about')">About Us</a></li>
+                        <li><a class="footer-link" onclick="navigateToPage('portfolio')">Portfolio</a></li>
+                        <li><a class="footer-link" onclick="navigateToPage('blog')">Insights</a></li>
+                        <li><a class="footer-link" onclick="navigateToPage('contact')">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul style="list-style: none; color: var(--text-secondary);">
+                        <li style="margin-bottom: 0.5rem;">Tampa Bay, FL</li>
+                        <li style="margin-bottom: 0.5rem;">+1 (813) 555-0100</li>
+                        <li>info@bicrea.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 bicrea LLC. All rights reserved. | Licensed Real Estate Acquisition Company</p>
+                <div class="footer-bottom-links">
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle" style="font-size: 1.5rem; font-weight: 700; color: white;">Project Details</h2>
+                <button class="modal-close" onclick="closeModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="modalContent">
+                    <!-- Project details will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <p id="notificationText"></p>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Global variables
+        let currentPage = 'home';
+        let mobileMenuOpen = false;
+
+        // Project data
+        const projects = [
+            {
+                id: 1,
+                title: 'Tampa Bay Commercial Complex',
+                location: 'Tampa, FL',
+                value: '$2.8M',
+                type: 'Commercial',
+                status: 'Completed',
+                year: '2024',
+                description: 'Mixed-use development featuring retail and office spaces in prime Tampa Bay location.',
+                features: ['50,000 sq ft', '15 retail units', 'Class A office space', 'LEED Certified'],
+                roi: '24.5%'
+            },
+            {
+                id: 2,
+                title: 'Clearwater Residential Portfolio',
+                location: 'Clearwater, FL',
+                value: '$1.2M',
+                type: 'Residential',
+                status: 'Active',
+                year: '2024',
+                description: 'Strategic acquisition of 12 residential properties for rental investment portfolio.',
+                features: ['12 properties', 'Average 3BR/2BA', 'Prime locations', 'Fully renovated'],
+                roi: '18.2%'
+            },
+            {
+                id: 3,
+                title: 'Sarasota Retail Development',
+                location: 'Sarasota, FL',
+                value: '$3.5M',
+                type: 'Retail',
+                status: 'Completed',
+                year: '2023',
+                description: 'Premium retail center development in high-traffic Sarasota corridor.',
+                features: ['75,000 sq ft', '20 retail units', 'Anchor tenant secured', 'High visibility'],
+                roi: '31.7%'
+            },
+            {
+                id: 4,
+                title: 'Orlando Industrial Acquisition',
+                location: 'Orlando, FL',
+                value: '$4.2M',
+                type: 'Industrial',
+                status: 'Active',
+                year: '2024',
+                description: 'Strategic industrial property acquisition for logistics and distribution.',
+                features: ['100,000 sq ft', 'Loading docks', 'Highway access', 'Distribution ready'],
+                roi: '22.1%'
+            }
+        ];
+
+        // Navigation functions
+        function navigateToPage(page) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected page
+            document.getElementById(page + 'Page').classList.add('active');
+
+            // Update navigation
+            document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            document.querySelectorAll(`[data-page="${page}"]`).forEach(link => {
+                link.classList.add('active');
+            });
+
+            currentPage = page;
+            closeMobileMenu();
+            scrollToTop();
+
+            // Load page-specific content
+            if (page === 'portfolio') {
+                loadPortfolioProjects();
+            }
+        }
+
+        function toggleMobileMenu() {
+            mobileMenuOpen = !mobileMenuOpen;
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (mobileMenuOpen) {
+                mobileMenu.classList.add('open');
+                menuBtn.innerHTML = '<i data-lucide="x"></i>';
+            } else {
+                mobileMenu.classList.remove('open');
+                menuBtn.innerHTML = '<i data-lucide="menu"></i>';
+            }
+            lucide.createIcons();
+        }
+
+        function closeMobileMenu() {
+            mobileMenuOpen = false;
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.querySelector('.mobile-menu-btn').innerHTML = '<i data-lucide="menu"></i>';
+            lucide.createIcons();
+        }
+
+        // Scroll functions
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Video functions
+        function playVideo() {
+            const placeholder = document.getElementById('videoPlaceholder');
+            placeholder.innerHTML = `
+                <div style="width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; color: white;">
+                    <div style="text-align: center;">
+                        <i data-lucide="play-circle" style="width: 64px; height: 64px; margin-bottom: 1rem;"></i>
+                        <p>Video player simulation</p>
+                        <button onclick="stopVideo()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--accent-color); color: black; border: none; border-radius: 4px; cursor: pointer;">Stop</button>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function stopVideo() {
+            const placeholder = document.getElementById('videoPlaceholder');
+            placeholder.innerHTML = `
+                <button class="play-button" onclick="playVideo()">
+                    <i data-lucide="play" style="margin-left: 4px;"></i>
+                </button>
+            `;
+            lucide.createIcons();
+        }
+
+        // Portfolio functions
+        function loadPortfolioProjects() {
+            const grid = document.getElementById('portfolioGrid');
+            const filter = document.getElementById('portfolioFilter').value;
+            const search = document.getElementById('portfolioSearch').value.toLowerCase();
+
+            const filteredProjects = projects.filter(project => {
+                const matchesFilter = filter === 'all' || project.type.toLowerCase().includes(filter.toLowerCase());
+                const matchesSearch = project.title.toLowerCase().includes(search) || 
+                                    project.location.toLowerCase().includes(search);
+                return matchesFilter && matchesSearch;
+            });
+
+            if (filteredProjects.length === 0) {
+                grid.innerHTML = '';
+                document.getElementById('noResults').classList.remove('hidden');
+                return;
+            }
+
+            document.getElementById('noResults').classList.add('hidden');
+
+            grid.innerHTML = filteredProjects.map(project => `
+                <div class="project-card fade-in" onclick="openProjectModal(${project.id})">
+                    <div class="project-image">
+                        <div class="project-status">${project.status}</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-description">${project.description}</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                            <div>
+                                <span style="font-size: 0.875rem; color: var(--text-secondary);">Value</span>
+                                <div class="project-value">${project.value}</div>
+                            </div>
+                            <div>
+                                <span style="font-size: 0.875rem; color: var(--text-secondary);">ROI</span>
+                                <div style="font-weight: 700; color: #4ade80;">${project.roi}</div>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <span class="project-location">${project.location}</span>
+                            <span class="project-location">${project.year}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Trigger fade-in animation
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        }
+
+        function filterProjects() {
+            if (currentPage === 'portfolio') {
+                loadPortfolioProjects();
+            }
+        }
+
+        function openProjectModal(projectId) {
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            document.getElementById('modalTitle').textContent = project.title;
+            document.getElementById('modalContent').innerHTML = `
+                <div style="height: 300px; background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%); border-radius: 15px; margin-bottom: 2rem;"></div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1.5rem;">
+                    <div>
+                        <h2 style="font-size: 1.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;">${project.title}</h2>
+                        <p style="color: var(--text-secondary);">${project.location} • ${project.year}</p>
+                    </div>
+                    <span style="background: var(--accent-color); color: black; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600;">${project.status}</span>
+                </div>
+
+                <p style="font-size: 1.125rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">${project.description}</p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: var(--gray-900); padding: 1rem; border-radius: 8px;">
+                        <span style="font-size: 0.875rem; color: var(--text-secondary);">Investment Value</span>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-color);">${project.value}</div>
+                    </div>
+                    <div style="background: var(--gray-900); padding: 1rem; border-radius: 8px;">
+                        <span style="font-size: 0.875
