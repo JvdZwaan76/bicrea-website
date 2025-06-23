@@ -1,0 +1,20 @@
+{
+  "name": "bicrea-worker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "wrangler": "^4.20.5"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "itty-router": "^5.0.18",
+    "jsonwebtoken": "^9.0.2"
+  }
+}

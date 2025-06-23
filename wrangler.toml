@@ -1,0 +1,18 @@
+main = "worker.js"
+compatibility_date = "2025-06-17"
+compatibility_flags = ["nodejs_compat"]
+[site]
+bucket = "./public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "bicrea-portal"
+database_id = "bce89fc4-231e-4373-9fb3-dbb75c6d4cb6"
+
+[[r2_buckets]]
+binding = "DOCUMENTS"
+bucket_name = "bicrea-documents"
+
+[vars]
+JWT_SECRET = "HxNIHG14S7jK4yIUjOTrNEsY3JkBYofuxKVvrA74A1I="
+ALLOWED_ORIGINS = "https://bicrea.net,https://portal.bicrea.net"
