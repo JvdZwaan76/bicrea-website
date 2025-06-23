@@ -1,4 +1,4 @@
-main = "worker.js"
+name = "bicrea-website"main = "worker.js"
 compatibility_date = "2025-06-17"
 compatibility_flags = ["nodejs_compat"]
 [site]
