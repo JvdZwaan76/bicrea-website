@@ -199,3 +199,4 @@ router.all('*', () => new Response('Not found', { status: 404 }));
 export default {
   fetch: router.handle,
 };
+-rw-r--r--  1 jzwaan  staff  660 Jun 23 19:41 wrangler.toml
