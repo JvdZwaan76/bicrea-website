@@ -1,3 +1,4 @@
+name = "bicrea-website"
 main = "worker.js"
 compatibility_date = "2025-06-17"
 compatibility_flags = ["nodejs_compat"]
@@ -8,11 +9,13 @@ bucket = "./public"
 binding = "DB"
 database_name = "bicrea-portal"
 database_id = "bce89fc4-231e-4373-9fb3-dbb75c6d4cb6"
+preview_database_id = "b58f74aa-421c-4608-8572-3f5d8fe16054"
 
 [[r2_buckets]]
 binding = "DOCUMENTS"
 bucket_name = "bicrea-documents"
+preview_bucket_name = "bicrea-documents-preview"
 
 [vars]
 JWT_SECRET = "HxNIHG14S7jK4yIUjOTrNEsY3JkBYofuxKVvrA74A1I="
-ALLOWED_ORIGINS = "https://bicrea.net,https://portal.bicrea.net"
+ALLOWED_ORIGINS = "https://bicrea.com,https://www.bicrea.com,https://bicrea.net,https://www.bicrea.net,https://bicrea-website.jaspervdz.workers.dev"
