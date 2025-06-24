@@ -19,3 +19,4 @@ preview_bucket_name = "bicrea-documents-preview"
 [vars]
 JWT_SECRET = "HxNIHG14S7jK4yIUjOTrNEsY3JkBYofuxKVvrA74A1I="
 ALLOWED_ORIGINS = "https://bicrea.com,https://www.bicrea.com,https://bicrea.net,https://www.bicrea.net,https://bicrea-website.jaspervdz.workers.dev"
+ # Add a blank line to force a change
