@@ -13,7 +13,7 @@ const securityMiddleware = async ({ request, env }) => {
     const rateLimit = await env.DB.prepare('SELECT count, timestamp FROM rate_limits WHERE ip = ?')
       .bind(ip)
       .first();
-    
+
     if (rateLimit && rateLimit.count >= 100 && Date.now() - rateLimit.timestamp < 3600000) {
       return new Response('Rate limit exceeded', { status: 429 });
     }
@@ -53,6 +53,7 @@ const securityMiddleware = async ({ request, env }) => {
       }
     };
   } catch (error) {
+    console.error(`Security middleware error: ${error.message}`, error.stack);
     return new Response(`Security middleware error: ${error.message}`, { status: 500 });
   }
 };
@@ -67,7 +68,8 @@ const authMiddleware = async ({ request, env }) => {
   try {
     const payload = verify(token, env.JWT_SECRET);
     return { userId: payload.sub };
-  } catch {
+  } catch (error) {
+    console.error(`Auth middleware error: ${error.message}`, error.stack);
     return new Response('Invalid token', { status: 401 });
   }
 };
@@ -75,8 +77,9 @@ const authMiddleware = async ({ request, env }) => {
 // Redirect from bicrea.net to bicrea.com
 router.all('*', async ({ request, next }) => {
   const url = new URL(request.url);
-  if (url.hostname === 'bicrea.net' || url.hostname === 'www.bicrea.net') {
+  if ((url.hostname === 'bicrea.net' || url.hostname === 'www.bicrea.net') && !url.pathname.startsWith('/api/')) {
     const target = `https://bicrea.com${url.pathname}${url.search}`;
+    console.log(`Redirecting ${url.hostname} to ${target}`);
     return Response.redirect(target, 301); // Permanent redirect
   }
   return await next();
@@ -86,7 +89,6 @@ router.all('*', async ({ request, next }) => {
 router.post('/api/auth/login', securityMiddleware, async ({ request, env }) => {
   try {
     const { email, password, mfaCode } = await request.json();
-    
     const user = await env.DB.prepare('SELECT * FROM users WHERE email = ?')
       .bind(email)
       .first();
@@ -119,6 +121,7 @@ router.post('/api/auth/login', securityMiddleware, async ({ request, env }) => {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
+    console.error(`Login error: ${error.message}`, error.stack);
     return new Response(`Login error: ${error.message}`, { status: 500 });
   }
 });
@@ -148,6 +151,7 @@ router.post('/api/documents', securityMiddleware, authMiddleware, async ({ reque
 
     return new Response(JSON.stringify({ id: fileId }), { status: 201 });
   } catch (error) {
+    console.error(`Document upload error: ${error.message}`, error.stack);
     return new Response(`Document upload error: ${error.message}`, { status: 500 });
   }
 });
@@ -175,6 +179,7 @@ router.get('/api/documents/:id', securityMiddleware, authMiddleware, async ({ re
       },
     });
   } catch (error) {
+    console.error(`Document fetch error: ${error.message}`, error.stack);
     return new Response(`Document fetch error: ${error.message}`, { status: 500 });
   }
 });
@@ -189,13 +194,31 @@ router.get('/api/documents', securityMiddleware, authMiddleware, async ({ reques
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
+    console.error(`Documents fetch error: ${error.message}`, error.stack);
     return new Response(`Documents fetch error: ${error.message}`, { status: 500 });
   }
 });
 
-// Fallback (kept after redirect to handle non-redirected routes)
-router.all('*', () => new Response('Not found', { status: 404 }));
+// Fallback route with asset delegation
+router.all('*', async (request) => {
+  const url = new URL(request.url);
+  if (url.pathname === '/favicon.ico') {
+    return new Response(null, { status: 204 }); // No content for favicon
+  }
+  // Delegate to Pages assets
+  const asset = await env.ASSETS.fetch(request);
+  return asset || new Response('Not found', { status: 404 });
+});
 
 export default {
-  fetch: router.handle,
+  fetch(request) {
+    try {
+      const response = router.handle(request);
+      console.log(`Handled request for ${request.url} with status ${response.status}`);
+      return response;
+    } catch (error) {
+      console.error(`Worker exception: ${error.message}`, error.stack);
+      return new Response('Internal Server Error', { status: 500 });
+    }
+  }
 };
