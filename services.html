@@ -1,141 +1,350 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Bicrea</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.min.css?v=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Services - Bicrea | Elite Property Investment Solutions</title>
+    <meta name="description" content="Discover Bicrea's signature services: strategic property investments and precision mineral title reports. Elevate your portfolio with our expertise.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header class="navbar fixed-top">
+    <nav class="navbar">
         <div class="container">
-            <a href="/" class="navbar-brand">Bicrea</a>
-            <nav>
-                <ul class="nav">
-                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="/services.html" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="/portfolio.html" class="nav-link">Portfolio</a></li>
-                    <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
+            <a href="/" class="navbar-brand">
+                <span class="brand-icon">◊</span>
+                Bicrea
+            </a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="/services.html" class="nav-link active">Services</a></li>
+                <li class="nav-item"><a href="/portfolio.html" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section class="services">
-            <div class="container">
-                <h2>Our Signature Services</h2>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>At Bicrea, we offer a suite of elite services designed to elevate your investments and secure your assets with unmatched sophistication. Our Florida-rooted expertise and nationwide reach set us apart as leaders in the industry.</p>
+    <section class="services-hero">
+        <div class="page-header-overlay"></div>
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title animate__animated animate__fadeInUp">Our Signature Services</h1>
+                <p class="page-subtitle animate__animated animate__fadeInUp animate__delay-1s">Elite solutions crafted for discerning investors</p>
+                <div class="breadcrumb animate__animated animate__fadeInUp animate__delay-2s">
+                    <a href="/">Home</a>
+                    <span>/</span>
+                    <span>Services</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Excellence Redefined</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">At Bicrea, we offer a suite of elite services designed to elevate your investments and secure your assets with unmatched sophistication. Our Florida-rooted expertise and nationwide reach set us apart as leaders in the industry.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-detail">
+        <div class="container">
+            <div class="service-detail-content">
+                <div class="service-detail-text">
+                    <h2>Strategic Property Investments</h2>
+                    <p class="lead">Our property investment services are crafted for those who demand the extraordinary. We blend market foresight with bespoke strategies to deliver portfolios that stand the test of time, combining sophisticated analysis with an intimate understanding of luxury real estate markets.</p>
+                    
+                    <p>Each investment opportunity is meticulously evaluated through our proprietary analysis framework, ensuring optimal risk-adjusted returns. Our team's deep market knowledge, spanning coastal estates to urban developments, provides our clients with exclusive access to premium opportunities.</p>
+                    
+                    <ul class="service-features">
+                        <li>
+                            <strong>Comprehensive Market Analysis</strong>
+                            In-depth research into emerging trends, demographic shifts, and economic indicators that drive property values
+                        </li>
+                        <li>
+                            <strong>Bespoke Portfolio Curation</strong>
+                            Tailored property selections aligned with your investment goals, risk tolerance, and legacy objectives
+                        </li>
+                        <li>
+                            <strong>Advanced Risk Management</strong>
+                            Proactive strategies employing diversification, hedging, and market timing to safeguard your investments
+                        </li>
+                        <li>
+                            <strong>End-to-End Acquisition Support</strong>
+                            Expert guidance through every step of the acquisition process, from due diligence to closing
+                        </li>
+                        <li>
+                            <strong>Ongoing Portfolio Optimization</strong>
+                            Continuous monitoring and strategic adjustments to maximize long-term value creation
+                        </li>
+                    </ul>
+                    
+                    <div class="service-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">25%</div>
+                            <div class="stat-label">Average Annual Returns</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Client Satisfaction Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">States Covered</div>
+                        </div>
                     </div>
                 </div>
+                <div class="service-detail-image">
+                    <img src="/images/investment-image.jpg" alt="Luxury property showcasing our investment expertise" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <h2>Strategic Property Investments</h2>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>Our property investment services are crafted for those who demand the extraordinary. We blend market foresight with bespoke strategies to deliver portfolios that stand the test of time.</p>
-                        <ul>
-                            <li>Market Analysis: In-depth research into emerging trends and opportunities.</li>
-                            <li>Portfolio Curation: Tailored selections to align with your financial goals.</li>
-                            <li>Risk Management: Proactive strategies to safeguard your investments.</li>
-                            <li>Acquisition Support: Expert guidance through every step of the process.</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="/images/investment-image.jpg" alt="Luxury property showcasing investment potential" class="img-fluid rounded shadow" loading="lazy">
+    <section class="service-detail">
+        <div class="container">
+            <div class="service-detail-content">
+                <div class="service-detail-text">
+                    <h2>Mineral Title Reports</h2>
+                    <p class="lead">Our mineral title reports represent the gold standard in clarity, precision, and legal compliance. We uncover the past to secure your future, ensuring every transaction is built on an unshakeable foundation of certainty and legal clarity.</p>
+                    
+                    <p>Leveraging cutting-edge research technologies and decades of expertise, our team conducts exhaustive investigations into mineral rights ownership, providing you with comprehensive documentation that stands up to the most rigorous legal scrutiny.</p>
+                    
+                    <ul class="service-features">
+                        <li>
+                            <strong>Exhaustive Title Verification</strong>
+                            Comprehensive research through historical records, court documents, and governmental databases
+                        </li>
+                        <li>
+                            <strong>Regulatory Compliance Assurance</strong>
+                            Full compliance with state and federal standards, including environmental and zoning regulations
+                        </li>
+                        <li>
+                            <strong>Detailed Documentation</strong>
+                            Comprehensive reports with clear chain of title, ownership percentages, and legal descriptions
+                        </li>
+                        <li>
+                            <strong>Expert Dispute Resolution</strong>
+                            Professional support in navigating title conflicts and ownership disputes
+                        </li>
+                        <li>
+                            <strong>Ongoing Title Monitoring</strong>
+                            Continuous oversight to protect against future title challenges and ownership changes
+                        </li>
+                    </ul>
+                    
+                    <div class="service-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Reports Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">99.8%</div>
+                            <div class="stat-label">Accuracy Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">72hrs</div>
+                            <div class="stat-label">Average Turnaround</div>
+                        </div>
                     </div>
                 </div>
+                <div class="service-detail-image">
+                    <img src="/images/mineral-image.jpg" alt="Mineral rights documentation and analysis process" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <h2>Mineral Title Reports</h2>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>Our mineral title reports are the gold standard in clarity and precision. We uncover the past to secure your future, ensuring every transaction is built on a foundation of certainty.</p>
-                        <ul>
-                            <li>Title Verification: Exhaustive research into ownership history.</li>
-                            <li>Regulatory Assurance: Compliance with state and federal standards.</li>
-                            <li>Detailed Reporting: Comprehensive documentation for informed decisions.</li>
-                            <li>Dispute Resolution: Expert support in navigating title conflicts.</li>
-                        </ul>
+    <section class="additional-services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Comprehensive Solutions</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Beyond our core offerings, we provide a complete ecosystem of services to support your investment journey</p>
+            </div>
+            
+            <div class="additional-services-grid">
+                <div class="additional-service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="col-md-6">
-                        <img src="/images/mineral-image.jpg" alt="Mineral rights documentation process" class="img-fluid rounded shadow" loading="lazy">
+                    <h3>Market Intelligence</h3>
+                    <p>Real-time market analysis and forecasting to identify emerging opportunities and potential risks in your target markets.</p>
+                    <ul>
+                        <li>Quarterly market reports</li>
+                        <li>Trend analysis and predictions</li>
+                        <li>Competitive landscape assessment</li>
+                    </ul>
+                </div>
+                
+                <div class="additional-service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Transaction Management</h3>
+                    <p>End-to-end transaction coordination ensuring smooth closings and optimal deal structures for maximum value.</p>
+                    <ul>
+                        <li>Due diligence coordination</li>
+                        <li>Negotiation support</li>
+                        <li>Closing management</li>
+                    </ul>
+                </div>
+                
+                <div class="additional-service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Risk Assessment</h3>
+                    <p>Comprehensive risk evaluation and mitigation strategies to protect your investments against market volatility.</p>
+                    <ul>
+                        <li>Portfolio risk analysis</li>
+                        <li>Insurance coordination</li>
+                        <li>Legal compliance review</li>
+                    </ul>
+                </div>
+                
+                <div class="additional-service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Advisory Services</h3>
+                    <p>Strategic consultation and ongoing advisory services to optimize your investment strategy and maximize returns.</p>
+                    <ul>
+                        <li>Investment strategy development</li>
+                        <li>Portfolio optimization</li>
+                        <li>Legacy planning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Process</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">A proven methodology refined over three decades of excellence</p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Initial Consultation</h3>
+                        <p>We begin with an in-depth discussion of your investment objectives, risk tolerance, and long-term goals to develop a customized strategy.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Market Analysis</h3>
+                        <p>Our team conducts comprehensive market research and due diligence to identify opportunities aligned with your investment criteria.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Opportunity Presentation</h3>
+                        <p>We present carefully vetted investment opportunities with detailed analysis, projections, and risk assessments for your consideration.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Execution & Management</h3>
+                        <p>Upon your approval, we execute the investment strategy and provide ongoing management and optimization of your portfolio.</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Experience Bicrea Excellence?</h2>
+                <p>Discover how our signature services can transform your investment portfolio into a cornerstone of lasting prosperity. Connect with our experts today.</p>
+                <a href="/contact.html" class="btn btn-primary btn-luxury">
+                    <span>Schedule Consultation</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>About Bicrea</h5>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <span class="brand-icon">◊</span>
+                        <span>Bicrea</span>
+                    </div>
                     <p>A Florida-based leader in luxury property investments and mineral title services, serving clients nationwide with distinction.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Quick Links</h5>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about.html">About</a></li>
-                        <li><a href="/portfolio.html">Portfolio</a></li>
-                        <li><a href="/contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Connect</h5>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/services.html">Services</a></li>
+                        <li><a href="/portfolio.html">Portfolio</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="/services.html">Property Investments</a></li>
+                        <li><a href="/services.html">Mineral Title Reports</a></li>
+                        <li><a href="/services.html">Market Analysis</a></li>
+                        <li><a href="/services.html">Portfolio Management</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> info@bicrea.com</p>
+                        <p><i class="fas fa-phone"></i> +1 (888) 555-1234</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Elegance Ave, Miami, FL 33101</p>
                     </div>
                 </div>
             </div>
-            <p class="text-center mt-4">© 2025 Bicrea. All rights reserved.</p>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bicrea. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="script.min.js"></script>
 </body>
 </html>
