@@ -1,9 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Bicrea Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bicrea - Coming Soon</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+    .container {
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+    .countdown {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+    .notify {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #4a90e2;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .notify:hover {
+      background-color: #357abd;
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 2em; }
+      p { font-size: 1em; }
+      .countdown { font-size: 1.2em; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to Bicrea!</h1>
+  <div class="container">
+    <h1>Coming Soon</h1>
+    <p>We're working hard to bring you an amazing new website. Stay tuned!</p>
+    <div class="countdown">Launch Date: July 15, 2025</div>
+    <button class="notify">Notify Me</button>
+  </div>
 </body>
 </html>
