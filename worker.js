@@ -2,14 +2,17 @@ import { Router } from 'itty-router';
 
 const router = Router();
 
-router.get('/', () => new Response("Welcome to Bicrea homepage!", { status: 200 }));
 router.all('/favicon.ico', () => {
   console.log(`Processing favicon request for ${request.url}`);
   const response = new Response(null, { status: 204 });
   console.log(`Favicon request handled with status ${response.status}`);
   return response;
 });
-router.all('*', () => new Response('Not found', { status: 404 }));
+router.all('*', async (request) => {
+  console.log(`Attempting asset fetch for ${request.url}`);
+  const asset = await env.ASSETS.fetch(request);
+  return asset || new Response('Not found', { status: 404 });
+});
 
 export default {
   fetch(request) {
