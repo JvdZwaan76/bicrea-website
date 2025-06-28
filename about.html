@@ -42,14 +42,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn more about Bicrea's Florida-focused expertise and nationwide services in property investments and mineral title reports.">
+    <meta name="description" content="Discover Bicrea’s legacy of excellence in luxury property investments and mineral title services, rooted in Florida with a nationwide presence.">
     <title>About Us | Bicrea</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.min.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <header role="banner">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="#">Bicrea</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,8 +59,9 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="about.html" aria-current="page">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -67,19 +69,91 @@
         </nav>
     </header>
 
-    <section class="about py-5">
-        <div class="container">
-            <h1>About Bicrea</h1>
-            <p>At Bicrea, we combine deep Florida-based expertise with a nationwide presence to deliver unparalleled service in strategic property investments and mineral title reports. Our team of seasoned professionals brings decades of experience, ensuring our clients receive the insights and solutions they need to succeed in the complex world of real estate and mineral rights.</p>
-            <h2>Our Mission</h2>
-            <p>To empower our clients with expert guidance and meticulous title reporting, making Bicrea the trusted leader in property investment and mineral rights services across the United States.</p>
-        </div>
-    </section>
+    <main>
+        <section class="about py-5" aria-labelledby="about-heading">
+            <div class="container">
+                <h1 id="about-heading" class="text-center mb-5">Our Story</h1>
+                <div class="row mb-5">
+                    <div class="col-lg-8 mx-auto">
+                        <p class="lead">Bicrea was born from a vision to transcend the ordinary in property investments and mineral title services. Established in Florida, a land of opportunity and natural wealth, we have grown into a national authority, serving clients with an unwavering commitment to excellence.</p>
+                        <p>Our journey began over 30 years ago, when our founders recognized a gap in the market for sophisticated, client-centric real estate solutions. Today, Bicrea is synonymous with precision, luxury, and trust—values that guide every project we undertake.</p>
+                    </div>
+                </div>
 
-    <footer class="text-center py-4 bg-dark text-white">
-        <p>&copy; 2025 Bicrea. All rights reserved.</p>
+                <h2 class="text-center mb-4">Mission & Vision</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Our Mission</h3>
+                        <p>To deliver unparalleled expertise in property investments and mineral title reporting, empowering our clients with the knowledge and strategies to secure their legacies.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Our Vision</h3>
+                        <p>To be the preeminent name in luxury real estate services, setting the gold standard for innovation, integrity, and sophistication across the United States.</p>
+                    </div>
+                </div>
+
+                <h2 class="text-center mt-5 mb-4">Our Esteemed Team</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="team-member text-center">
+                            <img src="team1.jpg" alt="Portrait of Johnathan Pierce, Founder" class="img-fluid rounded-circle mb-3" loading="lazy">
+                            <h4>Johnathan Pierce</h4>
+                            <p class="text-muted">Founder & CEO</p>
+                            <p>With 35 years of experience, Johnathan leads Bicrea with a passion for excellence and a keen eye for opportunity.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="team-member text-center">
+                            <img src="team2.jpg" alt="Portrait of Eleanor Voss, Chief Analyst" class="img-fluid rounded-circle mb-3" loading="lazy">
+                            <h4>Eleanor Voss</h4>
+                            <p class="text-muted">Chief Analyst</p>
+                            <p>Eleanor’s analytical prowess ensures every title report and investment strategy is flawless.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="team-member text-center">
+                            <img src="team3.jpg" alt="Portrait of Marcus Lang, Investment Director" class="img-fluid rounded-circle mb-3" loading="lazy">
+                            <h4>Marcus Lang</h4>
+                            <p class="text-muted">Investment Director</p>
+                            <p>Marcus crafts bespoke investment portfolios that maximize value and minimize risk.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-5 bg-dark text-white" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Bicrea</h5>
+                    <p>A Florida-based leader in luxury property investments and mineral title services, serving clients nationwide with distinction.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect</h5>
+                    <div class="social-links">
+                        <a href="https://twitter.com/bicrea" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/bicrea" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:info@bicrea.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center mt-4">© 2025 Bicrea. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="script.min.js"></script>
 </body>
 </html>

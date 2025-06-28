@@ -42,14 +42,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore Bicrea's premium services in strategic property investments and mineral title reports across the U.S.">
+    <meta name="description" content="Explore Bicrea’s elite services in luxury property investments and mineral title reports, offering unmatched expertise across the U.S.">
     <title>Services | Bicrea</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.min.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <header role="banner">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="#">Bicrea</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,7 +60,8 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="services.html" aria-current="page">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -67,20 +69,82 @@
         </nav>
     </header>
 
-    <section class="services py-5">
-        <div class="container">
-            <h1>Our Services</h1>
-            <h2>Strategic Property Investments</h2>
-            <p>Leverage our Florida-rooted expertise and nationwide network to identify and capitalize on high-value property investments. We provide tailored strategies to maximize returns and minimize risks across the United States.</p>
-            <h2>Mineral Title Reports</h2>
-            <p>Our comprehensive mineral title reports deliver clarity and certainty, ensuring you have a complete understanding of ownership and rights. From Florida to the farthest reaches of the U.S., we set the standard for precision and reliability.</p>
-        </div>
-    </section>
+    <main>
+        <section class="services py-5" aria-labelledby="services-heading">
+            <div class="container">
+                <h1 id="services-heading" class="text-center mb-5">Our Signature Services</h1>
+                <div class="row mb-5">
+                    <div class="col-lg-8 mx-auto">
+                        <p class="lead">At Bicrea, we offer a suite of elite services designed to elevate your investments and secure your assets with unmatched sophistication. Our Florida-rooted expertise and nationwide reach set us apart as leaders in the industry.</p>
+                    </div>
+                </div>
 
-    <footer class="text-center py-4 bg-dark text-white">
-        <p>&copy; 2025 Bicrea. All rights reserved.</p>
+                <h2 class="mb-4">Strategic Property Investments</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Our property investment services are crafted for those who demand the extraordinary. We blend market foresight with bespoke strategies to deliver portfolios that stand the test of time.</p>
+                        <ul>
+                            <li><strong>Market Analysis:</strong> In-depth research into emerging trends and opportunities.</li>
+                            <li><strong>Portfolio Curation:</strong> Tailored selections to align with your financial goals.</li>
+                            <li><strong>Risk Management:</strong> Proactive strategies to safeguard your investments.</li>
+                            <li><strong>Acquisition Support:</strong> Expert guidance through every step of the process.</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="investment-image.jpg" alt="Luxury property showcasing investment potential" class="img-fluid rounded shadow" loading="lazy">
+                    </div>
+                </div>
+
+                <h2 class="mt-5 mb-4">Mineral Title Reports</h2>
+                <div class="row">
+                    <div class="col-md-6 order-md-2">
+                        <p>Our mineral title reports are the gold standard in clarity and precision. We uncover the past to secure your future, ensuring every transaction is built on a foundation of certainty.</p>
+                        <ul>
+                            <li><strong>Title Verification:</strong> Exhaustive research into ownership history.</li>
+                            <li><strong>Regulatory Assurance:</strong> Compliance with state and federal standards.</li>
+                            <li><strong>Detailed Reporting:</strong> Comprehensive documentation for informed decisions.</li>
+                            <li><strong>Dispute Resolution:</strong> Expert support in navigating title conflicts.</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <img src="mineral-image.jpg" alt="Mineral rights documentation process" class="img-fluid rounded shadow" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-5 bg-dark text-white" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Bicrea</h5>
+                    <p>A Florida-based leader in luxury property investments and mineral title services, serving clients nationwide with distinction.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect</h5>
+                    <div class="social-links">
+                        <a href="https://twitter.com/bicrea" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/bicrea" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:info@bicrea.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center mt-4">© 2025 Bicrea. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="script.min.js"></script>
 </body>
 </html>

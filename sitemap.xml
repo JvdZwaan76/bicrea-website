@@ -19,6 +19,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://bicrea.com/portfolio.html</loc>
+        <lastmod>2025-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://bicrea.com/contact.html</loc>
         <lastmod>2025-06-27</lastmod>
         <changefreq>monthly</changefreq>
