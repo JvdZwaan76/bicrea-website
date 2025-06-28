@@ -1,126 +1,521 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Bicrea</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.min.css?v=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Portfolio - Bicrea | Our Masterworks in Luxury Investment</title>
+    <meta name="description" content="Explore Bicrea's prestigious portfolio of luxury property investments and mineral rights acquisitions. Discover our proven track record of excellence.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header class="navbar fixed-top">
+    <nav class="navbar">
         <div class="container">
-            <a href="/" class="navbar-brand">Bicrea</a>
-            <nav>
-                <ul class="nav">
-                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="/services.html" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="/portfolio.html" class="nav-link">Portfolio</a></li>
-                    <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
+            <a href="/" class="navbar-brand">
+                <span class="brand-icon">◊</span>
+                Bicrea
+            </a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="/services.html" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="/portfolio.html" class="nav-link active">Portfolio</a></li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section class="portfolio">
-            <div class="container">
-                <h2>Our Masterworks</h2>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>Bicrea’s portfolio is a testament to our dedication to excellence. Each project reflects our commitment to transforming opportunities into legacies of value and prestige.</p>
+    <section class="portfolio-hero">
+        <div class="page-header-overlay"></div>
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title animate__animated animate__fadeInUp">Our Masterworks</h1>
+                <p class="page-subtitle animate__animated animate__fadeInUp animate__delay-1s">A showcase of excellence in luxury property investments</p>
+                <div class="breadcrumb animate__animated animate__fadeInUp animate__delay-2s">
+                    <a href="/">Home</a>
+                    <span>/</span>
+                    <span>Portfolio</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Legacy of Excellence</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Bicrea's portfolio is a testament to our dedication to excellence. Each project reflects our commitment to transforming opportunities into legacies of value and prestige, showcasing our expertise across diverse markets and property types.</p>
+            </div>
+            
+            <div class="portfolio-stats-overview">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">$2.1B</div>
+                        <div class="stat-label">Total Assets Managed</div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4 portfolio-item">
-                        <img src="/images/project1.jpg" alt="Luxury coastal property investment" class="img-fluid rounded shadow" loading="lazy">
-                        <h3>Coastal Serenity Estate</h3>
-                        <p>This $15M investment along Florida’s pristine coastline resulted in a luxury residential retreat. Leveraging our market foresight, we achieved a 7.5% ROI within three years, blending aesthetic brilliance with financial success.</p>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-building"></i>
                     </div>
-                    <div class="col-md-4 portfolio-item">
-                        <img src="/images/project2.jpg" alt="Urban redevelopment project" class="img-fluid rounded shadow" loading="lazy">
-                        <h3>Metropolitan Revival</h3>
-                        <p>A $10M urban redevelopment in Texas, this project revitalized a historic district into a thriving commercial hub. Our strategic approach yielded a 5% return, preserving heritage while driving modernity.</p>
+                    <div class="stat-content">
+                        <div class="stat-value">150+</div>
+                        <div class="stat-label">Properties Acquired</div>
                     </div>
-                    <div class="col-md-4 portfolio-item">
-                        <img src="/images/project3.jpg" alt="Mineral rights acquisition" class="img-fluid rounded shadow" loading="lazy">
-                        <h3>Mineral Frontier</h3>
-                        <p>An $8M mineral rights acquisition in Nevada, supported by our meticulous title reporting. This project secured long-term value for our client, exemplifying our precision and expertise.</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">24.8%</div>
+                        <div class="stat-label">Average Annual Return</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">States & Territories</div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <section class="portfolio-main">
+        <div class="container">
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="luxury-residential">Luxury Residential</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="mineral-rights">Mineral Rights</button>
+                <button class="filter-btn" data-filter="development">Development</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-detailed">
+        <div class="container">
+            <div class="portfolio-detailed-grid">
+                <div class="portfolio-detailed-item" data-category="luxury-residential">
+                    <div class="portfolio-detailed-image">
+                        <img src="/images/project1.jpg" alt="Coastal Serenity Estate luxury oceanfront property" loading="lazy">
+                        <div class="portfolio-stats">
+                            <div class="stat-badge">$15M Investment</div>
+                            <div class="stat-badge">25% ROI</div>
+                        </div>
+                    </div>
+                    <div class="portfolio-detailed-content">
+                        <div class="portfolio-meta">
+                            <div class="portfolio-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Sanibel Island, Florida</span>
+                            </div>
+                            <div class="portfolio-type">Luxury Residential</div>
+                        </div>
+                        <h3>Coastal Serenity Estate</h3>
+                        <p>This extraordinary $15M investment transformed a pristine Florida coastline into an exclusive luxury retreat. Leveraging our market foresight and design expertise, we achieved a remarkable 25% ROI within three years, blending aesthetic brilliance with financial success.</p>
+                        
+                        <div class="portfolio-highlights">
+                            <h4>Project Highlights</h4>
+                            <div class="highlight-grid">
+                                <div class="highlight-item">
+                                    <span class="highlight-value">8,500</span>
+                                    <span class="highlight-label">Sq Ft</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">3</span>
+                                    <span class="highlight-label">Years</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">5</span>
+                                    <span class="highlight-label">Bedrooms</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">2023</span>
+                                    <span class="highlight-label">Completed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-detailed-item" data-category="commercial development">
+                    <div class="portfolio-detailed-image">
+                        <img src="/images/project2.jpg" alt="Metropolitan Revival urban redevelopment project" loading="lazy">
+                        <div class="portfolio-stats">
+                            <div class="stat-badge">$10M Investment</div>
+                            <div class="stat-badge">20% ROI</div>
+                        </div>
+                    </div>
+                    <div class="portfolio-detailed-content">
+                        <div class="portfolio-meta">
+                            <div class="portfolio-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Austin, Texas</span>
+                            </div>
+                            <div class="portfolio-type">Commercial</div>
+                        </div>
+                        <h3>Metropolitan Revival</h3>
+                        <p>A $10M urban redevelopment project in Austin's historic district, this initiative revitalized a deteriorating commercial area into a thriving hub of commerce and culture. Our strategic approach yielded a 20% return while preserving architectural heritage.</p>
+                        
+                        <div class="portfolio-highlights">
+                            <h4>Project Highlights</h4>
+                            <div class="highlight-grid">
+                                <div class="highlight-item">
+                                    <span class="highlight-value">45,000</span>
+                                    <span class="highlight-label">Sq Ft</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">4</span>
+                                    <span class="highlight-label">Years</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">12</span>
+                                    <span class="highlight-label">Tenants</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">2022</span>
+                                    <span class="highlight-label">Completed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-detailed-item" data-category="mineral-rights">
+                    <div class="portfolio-detailed-image">
+                        <img src="/images/project3.jpg" alt="Mineral Frontier Nevada mining rights acquisition" loading="lazy">
+                        <div class="portfolio-stats">
+                            <div class="stat-badge">$8M Acquisition</div>
+                            <div class="stat-badge">Long-term Value</div>
+                        </div>
+                    </div>
+                    <div class="portfolio-detailed-content">
+                        <div class="portfolio-meta">
+                            <div class="portfolio-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Elko County, Nevada</span>
+                            </div>
+                            <div class="portfolio-type">Mineral Rights</div>
+                        </div>
+                        <h3>Mineral Frontier</h3>
+                        <p>An $8M mineral rights acquisition in Nevada, supported by our meticulous title reporting and geological analysis. This strategic investment secured substantial long-term value in a region rich with precious metal deposits.</p>
+                        
+                        <div class="portfolio-highlights">
+                            <h4>Project Highlights</h4>
+                            <div class="highlight-grid">
+                                <div class="highlight-item">
+                                    <span class="highlight-value">2,400</span>
+                                    <span class="highlight-label">Acres</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">25</span>
+                                    <span class="highlight-label">Year Lease</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">Gold</span>
+                                    <span class="highlight-label">Primary Resource</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">2024</span>
+                                    <span class="highlight-label">Acquired</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-detailed-item" data-category="luxury-residential">
+                    <div class="portfolio-detailed-image">
+                        <img src="/images/azure-heights.jpg" alt="Azure Heights luxury mountain resort development" loading="lazy">
+                        <div class="portfolio-stats">
+                            <div class="stat-badge">$22M Investment</div>
+                            <div class="stat-badge">28% ROI</div>
+                        </div>
+                    </div>
+                    <div class="portfolio-detailed-content">
+                        <div class="portfolio-meta">
+                            <div class="portfolio-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Aspen, Colorado</span>
+                            </div>
+                            <div class="portfolio-type">Luxury Residential</div>
+                        </div>
+                        <h3>Azure Heights</h3>
+                        <p>A premium mountain resort development featuring luxury condominiums with unparalleled alpine views. This $22M investment delivered exceptional returns through strategic positioning in one of America's most prestigious ski destinations.</p>
+                        
+                        <div class="portfolio-highlights">
+                            <h4>Project Highlights</h4>
+                            <div class="highlight-grid">
+                                <div class="highlight-item">
+                                    <span class="highlight-value">16</span>
+                                    <span class="highlight-label">Units</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">5</span>
+                                    <span class="highlight-label">Years</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">Ski-in</span>
+                                    <span class="highlight-label">Access</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">2021</span>
+                                    <span class="highlight-label">Completed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-detailed-item" data-category="commercial">
+                    <div class="portfolio-detailed-image">
+                        <img src="/images/corporate-gateway.jpg" alt="Corporate Gateway office complex development" loading="lazy">
+                        <div class="portfolio-stats">
+                            <div class="stat-badge">$18M Investment</div>
+                            <div class="stat-badge">22% ROI</div>
+                        </div>
+                    </div>
+                    <div class="portfolio-detailed-content">
+                        <div class="portfolio-meta">
+                            <div class="portfolio-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Charlotte, North Carolina</span>
+                            </div>
+                            <div class="portfolio-type">Commercial</div>
+                        </div>
+                        <h3>Corporate Gateway</h3>
+                        <p>A state-of-the-art office complex strategically located in Charlotte's growing business district. This $18M development offers premium corporate spaces with cutting-edge amenities and sustainable design features.</p>
+                        
+                        <div class="portfolio-highlights">
+                            <h4>Project Highlights</h4>
+                            <div class="highlight-grid">
+                                <div class="highlight-item">
+                                    <span class="highlight-value">120,000</span>
+                                    <span class="highlight-label">Sq Ft</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">3</span>
+                                    <span class="highlight-label">Years</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">LEED Gold</span>
+                                    <span class="highlight-label">Certified</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">2023</span>
+                                    <span class="highlight-label">Completed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-detailed-item" data-category="development">
+                    <div class="portfolio-detailed-image">
+                        <img src="/images/heritage-gardens.jpg" alt="Heritage Gardens residential community development" loading="lazy">
+                        <div class="portfolio-stats">
+                            <div class="stat-badge">$35M Investment</div>
+                            <div class="stat-badge">30% ROI</div>
+                        </div>
+                    </div>
+                    <div class="portfolio-detailed-content">
+                        <div class="portfolio-meta">
+                            <div class="portfolio-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Sarasota, Florida</span>
+                            </div>
+                            <div class="portfolio-type">Development</div>
+                        </div>
+                        <h3>Heritage Gardens</h3>
+                        <p>An exclusive gated community featuring luxury homes designed for discerning buyers seeking privacy and elegance. This $35M development project achieved extraordinary success with a 30% ROI through premium positioning and superior craftsmanship.</p>
+                        
+                        <div class="portfolio-highlights">
+                            <h4>Project Highlights</h4>
+                            <div class="highlight-grid">
+                                <div class="highlight-item">
+                                    <span class="highlight-value">42</span>
+                                    <span class="highlight-label">Homes</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">6</span>
+                                    <span class="highlight-label">Years</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">Gated</span>
+                                    <span class="highlight-label">Community</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-value">2024</span>
+                                    <span class="highlight-label">Completed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Client Success Stories</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Hear from our distinguished clients about their experiences with Bicrea</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Bicrea's expertise in luxury property investment is unmatched. Their meticulous approach to due diligence and market analysis resulted in returns that exceeded our highest expectations."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Victoria Ashworth</h4>
+                            <span>Private Investor</span>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The mineral title reports provided by Bicrea gave us complete confidence in our acquisition. Their attention to detail and comprehensive research process is truly exceptional."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Robert Chen</h4>
+                            <span>Mining Executive</span>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Working with Bicrea has been transformative for our investment portfolio. Their sophisticated approach and nationwide reach opened opportunities we never knew existed."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Margaret Hamilton</h4>
+                            <span>Investment Fund Manager</span>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Join Our Portfolio of Success?</h2>
+                <p>Discover how Bicrea can help you build a legacy of prosperity through strategic property investments and expert guidance.</p>
+                <a href="/contact.html" class="btn btn-primary btn-luxury">
+                    <span>Explore Opportunities</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>About Bicrea</h5>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <span class="brand-icon">◊</span>
+                        <span>Bicrea</span>
+                    </div>
                     <p>A Florida-based leader in luxury property investments and mineral title services, serving clients nationwide with distinction.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Quick Links</h5>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about.html">About</a></li>
-                        <li><a href="/services.html">Services</a></li>
-                        <li><a href="/contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Connect</h5>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/services.html">Services</a></li>
+                        <li><a href="/portfolio.html">Portfolio</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="/services.html">Property Investments</a></li>
+                        <li><a href="/services.html">Mineral Title Reports</a></li>
+                        <li><a href="/services.html">Market Analysis</a></li>
+                        <li><a href="/services.html">Portfolio Management</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> info@bicrea.com</p>
+                        <p><i class="fas fa-phone"></i> +1 (888) 555-1234</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Elegance Ave, Miami, FL 33101</p>
                     </div>
                 </div>
             </div>
-            <p class="text-center mt-4">© 2025 Bicrea. All rights reserved.</p>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bicrea. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="script.min.js"></script>
 </body>
 </html>
