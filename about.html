@@ -1,340 +1,267 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Bicrea | Our Story of Excellence</title>
-    <meta name="description" content="Discover Bicrea's 30+ year legacy in luxury property investments and mineral title services. Meet our distinguished team and learn about our mission.">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="/" class="navbar-brand">
-                <span class="brand-icon">◊</span>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script>◊
                 Bicrea
-            </a>
-            <div class="nav-toggle" id="navToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="/about.html" class="nav-link active">About</a></li>
-                <li class="nav-item"><a href="/services.html" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="/portfolio.html" class="nav-link">Portfolio</a></li>
-                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
+            
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
-        </div>
-    </nav>
+        </nav>
+        
 
-    <section class="page-header">
-        <div class="page-header-overlay"></div>
-        <div class="container">
-            <div class="page-header-content">
-                <h1 class="page-title animate__animated animate__fadeInUp">Our Story</h1>
-                <p class="page-subtitle animate__animated animate__fadeInUp animate__delay-1s">Three decades of excellence in luxury property investments</p>
-                <div class="breadcrumb animate__animated animate__fadeInUp animate__delay-2s">
-                    <a href="/">Home</a>
+    
+        <header>
+            <div class="container">
+                <h1>Our Story</h1>
+                <p>Three decades of excellence in luxury property investments</p>
+                <nav class="breadcrumb">
+                    <a href="index.html">Home</a>
                     <span>/</span>
-                    <span>About</span>
-                </div>
+                    <a href="about.html">About</a>
+                </nav>
             </div>
-        </div>
-    </section>
+        </header>
+        
 
-    <section class="story">
-        <div class="container">
-            <div class="story-content">
-                <div class="story-text">
-                    <div class="section-header">
-                        <h2 class="section-title">Our Journey</h2>
-                        <div class="section-divider"></div>
+    
+        <section class="journey">
+            <div class="container">
+                <h2>Our Journey</h2>
+                <p>Bicrea was born from a vision to transcend the ordinary in property investments and mineral title services. Established in Florida, a land of opportunity and natural wealth, we have grown into a national authority, serving clients with an unwavering commitment to excellence.</p>
+                <p>Our journey began over 30 years ago, when our founders recognized a gap in the market for sophisticated, client-centric real estate solutions. What started as a boutique firm in Sarasota has evolved into a nationally recognized leader, setting new standards for luxury and precision in our industry.</p>
+                <p>Today, Bicrea is synonymous with precision, luxury, and trust—values that guide every project we undertake. Our reputation has been built through decades of successful partnerships, innovative strategies, and an unwavering dedication to our clients' prosperity.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <h3>30+</h3>
+                        <p>Years of Excellence</p>
                     </div>
-                    <div class="story-paragraphs">
-                        <p class="lead">Bicrea was born from a vision to transcend the ordinary in property investments and mineral title services. Established in Florida, a land of opportunity and natural wealth, we have grown into a national authority, serving clients with an unwavering commitment to excellence.</p>
-                        
-                        <p>Our journey began over 30 years ago, when our founders recognized a gap in the market for sophisticated, client-centric real estate solutions. What started as a boutique firm in Miami has evolved into a nationally recognized leader, setting new standards for luxury and precision in our industry.</p>
-                        
-                        <p>Today, Bicrea is synonymous with precision, luxury, and trust—values that guide every project we undertake. Our reputation has been built through decades of successful partnerships, innovative strategies, and an unwavering dedication to our clients' prosperity.</p>
-                        
-                        <div class="story-stats">
-                            <div class="stat-item">
-                                <div class="stat-number">30+</div>
-                                <div class="stat-label">Years of Excellence</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">500+</div>
-                                <div class="stat-label">Successful Projects</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">$2B+</div>
-                                <div class="stat-label">Assets Managed</div>
-                            </div>
-                        </div>
+                    <div class="stat">
+                        <h3>500+</h3>
+                        <p>Successful Projects</p>
                     </div>
-                </div>
-                <div class="story-image">
-                    <div class="image-stack">
-                        <img src="/images/about.jpg" alt="Bicrea heritage and legacy" loading="lazy" class="main-image">
-                        <div class="image-accent"></div>
+                    <div class="stat">
+                        <h3>$2B+</h3>
+                        <p>Assets Managed</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
 
-    <section class="mission-vision">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Mission & Vision</h2>
-                <div class="section-divider"></div>
-                <p class="section-subtitle">Guiding principles that drive our pursuit of excellence</p>
-            </div>
-            <div class="mission-vision-grid">
-                <div class="mission-card">
-                    <div class="card-icon">
-                        <i class="fas fa-compass"></i>
-                    </div>
+    
+        <section class="mission-vision">
+            <div class="container">
+                <h2>Mission & Vision</h2>
+                <p>Guiding principles that drive our pursuit of excellence</p>
+                <div class="mission">
                     <h3>Our Mission</h3>
                     <p>To deliver unparalleled expertise in property investments and mineral title reporting, empowering our clients with the knowledge and strategies to secure their legacies. We are committed to transforming opportunities into lasting wealth through precision, innovation, and unwavering integrity.</p>
-                    <div class="mission-points">
-                        <div class="point">
-                            <i class="fas fa-check"></i>
-                            <span>Client-Centric Excellence</span>
-                        </div>
-                        <div class="point">
-                            <i class="fas fa-check"></i>
-                            <span>Innovative Solutions</span>
-                        </div>
-                        <div class="point">
-                            <i class="fas fa-check"></i>
-                            <span>Uncompromising Integrity</span>
-                        </div>
-                    </div>
+                    <ul>
+                        <li>Client-Centric Excellence</li>
+                        <li>Innovative Solutions</li>
+                        <li>Uncompromising Integrity</li>
+                    </ul>
                 </div>
-                
-                <div class="vision-card">
-                    <div class="card-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
+                <div class="vision">
                     <h3>Our Vision</h3>
                     <p>To be the preeminent name in luxury real estate services, setting the gold standard for innovation, integrity, and sophistication across the United States. We envision a future where Bicrea is synonymous with excellence in property investment and mineral rights expertise.</p>
-                    <div class="vision-points">
-                        <div class="point">
-                            <i class="fas fa-star"></i>
-                            <span>Industry Leadership</span>
-                        </div>
-                        <div class="point">
-                            <i class="fas fa-star"></i>
-                            <span>National Recognition</span>
-                        </div>
-                        <div class="point">
-                            <i class="fas fa-star"></i>
-                            <span>Innovation Pioneer</span>
-                        </div>
-                    </div>
+                    <ul>
+                        <li>Industry Leadership</li>
+                        <li>National Recognition</li>
+                        <li>Innovation Pioneer</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
 
-    <section class="team">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Esteemed Team</h2>
-                <div class="section-divider"></div>
-                <p class="section-subtitle">Meet the visionaries behind Bicrea's success</p>
-            </div>
-            <div class="team-grid">
+    
+        <section class="team">
+            <div class="container">
+                <h2>Our Esteemed Team</h2>
+                <p>Meet the visionaries behind Bicrea's success</p>
                 <div class="team-member">
-                    <div class="member-image">
-                        <img src="/images/team1.jpg" alt="Portrait of Johnathan Pierce, Founder & CEO" loading="lazy">
-                        <div class="member-overlay">
-                            <div class="member-social">
-                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3>Johnathan Pierce</h3>
-                        <p class="member-title">Founder & CEO</p>
-                        <p class="member-description">With 35 years of experience in luxury real estate and mineral rights, Johnathan leads Bicrea with a passion for excellence and a keen eye for opportunity. His visionary leadership has transformed Bicrea into a nationally recognized authority.</p>
-                        <div class="member-expertise">
-                            <span>Strategic Leadership</span>
-                            <span>Market Analysis</span>
-                            <span>Investment Strategy</span>
-                        </div>
-                    </div>
+                    <img src="/images/team1.jpg" alt="Devin Molina">
+                    <h3>Devin Molina</h3>
+                    <p>Founder & CEO</p>
+                    <p>With 35 years of experience in luxury real estate and mineral rights, Devin leads Bicrea with a passion for excellence and a keen eye for opportunity. His visionary leadership has transformed Bicrea into a nationally recognized authority.</p>
+                    <ul>
+                        <li>Strategic Leadership</li>
+                        <li>Market Analysis</li>
+                        <li>Investment Strategy</li>
+                    </ul>
                 </div>
-
                 <div class="team-member">
-                    <div class="member-image">
-                        <img src="/images/team2.jpg" alt="Portrait of Eleanor Voss, Chief Analyst" loading="lazy">
-                        <div class="member-overlay">
-                            <div class="member-social">
-                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3>Eleanor Voss</h3>
-                        <p class="member-title">Chief Analyst</p>
-                        <p class="member-description">Eleanor's analytical prowess ensures every title report and investment strategy is flawless. With a background in legal research and geological analysis, she brings unmatched precision to every project.</p>
-                        <div class="member-expertise">
-                            <span>Title Research</span>
-                            <span>Risk Analysis</span>
-                            <span>Regulatory Compliance</span>
-                        </div>
-                    </div>
+                    <img src="/images/team2.jpg" alt="Sandra Petkov">
+                    <h3>Sandra Petkov</h3>
+                    <p>Chief Analyst</p>
+                    <p>Sandra's analytical prowess ensures every title report and investment strategy is flawless. With a background in legal research and geological analysis, she brings unmatched precision to every project.</p>
+                    <ul>
+                        <li>Title Research</li>
+                        <li>Risk Analysis</li>
+                        <li>Regulatory Compliance</li>
+                    </ul>
                 </div>
-
                 <div class="team-member">
-                    <div class="member-image">
-                        <img src="/images/team3.jpg" alt="Portrait of Marcus Lang, Investment Director" loading="lazy">
-                        <div class="member-overlay">
-                            <div class="member-social">
-                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3>Marcus Lang</h3>
-                        <p class="member-title">Investment Director</p>
-                        <p class="member-description">Marcus crafts bespoke investment portfolios that maximize value and minimize risk. His innovative approach to property investment has generated exceptional returns for our discerning clientele.</p>
-                        <div class="member-expertise">
-                            <span>Portfolio Management</span>
-                            <span>Investment Planning</span>
-                            <span>Market Forecasting</span>
-                        </div>
-                    </div>
+                    <img src="/images/team3.jpg" alt="Christian Hickey">
+                    <h3>Christian Hickey</h3>
+                    <p>Investment Director of Mineral Rights & Real Estate Investments</p>
+                    <p>Christian crafts bespoke investment portfolios that maximize value and minimize risk. His innovative approach to property investment has generated exceptional returns for our discerning clientele.</p>
+                    <ul>
+                        <li>Portfolio Management</li>
+                        <li>Investment Planning</li>
+                        <li>Market Forecasting</li>
+                    </ul>
+                </div>
+                <div class="team-member">
+                    <img src="/images/team4.jpg" alt="Jasper van der Zwaan">
+                    <h3>Jasper van der Zwaan</h3>
+                    <p>Chief of Marketing - Digital Outreach & Public Relations</p>
+                    <p>Jasper spearheads Bicrea's marketing initiatives, leveraging digital platforms and public relations to enhance brand visibility and client engagement. His strategic vision drives our outreach efforts, connecting with audiences nationwide.</p>
+                    <ul>
+                        <li>Digital Marketing</li>
+                        <li>Public Relations</li>
+                        <li>Brand Strategy</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
 
-    <section class="values">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Core Values</h2>
-                <div class="section-divider"></div>
-                <p class="section-subtitle">The principles that define our commitment to excellence</p>
-            </div>
-            <div class="values-grid">
-                <div class="value-item">
-                    <div class="value-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
+    
+        <section class="values">
+            <div class="container">
+                <h2>Our Core Values</h2>
+                <p>The principles that define our commitment to excellence</p>
+                <div class="value">
                     <h3>Integrity</h3>
                     <p>We operate with unwavering honesty and transparency in all our dealings, building trust through consistent ethical practices.</p>
                 </div>
-                
-                <div class="value-item">
-                    <div class="value-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
+                <div class="value">
                     <h3>Excellence</h3>
                     <p>We pursue perfection in every detail, setting the highest standards for quality and precision in our industry.</p>
                 </div>
-                
-                <div class="value-item">
-                    <div class="value-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
+                <div class="value">
                     <h3>Innovation</h3>
                     <p>We embrace cutting-edge technologies and methodologies to deliver solutions that exceed expectations.</p>
                 </div>
-                
-                <div class="value-item">
-                    <div class="value-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
+                <div class="value">
                     <h3>Partnership</h3>
                     <p>We believe in building lasting relationships with our clients, working together to achieve shared success.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
 
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
+    
+        <section class="cta">
+            <div class="container">
                 <h2>Ready to Experience the Bicrea Difference?</h2>
                 <p>Join our distinguished clientele and discover how our expertise can elevate your investment portfolio to new heights of success.</p>
-                <a href="/contact.html" class="btn btn-primary btn-luxury">
-                    <span>Connect With Our Team</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+                <a href="contact.html" class="button">Connect With Our Team</a>
             </div>
-        </div>
-    </section>
+        </section>
+        
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-brand">
-                        <span class="brand-icon">◊</span>
-                        <span>Bicrea</span>
-                    </div>
-                    <p>A Florida-based leader in luxury property investments and mineral title services, serving clients nationwide with distinction.</p>
+    
+        <footer>
+            <div class="container">
+                <div class="footer-brand">
+                    <span>◊</span>
+                    <h3>Bicrea</h3>
+                    <p>A Sarasota-based leader in luxury property investments and mineral title services, serving clients nationwide with distinction.</p>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><img src="/images/facebook-icon.png" alt="Facebook"></a>
+                        <a href="#"><img src="/images/twitter-icon.png" alt="Twitter"></a>
+                        <a href="#"><img src="/images/linkedin-icon.png" alt="LinkedIn"></a>
+                        <a href="#"><img src="/images/instagram-icon.png" alt="Instagram"></a>
                     </div>
                 </div>
-                
-                <div class="footer-section">
+                <div class="footer-nav">
                     <h4>Navigation</h4>
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about.html">About</a></li>
-                        <li><a href="/services.html">Services</a></li>
-                        <li><a href="/portfolio.html">Portfolio</a></li>
-                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-section">
+                <div class="footer-services">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="/services.html">Property Investments</a></li>
-                        <li><a href="/services.html">Mineral Title Reports</a></li>
-                        <li><a href="/services.html">Market Analysis</a></li>
-                        <li><a href="/services.html">Portfolio Management</a></li>
+                        <li><a href="services.html#property">Property Investments</a></li>
+                        <li><a href="services.html#mineral">Mineral Title Reports</a></li>
+                        <li><a href="services.html#analysis">Market Analysis</a></li>
+                        <li><a href="services.html#portfolio">Portfolio Management</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-section">
+                <div class="footer-contact">
                     <h4>Contact</h4>
-                    <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> info@bicrea.com</p>
-                        <p><i class="fas fa-phone"></i> +1 (888) 555-1234</p>
-                        <p><i class="fas fa-map-marker-alt"></i> 123 Elegance Ave, Miami, FL 33101</p>
-                    </div>
+                    <p><a href="mailto:info@bicrea.com">info@bicrea.com</a></p>
+                    <p><a href="tel:+18052332942">+1 (805) 233-2942</a></p>
+                    <p>4360 Winners Circle, Sarasota, FL 34238</p>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2025 Bicrea. All rights reserved.</p>
-                <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+                <p>© 2025 Bicrea. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
                 </div>
             </div>
-        </div>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="script.min.js"></script>
-</body>
-</html>
+        </footer>
