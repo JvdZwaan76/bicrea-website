@@ -1,137 +1,494 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bicrea</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bicrea - Pinnacle of Property Excellence</title>
+    <meta name="description" content="Florida-rooted expertise in luxury property investments and mineral title services. Nationwide mastery with unrivaled excellence.">
+    <meta name="keywords" content="luxury property investment, mineral title services, real estate, Florida, portfolio management">
+    <meta name="author" content="Bicrea">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bicrea.com/">
+    <meta property="og:title" content="Bicrea - Pinnacle of Property Excellence">
+    <meta property="og:description" content="Florida-rooted expertise in luxury property investments and mineral title services. Nationwide mastery with unrivaled excellence.">
+    <meta property="og:image" content="/images/hero.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://bicrea.com/">
+    <meta property="twitter:title" content="Bicrea - Pinnacle of Property Excellence">
+    <meta property="twitter:description" content="Florida-rooted expertise in luxury property investments and mineral title services. Nationwide mastery with unrivaled excellence.">
+    <meta property="twitter:image" content="/images/hero.jpg">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.min.css">
+    
+    <!-- Animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#d4af37">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/icon-192x192.png">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/images/hero.jpg" as="image">
+    <link rel="preload" href="styles.min.css" as="style">
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
         <div class="container">
-            <h1 class="animate__fadeIn">Bicrea: Pinnacle of Property Excellence</h1>
-            <p>Florida-rooted expertise. Nationwide mastery. Unrivaled luxury in real estate and mineral rights.</p>
-            <a href="#contact" class="btn btn-primary">Begin Your Journey</a>
+            <a href="/" class="navbar-brand animate__animated animate__fadeInDown">
+                <span class="brand-icon">◊</span>
+                Bicrea
+            </a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="/" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="/services.html" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="/portfolio.html" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="container">
+                <div class="hero-text">
+                    <h1 class="hero-title animate__animated animate__fadeInUp">
+                        <span class="line-1">Bicrea</span>
+                        <span class="line-2">Pinnacle of Property Excellence</span>
+                    </h1>
+                    <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
+                        Florida-rooted expertise. Nationwide mastery. Unrivaled luxury in real estate and mineral rights.
+                    </p>
+                    <div class="hero-cta animate__animated animate__fadeInUp animate__delay-2s">
+                        <a href="#contact" class="btn btn-primary btn-luxury">
+                            <span>Begin Your Journey</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
         </div>
     </section>
 
-    <!-- Our Legacy Section -->
-    <section class="about py-5">
+    <!-- Legacy Section -->
+    <section class="legacy" id="about">
         <div class="container">
-            <h2 class="text-center mb-4">Our Legacy</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>Bicrea stands as a beacon of sophistication in the realm of property investments and mineral title services. Rooted in the vibrant landscapes of Florida, our expertise spans the entirety of the United States, delivering bespoke solutions that redefine excellence.</p>
-                    <p>With over three decades of collective experience, our team crafts strategies that not only secure wealth but elevate it to new heights. We are more than a service provider—we are your partner in navigating the intricate world of real estate and mineral rights.</p>
+            <div class="section-header">
+                <h2 class="section-title animate-on-scroll">Our Legacy</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle animate-on-scroll">Three decades of excellence in luxury property investments and mineral title services</p>
+            </div>
+            <div class="legacy-content">
+                <div class="legacy-text">
+                    <div class="legacy-item animate-on-scroll">
+                        <div class="legacy-number">30+</div>
+                        <div class="legacy-desc">
+                            <h3>Years of Excellence</h3>
+                            <p>Bicrea stands as a beacon of sophistication in the realm of property investments and mineral title services. Rooted in the vibrant landscapes of Florida, our expertise spans the entirety of the United States.</p>
+                        </div>
+                    </div>
+                    <div class="legacy-item animate-on-scroll">
+                        <div class="legacy-number">$500M+</div>
+                        <div class="legacy-desc">
+                            <h3>Assets Managed</h3>
+                            <p>With over three decades of collective experience, our team crafts strategies that not only secure wealth but elevate it to new heights. We are your partner in navigating the intricate world of real estate.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <img src="/images/about.jpg" alt="About Bicrea" class="img-fluid">
+                <div class="legacy-image animate-on-scroll">
+                    <div class="image-frame">
+                        <img src="/images/about.jpg" alt="Bicrea Legacy - Luxury property investment expertise" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Craft Section -->
-    <section class="services py-5">
+    <!-- Services Section -->
+    <section class="services" id="services">
         <div class="container">
-            <h2 class="text-center mb-4">Our Craft</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="service-card p-4">
+            <div class="section-header">
+                <h2 class="section-title animate-on-scroll">Our Craft</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle animate-on-scroll">Precision-crafted solutions for discerning investors</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="service-content">
                         <h3>Strategic Property Investments</h3>
-                        <p>Our approach to property investments is both an art and a science. We analyze market trends, assess risk profiles, and curate portfolios that promise enduring value. From coastal estates to urban developments, our strategies are tailored to the discerning investor.</p>
-                        <ul>
+                        <p>Our approach to property investments is both an art and a science. We analyze market trends, assess risk profiles, and curate portfolios that promise enduring value.</p>
+                        <ul class="service-features">
                             <li>Market Analysis & Forecasting</li>
                             <li>Portfolio Diversification</li>
                             <li>Risk Mitigation Strategies</li>
+                            <li>Asset Management</li>
                         </ul>
+                        <a href="/services.html" class="service-link">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="service-card p-4">
+                
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <div class="service-content">
                         <h3>Mineral Title Reports</h3>
-                        <p>Precision defines our mineral title services. We delve into historical records, verify ownership chains, and provide reports that stand as pillars of confidence for your investments. Our nationwide reach ensures no detail is overlooked.</p>
-                        <ul>
+                        <p>Precision defines our mineral title services. We delve into historical records, verify ownership chains, and provide reports that stand as pillars of confidence.</p>
+                        <ul class="service-features">
                             <li>Chain of Title Verification</li>
                             <li>Regulatory Compliance</li>
                             <li>Comprehensive Reporting</li>
+                            <li>Dispute Resolution</li>
                         </ul>
+                        <a href="/services.html" class="service-link">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Masterpieces Section -->
-    <section class="portfolio py-5">
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
         <div class="container">
-            <h2 class="text-center mb-4">Our Masterpieces</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="portfolio-item">
-                        <img src="/images/coastal-serenity.jpg" alt="Coastal Serenity Estate" class="img-fluid">
-                        <h4>Coastal Serenity Estate</h4>
-                        <p>A $15M investment transformed a pristine Florida coastline into a luxury retreat, yielding a 25% ROI within three years.</p>
+            <div class="section-header">
+                <h2 class="section-title animate-on-scroll">Our Masterpieces</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle animate-on-scroll">Transforming opportunities into legacies of value and prestige</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item animate-on-scroll">
+                    <div class="portfolio-image">
+                        <img src="/images/coastal-serenity.jpg" alt="Coastal Serenity Estate - Luxury Florida coastline investment" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <span class="portfolio-value">$15M Investment</span>
+                                <span class="portfolio-roi">25% ROI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Coastal Serenity Estate</h3>
+                        <p>A luxury investment that transformed a pristine Florida coastline into an exclusive retreat, yielding exceptional returns within three years.</p>
+                        <div class="portfolio-tags">
+                            <span>Luxury Residential</span>
+                            <span>Florida</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="portfolio-item">
-                        <img src="/images/metropolitan-revival.jpg" alt="Metropolitan Revival" class="img-fluid">
-                        <h4>Metropolitan Revival</h4>
-                        <p>An urban redevelopment project in Texas, revitalizing a historic district with a $10M investment and a 20% return.</p>
+
+                <div class="portfolio-item animate-on-scroll">
+                    <div class="portfolio-image">
+                        <img src="/images/metropolitan-revival.jpg" alt="Metropolitan Revival - Texas urban redevelopment project" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <span class="portfolio-value">$10M Investment</span>
+                                <span class="portfolio-roi">20% ROI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Metropolitan Revival</h3>
+                        <p>An urban redevelopment project in Texas, revitalizing a historic district with strategic investment and modern sophistication.</p>
+                        <div class="portfolio-tags">
+                            <span>Urban Development</span>
+                            <span>Texas</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="portfolio-item">
-                        <img src="/images/mineral-frontier.jpg" alt="Mineral Frontier" class="img-fluid">
-                        <h4>Mineral Frontier</h4>
-                        <p>A meticulous title report facilitated a $8M mineral rights acquisition in Nevada, securing long-term value.</p>
+
+                <div class="portfolio-item animate-on-scroll">
+                    <div class="portfolio-image">
+                        <img src="/images/mineral-frontier.jpg" alt="Mineral Frontier - Nevada mineral rights acquisition" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <span class="portfolio-value">$8M Acquisition</span>
+                                <span class="portfolio-roi">Long-term Value</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Mineral Frontier</h3>
+                        <p>A meticulous title report facilitated a strategic mineral rights acquisition in Nevada, securing substantial long-term value.</p>
+                        <div class="portfolio-tags">
+                            <span>Mineral Rights</span>
+                            <span>Nevada</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-cta">
+                <a href="/portfolio.html" class="btn btn-outline">
+                    <span>View Complete Portfolio</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Preview Section -->
+    <section class="team-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-on-scroll">Our Leadership</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle animate-on-scroll">Meet the visionaries driving Bicrea's success</p>
+            </div>
+            <div class="team-preview-grid">
+                <div class="team-preview-item animate-on-scroll">
+                    <div class="team-preview-image">
+                        <img src="/images/team1.jpg" alt="Johnathan Pierce - Founder & CEO of Bicrea" loading="lazy">
+                    </div>
+                    <div class="team-preview-content">
+                        <h3>Johnathan Pierce</h3>
+                        <p class="team-preview-title">Founder & CEO</p>
+                        <p>35 years of experience leading luxury real estate investments with passion for excellence and opportunity recognition.</p>
+                    </div>
+                </div>
+                
+                <div class="team-preview-item animate-on-scroll">
+                    <div class="team-preview-image">
+                        <img src="/images/team2.jpg" alt="Eleanor Voss - Chief Analyst at Bicrea" loading="lazy">
+                    </div>
+                    <div class="team-preview-content">
+                        <h3>Eleanor Voss</h3>
+                        <p class="team-preview-title">Chief Analyst</p>
+                        <p>Analytical expertise ensuring flawless title reports and investment strategies with unmatched precision.</p>
+                    </div>
+                </div>
+                
+                <div class="team-preview-item animate-on-scroll">
+                    <div class="team-preview-image">
+                        <img src="/images/team3.jpg" alt="Marcus Lang - Investment Director at Bicrea" loading="lazy">
+                    </div>
+                    <div class="team-preview-content">
+                        <h3>Marcus Lang</h3>
+                        <p class="team-preview-title">Investment Director</p>
+                        <p>Crafts bespoke investment portfolios that maximize value while minimizing risk for discerning clients.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="team-preview-cta">
+                <a href="/about.html" class="btn btn-outline">
+                    <span>Meet Our Full Team</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">30+</div>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">$2.1B</div>
+                        <div class="stat-label">Assets Under Management</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">150+</div>
+                        <div class="stat-label">Properties Acquired</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value">24.8%</div>
+                        <div class="stat-label">Average Annual Return</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Other sections remain unchanged -->
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-on-scroll">Client Excellence</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle animate-on-scroll">Hear from our distinguished clientele</p>
+            </div>
+            <div class="testimonial-featured animate-on-scroll">
+                <div class="testimonial-content">
+                    <blockquote>
+                        "Bicrea's expertise in luxury property investment is unmatched. Their meticulous approach to due diligence and market analysis resulted in returns that exceeded our highest expectations. Working with their team has been transformative for our portfolio."
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Victoria Ashworth</h4>
+                            <span>Private Investor</span>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <div class="cta-content animate-on-scroll">
+                <h2>Ready to Elevate Your Investment Portfolio?</h2>
+                <p>Partner with Bicrea and discover the pinnacle of property excellence. Our team is ready to craft your path to prosperity.</p>
+                <div class="cta-buttons">
+                    <a href="/contact.html" class="btn btn-primary btn-luxury">
+                        <span>Start Your Journey</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="tel:+18885551234" class="btn btn-outline">
+                        <span>Call Us Today</span>
+                        <i class="fas fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <span class="brand-icon">◊</span>
+                        <span>Bicrea</span>
+                    </div>
+                    <p>A Florida-based leader in luxury property investments and mineral title services, serving clients nationwide with distinction.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/services.html">Services</a></li>
+                        <li><a href="/portfolio.html">Portfolio</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="/services.html">Property Investments</a></li>
+                        <li><a href="/services.html">Mineral Title Reports</a></li>
+                        <li><a href="/services.html">Market Analysis</a></li>
+                        <li><a href="/services.html">Portfolio Management</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> info@bicrea.com</p>
+                        <p><i class="fas fa-phone"></i> +1 (888) 555-1234</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Elegance Ave, Miami, FL 33101</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bicrea. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#" aria-label="Privacy Policy">Privacy Policy</a>
+                    <a href="#" aria-label="Terms of Service">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="script.min.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
