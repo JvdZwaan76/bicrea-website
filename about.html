@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -219,23 +218,3 @@
     </footer>
 </body>
 </html>
-```
-
-### Deployment Instructions
-1. **Save the File**: Save the above code as `about.html` in your project directory.
-2. **Ensure Stylesheet**: Place `styles.min.css` in the same directory as `about.html`, or update the `<link>` tag’s `href` if it’s in a subdirectory (e.g., `href="css/styles.min.css"`).
-3. **Verify Assets**: Ensure the image files (`/images/team1.jpg`, `/images/team2.jpg`, `/images/team3.jpg`, `/images/team4.jpg`, `/images/facebook-icon.png`, etc.) exist in the `/images/` directory relative to `about.html`.
-4. **Test Locally**: Open `about.html` in a browser to confirm the styles apply. The navbar should be fixed with a gold accent, team members should display in a grid with rounded images, and the CTA button should have a gold gradient.
-5. **Deploy to Production**:
-   - Upload `about.html`, `styles.min.css`, and the `/images/` folder to your server.
-   - Use browser Developer Tools (F12, Network tab) to check that `styles.min.css` loads with a 200 OK status and `text/css` MIME type.
-   - If styles don’t apply, add a cache-busting query string (e.g., `href="styles.min.css?v=1"`) or clear the browser cache.
-6. **Check Server**: Ensure the server serves `.css` files correctly and that file permissions allow access to `styles.min.css`.
-
-### Notes
-- The HTML is now clean, with proper indentation and no redundant tags or formatting issues.
-- The `styles.min.css` classes (e.g., `.navbar`, `.page-header`, `.story-stats`, `.team-member`, `.values-grid`, `.btn.btn-primary`, `.footer`) align with the HTML structure.
-- If you notice specific styling issues (e.g., a section not rendering as expected), let me know, and I can debug further or suggest CSS tweaks.
-- If other pages (e.g., `index.html`, `services.html`) need similar updates, provide them, and I’ll ensure consistency.
-
-This should resolve any "wonky" issues and provide a deployable `about.html`. Let me know if you encounter problems or need further assistance!
