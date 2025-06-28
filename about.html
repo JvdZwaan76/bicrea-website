@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Bicrea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="styles.min.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="navbar-brand"><span class="brand-icon">◊</span>Bicrea</a>
-            <div class="nav-toggle">
+            <div class="nav-toggle" id="navToggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link active">About</a></li>
                 <li><a href="services.html" class="nav-link">Services</a></li>
@@ -25,10 +27,10 @@
         </div>
     </nav>
 
-    <header class="page-header">
+    <header class="page-header animate-on-scroll">
         <div class="container">
-            <h1>Our Story</h1>
-            <p>Three decades of excellence in luxury property investments</p>
+            <h1 class="page-title">Our Story</h1>
+            <p class="page-subtitle">Three decades of excellence in luxury property investments</p>
             <nav class="breadcrumb">
                 <a href="index.html">Home</a>
                 <span>/</span>
@@ -37,12 +39,23 @@
         </div>
     </header>
 
-    <section class="journey">
+    <section class="journey animate-on-scroll">
         <div class="container">
-            <h2>Our Journey</h2>
-            <p>Bicrea was born from a vision to transcend the ordinary in property investments and mineral title services. Established in Florida, a land of opportunity and natural wealth, we have grown into a national authority, serving clients with an unwavering commitment to excellence.</p>
-            <p>Our journey began over 30 years ago, when our founders recognized a gap in the market for sophisticated, client-centric real estate solutions. What started as a boutique firm in Sarasota has evolved into a nationally recognized leader, setting new standards for luxury and precision in our industry.</p>
-            <p>Today, Bicrea is synonymous with precision, luxury, and trust—values that guide every project we undertake. Our reputation has been built through decades of successful partnerships, innovative strategies, and an unwavering dedication to our clients' prosperity.</p>
+            <div class="section-header">
+                <h2 class="section-title">Our Journey</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="story-content">
+                <div class="story-text">
+                    <p class="story-paragraphs lead">Bicrea was born from a vision to transcend the ordinary in property investments and mineral title services. Established in Florida, a land of opportunity and natural wealth, we have grown into a national authority, serving clients with an unwavering commitment to excellence.</p>
+                    <p class="story-paragraphs">Our journey began over 30 years ago, when our founders recognized a gap in the market for sophisticated, client-centric real estate solutions. What started as a boutique firm in Sarasota has evolved into a nationally recognized leader, setting new standards for luxury and precision in our industry.</p>
+                    <p class="story-paragraphs">Today, Bicrea is synonymous with precision, luxury, and trust—values that guide every project we undertake. Our reputation has been built through decades of successful partnerships, innovative strategies, and an unwavering dedication to our clients' prosperity.</p>
+                </div>
+                <div class="story-image">
+                    <img src="/images/journey.jpg" alt="Bicrea Journey" class="main-image" loading="lazy">
+                    <div class="image-accent"></div>
+                </div>
+            </div>
             <div class="story-stats">
                 <div class="stat-item">
                     <h3 class="stat-number">30+</h3>
@@ -60,100 +73,159 @@
         </div>
     </section>
 
-    <section class="mission-vision">
+    <section class="mission-vision animate-on-scroll">
         <div class="container">
-            <h2>Mission & Vision</h2>
-            <p>Guiding principles that drive our pursuit of excellence</p>
-            <div class="mission">
-                <h3>Our Mission</h3>
-                <p>To deliver unparalleled expertise in property investments and mineral title reporting, empowering our clients with the knowledge and strategies to secure their legacies. We are committed to transforming opportunities into lasting wealth through precision, innovation, and unwavering integrity.</p>
-                <ul>
-                    <li>Client-Centric Excellence</li>
-                    <li>Innovative Solutions</li>
-                    <li>Uncompromising Integrity</li>
-                </ul>
+            <div class="section-header">
+                <h2 class="section-title">Mission & Vision</h2>
+                <p class="section-subtitle">Guiding principles that drive our pursuit of excellence</p>
+                <div class="section-divider"></div>
             </div>
-            <div class="vision">
-                <h3>Our Vision</h3>
-                <p>To be the preeminent name in luxury real estate services, setting the gold standard for innovation, integrity, and sophistication across the United States. We envision a future where Bicrea is synonymous with excellence in property investment and mineral rights expertise.</p>
-                <ul>
-                    <li>Industry Leadership</li>
-                    <li>National Recognition</li>
-                    <li>Innovation Pioneer</li>
-                </ul>
+            <div class="mission-vision-grid">
+                <div class="mission-card">
+                    <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Our Mission</h3>
+                    <p>To deliver unparalleled expertise in property investments and mineral title reporting, empowering our clients with the knowledge and strategies to secure their legacies. We are committed to transforming opportunities into lasting wealth through precision, innovation, and unwavering integrity.</p>
+                    <div class="mission-points">
+                        <div class="point"><i class="fas fa-check-circle"></i>Client-Centric Excellence</div>
+                        <div class="point"><i class="fas fa-check-circle"></i>Innovative Solutions</div>
+                        <div class="point"><i class="fas fa-check-circle"></i>Uncompromising Integrity</div>
+                    </div>
+                </div>
+                <div class="vision-card">
+                    <div class="card-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Our Vision</h3>
+                    <p>To be the preeminent name in luxury real estate services, setting the gold standard for innovation, integrity, and sophistication across the United States. We envision a future where Bicrea is synonymous with excellence in property investment and mineral rights expertise.</p>
+                    <div class="vision-points">
+                        <div class="point"><i class="fas fa-check-circle"></i>Industry Leadership</div>
+                        <div class="point"><i class="fas fa-check-circle"></i>National Recognition</div>
+                        <div class="point"><i class="fas fa-check-circle"></i>Innovation Pioneer</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="team">
+    <section class="team animate-on-scroll">
         <div class="container">
-            <h2>Our Esteemed Team</h2>
-            <p>Meet the visionaries behind Bicrea's success</p>
-            <div class="team-member">
-                <img src="/images/team1.jpg" alt="Devin Molina">
-                <h3>Devin Molina</h3>
-                <p>Founder & CEO</p>
-                <p>With 35 years of experience in luxury real estate and mineral rights, Devin leads Bicrea with a passion for excellence and a keen eye for opportunity. His visionary leadership has transformed Bicrea into a nationally recognized authority.</p>
-                <ul>
-                    <li>Strategic Leadership</li>
-                    <li>Market Analysis</li>
-                    <li>Investment Strategy</li>
-                </ul>
+            <div class="section-header">
+                <h2 class="section-title">Our Esteemed Team</h2>
+                <p class="section-subtitle">Meet the visionaries behind Bicrea's success</p>
+                <div class="section-divider"></div>
             </div>
-            <div class="team-member">
-                <img src="/images/team2.jpg" alt="Sandra Petkov">
-                <h3>Sandra Petkov</h3>
-                <p>Chief Analyst</p>
-                <p>Sandra's analytical prowess ensures every title report and investment strategy is flawless. With a background in legal research and geological analysis, she brings unmatched precision to every project.</p>
-                <ul>
-                    <li>Title Research</li>
-                    <li>Risk Analysis</li>
-                    <li>Regulatory Compliance</li>
-                </ul>
-            </div>
-            <div class="team-member">
-                <img src="/images/team3.jpg" alt="Christian Hickey">
-                <h3>Christian Hickey</h3>
-                <p>Investment Director of Mineral Rights & Real Estate Investments</p>
-                <p>Christian crafts bespoke investment portfolios that maximize value and minimize risk. His innovative approach to property investment has generated exceptional returns for our discerning clientele.</p>
-                <ul>
-                    <li>Portfolio Management</li>
-                    <li>Investment Planning</li>
-                    <li>Market Forecasting</li>
-                </ul>
-            </div>
-            <div class="team-member">
-                <img src="/images/team4.jpg" alt="Jasper van der Zwaan">
-                <h3>Jasper van der Zwaan</h3>
-                <p>Chief of Marketing - Digital Outreach & Public Relations</p>
-                <p>Jasper spearheads Bicrea's marketing initiatives, leveraging digital platforms and public relations to enhance brand visibility and client engagement. His strategic vision drives our outreach efforts, connecting with audiences nationwide.</p>
-                <ul>
-                    <li>Digital Marketing</li>
-                    <li>Public Relations</li>
-                    <li>Brand Strategy</li>
-                </ul>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/images/team1.jpg" alt="Devin Molina" loading="lazy">
+                        <div class="member-overlay">
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Devin Molina</h3>
+                        <p class="member-title">Founder & CEO</p>
+                        <p class="member-description">With 35 years of experience in luxury real estate and mineral rights, Devin leads Bicrea with a passion for excellence and a keen eye for opportunity. His visionary leadership has transformed Bicrea into a nationally recognized authority.</p>
+                        <ul class="member-expertise">
+                            <li>Strategic Leadership</li>
+                            <li>Market Analysis</li>
+                            <li>Investment Strategy</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/images/team2.jpg" alt="Sandra Petkov" loading="lazy">
+                        <div class="member-overlay">
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Sandra Petkov</h3>
+                        <p class="member-title">Chief Analyst</p>
+                        <p class="member-description">Sandra's analytical prowess ensures every title report and investment strategy is flawless. With a background in legal research and geological analysis, she brings unmatched precision to every project.</p>
+                        <ul class="member-expertise">
+                            <li>Title Research</li>
+                            <li>Risk Analysis</li>
+                            <li>Regulatory Compliance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/images/team3.jpg" alt="Christian Hickey" loading="lazy">
+                        <div class="member-overlay">
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Christian Hickey</h3>
+                        <p class="member-title">Investment Director of Mineral Rights & Real Estate Investments</p>
+                        <p class="member-description">Christian crafts bespoke investment portfolios that maximize value and minimize risk. His innovative approach to property investment has generated exceptional returns for our discerning clientele.</p>
+                        <ul class="member-expertise">
+                            <li>Portfolio Management</li>
+                            <li>Investment Planning</li>
+                            <li>Market Forecasting</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/images/team4.jpg" alt="Jasper van der Zwaan" loading="lazy">
+                        <div class="member-overlay">
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Jasper van der Zwaan</h3>
+                        <p class="member-title">Chief of Marketing - Digital Outreach & Public Relations</p>
+                        <p class="member-description">Jasper spearheads Bicrea's marketing initiatives, leveraging digital platforms and public relations to enhance brand visibility and client engagement. His strategic vision drives our outreach efforts, connecting with audiences nationwide.</p>
+                        <ul class="member-expertise">
+                            <li>Digital Marketing</li>
+                            <li>Public Relations</li>
+                            <li>Brand Strategy</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="values">
+    <section class="values animate-on-scroll">
         <div class="container">
-            <h2>Our Core Values</h2>
-            <p>The principles that define our commitment to excellence</p>
+            <div class="section-header">
+                <h2 class="section-title">Our Core Values</h2>
+                <p class="section-subtitle">The principles that define our commitment to excellence</p>
+                <div class="section-divider"></div>
+            </div>
             <div class="values-grid">
                 <div class="value-item">
+                    <div class="value-icon"><i class="fas fa-gavel"></i></div>
                     <h3>Integrity</h3>
                     <p>We operate with unwavering honesty and transparency in all our dealings, building trust through consistent ethical practices.</p>
                 </div>
                 <div class="value-item">
+                    <div class="value-icon"><i class="fas fa-star"></i></div>
                     <h3>Excellence</h3>
                     <p>We pursue perfection in every detail, setting the highest standards for quality and precision in our industry.</p>
                 </div>
                 <div class="value-item">
+                    <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
                     <h3>Innovation</h3>
                     <p>We embrace cutting-edge technologies and methodologies to deliver solutions that exceed expectations.</p>
                 </div>
                 <div class="value-item">
+                    <div class="value-icon"><i class="fas fa-handshake"></i></div>
                     <h3>Partnership</h3>
                     <p>We believe in building lasting relationships with our clients, working together to achieve shared success.</p>
                 </div>
@@ -161,60 +233,71 @@
         </div>
     </section>
 
-    <section class="cta">
+    <section class="cta animate-on-scroll">
         <div class="container">
-            <h2>Ready to Experience the Bicrea Difference?</h2>
-            <p>Join our distinguished clientele and discover how our expertise can elevate your investment portfolio to new heights of success.</p>
-            <a href="contact.html" class="btn btn-primary">Connect With Our Team</a>
+            <div class="section-header">
+                <h2 class="section-title">Ready to Experience the Bicrea Difference?</h2>
+                <p class="section-subtitle">Join our distinguished clientele and discover how our expertise can elevate your investment portfolio to new heights of success.</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="cta-content">
+                <a href="contact.html" class="btn btn-primary">Connect With Our Team</a>
+            </div>
         </div>
     </section>
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-brand">
-                <span>◊</span>
-                <h3>Bicrea</h3>
-                <p>A Sarasota-based leader in luxury property investments and mineral title services, serving clients nationwide with distinction.</p>
-                <div class="social-links">
-                    <a href="#"><img src="/images/facebook-icon.png" alt="Facebook"></a>
-                    <a href="#"><img src="/images/twitter-icon.png" alt="Twitter"></a>
-                    <a href="#"><img src="/images/linkedin-icon.png" alt="LinkedIn"></a>
-                    <a href="#"><img src="/images/instagram-icon.png" alt="Instagram"></a>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span>◊</span>
+                    <h3>Bicrea</h3>
+                    <p>A Sarasota-based leader in luxury property investments and mineral title services, serving clients nationwide with distinction.</p>
+                    <div class="social-links">
+                        <a href="#"><img src="/images/facebook-icon.png" alt="Facebook"></a>
+                        <a href="#"><img src="/images/twitter-icon.png" alt="Twitter"></a>
+                        <a href="#"><img src="/images/linkedin-icon.png" alt="LinkedIn"></a>
+                        <a href="#"><img src="/images/instagram-icon.png" alt="Instagram"></a>
+                    </div>
+                </div>
+                <div class="footer-section footer-nav">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#property">Property Investments</a></li>
+                        <li><a href="services.html#mineral">Mineral Title Reports</a></li>
+                        <li><a href="services.html#analysis">Market Analysis</a></li>
+                        <li><a href="services.html#portfolio">Portfolio Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section footer-contact">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <p><a href="mailto:info@bicrea.com">info@bicrea.com</a></p>
+                        <p><a href="tel:+18052332942">+1 (805) 233-2942</a></p>
+                        <p>4360 Winners Circle, Sarasota, FL 34238</p>
+                    </div>
                 </div>
             </div>
-            <div class="footer-nav">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-services">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="services.html#property">Property Investments</a></li>
-                    <li><a href="services.html#mineral">Mineral Title Reports</a></li>
-                    <li><a href="services.html#analysis">Market Analysis</a></li>
-                    <li><a href="services.html#portfolio">Portfolio Management</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h4>Contact</h4>
-                <p><a href="mailto:info@bicrea.com">info@bicrea.com</a></p>
-                <p><a href="tel:+18052332942">+1 (805) 233-2942</a></p>
-                <p>4360 Winners Circle, Sarasota, FL 34238</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 Bicrea. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
+            <div class="footer-bottom">
+                <p>© 2025 Bicrea. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
+
+    <script src="script.min.js"></script>
 </body>
 </html>
