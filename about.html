@@ -13,14 +13,14 @@
     <meta property="og:url" content="https://bicrea.com/about.html">
     <meta property="og:title" content="About Bicrea - Luxury Property Investment Excellence">
     <meta property="og:description" content="Discover Bicrea's 30+ year legacy in luxury property investments and mineral title services. Meet our distinguished team of experts.">
-    <meta property="og:image" content="https://bicrea.com/images/about-og.jpg">
+    <meta property="og:image" content="https://bicrea.com/images/about-image.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://bicrea.com/about.html">
     <meta property="twitter:title" content="About Bicrea - Luxury Property Investment Excellence">
     <meta property="twitter:description" content="Discover Bicrea's 30+ year legacy in luxury property investments and mineral title services.">
-    <meta property="twitter:image" content="https://bicrea.com/images/about-og.jpg">
+    <meta property="twitter:image" content="https://bicrea.com/images/about-image.jpg">
     
     <!-- Fonts - Optimized loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,35 +28,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Critical CSS -->
-    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="/styles.css">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="/images/icon-192x192.png">
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="BicRea" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
     
-    <!-- Preload critical resources -->
-    <link rel="preload" href="/images/journey.jpg" as="image">
-    <link rel="preload" href="styles.min.css" as="style">
-    <link rel="preload" href="script.min.js" as="script">
-    
-    <!-- DNS prefetch for external resources -->
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    
-    <!-- Theme color -->
+    <!-- PWA and Theme -->
     <meta name="theme-color" content="#d4af37">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/images/about-image.jpg" as="image">
+    <link rel="preload" href="/styles.css" as="style">
+    <link rel="preload" href="/script.js" as="script">
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bicrea.com/about.html">
 </head>
 <body>
     <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="skip-link sr-only">Skip to main content</a>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <!-- Scroll progress indicator -->
+    <div class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
+    
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
-            <a href="index.html" class="navbar-brand" aria-label="Bicrea Home">
+            <a href="/" class="navbar-brand" aria-label="Bicrea Home">
                 <span class="brand-icon" aria-hidden="true">◊</span>
                 Bicrea
             </a>
@@ -66,21 +77,21 @@
                 <span></span>
             </button>
             <ul class="nav-menu" id="navMenu" role="menubar">
-                <li role="none"><a href="index.html" class="nav-link" role="menuitem">Home</a></li>
-                <li role="none"><a href="about.html" class="nav-link active" role="menuitem" aria-current="page">About</a></li>
-                <li role="none"><a href="services.html" class="nav-link" role="menuitem">Services</a></li>
-                <li role="none"><a href="portfolio.html" class="nav-link" role="menuitem">Portfolio</a></li>
-                <li role="none"><a href="contact.html" class="nav-link" role="menuitem">Contact</a></li>
+                <li role="none"><a href="/" class="nav-link" role="menuitem">Home</a></li>
+                <li role="none"><a href="/about.html" class="nav-link active" role="menuitem" aria-current="page">About</a></li>
+                <li role="none"><a href="/services.html" class="nav-link" role="menuitem">Services</a></li>
+                <li role="none"><a href="/portfolio.html" class="nav-link" role="menuitem">Portfolio</a></li>
+                <li role="none"><a href="/contact.html" class="nav-link" role="menuitem">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <header class="page-header animate-on-scroll" role="banner">
+    <header class="page-header" role="banner">
         <div class="container">
             <h1 class="page-title">Our Story</h1>
             <p class="page-subtitle">Three decades of excellence in luxury property investments</p>
             <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="index.html">Home</a>
+                <a href="/">Home</a>
                 <span aria-hidden="true">/</span>
                 <span aria-current="page">About</span>
             </nav>
@@ -101,7 +112,7 @@
                         <p class="story-paragraphs">Today, Bicrea is synonymous with precision, luxury, and trust—values that guide every project we undertake. Our reputation has been built through decades of successful partnerships, innovative strategies, and an unwavering dedication to our clients' prosperity.</p>
                     </div>
                     <div class="story-image">
-                        <img src="/images/journey.jpg" alt="Bicrea's journey from boutique firm to national leader in luxury property investment" class="main-image" loading="lazy" width="600" height="400">
+                        <img src="/images/about-image.jpg" alt="Bicrea's journey from boutique firm to national leader in luxury property investment" class="main-image" loading="lazy" width="600" height="400">
                         <div class="image-accent" aria-hidden="true"></div>
                     </div>
                 </div>
@@ -365,7 +376,7 @@
                     <div class="section-divider" aria-hidden="true"></div>
                 </div>
                 <div class="cta-content">
-                    <a href="contact.html" class="btn btn-primary">
+                    <a href="/contact.html" class="btn btn-primary">
                         <span>Connect With Our Team</span>
                         <i class="fas fa-arrow-right" aria-hidden="true"></i>
                     </a>
@@ -378,7 +389,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <span aria-hidden="true">◊</span>
+                    <span class="brand-icon" aria-hidden="true">◊</span>
                     <h3>Bicrea</h3>
                     <p>A Sarasota-based leader in luxury property investments and mineral title services, serving clients nationwide with distinction.</p>
                     <div class="social-links">
@@ -399,20 +410,20 @@
                 <div class="footer-section footer-nav">
                     <h4>Navigation</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/services.html">Services</a></li>
+                        <li><a href="/portfolio.html">Portfolio</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section footer-services">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="services.html#property">Property Investments</a></li>
-                        <li><a href="services.html#mineral">Mineral Title Reports</a></li>
-                        <li><a href="services.html#analysis">Market Analysis</a></li>
-                        <li><a href="services.html#portfolio">Portfolio Management</a></li>
+                        <li><a href="/services.html#property">Property Investments</a></li>
+                        <li><a href="/services.html#mineral">Mineral Title Reports</a></li>
+                        <li><a href="/services.html#analysis">Market Analysis</a></li>
+                        <li><a href="/services.html#portfolio">Portfolio Management</a></li>
                     </ul>
                 </div>
                 <div class="footer-section footer-contact">
@@ -427,15 +438,15 @@
             <div class="footer-bottom">
                 <p>&copy; 2025 Bicrea. All rights reserved.</p>
                 <div class="footer-legal">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="terms.html">Terms of Service</a>
+                    <a href="/privacy.html">Privacy Policy</a>
+                    <a href="/terms.html">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="script.min.js" defer></script>
+    <script src="/script.js" defer></script>
     
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
@@ -467,34 +478,5 @@
         ]
     }
     </script>
-    
-    <!-- Skip link styles -->
-    <style>
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 6px;
-            background: #d4af37;
-            color: #0a0a0a;
-            padding: 8px;
-            text-decoration: none;
-            border-radius: 4px;
-            z-index: 10000;
-        }
-        .skip-link:focus {
-            top: 6px;
-        }
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-    </style>
 </body>
 </html>
