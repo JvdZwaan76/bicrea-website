@@ -13,14 +13,14 @@
     <meta property="og:url" content="https://bicrea.com/portfolio.html">
     <meta property="og:title" content="Portfolio - Bicrea | Our Masterworks in Luxury Investment">
     <meta property="og:description" content="Explore Bicrea's prestigious portfolio of luxury property investments and mineral rights acquisitions. Discover our proven track record of excellence.">
-    <meta property="og:image" content="https://bicrea.com/images/portfolio-og.jpg">
+    <meta property="og:image" content="https://bicrea.com/images/project1.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://bicrea.com/portfolio.html">
     <meta property="twitter:title" content="Portfolio - Bicrea | Our Masterworks in Luxury Investment">
     <meta property="twitter:description" content="Explore Bicrea's prestigious portfolio of luxury property investments and mineral rights acquisitions.">
-    <meta property="twitter:image" content="https://bicrea.com/images/portfolio-og.jpg">
+    <meta property="twitter:image" content="https://bicrea.com/images/project1.jpg">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,17 +28,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/images/icon-192x192.png">
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="BicRea" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
     
-    <!-- Theme color -->
+    <!-- PWA and Theme -->
     <meta name="theme-color" content="#d4af37">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/images/project1.jpg" as="image">
+    <link rel="preload" href="/styles.css" as="style">
+    <link rel="preload" href="/script.js" as="script">
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://bicrea.com/portfolio.html">
@@ -50,7 +65,7 @@
     <!-- Scroll progress indicator -->
     <div class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
     
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
             <a href="/" class="navbar-brand" aria-label="Bicrea Home">
                 <span class="brand-icon" aria-hidden="true">◊</span>
@@ -155,7 +170,7 @@
                 <div class="portfolio-detailed-grid">
                     <article class="portfolio-detailed-item animate-on-scroll" data-category="luxury-residential">
                         <div class="portfolio-detailed-image">
-                            <img src="/images/coastal-serenity.jpg" alt="Coastal Serenity Estate luxury oceanfront property in Sanibel Island, Florida" loading="lazy" width="600" height="400">
+                            <img src="/images/project1.jpg" alt="Coastal Serenity Estate luxury oceanfront property in Sanibel Island, Florida" loading="lazy" width="600" height="400">
                             <div class="portfolio-stats">
                                 <div class="stat-badge">$15M Investment</div>
                                 <div class="stat-badge">25% ROI</div>
@@ -198,7 +213,7 @@
 
                     <article class="portfolio-detailed-item animate-on-scroll" data-category="commercial development">
                         <div class="portfolio-detailed-image">
-                            <img src="/images/metropolitan-revival.jpg" alt="Metropolitan Revival urban redevelopment project in Austin, Texas" loading="lazy" width="600" height="400">
+                            <img src="/images/project2.jpg" alt="Metropolitan Revival urban redevelopment project in Austin, Texas" loading="lazy" width="600" height="400">
                             <div class="portfolio-stats">
                                 <div class="stat-badge">$10M Investment</div>
                                 <div class="stat-badge">20% ROI</div>
@@ -241,7 +256,7 @@
 
                     <article class="portfolio-detailed-item animate-on-scroll" data-category="mineral-rights">
                         <div class="portfolio-detailed-image">
-                            <img src="/images/mineral-frontier.jpg" alt="Mineral Frontier Nevada mining rights acquisition in Elko County" loading="lazy" width="600" height="400">
+                            <img src="/images/project3.jpg" alt="Mineral Frontier Nevada mining rights acquisition in Elko County" loading="lazy" width="600" height="400">
                             <div class="portfolio-stats">
                                 <div class="stat-badge">$8M Acquisition</div>
                                 <div class="stat-badge">Long-term Value</div>
@@ -562,7 +577,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="script.js" defer></script>
+    <script src="/script.js" defer></script>
     
     <!-- Schema.org structured data for Portfolio Page -->
     <script type="application/ld+json">
