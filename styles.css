@@ -194,7 +194,7 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(
         rgba(0, 0, 0, 0.7), 
         rgba(0, 0, 0, 0.5)
-    ), url('images/page-header.jpg') center/cover no-repeat;
+    ), url('/images/page-header.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -274,7 +274,7 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(
         rgba(0, 0, 0, 0.7), 
         rgba(0, 0, 0, 0.5)
-    ), url('images/hero.jpg') center/cover no-repeat;
+    ), url('/images/hero.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     position: relative;
