@@ -1,4 +1,4 @@
-// Bicrea Website - Production Ready JavaScript
+// BicRea Website - Production Ready JavaScript
 // Optimized for performance and mobile experience
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Performance monitoring
     if ('performance' in window) {
         window.addEventListener('load', () => {
-            console.log('Bicrea website loaded successfully');
+            console.log('BicRea website loaded successfully');
         });
     }
     
@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         img.addEventListener('error', function() {
                             if (!this.hasAttribute('data-fallback-attempted')) {
                                 this.setAttribute('data-fallback-attempted', 'true');
-                                const altText = this.alt || 'Bicrea Image';
+                                const altText = this.alt || 'BicRea Image';
                                 const width = this.getAttribute('width') || '400';
                                 const height = this.getAttribute('height') || '300';
                                 this.src = `https://via.placeholder.com/${width}x${height}/1a1a1a/d4af37?text=${encodeURIComponent(altText)}`;
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     img.addEventListener('error', function() {
                         if (!this.hasAttribute('data-fallback-attempted')) {
                             this.setAttribute('data-fallback-attempted', 'true');
-                            const altText = this.alt || 'Bicrea Image';
+                            const altText = this.alt || 'BicRea Image';
                             const width = this.getAttribute('width') || '400';
                             const height = this.getAttribute('height') || '300';
                             this.src = `https://via.placeholder.com/${width}x${height}/1a1a1a/d4af37?text=${encodeURIComponent(altText)}`;
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 img.addEventListener('error', function() {
                     if (!this.hasAttribute('data-fallback-attempted')) {
                         this.setAttribute('data-fallback-attempted', 'true');
-                        const altText = this.alt || 'Bicrea Image';
+                        const altText = this.alt || 'BicRea Image';
                         const width = this.getAttribute('width') || '400';
                         const height = this.getAttribute('height') || '300';
                         this.src = `https://via.placeholder.com/${width}x${height}/1a1a1a/d4af37?text=${encodeURIComponent(altText)}`;
@@ -423,39 +423,62 @@ document.addEventListener('DOMContentLoaded', function() {
                 answer.style.maxHeight = '0';
                 answer.style.overflow = 'hidden';
                 answer.style.transition = 'max-height 0.3s ease';
+                question.setAttribute('aria-expanded', 'false');
                 
                 question.addEventListener('click', function() {
                     const isOpen = question.getAttribute('aria-expanded') === 'true';
                     
                     // Close all other FAQ items
                     faqItems.forEach(otherItem => {
-                        const otherQuestion = otherItem.querySelector('.faq-question');
-                        const otherAnswer = otherItem.querySelector('.faq-answer');
-                        const otherIcon = otherItem.querySelector('.faq-question i');
-                        if (otherAnswer && otherItem !== item) {
-                            otherAnswer.style.maxHeight = '0';
-                            otherQuestion.setAttribute('aria-expanded', 'false');
-                            if (otherIcon) {
-                                otherIcon.style.transform = 'rotate(0deg)';
+                        if (otherItem !== item) {
+                            const otherQuestion = otherItem.querySelector('.faq-question');
+                            const otherAnswer = otherItem.querySelector('.faq-answer');
+                            const otherIcon = otherQuestion?.querySelector('i');
+                            
+                            if (otherAnswer && otherQuestion) {
+                                otherAnswer.style.maxHeight = '0';
+                                otherAnswer.classList.remove('open');
+                                otherQuestion.setAttribute('aria-expanded', 'false');
+                                if (otherIcon) {
+                                    otherIcon.style.transform = 'rotate(0deg)';
+                                }
                             }
                         }
                     });
                     
                     // Toggle current item
                     if (isOpen) {
+                        // Close current item
                         answer.style.maxHeight = '0';
+                        answer.classList.remove('open');
                         question.setAttribute('aria-expanded', 'false');
                         if (icon) {
                             icon.style.transform = 'rotate(0deg)';
                         }
                     } else {
+                        // Open current item
                         answer.style.maxHeight = answer.scrollHeight + 'px';
+                        answer.classList.add('open');
                         question.setAttribute('aria-expanded', 'true');
                         if (icon) {
                             icon.style.transform = 'rotate(45deg)';
                         }
+                        
+                        // Recalculate height after a brief delay to handle dynamic content
+                        setTimeout(() => {
+                            if (answer.classList.contains('open')) {
+                                answer.style.maxHeight = answer.scrollHeight + 'px';
+                            }
+                        }, 100);
                     }
                 });
+                
+                // Handle window resize to recalculate heights
+                window.addEventListener('resize', debounce(() => {
+                    if (question.getAttribute('aria-expanded') === 'true') {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    }
+                }, 250));
             }
         });
     }
@@ -740,5 +763,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    console.log('Bicrea website JavaScript initialized successfully');
+    console.log('BicRea website JavaScript initialized successfully');
 });
