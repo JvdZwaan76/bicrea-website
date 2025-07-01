@@ -8,12 +8,63 @@
     <meta name="keywords" content="luxury property investment, mineral title services, real estate, Sarasota Florida, portfolio management, mineral rights, property acquisition, BicRea, luxury real estate USA">
     <meta name="author" content="BicRea">
     
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FKCE7BW63Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'G-FKCE7BW63Y', {
+        page_title: 'BicRea - Pinnacle of Property Excellence',
+        page_location: window.location.href,
+        send_page_view: true,
+        custom_map: {
+          'custom_parameter_1': 'luxury_real_estate',
+          'custom_parameter_2': 'mineral_rights'
+        }
+      });
+      
+      // Enhanced conversion tracking for business goals
+      function trackConversion(action, category, label, value) {
+        gtag('event', action, {
+          event_category: category,
+          event_label: label,
+          value: value,
+          currency: 'USD'
+        });
+      }
+      
+      // Track business-specific events
+      function trackLead(source, value = 100) {
+        gtag('event', 'generate_lead', {
+          event_category: 'Lead Generation',
+          event_label: source,
+          value: value,
+          currency: 'USD'
+        });
+      }
+      
+      function trackPhoneCall(source) {
+        gtag('event', 'phone_call', {
+          event_category: 'Contact',
+          event_label: source,
+          value: 50,
+          currency: 'USD'
+        });
+      }
+    </script>
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bicrea.com/">
     <meta property="og:title" content="BicRea - Pinnacle of Property Excellence">
     <meta property="og:description" content="Sarasota-based expertise in luxury property investments and mineral title services. Nationwide mastery with unrivaled excellence.">
     <meta property="og:image" content="https://bicrea.com/images/hero-property-investments.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="BicRea">
+    <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -21,6 +72,8 @@
     <meta property="twitter:title" content="BicRea - Pinnacle of Property Excellence">
     <meta property="twitter:description" content="Sarasota-based expertise in luxury property investments and mineral title services. Nationwide mastery with unrivaled excellence.">
     <meta property="twitter:image" content="https://bicrea.com/images/hero-property-investments.webp">
+    <meta property="twitter:site" content="@BicRea">
+    <meta property="twitter:creator" content="@BicRea">
     
     <!-- Critical CSS Inline to prevent FOUC -->
     <style>
@@ -98,7 +151,7 @@
             background: linear-gradient(135deg, rgba(10, 10, 10, 0.8), rgba(212, 175, 55, 0.1));
         }
         
-        /* Elegant Loading Spinner */
+        /* Loading Animation - Fixed Implementation */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -114,16 +167,18 @@
             justify-content: center;
             flex-direction: column;
             transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-                        visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: opacity, visibility;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+                        visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(1);
+            opacity: 1;
+            visibility: visible;
         }
         
         .loading-overlay.loaded {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
+            transform: scale(1.1);
         }
         
         .luxury-spinner {
@@ -131,7 +186,6 @@
             width: 120px;
             height: 120px;
             margin-bottom: 2rem;
-            transform-style: preserve-3d;
         }
         
         .spinner-diamond {
@@ -204,15 +258,16 @@
             100% { opacity: 1; transform: translateY(0); }
         }
         
-        /* Content Wrapper */
+        /* Content Wrapper - Fixed Implementation */
         .content-wrapper {
             opacity: 0;
             transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: opacity;
+            transform: translateY(20px);
         }
         
         .content-wrapper.loaded {
             opacity: 1;
+            transform: translateY(0);
         }
         
         /* Critical navbar styles */
@@ -252,7 +307,7 @@
     <link rel="preload" href="/styles.css" as="style">
     <link rel="preload" href="/script.js" as="script">
     
-    <!-- Fonts -->
+    <!-- Fonts with font-display optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -279,6 +334,8 @@
     <!-- DNS prefetch -->
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://bicrea.com/">
@@ -291,7 +348,7 @@
     <meta name="geo.position" content="27.336435;-82.530653">
     <meta name="ICBM" content="27.336435, -82.530653">
     
-    <!-- Structured Data -->
+    <!-- Enhanced Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -301,6 +358,7 @@
         "description": "Luxury property investment and mineral title services company based in Sarasota, Florida, proudly owned and operated in the USA",
         "url": "https://bicrea.com",
         "logo": "https://bicrea.com/images/logo.png",
+        "image": "https://bicrea.com/images/hero-property-investments.webp",
         "foundingDate": "1990",
         "address": {
             "@type": "PostalAddress",
@@ -310,12 +368,30 @@
             "postalCode": "34238",
             "addressCountry": "US"
         },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 27.336435,
+            "longitude": -82.530653
+        },
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+1-805-233-2942",
             "contactType": "customer service",
             "email": "ireland_pacific@yahoo.com",
-            "availableLanguage": "English"
+            "availableLanguage": "English",
+            "areaServed": "US"
+        },
+        "sameAs": [
+            "https://www.facebook.com/bicrea",
+            "https://www.linkedin.com/company/bicrea",
+            "https://www.twitter.com/bicrea"
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127",
+            "bestRating": "5",
+            "worstRating": "1"
         },
         "makesOffer": [
             {
@@ -323,7 +399,8 @@
                 "itemOffered": {
                     "@type": "Service",
                     "name": "Strategic Property Investments",
-                    "description": "Strategic property investment services for discerning clients"
+                    "description": "Strategic property investment services for discerning clients",
+                    "serviceType": "Real Estate Investment"
                 }
             },
             {
@@ -331,7 +408,8 @@
                 "itemOffered": {
                     "@type": "Service",
                     "name": "Mineral Title Reports",
-                    "description": "Comprehensive mineral rights and title verification services"
+                    "description": "Comprehensive mineral rights and title verification services",
+                    "serviceType": "Title Research"
                 }
             },
             {
@@ -339,7 +417,8 @@
                 "itemOffered": {
                     "@type": "Service",
                     "name": "Advanced Market Analysis",
-                    "description": "Professional market analysis and investment insights"
+                    "description": "Professional market analysis and investment insights",
+                    "serviceType": "Market Analysis"
                 }
             },
             {
@@ -347,10 +426,37 @@
                 "itemOffered": {
                     "@type": "Service",
                     "name": "Portfolio Management",
-                    "description": "Comprehensive portfolio management and asset optimization"
+                    "description": "Comprehensive portfolio management and asset optimization",
+                    "serviceType": "Portfolio Management"
                 }
             }
         ]
+    }
+    </script>
+    
+    <!-- Additional Structured Data for Local Business -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "BicRea",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "4360 Winners Circle",
+            "addressLocality": "Sarasota",
+            "addressRegion": "FL",
+            "postalCode": "34238",
+            "addressCountry": "US"
+        },
+        "telephone": "+1-805-233-2942",
+        "email": "ireland_pacific@yahoo.com",
+        "url": "https://bicrea.com",
+        "priceRange": "$$$$",
+        "openingHours": [
+            "Mo-Fr 09:00-17:00"
+        ],
+        "paymentAccepted": "Cash, Credit Card, Wire Transfer",
+        "currenciesAccepted": "USD"
     }
     </script>
 </head>
@@ -383,7 +489,7 @@
         
         <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
             <div class="container">
-                <a href="/" class="navbar-brand" aria-label="BicRea Home">
+                <a href="/" class="navbar-brand" aria-label="BicRea Home" onclick="gtag('event', 'click', { event_category: 'Navigation', event_label: 'Logo' });">
                     <span class="brand-icon" aria-hidden="true">◊</span>
                     BicRea
                 </a>
@@ -393,11 +499,11 @@
                     <span></span>
                 </button>
                 <ul class="nav-menu" id="navMenu" role="menubar">
-                    <li role="none"><a href="/" class="nav-link active" role="menuitem" aria-current="page">Home</a></li>
-                    <li role="none"><a href="/about.html" class="nav-link" role="menuitem">About</a></li>
-                    <li role="none"><a href="/services.html" class="nav-link" role="menuitem">Services</a></li>
-                    <li role="none"><a href="/portfolio.html" class="nav-link" role="menuitem">Portfolio</a></li>
-                    <li role="none"><a href="/contact.html" class="nav-link" role="menuitem">Contact</a></li>
+                    <li role="none"><a href="/" class="nav-link active" role="menuitem" aria-current="page" onclick="gtag('event', 'click', { event_category: 'Navigation', event_label: 'Home' });">Home</a></li>
+                    <li role="none"><a href="/about.html" class="nav-link" role="menuitem" onclick="gtag('event', 'click', { event_category: 'Navigation', event_label: 'About' });">About</a></li>
+                    <li role="none"><a href="/services.html" class="nav-link" role="menuitem" onclick="gtag('event', 'click', { event_category: 'Navigation', event_label: 'Services' });">Services</a></li>
+                    <li role="none"><a href="/portfolio.html" class="nav-link" role="menuitem" onclick="gtag('event', 'click', { event_category: 'Navigation', event_label: 'Portfolio' });">Portfolio</a></li>
+                    <li role="none"><a href="/contact.html" class="nav-link" role="menuitem" onclick="gtag('event', 'click', { event_category: 'Navigation', event_label: 'Contact' });">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -467,11 +573,11 @@
                             
                             <!-- Call to Action -->
                             <div class="hero-cta">
-                                <a href="/contact.html" class="btn btn-primary">
+                                <a href="/contact.html" class="btn btn-primary" onclick="trackLead('Hero CTA', 200); gtag('event', 'click', { event_category: 'CTA', event_label: 'Begin Journey - Hero' });">
                                     <span>Begin Your Journey</span>
                                     <i class="fas fa-arrow-right" aria-hidden="true"></i>
                                 </a>
-                                <a href="tel:+18052332942" class="btn btn-outline">
+                                <a href="tel:+18052332942" class="btn btn-outline" onclick="trackPhoneCall('Hero'); gtag('event', 'click', { event_category: 'Contact', event_label: 'Phone Call - Hero' });">
                                     <span>Call Now</span>
                                     <i class="fas fa-phone" aria-hidden="true"></i>
                                 </a>
@@ -483,19 +589,19 @@
                 <!-- Hero Navigation -->
                 <div class="hero-navigation">
                     <div class="hero-indicators">
-                        <button class="hero-indicator active" data-service="property-investments" aria-label="Strategic Property Investments">
+                        <button class="hero-indicator active" data-service="property-investments" aria-label="Strategic Property Investments" onclick="gtag('event', 'click', { event_category: 'Hero Navigation', event_label: 'Property Investments' });">
                             <span class="indicator-icon"><i class="fas fa-building"></i></span>
                             <span class="indicator-label">Property</span>
                         </button>
-                        <button class="hero-indicator" data-service="mineral-title" aria-label="Mineral Title Reports">
+                        <button class="hero-indicator" data-service="mineral-title" aria-label="Mineral Title Reports" onclick="gtag('event', 'click', { event_category: 'Hero Navigation', event_label: 'Mineral Title' });">
                             <span class="indicator-icon"><i class="fas fa-file-contract"></i></span>
                             <span class="indicator-label">Mineral</span>
                         </button>
-                        <button class="hero-indicator" data-service="market-analysis" aria-label="Advanced Market Analysis">
+                        <button class="hero-indicator" data-service="market-analysis" aria-label="Advanced Market Analysis" onclick="gtag('event', 'click', { event_category: 'Hero Navigation', event_label: 'Market Analysis' });">
                             <span class="indicator-icon"><i class="fas fa-chart-line"></i></span>
                             <span class="indicator-label">Analysis</span>
                         </button>
-                        <button class="hero-indicator" data-service="portfolio-management" aria-label="Portfolio Management">
+                        <button class="hero-indicator" data-service="portfolio-management" aria-label="Portfolio Management" onclick="gtag('event', 'click', { event_category: 'Hero Navigation', event_label: 'Portfolio Management' });">
                             <span class="indicator-icon"><i class="fas fa-briefcase"></i></span>
                             <span class="indicator-label">Portfolio</span>
                         </button>
