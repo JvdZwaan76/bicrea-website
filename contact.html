@@ -34,8 +34,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/images/icon-192x192.png">
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="BicRea" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
     
     <!-- Theme color -->
     <meta name="theme-color" content="#d4af37">
@@ -50,6 +54,47 @@
     <meta name="geo.placename" content="Sarasota">
     <meta name="geo.position" content="27.336435;-82.530653">
     <meta name="ICBM" content="27.336435, -82.530653">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "BicRea",
+            "alternateName": ["BicRea LLC", "BicRea Real Estate"],
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "4360 Winners Circle",
+                "addressLocality": "Sarasota",
+                "addressRegion": "FL",
+                "postalCode": "34238",
+                "addressCountry": "US"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+1-805-233-2942",
+                "contactType": "customer service",
+                "email": "ireland_pacific@yahoo.com",
+                "hoursAvailable": [
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                        "opens": "09:00",
+                        "closes": "18:00"
+                    },
+                    {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": "Saturday",
+                        "opens": "10:00",
+                        "closes": "16:00"
+                    }
+                ]
+            }
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Skip to main content for accessibility -->
@@ -98,17 +143,18 @@
     </header>
 
     <main id="main-content">
+        <!-- Contact Main Section -->
         <section class="contact-main" aria-labelledby="contact-title">
             <div class="container">
-                <div class="contact-content">
-                    <div class="contact-form-section">
-                        <div class="section-header">
-                            <h2 id="contact-title" class="section-title">Get in Touch</h2>
-                            <div class="section-divider" aria-hidden="true"></div>
-                            <p class="section-subtitle">We're here to guide you toward your next great investment. Fill out the form below, and our team will respond with the elegance and efficiency you deserve.</p>
-                        </div>
-                        
-                        <form class="contact-form" id="contact-form" novalidate>
+                <div class="section-header">
+                    <h2 id="contact-title" class="section-title">Get in Touch</h2>
+                    <div class="section-divider" aria-hidden="true"></div>
+                    <p class="section-subtitle">We're here to guide you toward your next great investment. Fill out the form below, and our team will respond with the elegance and efficiency you deserve.</p>
+                </div>
+                
+                <div class="portfolio-detailed-item animate-on-scroll">
+                    <div class="portfolio-detailed-content">
+                        <form class="contact-form" id="contact-form" novalidate action="mailto:ireland_pacific@yahoo.com" method="post" enctype="text/plain">
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="firstName">First Name *</label>
@@ -168,79 +214,95 @@
                             </button>
                         </form>
                     </div>
+                    <div class="portfolio-detailed-image">
+                        <img src="/images/contact-image.jpg" alt="BicRea office in Sarasota, Florida - Professional meeting space for luxury property investment consultations" loading="lazy" width="600" height="400">
+                        <div class="portfolio-stats">
+                            <div class="stat-badge">24/7 Support</div>
+                            <div class="stat-badge">Expert Team</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="contact-info-section">
-                        <div class="contact-info-card">
-                            <h3>Our Presence</h3>
-                            <p>Based in the heart of Sarasota, Florida, serving distinguished clients across the nation. Reach us through multiple channels for your convenience.</p>
-                            
-                            <div class="contact-methods">
-                                <div class="contact-method">
-                                    <div class="method-icon" aria-hidden="true">
-                                        <i class="fas fa-envelope"></i>
-                                    </div>
-                                    <div class="method-details">
-                                        <h4>Email</h4>
-                                        <p><a href="mailto:ireland_pacific@yahoo.com">ireland_pacific@yahoo.com</a></p>
-                                        <span>We respond within 24 hours</span>
-                                    </div>
+        <!-- Contact Information Section -->
+        <section class="contact-info-section" aria-labelledby="info-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="info-title" class="section-title">Our Presence</h2>
+                    <div class="section-divider" aria-hidden="true"></div>
+                    <p class="section-subtitle">Based in the heart of Sarasota, Florida, serving distinguished clients across the nation</p>
+                </div>
+                
+                <div class="portfolio-detailed-item animate-on-scroll">
+                    <div class="portfolio-detailed-content">
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon" aria-hidden="true">
+                                    <i class="fas fa-envelope"></i>
                                 </div>
-                                
-                                <div class="contact-method">
-                                    <div class="method-icon" aria-hidden="true">
-                                        <i class="fas fa-phone"></i>
-                                    </div>
-                                    <div class="method-details">
-                                        <h4>Phone</h4>
-                                        <p><a href="tel:+18052332942">+1 (805) 233-2942</a></p>
-                                        <span>Mon-Fri, 9:00 AM - 6:00 PM EST</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="contact-method">
-                                    <div class="method-icon" aria-hidden="true">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                    </div>
-                                    <div class="method-details">
-                                        <h4>Address</h4>
-                                        <p>4360 Winners Circle<br>Sarasota, FL 34238</p>
-                                        <span>By appointment only</span>
-                                    </div>
+                                <div class="method-details">
+                                    <h4>Email</h4>
+                                    <p><a href="mailto:ireland_pacific@yahoo.com">ireland_pacific@yahoo.com</a></p>
+                                    <span>We respond within 24 hours</span>
                                 </div>
                             </div>
                             
-                            <div class="office-hours">
-                                <h4>Office Hours</h4>
-                                <div class="hours-grid">
-                                    <div class="hours-item">
-                                        <span>Monday - Friday</span>
-                                        <span>9:00 AM - 6:00 PM</span>
-                                    </div>
-                                    <div class="hours-item">
-                                        <span>Saturday</span>
-                                        <span>10:00 AM - 4:00 PM</span>
-                                    </div>
-                                    <div class="hours-item">
-                                        <span>Sunday</span>
-                                        <span>By Appointment</span>
-                                    </div>
+                            <div class="contact-method">
+                                <div class="method-icon" aria-hidden="true">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="method-details">
+                                    <h4>Phone</h4>
+                                    <p><a href="tel:+18052332942">+1 (805) 233-2942</a></p>
+                                    <span>Mon-Fri, 9:00 AM - 6:00 PM EST</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon" aria-hidden="true">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="method-details">
+                                    <h4>Address</h4>
+                                    <p>4360 Winners Circle<br>Sarasota, FL 34238</p>
+                                    <span>By appointment only</span>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="map-container">
-                            <div class="map-placeholder">
-                                <img src="/images/map-placeholder.jpg" alt="BicRea office location in Sarasota, Florida showing 4360 Winners Circle" loading="lazy" width="400" height="300">
-                                <div class="map-overlay">
-                                    <div class="map-info">
-                                        <h4>Visit Our Sarasota Office</h4>
-                                        <p>Located in the prestigious Winners Circle</p>
-                                        <a href="https://maps.google.com/?q=4360+Winners+Circle,+Sarasota,+FL+34238" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
-                                            <span>Get Directions</span>
-                                            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                                        </a>
-                                    </div>
+                        <div class="office-hours">
+                            <h4>Office Hours</h4>
+                            <div class="hours-grid">
+                                <div class="hours-item">
+                                    <span>Monday - Friday</span>
+                                    <span>9:00 AM - 6:00 PM</span>
                                 </div>
+                                <div class="hours-item">
+                                    <span>Saturday</span>
+                                    <span>10:00 AM - 4:00 PM</span>
+                                </div>
+                                <div class="hours-item">
+                                    <span>Sunday</span>
+                                    <span>By Appointment</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-detailed-image">
+                        <img src="/images/sarasota-office.jpg" alt="BicRea office location in Sarasota, Florida showing 4360 Winners Circle" loading="lazy" width="600" height="400">
+                        <div class="portfolio-stats">
+                            <div class="stat-badge">Sarasota, FL</div>
+                            <div class="stat-badge">Nationwide Service</div>
+                        </div>
+                        <div class="map-overlay">
+                            <div class="map-info">
+                                <h4>Visit Our Sarasota Office</h4>
+                                <p>Located in the prestigious Winners Circle</p>
+                                <a href="https://maps.google.com/?q=4360+Winners+Circle,+Sarasota,+FL+34238" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+                                    <span>Get Directions</span>
+                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -248,6 +310,7 @@
             </div>
         </section>
 
+        <!-- FAQ Section -->
         <section class="faq" aria-labelledby="faq-title">
             <div class="container">
                 <div class="section-header">
@@ -258,7 +321,7 @@
                 
                 <div class="faq-grid">
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq1-answer">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq1-answer" tabindex="0">
                             <h3>What types of properties do you specialize in?</h3>
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </button>
@@ -268,7 +331,7 @@
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq2-answer">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq2-answer" tabindex="0">
                             <h3>How do you ensure the accuracy of mineral title reports?</h3>
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </button>
@@ -278,7 +341,7 @@
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq3-answer">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq3-answer" tabindex="0">
                             <h3>What is the minimum investment threshold?</h3>
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </button>
@@ -288,7 +351,7 @@
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq4-answer">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq4-answer" tabindex="0">
                             <h3>How long does the investment process take?</h3>
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </button>
@@ -298,7 +361,7 @@
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq5-answer">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq5-answer" tabindex="0">
                             <h3>Do you work with international clients?</h3>
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </button>
@@ -308,7 +371,7 @@
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq6-answer">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq6-answer" tabindex="0">
                             <h3>What sets BicRea apart from other firms?</h3>
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </button>
@@ -320,6 +383,7 @@
             </div>
         </section>
 
+        <!-- CTA Section -->
         <section class="cta" aria-labelledby="cta-title">
             <div class="container">
                 <div class="cta-content">
@@ -406,46 +470,5 @@
 
     <!-- Scripts -->
     <script src="script.js" defer></script>
-    
-    <!-- Schema.org structured data for Contact Page -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ContactPage",
-        "mainEntity": {
-            "@type": "Organization",
-            "name": "BicRea",
-            "alternateName": ["BicRea LLC", "BicRea Real Estate"],
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "4360 Winners Circle",
-                "addressLocality": "Sarasota",
-                "addressRegion": "FL",
-                "postalCode": "34238",
-                "addressCountry": "US"
-            },
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+1-805-233-2942",
-                "contactType": "customer service",
-                "email": "ireland_pacific@yahoo.com",
-                "hoursAvailable": [
-                    {
-                        "@type": "OpeningHoursSpecification",
-                        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                        "opens": "09:00",
-                        "closes": "18:00"
-                    },
-                    {
-                        "@type": "OpeningHoursSpecification",
-                        "dayOfWeek": "Saturday",
-                        "opens": "10:00",
-                        "closes": "16:00"
-                    }
-                ]
-            }
-        }
-    }
-    </script>
 </body>
 </html>
