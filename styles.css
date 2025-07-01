@@ -1,4 +1,4 @@
-/* Bicrea - Complete Production Stylesheet */
+/* BicRea - Complete Production Stylesheet */
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -35,6 +35,50 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
+}
+
+/* USA Callout */
+.usa-callout {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.95), rgba(244, 208, 63, 0.95));
+    color: #0a0a0a;
+    padding: 0.75rem 1rem;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.usa-callout:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.usa-callout i {
+    font-size: 1rem;
+    color: #0a0a0a;
+    margin-bottom: 0.25rem;
+}
+
+.usa-callout span {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing: 0.5px;
 }
 
 /* Skip Link Accessibility */
@@ -920,6 +964,7 @@ section {
 
 .services-grid {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 4rem;
 }
 
@@ -986,9 +1031,10 @@ section {
 }
 
 .service-image {
-    margin: 2rem 0;
+    margin: 1.5rem 0 2rem 0;
     border-radius: 15px;
     overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .service-image img {
@@ -1845,6 +1891,11 @@ section {
     border-radius: 15px;
     border: 1px solid rgba(212, 175, 55, 0.1);
     overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: rgba(212, 175, 55, 0.3);
 }
 
 .faq-question {
@@ -1879,6 +1930,7 @@ section {
 .faq-question i {
     color: #d4af37;
     transition: transform 0.3s ease;
+    font-size: 1.2rem;
 }
 
 .faq-question[aria-expanded="true"] i {
@@ -1886,14 +1938,20 @@ section {
 }
 
 .faq-answer {
-    padding: 0 2rem 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 2rem;
     color: #e0e0e0;
     line-height: 1.6;
-    display: none;
 }
 
-.faq-answer.active {
-    display: block;
+.faq-answer.open {
+    padding: 0 2rem 1.5rem;
+}
+
+.faq-answer p {
+    margin: 0;
 }
 
 /* CTA Section */
@@ -2354,6 +2412,12 @@ img[data-fallback-attempted="true"] {
         text-align: center;
         gap: 1rem;
     }
+    
+    .usa-callout {
+        right: 10px;
+        font-size: 0.8rem;
+        padding: 0.6rem 0.8rem;
+    }
 }
 
 @media (max-width: 968px) {
@@ -2401,6 +2465,7 @@ img[data-fallback-attempted="true"] {
     }
     
     .services-grid {
+        grid-template-columns: 1fr;
         gap: 3rem;
     }
     
@@ -2474,6 +2539,27 @@ img[data-fallback-attempted="true"] {
     
     .benefits-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .usa-callout {
+        top: auto;
+        bottom: 20px;
+        right: 10px;
+        transform: none;
+        writing-mode: horizontal-tb;
+        text-orientation: initial;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+    }
+    
+    .usa-callout span {
+        writing-mode: horizontal-tb;
+        text-orientation: initial;
+    }
+    
+    .usa-callout i {
+        margin-bottom: 0;
+        margin-right: 0.5rem;
     }
 }
 
@@ -2581,6 +2667,13 @@ img[data-fallback-attempted="true"] {
     .benefits-grid {
         grid-template-columns: 1fr;
     }
+    
+    .usa-callout {
+        bottom: 10px;
+        right: 10px;
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2641,6 +2734,15 @@ img[data-fallback-attempted="true"] {
     .legacy-number {
         font-size: 3rem;
     }
+    
+    .usa-callout {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        transform: none;
+        display: none;
+    }
 }
 
 /* Reduced Motion Support */
@@ -2658,6 +2760,10 @@ img[data-fallback-attempted="true"] {
     .scroll-indicator {
         display: none;
     }
+    
+    .usa-callout:hover {
+        transform: translateY(-50%) scale(1);
+    }
 }
 
 /* Print Styles */
@@ -2666,7 +2772,8 @@ img[data-fallback-attempted="true"] {
     .scroll-indicator,
     .btn,
     .cta,
-    .contact-form {
+    .contact-form,
+    .usa-callout {
         display: none;
     }
     
@@ -2697,6 +2804,10 @@ img[data-fallback-attempted="true"] {
     }
     
     .form-control {
+        border-width: 2px;
+    }
+    
+    .usa-callout {
         border-width: 2px;
     }
 }
