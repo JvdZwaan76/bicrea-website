@@ -44,8 +44,8 @@
         intersectionThreshold: 0.1,
         lazyLoadMargin: '50px',
         maxRetries: 3,
-        slideDuration: 6000,
-        minLoadTime: 1500
+        slideDuration: 5000, // Reduced for better UX
+        minLoadTime: 1200 // Reduced minimum load time
     };
     
     // FIXED Loading Screen Management
@@ -89,14 +89,14 @@
             setTimeout(() => {
                 initializeEnhancedHero();
                 announceToScreenReader('Page loaded successfully');
-            }, 800);
+            }, 600);
             
             // Remove loading overlay from DOM after transition
             setTimeout(() => {
                 if (loadingOverlay.parentNode) {
                     loadingOverlay.remove();
                 }
-            }, 1500);
+            }, 1200);
         }
         
         // Minimum loading time reached
@@ -122,7 +122,7 @@
             isContentReady = true;
             isMinTimeReached = true;
             hideLoadingScreen();
-        }, 8000);
+        }, 6000);
     }
     
     // Enhanced DOM Ready with performance tracking
@@ -167,7 +167,7 @@
         initializeAnalytics();
     }
     
-    // Enhanced Hero Section Management
+    // SIMPLIFIED Enhanced Hero Section Management (No Indicators)
     function initializeEnhancedHero() {
         if (!state.isLoaded) {
             console.log('Hero initialization delayed - content not loaded yet');
@@ -175,11 +175,9 @@
         }
         
         const heroSlides = document.querySelectorAll('.hero-slide');
-        const heroIndicators = document.querySelectorAll('.hero-indicator');
         const serviceItems = document.querySelectorAll('.service-item');
-        const progressBar = document.querySelector('.progress-bar');
         
-        if (heroSlides.length === 0 || heroIndicators.length === 0) {
+        if (heroSlides.length === 0) {
             console.log('Hero elements not found');
             return;
         }
@@ -190,51 +188,6 @@
         updateActiveSlide(0);
         startAutoSlideshow();
         
-        // Hero indicator click handlers
-        heroIndicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', function(e) {
-                e.preventDefault();
-                pauseAutoSlideshow();
-                updateActiveSlide(index);
-                
-                // Track interaction
-                const service = this.getAttribute('data-service');
-                if (typeof gtag === 'function') {
-                    gtag('event', 'hero_service_click', {
-                        event_category: 'Hero Interaction',
-                        event_label: service,
-                        value: 10
-                    });
-                }
-                
-                // Resume auto-slideshow after user interaction
-                setTimeout(() => {
-                    if (!document.hidden) {
-                        startAutoSlideshow();
-                    }
-                }, 10000);
-            });
-            
-            // Keyboard support
-            indicator.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.click();
-                }
-                
-                // Arrow key navigation
-                if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    const prevIndex = index > 0 ? index - 1 : heroIndicators.length - 1;
-                    heroIndicators[prevIndex].focus();
-                } else if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    const nextIndex = index < heroIndicators.length - 1 ? index + 1 : 0;
-                    heroIndicators[nextIndex].focus();
-                }
-            });
-        });
-        
         // Update active slide and service content
         function updateActiveSlide(index) {
             state.currentSlide = index;
@@ -242,11 +195,6 @@
             // Update background slides
             heroSlides.forEach((slide, i) => {
                 slide.classList.toggle('active', i === index);
-            });
-            
-            // Update indicators
-            heroIndicators.forEach((indicator, i) => {
-                indicator.classList.toggle('active', i === index);
             });
             
             // Update service content with smooth transition
@@ -265,12 +213,6 @@
                     }, 600);
                 }
             });
-            
-            // Reset progress bar
-            if (progressBar) {
-                progressBar.style.width = '0%';
-                startProgressBar();
-            }
         }
         
         // Auto slideshow functionality
@@ -283,38 +225,16 @@
                     updateActiveSlide(nextSlide);
                 }
             }, config.slideDuration);
-            
-            startProgressBar();
         }
         
         function pauseAutoSlideshow() {
             state.isAutoPlaying = false;
             if (state.slideInterval) clearInterval(state.slideInterval);
-            if (state.progressInterval) clearInterval(state.progressInterval);
         }
         
         function resumeAutoSlideshow() {
             state.isAutoPlaying = true;
             startAutoSlideshow();
-        }
-        
-        // Progress bar animation
-        function startProgressBar() {
-            if (!progressBar) return;
-            
-            if (state.progressInterval) clearInterval(state.progressInterval);
-            
-            let progress = 0;
-            const increment = 100 / (config.slideDuration / 50); // Update every 50ms
-            
-            state.progressInterval = setInterval(() => {
-                progress += increment;
-                progressBar.style.width = Math.min(progress, 100) + '%';
-                
-                if (progress >= 100) {
-                    clearInterval(state.progressInterval);
-                }
-            }, 50);
         }
         
         // Pause on hover (desktop only)
@@ -374,7 +294,7 @@
                     }
                     
                     // Resume auto-slideshow after swipe
-                    setTimeout(resumeAutoSlideshow, 8000);
+                    setTimeout(resumeAutoSlideshow, 6000);
                 }
             }
         }
