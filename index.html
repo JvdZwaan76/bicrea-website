@@ -8,53 +8,6 @@
     <meta name="keywords" content="luxury property investment, mineral title services, real estate, Sarasota Florida, portfolio management, mineral rights, property acquisition, BicRea, luxury real estate USA">
     <meta name="author" content="BicRea">
     
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FKCE7BW63Y"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      
-      gtag('config', 'G-FKCE7BW63Y', {
-        page_title: 'BicRea - Pinnacle of Property Excellence',
-        page_location: window.location.href,
-        send_page_view: true,
-        custom_map: {
-          'custom_parameter_1': 'luxury_real_estate',
-          'custom_parameter_2': 'mineral_rights'
-        }
-      });
-      
-      // Enhanced conversion tracking for business goals
-      function trackConversion(action, category, label, value) {
-        gtag('event', action, {
-          event_category: category,
-          event_label: label,
-          value: value,
-          currency: 'USD'
-        });
-      }
-      
-      // Track business-specific events
-      function trackLead(source, value = 100) {
-        gtag('event', 'generate_lead', {
-          event_category: 'Lead Generation',
-          event_label: source,
-          value: value,
-          currency: 'USD'
-        });
-      }
-      
-      function trackPhoneCall(source) {
-        gtag('event', 'phone_call', {
-          event_category: 'Contact',
-          event_label: source,
-          value: 50,
-          currency: 'USD'
-        });
-      }
-    </script>
-    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bicrea.com/">
@@ -63,8 +16,6 @@
     <meta property="og:image" content="https://bicrea.com/images/hero-property-investments.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="BicRea">
-    <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -72,247 +23,13 @@
     <meta property="twitter:title" content="BicRea - Pinnacle of Property Excellence">
     <meta property="twitter:description" content="Sarasota-based expertise in luxury property investments and mineral title services. Nationwide mastery with unrivaled excellence.">
     <meta property="twitter:image" content="https://bicrea.com/images/hero-property-investments.webp">
-    <meta property="twitter:site" content="@BicRea">
-    <meta property="twitter:creator" content="@BicRea">
     
-    <!-- Critical CSS Inline to prevent FOUC -->
-    <style>
-        /* Critical above-the-fold styles to prevent FOUC */
-        :root {
-            --primary-gold: #d4af37;
-            --primary-gold-light: #f4d03f;
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #1a1a1a;
-            --text-primary: #f5f5f5;
-            --font-heading: 'Cinzel', serif;
-            --font-body: 'Inter', sans-serif;
-        }
-        
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        html { 
-            font-size: 16px; 
-            -webkit-text-size-adjust: 100%;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        body { 
-            font-family: var(--font-body), system-ui, -apple-system, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            font-weight: 300;
-            min-height: 100vh;
-        }
-        
-        /* Enhanced Hero Section Critical Styles */
-        .enhanced-hero {
-            min-height: 100vh;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-        
-        .hero-slides {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        
-        .hero-slide.active {
-            opacity: 1;
-        }
-        
-        .hero-slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.75), rgba(212, 175, 55, 0.1));
-        }
-        
-        /* Loading Animation - Fixed Implementation */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #0f0f0f 50%, #1a1a1a 75%, #0a0a0a 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
-            z-index: 999999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-                        visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: scale(1);
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .loading-overlay.loaded {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transform: scale(1.1);
-        }
-        
-        .luxury-spinner {
-            position: relative;
-            width: 120px;
-            height: 120px;
-            margin-bottom: 2rem;
-        }
-        
-        .spinner-diamond {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(45deg, var(--primary-gold), var(--primary-gold-light), var(--primary-gold));
-            transform: translate(-50%, -50%) rotate(45deg);
-            animation: sparkle 2s ease-in-out infinite;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
-            border-radius: 4px;
-            z-index: 10;
-        }
-        
-        .spinner-ring {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 2px solid transparent;
-            border-top: 2px solid var(--primary-gold);
-            border-radius: 50%;
-            animation: rotate 1.5s linear infinite;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes sparkle {
-            0%, 100% { transform: translate(-50%, -50%) rotate(45deg) scale(1); }
-            50% { transform: translate(-50%, -50%) rotate(45deg) scale(1.1); }
-        }
-        
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .loading-text {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            color: var(--primary-gold);
-            font-weight: 700;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            opacity: 0;
-            animation: fadeInText 1s ease-out 0.5s forwards;
-        }
-        
-        .loading-subtitle {
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            color: rgba(212, 175, 55, 0.8);
-            font-weight: 300;
-            letter-spacing: 1.5px;
-            opacity: 0;
-            animation: fadeInText 1s ease-out 1s forwards;
-            text-align: center;
-            max-width: 300px;
-            line-height: 1.4;
-        }
-        
-        @keyframes fadeInText {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Content Wrapper - Fixed Implementation */
-        .content-wrapper {
-            opacity: 0;
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateY(20px);
-        }
-        
-        .content-wrapper.loaded {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Critical navbar styles */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-            z-index: 1030;
-            padding: 1rem 0;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .navbar-brand {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            color: var(--primary-gold);
-            text-decoration: none;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-    </style>
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="/images/hero-property-investments.webp" as="image" importance="high">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="/styles.css" as="style">
-    <link rel="preload" href="/script.js" as="script">
-    
-    <!-- Fonts with font-display optimization -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Main CSS -->
+    <!-- Styles -->
     <link rel="stylesheet" href="/styles.css">
     
     <!-- Icons -->
@@ -331,12 +48,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
-    <!-- DNS prefetch -->
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="dns-prefetch" href="//www.google-analytics.com">
-    <link rel="dns-prefetch" href="//www.googletagmanager.com">
-    
     <!-- Canonical URL -->
     <link rel="canonical" href="https://bicrea.com/">
     
@@ -348,7 +59,7 @@
     <meta name="geo.position" content="27.336435;-82.530653">
     <meta name="ICBM" content="27.336435, -82.530653">
     
-    <!-- Enhanced Structured Data -->
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -381,82 +92,13 @@
             "availableLanguage": "English",
             "areaServed": "US"
         },
-        "sameAs": [
-            "https://www.facebook.com/bicrea",
-            "https://www.linkedin.com/company/bicrea",
-            "https://www.twitter.com/bicrea"
-        ],
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.9",
             "reviewCount": "127",
             "bestRating": "5",
             "worstRating": "1"
-        },
-        "makesOffer": [
-            {
-                "@type": "Offer",
-                "itemOffered": {
-                    "@type": "Service",
-                    "name": "Strategic Property Investments",
-                    "description": "Strategic property investment services for discerning clients",
-                    "serviceType": "Real Estate Investment"
-                }
-            },
-            {
-                "@type": "Offer",
-                "itemOffered": {
-                    "@type": "Service",
-                    "name": "Mineral Title Reports",
-                    "description": "Comprehensive mineral rights and title verification services",
-                    "serviceType": "Title Research"
-                }
-            },
-            {
-                "@type": "Offer",
-                "itemOffered": {
-                    "@type": "Service",
-                    "name": "Advanced Market Analysis",
-                    "description": "Professional market analysis and investment insights",
-                    "serviceType": "Market Analysis"
-                }
-            },
-            {
-                "@type": "Offer",
-                "itemOffered": {
-                    "@type": "Service",
-                    "name": "Portfolio Management",
-                    "description": "Comprehensive portfolio management and asset optimization",
-                    "serviceType": "Portfolio Management"
-                }
-            }
-        ]
-    }
-    </script>
-    
-    <!-- Additional Structured Data for Local Business -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "BicRea",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "4360 Winners Circle",
-            "addressLocality": "Sarasota",
-            "addressRegion": "FL",
-            "postalCode": "34238",
-            "addressCountry": "US"
-        },
-        "telephone": "+1-805-233-2942",
-        "email": "ireland_pacific@yahoo.com",
-        "url": "https://bicrea.com",
-        "priceRange": "$$$$",
-        "openingHours": [
-            "Mo-Fr 09:00-17:00"
-        ],
-        "paymentAccepted": "Cash, Credit Card, Wire Transfer",
-        "currenciesAccepted": "USD"
+        }
     }
     </script>
 </head>
@@ -481,7 +123,7 @@
         <!-- Scroll progress indicator -->
         <div class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
         
-        <!-- Enhanced American-Themed USA Callout -->
+        <!-- USA Callout -->
         <div class="usa-callout">
             <i class="fas fa-flag-usa" aria-hidden="true"></i>
             <span>Proudly Owned and Operated in the USA</span>
@@ -489,7 +131,7 @@
         
         <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
             <div class="container">
-                <a href="/" class="navbar-brand" aria-label="BicRea Home" onclick="gtag('event', 'click', { event_category: 'Navigation', event_label: 'Logo' });">
+                <a href="/" class="navbar-brand" aria-label="BicRea Home">
                     <span class="brand-icon" aria-hidden="true">◊</span>
                     BicRea
                 </a>
@@ -499,17 +141,17 @@
                     <span></span>
                 </button>
                 <ul class="nav-menu" id="navMenu" role="menubar">
-                    <li role="none"><a href="/" class="nav-link active" role="menuitem" aria-current="page" onclick="gtag('event', 'click', { event_category: 'Navigation', event_label: 'Home' });">Home</a></li>
-                    <li role="none"><a href="/about.html" class="nav-link" role="menuitem" onclick="gtag('event', 'click', { event_category: 'Navigation', event_label: 'About' });">About</a></li>
-                    <li role="none"><a href="/services.html" class="nav-link" role="menuitem" onclick="gtag('event', 'click', { event_category: 'Navigation', event_label: 'Services' });">Services</a></li>
-                    <li role="none"><a href="/portfolio.html" class="nav-link" role="menuitem" onclick="gtag('event', 'click', { event_category: 'Navigation', event_label: 'Portfolio' });">Portfolio</a></li>
-                    <li role="none"><a href="/contact.html" class="nav-link" role="menuitem" onclick="gtag('event', 'click', { event_category: 'Navigation', event_label: 'Contact' });">Contact</a></li>
+                    <li role="none"><a href="/" class="nav-link active" role="menuitem" aria-current="page">Home</a></li>
+                    <li role="none"><a href="/about.html" class="nav-link" role="menuitem">About</a></li>
+                    <li role="none"><a href="/services.html" class="nav-link" role="menuitem">Services</a></li>
+                    <li role="none"><a href="/portfolio.html" class="nav-link" role="menuitem">Portfolio</a></li>
+                    <li role="none"><a href="/contact.html" class="nav-link" role="menuitem">Contact</a></li>
                 </ul>
             </div>
         </nav>
 
         <main id="main-content">
-            <!-- FIXED Enhanced Hero Section - No Indicators -->
+            <!-- Enhanced Hero Section -->
             <section class="enhanced-hero" id="hero" role="banner">
                 <!-- Hero Background Slides -->
                 <div class="hero-slides">
@@ -573,11 +215,11 @@
                             
                             <!-- Call to Action -->
                             <div class="hero-cta">
-                                <a href="/contact.html" class="btn btn-primary" onclick="trackLead('Hero CTA', 200); gtag('event', 'click', { event_category: 'CTA', event_label: 'Begin Journey - Hero' });">
+                                <a href="/contact.html" class="btn btn-primary">
                                     <span>Begin Your Journey</span>
                                     <i class="fas fa-arrow-right" aria-hidden="true"></i>
                                 </a>
-                                <a href="tel:+18052332942" class="btn btn-outline" onclick="trackPhoneCall('Hero'); gtag('event', 'click', { event_category: 'Contact', event_label: 'Phone Call - Hero' });">
+                                <a href="tel:+18052332942" class="btn btn-outline">
                                     <span>Call Now</span>
                                     <i class="fas fa-phone" aria-hidden="true"></i>
                                 </a>
@@ -603,28 +245,26 @@
                     </div>
                     <div class="portfolio-detailed-item animate-on-scroll">
                         <div class="portfolio-detailed-content">
-                            <div class="legacy-item">
-                                <div class="legacy-number">30+</div>
-                                <div class="legacy-desc">
-                                    <h3>Years of Excellence</h3>
-                                    <p>BicRea stands as a beacon of sophistication in the realm of property investments and mineral title services. Rooted in the vibrant landscapes of Sarasota, Florida, our expertise spans the entirety of the United States.</p>
-                                </div>
-                            </div>
-                            <div class="legacy-item">
-                                <div class="legacy-number">$2B+</div>
-                                <div class="legacy-desc">
-                                    <h3>Assets Managed</h3>
-                                    <p>With over three decades of collective experience, our team crafts strategies that not only secure wealth but elevate it to new heights. We are your partner in navigating the intricate world of real estate.</p>
-                                </div>
-                            </div>
-                            <div class="story-stats">
+                            <h3>A Story of Excellence</h3>
+                            <p>BicRea stands as a beacon of sophistication in the realm of property investments and mineral title services. Rooted in the vibrant landscapes of Sarasota, Florida, our expertise spans the entirety of the United States.</p>
+                            <p>With over three decades of collective experience, our team crafts strategies that not only secure wealth but elevate it to new heights. We are your partner in navigating the intricate world of real estate.</p>
+                            
+                            <div class="stats-grid" style="margin-top: 2rem;">
                                 <div class="stat-item">
-                                    <h3 class="stat-number">500+</h3>
-                                    <p class="stat-label">Successful Projects</p>
+                                    <div class="stat-value">30+</div>
+                                    <div class="stat-label">Years of Excellence</div>
                                 </div>
                                 <div class="stat-item">
-                                    <h3 class="stat-number">98%</h3>
-                                    <p class="stat-label">Client Satisfaction</p>
+                                    <div class="stat-value">$2B+</div>
+                                    <div class="stat-label">Assets Managed</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">500+</div>
+                                    <div class="stat-label">Successful Projects</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">98%</div>
+                                    <div class="stat-label">Client Satisfaction</div>
                                 </div>
                             </div>
                         </div>
@@ -647,30 +287,28 @@
                         <div class="section-divider" aria-hidden="true"></div>
                         <p class="section-subtitle animate-on-scroll">Precision-crafted solutions for discerning investors</p>
                     </div>
-                    <div class="services-grid">
+                    <div class="content-grid">
                         <!-- Strategic Property Investments -->
                         <div class="portfolio-detailed-item animate-on-scroll">
                             <div class="portfolio-detailed-content">
                                 <div class="service-icon" aria-hidden="true">
                                     <i class="fas fa-chart-line"></i>
                                 </div>
-                                <div class="service-content">
-                                    <h3>Strategic Property Investments</h3>
-                                    <p>Our approach to property investments is both an art and a science. We analyze market trends, assess risk profiles, and curate portfolios that promise enduring value.</p>
-                                    <ul class="service-features">
-                                        <li>Market Analysis & Forecasting</li>
-                                        <li>Portfolio Diversification</li>
-                                        <li>Risk Mitigation Strategies</li>
-                                        <li>Asset Management Excellence</li>
-                                    </ul>
-                                    <a href="/services.html" class="service-link">
-                                        <span>Learn More</span>
-                                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                                    </a>
-                                </div>
+                                <h3>Strategic Property Investments</h3>
+                                <p>Our approach to property investments is both an art and a science. We analyze market trends, assess risk profiles, and curate portfolios that promise enduring value.</p>
+                                <ul class="service-features">
+                                    <li>Market Analysis & Forecasting</li>
+                                    <li>Portfolio Diversification</li>
+                                    <li>Risk Mitigation Strategies</li>
+                                    <li>Asset Management Excellence</li>
+                                </ul>
+                                <a href="/services.html" class="btn btn-outline btn-sm">
+                                    <span>Learn More</span>
+                                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                </a>
                             </div>
                             <div class="portfolio-detailed-image">
-                                <img src="/images/investment-image.jpg" alt="Luxury property showcasing strategic investment potential with modern architecture and premium location" loading="lazy" width="600" height="400">
+                                <img src="/images/investment-image.jpg" alt="Luxury property showcasing strategic investment potential" loading="lazy" width="600" height="400">
                                 <div class="portfolio-stats">
                                     <div class="stat-badge">24.8% Avg ROI</div>
                                     <div class="stat-badge">500+ Properties</div>
@@ -681,7 +319,7 @@
                         <!-- Mineral Title Reports -->
                         <div class="portfolio-detailed-item animate-on-scroll">
                             <div class="portfolio-detailed-image">
-                                <img src="/images/mineral-image.jpg" alt="Professional mineral rights documentation and title research process showing detailed geological surveys and legal documents" loading="lazy" width="600" height="400">
+                                <img src="/images/mineral-image.jpg" alt="Professional mineral rights documentation and title research process" loading="lazy" width="600" height="400">
                                 <div class="portfolio-stats">
                                     <div class="stat-badge">100% Accuracy</div>
                                     <div class="stat-badge">Fast Turnaround</div>
@@ -691,20 +329,18 @@
                                 <div class="service-icon" aria-hidden="true">
                                     <i class="fas fa-file-contract"></i>
                                 </div>
-                                <div class="service-content">
-                                    <h3>Mineral Title Reports</h3>
-                                    <p>Precision defines our mineral title services. We delve into historical records, verify ownership chains, and provide reports that stand as pillars of confidence.</p>
-                                    <ul class="service-features">
-                                        <li>Chain of Title Verification</li>
-                                        <li>Regulatory Compliance</li>
-                                        <li>Comprehensive Reporting</li>
-                                        <li>Dispute Resolution Support</li>
-                                    </ul>
-                                    <a href="/services.html" class="service-link">
-                                        <span>Learn More</span>
-                                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                                    </a>
-                                </div>
+                                <h3>Mineral Title Reports</h3>
+                                <p>Precision defines our mineral title services. We delve into historical records, verify ownership chains, and provide reports that stand as pillars of confidence.</p>
+                                <ul class="service-features">
+                                    <li>Chain of Title Verification</li>
+                                    <li>Regulatory Compliance</li>
+                                    <li>Comprehensive Reporting</li>
+                                    <li>Dispute Resolution Support</li>
+                                </ul>
+                                <a href="/services.html" class="btn btn-outline btn-sm">
+                                    <span>Learn More</span>
+                                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -722,7 +358,7 @@
                     <div class="portfolio-grid">
                         <article class="portfolio-item animate-on-scroll">
                             <div class="portfolio-image">
-                                <img src="/images/project1.jpg" alt="Coastal Serenity Estate - Luxury Florida coastline investment showcasing $15M development with 25% ROI" loading="lazy" width="400" height="300">
+                                <img src="/images/project1.jpg" alt="Coastal Serenity Estate - Luxury Florida coastline investment" loading="lazy" width="400" height="300">
                                 <div class="portfolio-overlay">
                                     <div class="portfolio-info">
                                         <span class="portfolio-value">$15M Investment</span>
@@ -742,7 +378,7 @@
 
                         <article class="portfolio-item animate-on-scroll">
                             <div class="portfolio-image">
-                                <img src="/images/project2.jpg" alt="Metropolitan Revival - Texas urban redevelopment project with $10M investment and 20% ROI" loading="lazy" width="400" height="300">
+                                <img src="/images/project2.jpg" alt="Metropolitan Revival - Texas urban redevelopment project" loading="lazy" width="400" height="300">
                                 <div class="portfolio-overlay">
                                     <div class="portfolio-info">
                                         <span class="portfolio-value">$10M Investment</span>
@@ -762,7 +398,7 @@
 
                         <article class="portfolio-item animate-on-scroll">
                             <div class="portfolio-image">
-                                <img src="/images/project3.jpg" alt="Mineral Frontier - Nevada mineral rights acquisition worth $8M with long-term value potential" loading="lazy" width="400" height="300">
+                                <img src="/images/project3.jpg" alt="Mineral Frontier - Nevada mineral rights acquisition" loading="lazy" width="400" height="300">
                                 <div class="portfolio-overlay">
                                     <div class="portfolio-info">
                                         <span class="portfolio-value">$8M Acquisition</span>
@@ -797,37 +433,37 @@
                         <div class="section-divider" aria-hidden="true"></div>
                         <p class="section-subtitle animate-on-scroll">Meet the visionaries driving BicRea's success</p>
                     </div>
-                    <div class="team-preview-grid">
-                        <article class="team-preview-item animate-on-scroll">
-                            <div class="team-preview-image">
-                                <img src="/images/team1.jpg" alt="Devin Molina - Founder & CEO of BicRea with 35 years of luxury real estate experience" loading="lazy" width="200" height="200">
+                    <div class="stats-grid">
+                        <article class="stat-card animate-on-scroll">
+                            <div class="stat-icon" aria-hidden="true">
+                                <i class="fas fa-user-tie"></i>
                             </div>
-                            <div class="team-preview-content">
-                                <h3>Devin Molina</h3>
-                                <p class="team-preview-title">Founder & CEO</p>
-                                <p>35 years of experience leading luxury real estate investments with passion for excellence and opportunity recognition.</p>
-                            </div>
-                        </article>
-                        
-                        <article class="team-preview-item animate-on-scroll">
-                            <div class="team-preview-image">
-                                <img src="/images/team2.jpg" alt="Sandra Petkov - Chief Analyst at BicRea specializing in title research and risk analysis" loading="lazy" width="200" height="200">
-                            </div>
-                            <div class="team-preview-content">
-                                <h3>Sandra Petkov</h3>
-                                <p class="team-preview-title">Chief Analyst</p>
-                                <p>Analytical expertise ensuring flawless title reports and investment strategies with unmatched precision.</p>
+                            <div class="stat-content">
+                                <div class="stat-value">Devin Molina</div>
+                                <div class="stat-label">Founder & CEO</div>
+                                <p style="margin-top: 1rem; color: var(--text-secondary); font-size: var(--font-sm);">35 years of experience leading luxury real estate investments with passion for excellence.</p>
                             </div>
                         </article>
                         
-                        <article class="team-preview-item animate-on-scroll">
-                            <div class="team-preview-image">
-                                <img src="/images/team3.jpg" alt="Christian Hickey - Investment Director at BicRea for mineral rights and real estate investments" loading="lazy" width="200" height="200">
+                        <article class="stat-card animate-on-scroll">
+                            <div class="stat-icon" aria-hidden="true">
+                                <i class="fas fa-chart-bar"></i>
                             </div>
-                            <div class="team-preview-content">
-                                <h3>Christian Hickey</h3>
-                                <p class="team-preview-title">Investment Director</p>
-                                <p>Crafts bespoke investment portfolios that maximize value while minimizing risk for discerning clients.</p>
+                            <div class="stat-content">
+                                <div class="stat-value">Sandra Petkov</div>
+                                <div class="stat-label">Chief Analyst</div>
+                                <p style="margin-top: 1rem; color: var(--text-secondary); font-size: var(--font-sm);">Analytical expertise ensuring flawless title reports and investment strategies.</p>
+                            </div>
+                        </article>
+                        
+                        <article class="stat-card animate-on-scroll">
+                            <div class="stat-icon" aria-hidden="true">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">Christian Hickey</div>
+                                <div class="stat-label">Investment Director</div>
+                                <p style="margin-top: 1rem; color: var(--text-secondary); font-size: var(--font-sm);">Crafts bespoke investment portfolios that maximize value while minimizing risk.</p>
                             </div>
                         </article>
                     </div>
@@ -896,23 +532,21 @@
                         <div class="section-divider" aria-hidden="true"></div>
                         <p class="section-subtitle animate-on-scroll">Hear from our distinguished clientele</p>
                     </div>
-                    <div class="testimonial-featured animate-on-scroll">
-                        <div class="testimonial-content">
-                            <blockquote>
-                                BicRea's expertise in luxury property investment is unmatched. Their meticulous approach to due diligence and market analysis resulted in returns that exceeded our highest expectations. Working with their team has been transformative for our portfolio.
-                            </blockquote>
-                            <div class="testimonial-author">
-                                <div class="author-info">
-                                    <h4>Victoria Ashworth</h4>
-                                    <span>Private Investor</span>
-                                </div>
-                                <div class="testimonial-rating" aria-label="5 star rating">
-                                    <i class="fas fa-star" aria-hidden="true"></i>
-                                    <i class="fas fa-star" aria-hidden="true"></i>
-                                    <i class="fas fa-star" aria-hidden="true"></i>
-                                    <i class="fas fa-star" aria-hidden="true"></i>
-                                    <i class="fas fa-star" aria-hidden="true"></i>
-                                </div>
+                    <div class="content-card animate-on-scroll" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                        <blockquote style="font-size: var(--font-xl); font-style: italic; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem;">
+                            "BicRea's expertise in luxury property investment is unmatched. Their meticulous approach to due diligence and market analysis resulted in returns that exceeded our highest expectations. Working with their team has been transformative for our portfolio."
+                        </blockquote>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem;">
+                            <div style="text-align: left;">
+                                <h4 style="color: var(--primary-gold); margin-bottom: 0.5rem; font-size: var(--font-xl);">Victoria Ashworth</h4>
+                                <span style="color: var(--text-muted); font-size: var(--font-base);">Private Investor</span>
+                            </div>
+                            <div style="color: var(--primary-gold); font-size: var(--font-lg); display: flex; gap: 0.25rem;">
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
