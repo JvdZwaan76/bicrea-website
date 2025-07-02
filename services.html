@@ -23,13 +23,15 @@
     <meta property="twitter:image" content="https://bicrea.com/images/services-og.jpg">
     
     <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
     
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
@@ -132,7 +134,10 @@
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
-    <!-- USA Callout -->
+    <!-- Scroll progress indicator -->
+    <div class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
+    
+    <!-- Enhanced American-Themed USA Callout -->
     <div class="usa-callout">
         <i class="fas fa-flag-usa" aria-hidden="true"></i>
         <span>Proudly Owned and Operated in the USA</span>
@@ -436,7 +441,7 @@
             </div>
         </section>
 
-        <!-- Why Choose Section */
+        <!-- Why Choose Section -->
         <section class="why-choose animate-on-scroll" aria-labelledby="why-title">
             <div class="container">
                 <div class="section-header">
@@ -447,7 +452,7 @@
                 
                 <div class="advantages-grid">
                     <div class="advantage-item animate-on-scroll">
-                        <div class="advantage-icon">
+                        <div class="service-icon">
                             <i class="fas fa-medal"></i>
                         </div>
                         <h3>30+ Years Experience</h3>
@@ -455,7 +460,7 @@
                     </div>
                     
                     <div class="advantage-item animate-on-scroll">
-                        <div class="advantage-icon">
+                        <div class="service-icon">
                             <i class="fas fa-network-wired"></i>
                         </div>
                         <h3>Nationwide Network</h3>
@@ -463,7 +468,7 @@
                     </div>
                     
                     <div class="advantage-item animate-on-scroll">
-                        <div class="advantage-icon">
+                        <div class="service-icon">
                             <i class="fas fa-microscope"></i>
                         </div>
                         <h3>Meticulous Research</h3>
@@ -471,7 +476,7 @@
                     </div>
                     
                     <div class="advantage-item animate-on-scroll">
-                        <div class="advantage-icon">
+                        <div class="service-icon">
                             <i class="fas fa-user-tie"></i>
                         </div>
                         <h3>Personalized Service</h3>
@@ -479,7 +484,7 @@
                     </div>
                     
                     <div class="advantage-item animate-on-scroll">
-                        <div class="advantage-icon">
+                        <div class="service-icon">
                             <i class="fas fa-rocket"></i>
                         </div>
                         <h3>Innovative Strategies</h3>
@@ -487,7 +492,7 @@
                     </div>
                     
                     <div class="advantage-item animate-on-scroll">
-                        <div class="advantage-icon">
+                        <div class="service-icon">
                             <i class="fas fa-shield-alt"></i>
                         </div>
                         <h3>Uncompromising Integrity</h3>
@@ -582,6 +587,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="script.js" defer></script>
+    <script src="/script.js" defer></script>
 </body>
 </html>
