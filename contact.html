@@ -63,7 +63,6 @@
         "mainEntity": {
             "@type": "Organization",
             "name": "BicRea",
-            "alternateName": ["BicRea LLC", "BicRea Real Estate"],
             "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "4360 Winners Circle",
@@ -76,21 +75,7 @@
                 "@type": "ContactPoint",
                 "telephone": "+1-805-233-2942",
                 "contactType": "customer service",
-                "email": "ireland_pacific@yahoo.com",
-                "hoursAvailable": [
-                    {
-                        "@type": "OpeningHoursSpecification",
-                        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                        "opens": "09:00",
-                        "closes": "18:00"
-                    },
-                    {
-                        "@type": "OpeningHoursSpecification",
-                        "dayOfWeek": "Saturday",
-                        "opens": "10:00",
-                        "closes": "16:00"
-                    }
-                ]
+                "email": "ireland_pacific@yahoo.com"
             }
         }
     }
@@ -103,7 +88,7 @@
     <!-- Scroll progress indicator -->
     <div class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
     
-    <!-- Enhanced American-Themed USA Callout -->
+    <!-- USA Callout -->
     <div class="usa-callout">
         <i class="fas fa-flag-usa" aria-hidden="true"></i>
         <span>Proudly Owned and Operated in the USA</span>
@@ -154,7 +139,7 @@
                 
                 <div class="portfolio-detailed-item animate-on-scroll">
                     <div class="portfolio-detailed-content">
-                        <form class="contact-form" id="contact-form" novalidate data-form-type="contact" action="mailto:ireland_pacific@yahoo.com" method="post" enctype="text/plain">
+                        <form class="contact-form" id="contact-form" novalidate data-form-type="contact">
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="firstName">First Name *</label>
@@ -177,7 +162,7 @@
                                 <div class="form-group">
                                     <label for="phone">Phone Number</label>
                                     <input type="tel" id="phone" name="phone" class="form-control" placeholder="+1 (555) 123-4567" aria-describedby="phone-help">
-                                    <div id="phone-help" class="form-help">Optional - We'll call you back</div>
+                                    <div id="phone-help" class="form-help" style="font-size: var(--font-sm); color: var(--text-muted); margin-top: 0.25rem;">Optional - We'll call you back</div>
                                 </div>
                             </div>
                             
@@ -201,10 +186,9 @@
                             </div>
                             
                             <div class="form-group">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="newsletter" value="yes">
-                                    <span class="checkmark"></span>
-                                    I would like to receive updates about market insights and investment opportunities
+                                <label class="checkbox-label" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                    <input type="checkbox" name="newsletter" value="yes" style="margin: 0;">
+                                    <span>I would like to receive updates about market insights and investment opportunities</span>
                                 </label>
                             </div>
                             
@@ -294,16 +278,6 @@
                         <div class="portfolio-stats">
                             <div class="stat-badge">Sarasota, FL</div>
                             <div class="stat-badge">Nationwide Service</div>
-                        </div>
-                        <div class="map-overlay">
-                            <div class="map-info">
-                                <h4>Visit Our Sarasota Office</h4>
-                                <p>Located in the prestigious Winners Circle</p>
-                                <a href="https://maps.google.com/?q=4360+Winners+Circle,+Sarasota,+FL+34238" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
-                                    <span>Get Directions</span>
-                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
