@@ -210,15 +210,15 @@
                         <p>Today, BicRea is synonymous with precision, luxury, and trust—values that guide every project we undertake. Our reputation has been built through decades of successful partnerships, innovative strategies, and an unwavering dedication to our clients' prosperity and legacy building.</p>
                         
                         <div class="stats-grid" style="margin-top: 2rem;">
-                            <div class="stat-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.5rem;">
+                            <div class="stat-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.5rem; min-height: auto;">
                                 <div class="stat-value stat-number" data-target="30" style="font-size: 2.5rem; color: var(--primary-gold); font-weight: 700; margin-bottom: 0.5rem;">30+</div>
                                 <div class="stat-label" style="color: var(--text-muted); font-size: 1rem;">Years of Excellence</div>
                             </div>
-                            <div class="stat-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.5rem;">
+                            <div class="stat-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.5rem; min-height: auto;">
                                 <div class="stat-value stat-number" data-target="500" style="font-size: 2.5rem; color: var(--primary-gold); font-weight: 700; margin-bottom: 0.5rem;">500+</div>
                                 <div class="stat-label" style="color: var(--text-muted); font-size: 1rem;">Successful Projects</div>
                             </div>
-                            <div class="stat-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.5rem;">
+                            <div class="stat-card" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.5rem; min-height: auto;">
                                 <div class="stat-value stat-number" data-target="2.1" style="font-size: 2.5rem; color: var(--primary-gold); font-weight: 700; margin-bottom: 0.5rem;">$2.1B+</div>
                                 <div class="stat-label" style="color: var(--text-muted); font-size: 1rem;">Assets Managed</div>
                             </div>
@@ -247,7 +247,7 @@
                 <!-- Mission Card -->
                 <div class="portfolio-detailed-item animate-on-scroll">
                     <div class="portfolio-detailed-content">
-                        <div class="service-icon" aria-hidden="true">
+                        <div class="service-icon" aria-hidden="true" style="margin-bottom: var(--space-lg);">
                             <i class="fas fa-bullseye"></i>
                         </div>
                         <h3>Our Mission</h3>
@@ -277,7 +277,7 @@
                         </div>
                     </div>
                     <div class="portfolio-detailed-content">
-                        <div class="service-icon" aria-hidden="true">
+                        <div class="service-icon" aria-hidden="true" style="margin-bottom: var(--space-lg);">
                             <i class="fas fa-eye"></i>
                         </div>
                         <h3>Our Vision</h3>
@@ -456,34 +456,42 @@
                     <p class="section-subtitle">The principles that define our commitment to excellence</p>
                     <div class="section-divider" aria-hidden="true"></div>
                 </div>
-                <div class="values-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-2xl);">
-                    <div class="value-item animate-on-scroll content-card" style="text-align: center;">
+                <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="stat-card animate-on-scroll" style="text-align: center; min-height: 300px;">
                         <div class="service-icon" aria-hidden="true" style="margin: 0 auto var(--space-lg);">
                             <i class="fas fa-gavel"></i>
                         </div>
-                        <h3>Integrity</h3>
-                        <p>We operate with unwavering honesty and transparency in all our dealings, building trust through consistent ethical practices and unwavering commitment to our clients' best interests.</p>
+                        <div class="stat-content">
+                            <h3 style="color: var(--primary-gold); margin-bottom: var(--space-md);">Integrity</h3>
+                            <p style="color: var(--text-secondary); text-align: center; line-height: 1.6;">We operate with unwavering honesty and transparency in all our dealings, building trust through consistent ethical practices and unwavering commitment to our clients' best interests.</p>
+                        </div>
                     </div>
-                    <div class="value-item animate-on-scroll content-card" style="text-align: center;">
+                    <div class="stat-card animate-on-scroll" style="text-align: center; min-height: 300px;">
                         <div class="service-icon" aria-hidden="true" style="margin: 0 auto var(--space-lg);">
                             <i class="fas fa-star"></i>
                         </div>
-                        <h3>Excellence</h3>
-                        <p>We pursue perfection in every detail, setting the highest standards for quality and precision in our industry while continuously exceeding client expectations.</p>
+                        <div class="stat-content">
+                            <h3 style="color: var(--primary-gold); margin-bottom: var(--space-md);">Excellence</h3>
+                            <p style="color: var(--text-secondary); text-align: center; line-height: 1.6;">We pursue perfection in every detail, setting the highest standards for quality and precision in our industry while continuously exceeding client expectations.</p>
+                        </div>
                     </div>
-                    <div class="value-item animate-on-scroll content-card" style="text-align: center;">
+                    <div class="stat-card animate-on-scroll" style="text-align: center; min-height: 300px;">
                         <div class="service-icon" aria-hidden="true" style="margin: 0 auto var(--space-lg);">
                             <i class="fas fa-lightbulb"></i>
                         </div>
-                        <h3>Innovation</h3>
-                        <p>We embrace cutting-edge technologies and methodologies to deliver solutions that exceed expectations and set new industry benchmarks for sophisticated service delivery.</p>
+                        <div class="stat-content">
+                            <h3 style="color: var(--primary-gold); margin-bottom: var(--space-md);">Innovation</h3>
+                            <p style="color: var(--text-secondary); text-align: center; line-height: 1.6;">We embrace cutting-edge technologies and methodologies to deliver solutions that exceed expectations and set new industry benchmarks for sophisticated service delivery.</p>
+                        </div>
                     </div>
-                    <div class="value-item animate-on-scroll content-card" style="text-align: center;">
+                    <div class="stat-card animate-on-scroll" style="text-align: center; min-height: 300px;">
                         <div class="service-icon" aria-hidden="true" style="margin: 0 auto var(--space-lg);">
                             <i class="fas fa-handshake"></i>
                         </div>
-                        <h3>Partnership</h3>
-                        <p>We believe in building lasting relationships with our clients, working together to achieve shared success and creating legacies that endure for generations.</p>
+                        <div class="stat-content">
+                            <h3 style="color: var(--primary-gold); margin-bottom: var(--space-md);">Partnership</h3>
+                            <p style="color: var(--text-secondary); text-align: center; line-height: 1.6;">We believe in building lasting relationships with our clients, working together to achieve shared success and creating legacies that endure for generations.</p>
+                        </div>
                     </div>
                 </div>
             </div>
