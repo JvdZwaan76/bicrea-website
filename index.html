@@ -131,7 +131,7 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -148,7 +148,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8), rgba(212, 175, 55, 0.1));
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.75), rgba(212, 175, 55, 0.1));
         }
         
         /* Loading Animation - Fixed Implementation */
@@ -481,7 +481,7 @@
         <!-- Scroll progress indicator -->
         <div class="scroll-progress" role="progressbar" aria-label="Reading progress"></div>
         
-        <!-- USA Callout -->
+        <!-- Enhanced American-Themed USA Callout -->
         <div class="usa-callout">
             <i class="fas fa-flag-usa" aria-hidden="true"></i>
             <span>Proudly Owned and Operated in the USA</span>
@@ -509,7 +509,7 @@
         </nav>
 
         <main id="main-content">
-            <!-- Enhanced Hero Section -->
+            <!-- FIXED Enhanced Hero Section - No Indicators -->
             <section class="enhanced-hero" id="hero" role="banner">
                 <!-- Hero Background Slides -->
                 <div class="hero-slides">
@@ -583,33 +583,6 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Hero Navigation -->
-                <div class="hero-navigation">
-                    <div class="hero-indicators">
-                        <button class="hero-indicator active" data-service="property-investments" aria-label="Strategic Property Investments" onclick="gtag('event', 'click', { event_category: 'Hero Navigation', event_label: 'Property Investments' });">
-                            <span class="indicator-icon"><i class="fas fa-building"></i></span>
-                            <span class="indicator-label">Property</span>
-                        </button>
-                        <button class="hero-indicator" data-service="mineral-title" aria-label="Mineral Title Reports" onclick="gtag('event', 'click', { event_category: 'Hero Navigation', event_label: 'Mineral Title' });">
-                            <span class="indicator-icon"><i class="fas fa-file-contract"></i></span>
-                            <span class="indicator-label">Mineral</span>
-                        </button>
-                        <button class="hero-indicator" data-service="market-analysis" aria-label="Advanced Market Analysis" onclick="gtag('event', 'click', { event_category: 'Hero Navigation', event_label: 'Market Analysis' });">
-                            <span class="indicator-icon"><i class="fas fa-chart-line"></i></span>
-                            <span class="indicator-label">Analysis</span>
-                        </button>
-                        <button class="hero-indicator" data-service="portfolio-management" aria-label="Portfolio Management" onclick="gtag('event', 'click', { event_category: 'Hero Navigation', event_label: 'Portfolio Management' });">
-                            <span class="indicator-icon"><i class="fas fa-briefcase"></i></span>
-                            <span class="indicator-label">Portfolio</span>
-                        </button>
-                    </div>
-                    
-                    <!-- Progress Bar -->
-                    <div class="hero-progress">
-                        <div class="progress-bar"></div>
                     </div>
                 </div>
                 
