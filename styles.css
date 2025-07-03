@@ -779,7 +779,7 @@ p {
     }
 }
 
-/* Enhanced Service Icon */
+/* Enhanced Service Icon - FIXED FOR CENTERING */
 .service-icon {
     width: 70px;
     height: 70px;
@@ -793,6 +793,7 @@ p {
     position: relative;
     overflow: hidden;
     min-width: 70px;
+    margin: 0 auto; /* Added for centering */
 }
 
 .service-icon::before {
@@ -1464,7 +1465,7 @@ section {
     left: 100%;
 }
 
-/* Enhanced Stat Icon for Team Cards */
+/* Enhanced Stat Icon for Team Cards - FIXED FOR CENTERING */
 .stat-icon {
     width: 80px;
     height: 80px;
@@ -1477,6 +1478,8 @@ section {
     margin-bottom: var(--space-lg);
     position: relative;
     overflow: hidden;
+    margin-left: auto; /* Added for centering */
+    margin-right: auto; /* Added for centering */
 }
 
 .stat-icon::before {
@@ -1745,11 +1748,14 @@ textarea.form-control {
     gap: var(--space-sm);
     margin-bottom: var(--space-md);
     color: var(--text-secondary);
+    justify-content: flex-start; /* Keep left-aligned for contact items */
 }
 
 .contact-item i {
     color: var(--primary-gold);
     width: 20px;
+    text-align: center; /* Center the icon within its width */
+    flex-shrink: 0;
 }
 
 .contact-item a {
@@ -1785,7 +1791,7 @@ textarea.form-control {
     display: block !important;
 }
 
-/* Table of Contents */
+/* Table of Contents - FIXED TO PROPERLY HIDE ON MOBILE */
 .legal-toc {
     position: fixed;
     top: 50%;
@@ -1800,7 +1806,7 @@ textarea.form-control {
     max-height: 70vh;
     overflow-y: auto;
     z-index: var(--z-sticky);
-    display: block !important;
+    display: block;
 }
 
 .toc-content h3 {
@@ -2132,6 +2138,8 @@ textarea.form-control {
     transition: var(--transition-base);
     font-size: var(--font-sm);
     white-space: nowrap;
+    justify-content: center; /* Added for centering */
+    text-align: center; /* Added for centering */
 }
 
 .benefit-item:hover {
@@ -2380,6 +2388,7 @@ textarea.form-control {
     position: relative;
     z-index: 2;
     box-shadow: var(--shadow-gold);
+    margin: 0; /* Ensure no extra margin */
 }
 
 .step-content {
@@ -2481,6 +2490,10 @@ textarea.form-control {
     border-color: rgba(212, 175, 55, 0.3);
     box-shadow: var(--shadow-gold);
     transform: translateY(-2px);
+}
+
+.contact-method .service-icon {
+    margin: 0; /* Reset margin for contact methods since they use flex layout */
 }
 
 .method-details {
@@ -2597,6 +2610,10 @@ textarea.form-control {
     left: 100%;
 }
 
+.advantage-item .service-icon {
+    margin: 0 auto var(--space-lg) auto; /* Centered with bottom margin */
+}
+
 .advantage-item h3 {
     font-size: var(--font-xl);
     margin-bottom: var(--space-md);
@@ -2649,13 +2666,19 @@ textarea.form-control {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
     
-    .legal-toc {
-        display: none;
-    }
-    
     .team-member-image {
         width: 150px;
         height: 150px;
+    }
+}
+
+/* FIXED: Table of Contents Mobile Hide */
+@media (max-width: 1024px) {
+    .legal-toc {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
     }
 }
 
@@ -2749,6 +2772,7 @@ textarea.form-control {
         width: 60px;
         height: 60px;
         font-size: var(--font-2xl);
+        margin: 0 auto; /* Centered on mobile */
     }
     
     .portfolio-grid {
@@ -2758,6 +2782,16 @@ textarea.form-control {
     .team-member-image {
         width: 120px;
         height: 120px;
+        margin: 0 auto; /* Centered on mobile */
+    }
+    
+    /* Ensure all service icons are centered on mobile */
+    .service-item {
+        text-align: center;
+    }
+    
+    .service-item .service-icon {
+        margin: 0 auto var(--space-lg) auto;
     }
 }
 
@@ -2833,6 +2867,19 @@ textarea.form-control {
     .team-member-image {
         width: 100px;
         height: 100px;
+        margin: 0 auto; /* Centered on mobile */
+    }
+    
+    /* Center all icons on small screens */
+    .service-icon,
+    .stat-icon {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .benefit-item {
+        justify-content: center;
+        text-align: center;
     }
 }
 
@@ -2938,6 +2985,25 @@ textarea.form-control {
     .team-member-image {
         width: 80px;
         height: 80px;
+        margin: 0 auto; /* Centered on extra small screens */
+    }
+    
+    /* Ensure all icons and elements are centered on extra small screens */
+    .service-icon,
+    .stat-icon,
+    .step-number {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .advantage-item,
+    .benefit-item,
+    .contact-method {
+        text-align: center;
+    }
+    
+    .contact-method .service-icon {
+        margin: 0 auto var(--space-md) auto;
     }
 }
 
@@ -3053,4 +3119,47 @@ img.loaded {
         visibility: visible !important;
         opacity: 1 !important;
     }
+}
+
+/* === COMPREHENSIVE ICON CENTERING === */
+/* Ensure all icons are consistently centered across all sections */
+.advantage-item .service-icon,
+.mission-values .service-icon,
+.achievements .stat-icon,
+.awards-recognition .service-icon,
+.security-features .service-icon,
+.our-story .service-icon,
+.leadership-team .service-icon,
+section .service-icon,
+section .stat-icon {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Special handling for icons in flex containers */
+.contact-method .service-icon {
+    margin: 0; /* Reset for flex layouts */
+}
+
+/* Ensure icons in advantage grids are centered */
+.advantages-grid .advantage-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Center FAQ and other interactive icons */
+.faq-question i,
+.legal-notice i {
+    text-align: center;
+}
+
+/* Ensure testimonial and other card icons are centered */
+.testimonial-card .service-icon,
+.card .service-icon {
+    margin: 0 auto;
 }
