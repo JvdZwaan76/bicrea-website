@@ -111,6 +111,83 @@
         }
     }
     </script>
+
+    <!-- Additional CSS for Security Features -->
+    <style>
+        .security-features {
+            margin-top: var(--space-xl);
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: var(--radius-base);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: var(--transition-base);
+        }
+
+        .security-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .security-item i {
+            color: var(--primary-gold);
+            font-size: var(--font-lg);
+            flex-shrink: 0;
+        }
+
+        .security-item span {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .cookie-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+
+        .cookie-type {
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(212, 175, 55, 0.1));
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        .cookie-type h4 {
+            color: var(--primary-gold);
+            margin-bottom: var(--space-sm);
+            font-size: var(--font-lg);
+        }
+
+        .cookie-type p {
+            color: var(--text-secondary);
+            margin-bottom: 0;
+            font-size: var(--font-base);
+        }
+
+        @media (max-width: 768px) {
+            .security-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cookie-types {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Skip to main content for accessibility -->
