@@ -597,11 +597,11 @@
                             <div class="contact-details">
                                 <div class="contact-item">
                                     <i class="fas fa-envelope" aria-hidden="true"></i>
-                                    <a href="mailto:ireland_pacific@yahoo.com">ireland_pacific@yahoo.com</a>
+                                    <a href="mailto:ireland_pacific@yahoo.com" onclick="gtag('event', 'terms_contact_email', { event_category: 'Legal Contact', event_label: 'Terms Email' });">ireland_pacific@yahoo.com</a>
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-phone" aria-hidden="true"></i>
-                                    <a href="tel:+18052332942">+1 (805) 233-2942</a>
+                                    <a href="tel:+18052332942" onclick="gtag('event', 'terms_contact_phone', { event_category: 'Legal Contact', event_label: 'Terms Phone' });">+1 (805) 233-2942</a>
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
@@ -613,11 +613,11 @@
 
                     <div class="legal-footer">
                         <div class="legal-actions">
-                            <a href="/privacy.html" class="btn btn-outline">
+                            <a href="/privacy.html" class="btn btn-outline" onclick="gtag('event', 'terms_to_privacy', { event_category: 'Legal Navigation', event_label: 'Terms to Privacy' });">
                                 <span>Privacy Policy</span>
                                 <i class="fas fa-arrow-right" aria-hidden="true"></i>
                             </a>
-                            <a href="/contact.html" class="btn btn-primary">
+                            <a href="/contact.html" class="btn btn-primary" onclick="gtag('event', 'terms_to_contact', { event_category: 'Legal Navigation', event_label: 'Terms to Contact' });">
                                 <span>Contact Us</span>
                                 <i class="fas fa-envelope" aria-hidden="true"></i>
                             </a>
@@ -661,18 +661,19 @@
                     <span class="brand-icon" aria-hidden="true">◊</span>
                     <h3>BicRea</h3>
                     <p>A Sarasota-based leader in luxury property investments and mineral title services, serving clients nationwide with distinction.</p>
+                    <!-- UPDATED: FontAwesome Social Icons -->
                     <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=61577781971835" aria-label="Follow BicRea on Facebook">
-                            <img src="./images/facebook-icon.png" alt="" width="20" height="20" onerror="this.style.display='none';">
+                        <a href="https://www.facebook.com/profile.php?id=61577781971835" aria-label="Follow BicRea on Facebook" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'Facebook Terms' });">
+                            <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" aria-label="Follow BicRea on Twitter">
-                            <img src="./images/twitter-icon.png" alt="" width="20" height="20" onerror="this.style.display='none';">
+                        <a href="#" aria-label="Follow BicRea on Twitter" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'Twitter Terms' });">
+                            <i class="fab fa-x-twitter"></i>
                         </a>
-                        <a href="#" aria-label="Connect with BicRea on LinkedIn">
-                            <img src="./images/linkedin-icon.png" alt="" width="20" height="20" onerror="this.style.display='none';">
+                        <a href="#" aria-label="Connect with BicRea on LinkedIn" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'LinkedIn Terms' });">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://www.instagram.com/bicreallc/" aria-label="Follow BicRea on Instagram">
-                            <img src="./images/instagram-icon.png" alt="" width="20" height="20" onerror="this.style.display='none';">
+                        <a href="https://www.instagram.com/bicreallc/" aria-label="Follow BicRea on Instagram" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'Instagram Terms' });">
+                            <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
@@ -701,8 +702,8 @@
                 <div class="footer-section footer-contact">
                     <h4>Contact</h4>
                     <div class="contact-info">
-                        <p><a href="mailto:ireland_pacific@yahoo.com">ireland_pacific@yahoo.com</a></p>
-                        <p><a href="tel:+18052332942">+1 (805) 233-2942</a></p>
+                        <p><a href="mailto:ireland_pacific@yahoo.com" onclick="gtag('event', 'email_click', { event_category: 'Contact', event_label: 'Footer Email Terms' });">ireland_pacific@yahoo.com</a></p>
+                        <p><a href="tel:+18052332942" onclick="gtag('event', 'phone_click', { event_category: 'Contact', event_label: 'Footer Phone Terms' });">+1 (805) 233-2942</a></p>
                         <p>4360 Winners Circle, Sarasota, FL 34238</p>
                     </div>
                 </div>
