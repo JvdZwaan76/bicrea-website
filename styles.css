@@ -3,10 +3,11 @@
 
 /* === CSS CUSTOM PROPERTIES === */
 :root {
-    /* Enhanced Color Palette */
+    /* Enhanced Color Palette - ADA Compliant */
     --primary-gold: #d4af37;
     --primary-gold-light: #f4d03f;
     --primary-gold-dark: #b8941f;
+    --primary-gold-accessible: #f4d03f; /* Higher contrast for accessibility */
     --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
     --gold-shimmer: linear-gradient(90deg, transparent 0%, rgba(244, 208, 63, 0.4) 50%, transparent 100%);
     
@@ -17,11 +18,11 @@
     --bg-quaternary: #1f1f1f;
     --bg-overlay: rgba(10, 10, 10, 0.95);
     
-    /* Text Colors */
+    /* Text Colors - Enhanced for accessibility */
     --text-primary: #f5f5f5;
     --text-secondary: #e0e0e0;
     --text-muted: #b0b0b0;
-    --text-accent: #d4af37;
+    --text-accent: #f4d03f; /* More accessible gold */
     
     /* Status Colors */
     --error: #ff4444;
@@ -351,6 +352,138 @@ p {
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
+}
+
+/* === ADA COMPLIANT LINK STYLES === */
+/* Comprehensive link styling for accessibility compliance */
+a,
+a:link,
+a:visited,
+a:active {
+    color: var(--primary-gold-accessible) !important;
+    text-decoration: underline;
+    transition: var(--transition-base);
+    border-radius: 2px;
+    padding: 1px 2px;
+    font-weight: 500;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+a:hover {
+    color: var(--primary-gold-light) !important;
+    background: rgba(244, 208, 63, 0.15);
+    text-decoration: underline;
+    transform: none; /* Prevent layout shifts */
+}
+
+a:focus {
+    outline: 3px solid var(--primary-gold-accessible);
+    outline-offset: 2px;
+    background: rgba(244, 208, 63, 0.2);
+    color: var(--primary-gold-light) !important;
+    text-decoration: underline;
+}
+
+/* Navigation links - special styling */
+.nav-link,
+.nav-link:link,
+.nav-link:visited,
+.nav-link:active {
+    color: var(--text-primary) !important;
+    text-decoration: none !important;
+    padding: var(--space-sm) 0;
+    font-weight: 400;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-gold-accessible) !important;
+    text-decoration: none !important;
+}
+
+.nav-link:focus {
+    outline: 3px solid var(--primary-gold-accessible);
+    outline-offset: 2px;
+    color: var(--primary-gold-accessible) !important;
+    background: rgba(244, 208, 63, 0.1);
+    border-radius: var(--radius-base);
+}
+
+/* Button links - maintain button styling */
+.btn,
+.btn:link,
+.btn:visited,
+.btn:active {
+    text-decoration: none !important;
+    padding: var(--space-md) var(--space-2xl);
+}
+
+.btn:focus {
+    outline: 3px solid var(--primary-gold-accessible);
+    outline-offset: 2px;
+}
+
+/* Footer links */
+.footer-section a,
+.footer-legal a,
+.footer-section a:link,
+.footer-section a:visited,
+.footer-legal a:link,
+.footer-legal a:visited {
+    color: var(--text-secondary) !important;
+    text-decoration: none !important;
+}
+
+.footer-section a:hover,
+.footer-legal a:hover {
+    color: var(--primary-gold-accessible) !important;
+    text-decoration: underline !important;
+}
+
+.footer-section a:focus,
+.footer-legal a:focus {
+    outline: 3px solid var(--primary-gold-accessible);
+    outline-offset: 2px;
+    color: var(--primary-gold-accessible) !important;
+    background: rgba(244, 208, 63, 0.1);
+    border-radius: 2px;
+}
+
+/* Breadcrumb links */
+.breadcrumb a,
+.breadcrumb a:link,
+.breadcrumb a:visited {
+    color: var(--primary-gold-accessible) !important;
+    text-decoration: none !important;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-base);
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-gold-light) !important;
+    background: rgba(244, 208, 63, 0.1);
+    text-decoration: none !important;
+}
+
+.breadcrumb a:focus {
+    outline: 3px solid var(--primary-gold-accessible);
+    outline-offset: 2px;
+    background: rgba(244, 208, 63, 0.2);
+}
+
+/* Social links - maintain icon styling */
+.social-links a,
+.social-links a:link,
+.social-links a:visited {
+    text-decoration: none !important;
+    padding: 0;
+    border-radius: var(--radius-full);
+}
+
+.social-links a:focus {
+    outline: 3px solid var(--primary-gold-accessible);
+    outline-offset: 2px;
 }
 
 /* Enhanced Text Effects */
@@ -1694,6 +1827,7 @@ textarea.form-control {
     overflow-wrap: break-word;
 }
 
+/* FIXED: Proper list styling for legal pages */
 .legal-list {
     list-style: none;
     margin: var(--space-lg) 0;
@@ -1715,8 +1849,53 @@ textarea.form-control {
     content: '◊';
     position: absolute;
     left: -var(--space-xl);
-    color: var(--primary-gold);
+    color: var(--primary-gold-accessible);
     font-weight: bold;
+}
+
+/* FIXED: Numbered lists for legal pages */
+.legal-section ol {
+    list-style: decimal;
+    margin: var(--space-lg) 0;
+    padding-left: var(--space-2xl);
+    display: block !important;
+    counter-reset: item;
+}
+
+.legal-section ol li {
+    position: relative;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+    line-height: 1.7;
+    display: list-item !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    list-style-position: outside;
+    padding-left: var(--space-sm);
+}
+
+.legal-section ol li::marker {
+    color: var(--primary-gold-accessible);
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+/* Nested numbered lists */
+.legal-section ol ol {
+    list-style: lower-alpha;
+    margin: var(--space-md) 0;
+    padding-left: var(--space-xl);
+}
+
+.legal-section ol ol li::marker {
+    color: var(--primary-gold-accessible);
+    font-weight: 600;
+}
+
+/* Third level nested lists */
+.legal-section ol ol ol {
+    list-style: lower-roman;
+    padding-left: var(--space-lg);
 }
 
 .legal-highlight {
@@ -1758,14 +1937,57 @@ textarea.form-control {
     flex-shrink: 0;
 }
 
-.contact-item a {
-    color: var(--primary-gold);
-    text-decoration: none;
+/* FIXED: ADA Compliant Link Colors - High Contrast */
+.contact-item a,
+.legal-section a,
+.legal-highlight a,
+.legal-meta a,
+a {
+    color: var(--primary-gold-accessible) !important;
+    text-decoration: underline;
     transition: var(--transition-base);
+    border-radius: 2px;
+    padding: 1px 2px;
+    font-weight: 500;
 }
 
-.contact-item a:hover {
-    color: var(--primary-gold-light);
+.contact-item a:hover,
+.legal-section a:hover,
+.legal-highlight a:hover,
+.legal-meta a:hover,
+a:hover {
+    color: var(--primary-gold-light) !important;
+    background: rgba(244, 208, 63, 0.15);
+    text-decoration: underline;
+}
+
+.contact-item a:focus,
+.legal-section a:focus,
+.legal-highlight a:focus,
+.legal-meta a:focus,
+a:focus {
+    outline: 3px solid var(--primary-gold-accessible);
+    outline-offset: 2px;
+    background: rgba(244, 208, 63, 0.2);
+    color: var(--primary-gold-light) !important;
+}
+
+/* Override any browser default link colors */
+a:link,
+a:visited,
+a:active {
+    color: var(--primary-gold-accessible) !important;
+}
+
+/* Specific overrides for potential blue links */
+.legal-content a:link,
+.legal-content a:visited,
+.legal-content a:active,
+.legal-section a:link,
+.legal-section a:visited,
+.legal-section a:active {
+    color: var(--primary-gold-accessible) !important;
+    text-decoration: underline;
 }
 
 .legal-footer {
@@ -2973,6 +3195,22 @@ textarea.form-control {
         font-size: var(--font-xl);
     }
     
+    .legal-section ol {
+        padding-left: var(--space-lg);
+        margin: var(--space-md) 0;
+    }
+    
+    .legal-section ol li {
+        padding-left: 0;
+        margin-bottom: var(--space-sm);
+        font-size: var(--font-base);
+    }
+    
+    .legal-section ol ol {
+        padding-left: var(--space-md);
+        margin: var(--space-sm) 0;
+    }
+    
     .legal-highlight {
         padding: var(--space-lg);
     }
@@ -2980,6 +3218,48 @@ textarea.form-control {
     .legal-actions {
         flex-direction: column;
         align-items: center;
+    }
+    
+    /* Ensure numbered lists work properly on mobile */
+    .legal-section ol {
+        padding-left: var(--space-lg);
+        margin: var(--space-md) 0;
+    }
+    
+    .legal-section ol li {
+        padding-left: 0;
+        margin-bottom: var(--space-sm);
+        font-size: var(--font-sm);
+    }
+    
+    .legal-section ol ol {
+        padding-left: var(--space-md);
+    }
+    
+    /* Improve link visibility on mobile */
+    a, a:link, a:visited {
+        font-weight: 600 !important;
+        text-decoration: underline !important;
+    }
+    
+    a:focus {
+        outline-width: 2px;
+        outline-offset: 1px;
+    }
+    
+    /* Ensure numbered lists work properly on mobile */
+    .legal-section ol {
+        padding-left: var(--space-xl);
+        margin: var(--space-md) 0;
+    }
+    
+    .legal-section ol li {
+        padding-left: var(--space-xs);
+        margin-bottom: var(--space-sm);
+    }
+    
+    .legal-section ol ol {
+        padding-left: var(--space-lg);
     }
     
     .team-member-image {
@@ -3082,6 +3362,33 @@ img.loaded {
     .stat-card,
     .content-card {
         border-width: 2px;
+    }
+    
+    /* Enhanced contrast for links in high contrast mode */
+    a, a:link, a:visited, a:active {
+        color: #FFD700 !important; /* Brighter gold for high contrast */
+        font-weight: 700 !important;
+        text-decoration: underline !important;
+        border: 1px solid transparent;
+    }
+    
+    a:hover, a:focus {
+        color: #FFFF00 !important; /* Even brighter for hover/focus */
+        background: rgba(255, 215, 0, 0.2) !important;
+        border: 1px solid #FFD700;
+    }
+    
+    /* Enhanced numbered list visibility */
+    .legal-section ol li::marker {
+        color: #FFD700;
+        font-weight: 900;
+        font-size: 1.2em;
+    }
+    
+    .legal-section ol ol li::marker,
+    .legal-section ol ol ol li::marker {
+        color: #FFD700;
+        font-weight: 800;
     }
 }
 
