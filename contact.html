@@ -85,6 +85,63 @@
         });
     </script>
     
+    <!-- Fix for image loading issues -->
+    <style>
+        /* Override lazy loading opacity to ensure images display immediately */
+        img {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Ensure portfolio images display correctly */
+        .portfolio-detailed-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: var(--radius-xl, 1rem);
+        }
+        
+        /* Fix for social media icons */
+        .social-links a img {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0.8);
+        }
+        
+        /* Enhanced image loading fallback */
+        .portfolio-detailed-image {
+            position: relative;
+            border-radius: var(--radius-xl, 1rem);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            min-height: 300px;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Image error fallback */
+        .portfolio-detailed-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            z-index: 1;
+        }
+        
+        .portfolio-detailed-image img {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+    
     <!-- Enhanced Structured Data -->
     <script type="application/ld+json">
     {
@@ -258,7 +315,11 @@
                         </form>
                     </div>
                     <div class="portfolio-detailed-image">
-                        <img src="/images/contact-image.jpg" alt="BicRea office in Sarasota, Florida - Professional meeting space for luxury property investment consultations with elegant conference room" loading="lazy" width="600" height="400" data-critical="true">
+                        <img src="./images/contact-image.jpg" 
+                             alt="BicRea office in Sarasota, Florida - Professional meeting space for luxury property investment consultations with elegant conference room" 
+                             width="600" 
+                             height="400"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:400px;background:linear-gradient(135deg,#1a1a1a,#2a2a2a);color:#d4af37;font-size:1.2rem;&quot;><i class=&quot;fas fa-image&quot; style=&quot;margin-right:0.5rem;&quot;></i>Contact Image</div>';">
                         <div class="portfolio-stats">
                             <div class="stat-badge">24/7 Support</div>
                             <div class="stat-badge">Expert Team</div>
@@ -333,7 +394,11 @@
                         </div>
                     </div>
                     <div class="portfolio-detailed-image">
-                        <img src="/images/bicrea-sarasota-office-exterior.webp" alt="BicRea office location in Sarasota, Florida showing 4360 Winners Circle professional building exterior with luxury architecture" loading="lazy" width="600" height="400">
+                        <img src="./images/bicrea-sarasota-office-exterior.webp" 
+                             alt="BicRea office location in Sarasota, Florida showing 4360 Winners Circle professional building exterior with luxury architecture" 
+                             width="600" 
+                             height="400"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:400px;background:linear-gradient(135deg,#1a1a1a,#2a2a2a);color:#d4af37;font-size:1.2rem;&quot;><i class=&quot;fas fa-building&quot; style=&quot;margin-right:0.5rem;&quot;></i>Office Exterior</div>';">
                         <div class="portfolio-stats">
                             <div class="stat-badge">Sarasota, FL</div>
                             <div class="stat-badge">Nationwide Service</div>
@@ -446,16 +511,16 @@
                     <p>A Sarasota-based leader in luxury property investments and mineral title services, serving clients nationwide with distinction and unrivaled expertise.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/profile.php?id=61577781971835" aria-label="Follow BicRea on Facebook" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'Facebook Footer' });">
-                            <img src="/images/facebook-icon.png" alt="" width="20" height="20">
+                            <img src="./images/facebook-icon.png" alt="" width="20" height="20" onerror="this.style.display='none';">
                         </a>
                         <a href="#" aria-label="Follow BicRea on Twitter" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'Twitter Footer' });">
-                            <img src="/images/twitter-icon.png" alt="" width="20" height="20">
+                            <img src="./images/twitter-icon.png" alt="" width="20" height="20" onerror="this.style.display='none';">
                         </a>
                         <a href="#" aria-label="Connect with BicRea on LinkedIn" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'LinkedIn Footer' });">
-                            <img src="/images/linkedin-icon.png" alt="" width="20" height="20">
+                            <img src="./images/linkedin-icon.png" alt="" width="20" height="20" onerror="this.style.display='none';">
                         </a>
                         <a href="https://www.instagram.com/bicreallc/" aria-label="Follow BicRea on Instagram" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'Instagram Footer' });">
-                            <img src="/images/instagram-icon.png" alt="" width="20" height="20">
+                            <img src="./images/instagram-icon.png" alt="" width="20" height="20" onerror="this.style.display='none';">
                         </a>
                     </div>
                 </div>
@@ -501,6 +566,46 @@
         </div>
     </footer>
 
+    <!-- Enhanced Image Loading Script -->
+    <script>
+        // Ensure all images load properly
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', function() {
+                        this.classList.add('loaded');
+                    });
+                    img.addEventListener('error', function() {
+                        console.warn('Image failed to load:', this.src);
+                    });
+                }
+            });
+            
+            // FAQ functionality
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    const answer = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+                    const isOpen = answer.classList.contains('open');
+                    
+                    // Close all other FAQ items
+                    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+                    document.querySelectorAll('.faq-question i').forEach(i => i.className = 'fas fa-plus');
+                    document.querySelectorAll('.faq-question').forEach(b => b.setAttribute('aria-expanded', 'false'));
+                    
+                    if (!isOpen) {
+                        answer.classList.add('open');
+                        icon.className = 'fas fa-minus';
+                        button.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+        });
+    </script>
+    
     <!-- Scripts -->
     <script src="/script.js" defer></script>
 </body>
