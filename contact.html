@@ -71,6 +71,7 @@
     <!-- Preload Critical Resources -->
     <link rel="preload" href="/images/contact-image.jpg" as="image">
     <link rel="preload" href="/images/bicrea-sarasota-office-exterior.webp" as="image">
+    <link rel="preload" href="/styles.css" as="style">
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FKCE7BW63Y"></script>
@@ -84,63 +85,6 @@
             content_group1: 'Contact'
         });
     </script>
-    
-    <!-- Fix for image loading issues -->
-    <style>
-        /* Override lazy loading opacity to ensure images display immediately */
-        img {
-            opacity: 1 !important;
-            transform: scale(1) !important;
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Ensure portfolio images display correctly */
-        .portfolio-detailed-image img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: var(--radius-xl, 1rem);
-        }
-        
-        /* Fix for social media icons */
-        .social-links a img {
-            width: 20px;
-            height: 20px;
-            filter: brightness(0.8);
-        }
-        
-        /* Enhanced image loading fallback */
-        .portfolio-detailed-image {
-            position: relative;
-            border-radius: var(--radius-xl, 1rem);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            min-height: 300px;
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Image error fallback */
-        .portfolio-detailed-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
-            z-index: 1;
-        }
-        
-        .portfolio-detailed-image img {
-            position: relative;
-            z-index: 2;
-        }
-    </style>
     
     <!-- Enhanced Structured Data -->
     <script type="application/ld+json">
@@ -315,11 +259,11 @@
                         </form>
                     </div>
                     <div class="portfolio-detailed-image">
-                        <img src="./images/contact-image.jpg" 
+                        <img src="/images/contact-image.jpg" 
                              alt="BicRea office in Sarasota, Florida - Professional meeting space for luxury property investment consultations with elegant conference room" 
+                             loading="lazy"
                              width="600" 
-                             height="400"
-                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:400px;background:linear-gradient(135deg,#1a1a1a,#2a2a2a);color:#d4af37;font-size:1.2rem;&quot;><i class=&quot;fas fa-image&quot; style=&quot;margin-right:0.5rem;&quot;></i>Contact Image</div>';">
+                             height="400">
                         <div class="portfolio-stats">
                             <div class="stat-badge">24/7 Support</div>
                             <div class="stat-badge">Expert Team</div>
@@ -394,11 +338,11 @@
                         </div>
                     </div>
                     <div class="portfolio-detailed-image">
-                        <img src="./images/bicrea-sarasota-office-exterior.webp" 
+                        <img src="/images/bicrea-sarasota-office-exterior.webp" 
                              alt="BicRea office location in Sarasota, Florida showing 4360 Winners Circle professional building exterior with luxury architecture" 
+                             loading="lazy"
                              width="600" 
-                             height="400"
-                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:400px;background:linear-gradient(135deg,#1a1a1a,#2a2a2a);color:#d4af37;font-size:1.2rem;&quot;><i class=&quot;fas fa-building&quot; style=&quot;margin-right:0.5rem;&quot;></i>Office Exterior</div>';">
+                             height="400">
                         <div class="portfolio-stats">
                             <div class="stat-badge">Sarasota, FL</div>
                             <div class="stat-badge">Nationwide Service</div>
@@ -419,7 +363,7 @@
                 
                 <div class="faq-grid">
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq1-answer" tabindex="0">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq1-answer">
                             <h3>What types of properties do you specialize in?</h3>
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </button>
@@ -429,7 +373,7 @@
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq2-answer" tabindex="0">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq2-answer">
                             <h3>How do you ensure the accuracy of mineral title reports?</h3>
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </button>
@@ -439,7 +383,7 @@
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq3-answer" tabindex="0">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq3-answer">
                             <h3>What is the minimum investment threshold?</h3>
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </button>
@@ -449,7 +393,7 @@
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq4-answer" tabindex="0">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq4-answer">
                             <h3>How long does the investment process take?</h3>
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </button>
@@ -459,7 +403,7 @@
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq5-answer" tabindex="0">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq5-answer">
                             <h3>Do you work with international clients?</h3>
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </button>
@@ -469,7 +413,7 @@
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq6-answer" tabindex="0">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq6-answer">
                             <h3>What sets BicRea apart from other firms?</h3>
                             <i class="fas fa-plus" aria-hidden="true"></i>
                         </button>
@@ -509,18 +453,19 @@
                     <span class="brand-icon" aria-hidden="true">◊</span>
                     <h3>BicRea</h3>
                     <p>A Sarasota-based leader in luxury property investments and mineral title services, serving clients nationwide with distinction and unrivaled expertise.</p>
+                    <!-- UPDATED: FontAwesome Social Icons -->
                     <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=61577781971835" aria-label="Follow BicRea on Facebook" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'Facebook Footer' });">
-                            <img src="./images/facebook-icon.png" alt="" width="20" height="20" onerror="this.style.display='none';">
+                        <a href="https://www.facebook.com/profile.php?id=61577781971835" aria-label="Follow BicRea on Facebook" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'Facebook Contact' });">
+                            <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" aria-label="Follow BicRea on Twitter" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'Twitter Footer' });">
-                            <img src="./images/twitter-icon.png" alt="" width="20" height="20" onerror="this.style.display='none';">
+                        <a href="#" aria-label="Follow BicRea on Twitter" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'Twitter Contact' });">
+                            <i class="fab fa-x-twitter"></i>
                         </a>
-                        <a href="#" aria-label="Connect with BicRea on LinkedIn" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'LinkedIn Footer' });">
-                            <img src="./images/linkedin-icon.png" alt="" width="20" height="20" onerror="this.style.display='none';">
+                        <a href="#" aria-label="Connect with BicRea on LinkedIn" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'LinkedIn Contact' });">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://www.instagram.com/bicreallc/" aria-label="Follow BicRea on Instagram" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'Instagram Footer' });">
-                            <img src="./images/instagram-icon.png" alt="" width="20" height="20" onerror="this.style.display='none';">
+                        <a href="https://www.instagram.com/bicreallc/" aria-label="Follow BicRea on Instagram" onclick="gtag('event', 'social_click', { event_category: 'Social Media', event_label: 'Instagram Contact' });">
+                            <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
@@ -549,8 +494,8 @@
                 <div class="footer-section footer-contact">
                     <h4>Contact</h4>
                     <div class="contact-info">
-                        <p><a href="mailto:ireland_pacific@yahoo.com" onclick="gtag('event', 'email_click', { event_category: 'Contact', event_label: 'Footer Email' });">ireland_pacific@yahoo.com</a></p>
-                        <p><a href="tel:+18052332942" onclick="gtag('event', 'phone_click', { event_category: 'Contact', event_label: 'Footer Phone' });">+1 (805) 233-2942</a></p>
+                        <p><a href="mailto:ireland_pacific@yahoo.com" onclick="gtag('event', 'email_click', { event_category: 'Contact', event_label: 'Footer Email Contact' });">ireland_pacific@yahoo.com</a></p>
+                        <p><a href="tel:+18052332942" onclick="gtag('event', 'phone_click', { event_category: 'Contact', event_label: 'Footer Phone Contact' });">+1 (805) 233-2942</a></p>
                         <p>4360 Winners Circle, Sarasota, FL 34238</p>
                     </div>
                 </div>
@@ -566,24 +511,12 @@
         </div>
     </footer>
 
-    <!-- Enhanced Image Loading Script -->
+    <!-- Scripts -->
+    <script src="/script.js" defer></script>
+    
+    <!-- FAQ Functionality Script -->
     <script>
-        // Ensure all images load properly
         document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('img');
-            images.forEach(img => {
-                if (img.complete) {
-                    img.classList.add('loaded');
-                } else {
-                    img.addEventListener('load', function() {
-                        this.classList.add('loaded');
-                    });
-                    img.addEventListener('error', function() {
-                        console.warn('Image failed to load:', this.src);
-                    });
-                }
-            });
-            
             // FAQ functionality
             document.querySelectorAll('.faq-question').forEach(button => {
                 button.addEventListener('click', () => {
@@ -603,10 +536,20 @@
                     }
                 });
             });
+            
+            // Form validation enhancement
+            const form = document.getElementById('contact-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Add your form submission logic here
+                    gtag('event', 'form_submission_success', {
+                        event_category: 'Lead Generation',
+                        event_label: 'Contact Form Submitted'
+                    });
+                });
+            }
         });
     </script>
-    
-    <!-- Scripts -->
-    <script src="/script.js" defer></script>
 </body>
 </html>
