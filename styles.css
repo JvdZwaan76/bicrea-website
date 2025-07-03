@@ -1528,10 +1528,71 @@ a:focus {
     letter-spacing: 0.5px;
 }
 
-/* Legal action buttons */
+/* Legal action buttons - ADA COMPLIANT UPDATE */
 .legal-actions .btn {
     min-width: 180px;
     font-weight: 600;
+    padding: var(--space-md) var(--space-xl);
+    font-size: var(--font-lg);
+    min-height: 48px;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.legal-actions .btn-primary {
+    background: var(--gold-gradient);
+    color: #000000 !important;
+    border: 2px solid var(--primary-gold-accessible);
+    font-weight: 700;
+    text-shadow: none;
+    box-shadow: var(--shadow-gold);
+}
+
+.legal-actions .btn-primary:hover {
+    background: linear-gradient(135deg, #ffeb3b 0%, #fff59d 50%, #ffeb3b 100%);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-gold-lg);
+    color: #000000 !important;
+    border-color: #ffeb3b;
+}
+
+.legal-actions .btn-primary:focus {
+    outline: 4px solid #ffffff;
+    outline-offset: 3px;
+    box-shadow: 
+        var(--shadow-gold-lg),
+        0 0 0 4px #ffffff,
+        0 0 0 8px var(--primary-gold-accessible);
+    color: #000000 !important;
+}
+
+.legal-actions .btn-outline {
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--primary-gold-accessible) !important;
+    border: 3px solid var(--primary-gold-accessible);
+    backdrop-filter: blur(10px);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.legal-actions .btn-outline:hover {
+    background: var(--primary-gold-accessible);
+    color: #000000 !important;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-gold);
+    border-color: #f4d03f;
+    text-shadow: none;
+}
+
+.legal-actions .btn-outline:focus {
+    outline: 4px solid #ffffff;
+    outline-offset: 3px;
+    box-shadow: 
+        var(--shadow-gold),
+        0 0 0 4px #ffffff,
+        0 0 0 8px var(--primary-gold-accessible);
+    color: var(--primary-gold-accessible) !important;
 }
 
 /* Form submit buttons */
@@ -2596,26 +2657,75 @@ a:active {
     overflow-wrap: break-word;
 }
 
-/* Enhanced Social Links */
+/* === ENHANCED FOOTER WITH UPDATED SOCIAL LINKS === */
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-brand h3 {
+    font-family: var(--font-heading);
+    font-size: var(--font-2xl);
+    color: var(--primary-gold-accessible);
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+}
+
+.footer-brand .social-links {
+    margin-top: var(--space-md);
+}
+
+/* Footer social links get consistent styling */
+.footer .social-links a {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, rgba(244, 208, 63, 0.1), rgba(244, 208, 63, 0.05));
+    border: 2px solid rgba(244, 208, 63, 0.3);
+}
+
+.footer .social-links a:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: var(--shadow-gold);
+    border-color: var(--primary-gold-accessible);
+}
+
+.footer .social-links a i,
+.footer .social-links .fab,
+.footer .social-links .fa-brands {
+    color: var(--primary-gold-accessible);
+    font-size: var(--font-xl);
+}
+
+.footer .social-links a:hover i,
+.footer .social-links a:hover .fab,
+.footer .social-links a:hover .fa-brands {
+    color: #000000;
+}
+
+/* === ENHANCED SOCIAL LINKS WITH FONTAWESOME ICONS === */
 .social-links {
     display: flex;
     gap: var(--space-md);
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .social-links a {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all var(--transition-base);
-    background: rgba(212, 175, 55, 0.1);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: linear-gradient(135deg, rgba(244, 208, 63, 0.1), rgba(244, 208, 63, 0.05));
+    border: 2px solid rgba(244, 208, 63, 0.3);
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
+    text-decoration: none !important;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-base);
 }
 
 .social-links a::before {
@@ -2627,26 +2737,178 @@ a:active {
     height: 100%;
     background: var(--gold-gradient);
     opacity: 0;
-    transition: opacity var(--transition-base);
+    transition: all var(--transition-base);
+    border-radius: var(--radius-full);
 }
 
 .social-links a:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.05);
     box-shadow: var(--shadow-gold);
+    border-color: var(--primary-gold-accessible);
 }
 
 .social-links a:hover::before {
     opacity: 1;
 }
 
-.social-links a img {
-    position: relative;
-    z-index: 2;
-    transition: filter var(--transition-base);
+.social-links a:focus {
+    outline: 3px solid var(--primary-gold-accessible);
+    outline-offset: 3px;
+    transform: translateY(-2px) scale(1.03);
 }
 
-.social-links a:hover img {
-    filter: brightness(0) invert(1);
+/* FontAwesome Social Icons */
+.social-links a i {
+    position: relative;
+    z-index: 2;
+    font-size: var(--font-xl);
+    color: var(--primary-gold-accessible);
+    transition: all var(--transition-base);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.social-links a:hover i {
+    color: #000000;
+    text-shadow: none;
+    transform: scale(1.1);
+}
+
+/* Specific social platform styling */
+.social-links a[href*="facebook"] i::before {
+    content: "\f09a"; /* Facebook icon */
+    font-family: "Font Awesome 6 Brands";
+}
+
+.social-links a[href*="twitter"] i::before,
+.social-links a[href*="x.com"] i::before {
+    content: "\e61b"; /* X (Twitter) icon */
+    font-family: "Font Awesome 6 Brands";
+}
+
+.social-links a[href*="linkedin"] i::before {
+    content: "\f08c"; /* LinkedIn icon */
+    font-family: "Font Awesome 6 Brands";
+}
+
+.social-links a[href*="instagram"] i::before {
+    content: "\f16d"; /* Instagram icon */
+    font-family: "Font Awesome 6 Brands";
+}
+
+.social-links a[href*="youtube"] i::before {
+    content: "\f167"; /* YouTube icon */
+    font-family: "Font Awesome 6 Brands";
+}
+
+.social-links a[href*="tiktok"] i::before {
+    content: "\e07b"; /* TikTok icon */
+    font-family: "Font Awesome 6 Brands";
+}
+
+/* Alternative approach for direct FontAwesome classes */
+.social-links .fab,
+.social-links .fa-brands {
+    font-size: var(--font-xl);
+    color: var(--primary-gold-accessible);
+    transition: all var(--transition-base);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.social-links a:hover .fab,
+.social-links a:hover .fa-brands {
+    color: #000000;
+    text-shadow: none;
+    transform: scale(1.1);
+}
+
+/* Remove old image-based social icons */
+.social-links img {
+    display: none !important;
+}
+
+/* Elegant hover animations for each platform */
+.social-links a[href*="facebook"]:hover {
+    background: linear-gradient(135deg, #1877f2, #42a5f5);
+}
+
+.social-links a[href*="facebook"]:hover::before {
+    background: linear-gradient(135deg, #1877f2, #42a5f5);
+}
+
+.social-links a[href*="twitter"]:hover,
+.social-links a[href*="x.com"]:hover {
+    background: linear-gradient(135deg, #000000, #333333);
+}
+
+.social-links a[href*="twitter"]:hover::before,
+.social-links a[href*="x.com"]:hover::before {
+    background: linear-gradient(135deg, #000000, #333333);
+}
+
+.social-links a[href*="linkedin"]:hover {
+    background: linear-gradient(135deg, #0077b5, #005885);
+}
+
+.social-links a[href*="linkedin"]:hover::before {
+    background: linear-gradient(135deg, #0077b5, #005885);
+}
+
+.social-links a[href*="instagram"]:hover {
+    background: linear-gradient(135deg, #e4405f, #fd1d1d, #fcb045);
+}
+
+.social-links a[href*="instagram"]:hover::before {
+    background: linear-gradient(135deg, #e4405f, #fd1d1d, #fcb045);
+}
+
+.social-links a[href*="youtube"]:hover {
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+}
+
+.social-links a[href*="youtube"]:hover::before {
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+}
+
+/* Fallback for when FontAwesome doesn't load */
+.social-links a i:empty::after {
+    content: "📱";
+    font-size: var(--font-lg);
+}
+
+.social-links a[href*="facebook"] i:empty::after { content: "📘"; }
+.social-links a[href*="twitter"] i:empty::after,
+.social-links a[href*="x.com"] i:empty::after { content: "🐦"; }
+.social-links a[href*="linkedin"] i:empty::after { content: "💼"; }
+.social-links a[href*="instagram"] i:empty::after { content: "📷"; }
+.social-links a[href*="youtube"] i:empty::after { content: "📹"; }
+
+/* Enhanced accessibility for social links */
+.social-links a[aria-label]:hover::after {
+    content: attr(aria-label);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--primary-gold-accessible);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-base);
+    font-size: var(--font-xs);
+    white-space: nowrap;
+    z-index: var(--z-tooltip);
+    opacity: 0;
+    animation: tooltip-fade-in 0.3s ease forwards;
+    pointer-events: none;
+    border: 1px solid var(--primary-gold-accessible);
+}
+
+@keyframes tooltip-fade-in {
+    to {
+        opacity: 1;
+        bottom: -40px;
+    }
 }
 
 .footer-section h4 {
