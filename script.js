@@ -84,11 +84,32 @@
         console.log('BicRea enhanced app initialized successfully');
     }
     
+    // FIXED: Define initializeAdvancedAnimations before it's called
+    function initializeAdvancedAnimations() {
+        console.log('Advanced animations initialized');
+        if (isReducedMotion) {
+            console.log('Reduced motion detected - skipping advanced animations');
+            return;
+        }
+        
+        // Initialize luxury animation effects
+        initializeGoldShimmerEffects();
+        initializeFloatingElements();
+        initializeMouseTrackingEffects();
+        
+        // Add any additional advanced animations here
+        return true;
+    }
+    
     function initializeDeferredFeatures() {
-        initializeAdvancedAnimations();
-        initializeAnalytics();
-        initializeLuxuryEffects();
-        preloadCriticalAssets();
+        try {
+            initializeAdvancedAnimations();
+            initializeAnalytics();
+            initializeLuxuryEffects();
+            preloadCriticalAssets();
+        } catch (error) {
+            console.error('Deferred features initialization error:', error);
+        }
     }
     
     // === ENHANCED LOADING SCREEN === //
@@ -234,8 +255,8 @@
         
         console.log('Initializing enhanced hero with', heroSlides.length, 'slides');
         
-        // Preload hero images
-        preloadHeroImages();
+        // FIXED: Don't preload images via JavaScript to prevent console warnings
+        // Images are now loaded via CSS background-image properties
         
         // Initialize first slide with fade-in effect
         updateActiveSlide(0, true);
@@ -821,8 +842,9 @@
     }
     
     function initializeImageOptimization() {
-        // Preload critical images
-        const criticalImages = document.querySelectorAll('img[data-critical="true"]');
+        // FIXED: Don't preload hero images via JavaScript to prevent console warnings
+        // Critical images are now handled via CSS instead
+        const criticalImages = document.querySelectorAll('img[data-critical="true"]:not([data-hero])');
         criticalImages.forEach(img => {
             const link = document.createElement('link');
             link.rel = 'preload';
@@ -1428,9 +1450,8 @@
     function initializeLuxuryEffects() {
         if (isReducedMotion) return;
         
-        initializeGoldShimmerEffects();
-        initializeFloatingElements();
-        initializeMouseTrackingEffects();
+        // Note: these functions are now called directly from initializeAdvancedAnimations
+        // to prevent duplicate initialization
     }
     
     function initializeGoldShimmerEffects() {
@@ -1532,10 +1553,10 @@
     
     // === ASSET PRELOADING === //
     function preloadCriticalAssets() {
-        // Preload hero images
-        preloadHeroImages();
+        // FIXED: Don't preload hero images to prevent console warnings
+        // Hero images are now loaded via CSS background-image properties
         
-        // Preload critical fonts
+        // Preload critical fonts only
         const fontPreloads = [
             'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap',
             'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
@@ -1546,16 +1567,6 @@
             link.rel = 'preload';
             link.as = 'style';
             link.href = url;
-            document.head.appendChild(link);
-        });
-    }
-    
-    function preloadHeroImages() {
-        config.heroSlides.forEach(image => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'image';
-            link.href = `/images/${image}`;
             document.head.appendChild(link);
         });
     }
