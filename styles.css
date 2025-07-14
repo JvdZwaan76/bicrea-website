@@ -1,6 +1,7 @@
 /* ========================================
    ENHANCED TYPOGRAPHY & WORD BREAKING
    Optimized for BicRea Luxury Website
+   FIXED: Heading readability & ADA compliance
 ======================================== */
 
 /* === ENHANCED CSS CUSTOM PROPERTIES === */
@@ -36,6 +37,12 @@
     --tracking-wide: 0.025em;
     --tracking-wider: 0.05em;
     --tracking-widest: 0.1em;
+    
+    /* ADA Compliant Colors */
+    --ada-black: #000000;
+    --ada-white: #ffffff;
+    --ada-gray-dark: #333333;
+    --ada-gray-medium: #666666;
 }
 
 /* === FOUNDATIONAL TYPOGRAPHY RESET === */
@@ -88,12 +95,52 @@ body {
     widows: 2;
 }
 
-/* === ENHANCED HEADING TYPOGRAPHY === */
+/* === USA CALLOUT - ADA COMPLIANT FIX === */
+.usa-callout {
+    /* Ensure high contrast for ADA compliance */
+    background-color: var(--ada-white);
+    color: var(--ada-black);
+    border: 1px solid var(--ada-gray-medium);
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    font-size: var(--font-sm);
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    
+    /* Ensure text is always readable */
+    text-shadow: none;
+    background-image: none;
+    
+    /* ADA contrast ratio: 21:1 (WCAG AAA) */
+    min-height: 44px; /* Minimum touch target */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.usa-callout span {
+    color: var(--ada-black) !important;
+    text-shadow: none !important;
+    background: transparent !important;
+    font-weight: 600;
+}
+
+.usa-callout i {
+    color: var(--ada-black) !important;
+}
+
+/* === ENHANCED HEADING TYPOGRAPHY - FIXED === */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     color: var(--primary-gold);
     font-weight: 600;
     margin-bottom: var(--space-md);
+    
+    /* FIXED: Remove any background gradients for readability */
+    background: none !important;
+    background-image: none !important;
+    background-color: transparent !important;
     
     /* Optimized text wrapping for headings */
     text-wrap: balance;
@@ -121,6 +168,42 @@ h1, h2, h3, h4, h5, h6 {
     break-after: avoid;
 }
 
+/* FIXED: Section titles - remove gradient backgrounds */
+.section-title {
+    background: none !important;
+    background-image: none !important;
+    background-color: transparent !important;
+    color: var(--primary-gold) !important;
+    text-shadow: none;
+    
+    /* Enhanced readability */
+    font-weight: 600;
+    letter-spacing: var(--tracking-tight);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+/* FIXED: Ensure animations don't interfere with readability */
+.section-title.animate-on-scroll {
+    background: none !important;
+    background-image: none !important;
+}
+
+.section-title.in-view {
+    background: none !important;
+    background-image: none !important;
+}
+
+/* Override any shimmer animations on headings */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.section-title {
+    animation: none !important;
+}
+
 /* Specific heading optimizations */
 h1 {
     font-size: var(--font-5xl);
@@ -128,6 +211,7 @@ h1 {
     letter-spacing: var(--tracking-tighter);
     max-width: var(--measure-narrow);
     margin: 0 auto var(--space-lg);
+    background: none !important;
 }
 
 h2 {
@@ -136,6 +220,7 @@ h2 {
     letter-spacing: var(--tracking-tight);
     max-width: var(--measure-base);
     margin-bottom: var(--space-lg);
+    background: none !important;
 }
 
 h3 {
@@ -143,6 +228,7 @@ h3 {
     line-height: var(--line-height-snug);
     max-width: var(--measure-base);
     margin-bottom: var(--space-md);
+    background: none !important;
 }
 
 h4 {
@@ -150,6 +236,7 @@ h4 {
     line-height: var(--line-height-snug);
     max-width: var(--measure-wide);
     margin-bottom: var(--space-md);
+    background: none !important;
 }
 
 h5 {
@@ -157,6 +244,7 @@ h5 {
     line-height: var(--line-height-normal);
     max-width: var(--measure-wide);
     margin-bottom: var(--space-sm);
+    background: none !important;
 }
 
 h6 {
@@ -164,6 +252,7 @@ h6 {
     line-height: var(--line-height-normal);
     max-width: var(--measure-wide);
     margin-bottom: var(--space-sm);
+    background: none !important;
 }
 
 /* === ENHANCED PARAGRAPH TYPOGRAPHY === */
@@ -415,6 +504,7 @@ input, textarea, select {
     line-height: var(--line-height-snug);
     letter-spacing: var(--tracking-normal);
     max-width: none;
+    background: none !important;
 }
 
 .footer p {
@@ -491,6 +581,7 @@ input, textarea, select {
         text-align: center;
         margin-left: auto;
         margin-right: auto;
+        background: none !important;
     }
 }
 
@@ -523,6 +614,7 @@ input, textarea, select {
         margin-right: auto;
         hyphens: manual;
         word-break: normal;
+        background: none !important;
     }
     
     .legal-section p {
@@ -537,6 +629,13 @@ input, textarea, select {
         text-align: left;
         margin: var(--space-lg) 0;
         padding: var(--space-lg);
+    }
+    
+    /* USA Callout mobile optimization */
+    .usa-callout {
+        font-size: var(--font-xs);
+        padding: 0.5rem 1rem;
+        min-height: 44px;
     }
 }
 
@@ -567,6 +666,18 @@ input, textarea, select {
     .navbar-brand {
         font-size: var(--font-2xl);
         letter-spacing: var(--tracking-normal);
+    }
+    
+    /* USA Callout extra small screens */
+    .usa-callout {
+        font-size: var(--font-xs);
+        padding: 0.5rem;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .usa-callout span {
+        font-size: var(--font-xs);
     }
 }
 
@@ -611,11 +722,24 @@ input, textarea, select {
     h1, h2, h3, h4, h5, h6 {
         letter-spacing: var(--tracking-normal);
         word-spacing: 0.1em;
+        background: none !important;
     }
     
     a {
         text-decoration-thickness: 0.15em;
         text-underline-offset: 0.2em;
+    }
+    
+    /* Enhanced USA callout for high contrast */
+    .usa-callout {
+        background-color: var(--ada-white);
+        color: var(--ada-black);
+        border: 2px solid var(--ada-black);
+    }
+    
+    .usa-callout span {
+        color: var(--ada-black) !important;
+        font-weight: 700;
     }
 }
 
@@ -623,6 +747,11 @@ input, textarea, select {
 @media (prefers-reduced-motion: reduce) {
     * {
         text-rendering: optimizeSpeed;
+    }
+    
+    /* Remove animations that might interfere */
+    .section-title {
+        animation: none !important;
     }
 }
 
@@ -638,6 +767,7 @@ input, textarea, select {
     
     h1, h2, h3, h4, h5, h6 {
         color: black;
+        background: none !important;
         page-break-after: avoid;
         break-after: avoid;
         orphans: 3;
@@ -659,6 +789,12 @@ input, textarea, select {
     blockquote {
         page-break-inside: avoid;
         break-inside: avoid;
+    }
+    
+    .usa-callout {
+        background: white;
+        color: black;
+        border: 1px solid black;
     }
 }
 
@@ -747,4 +883,59 @@ p:empty, li:empty {
 ::-moz-selection {
     background: rgba(212, 175, 55, 0.3);
     color: var(--text-primary);
+}
+
+/* === CRITICAL FIXES FOR SPECIFIC ISSUES === */
+
+/* Fix for any remaining gradient backgrounds on headings */
+h1[style*="background"], 
+h2[style*="background"], 
+h3[style*="background"], 
+h4[style*="background"], 
+h5[style*="background"], 
+h6[style*="background"] {
+    background: none !important;
+    background-image: none !important;
+    background-color: transparent !important;
+}
+
+/* Specific fix for legacy title */
+#legacy-title {
+    background: none !important;
+    background-image: none !important;
+    background-color: transparent !important;
+    animation: none !important;
+}
+
+/* Override any shimmer or gradient animations */
+.shimmer,
+[class*="shimmer"] {
+    background: none !important;
+    background-image: none !important;
+    animation: none !important;
+}
+
+/* Ensure USA callout always has proper contrast */
+.usa-callout,
+.usa-callout * {
+    color: var(--ada-black) !important;
+    text-shadow: none !important;
+    background-color: var(--ada-white) !important;
+    background-image: none !important;
+    background: var(--ada-white) !important;
+}
+
+/* Focus states for accessibility */
+.usa-callout:focus,
+.usa-callout:focus-within {
+    outline: 2px solid var(--ada-black);
+    outline-offset: 2px;
+}
+
+/* Ensure all icons in USA callout are visible */
+.usa-callout i,
+.usa-callout .fas,
+.usa-callout .far,
+.usa-callout .fab {
+    color: var(--ada-black) !important;
 }
