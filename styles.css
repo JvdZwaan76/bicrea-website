@@ -1937,6 +1937,373 @@ section {
     transform: scale(1.05);
 }
 
+/* === ENHANCED TEAM MEMBER BIO STYLING === */
+
+/* Updated portfolio detailed item for team members */
+.leadership-team .portfolio-detailed-item,
+.our-story .portfolio-detailed-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+    border-radius: var(--radius-2xl);
+    padding: var(--space-3xl);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: all var(--transition-base);
+    margin-bottom: var(--space-4xl);
+    position: relative;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Image container styling for team members */
+.leadership-team .portfolio-detailed-image,
+.our-story .portfolio-detailed-image {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: auto;
+    border-radius: var(--radius-xl);
+    overflow: visible;
+    box-shadow: none;
+}
+
+/* Team member images - enhanced styling */
+.leadership-team .team-member-image,
+.our-story .team-member-image {
+    width: 150px !important;
+    height: 150px !important;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    border: 4px solid var(--primary-gold);
+    box-shadow: 
+        var(--shadow-gold-lg),
+        inset 0 0 0 4px rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-base);
+    position: relative;
+    z-index: 2;
+    margin-bottom: var(--space-lg);
+}
+
+.leadership-team .team-member-image:hover,
+.our-story .team-member-image:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        var(--shadow-gold-lg),
+        0 0 30px rgba(212, 175, 55, 0.4),
+        inset 0 0 0 4px rgba(255, 255, 255, 0.2);
+    border-color: var(--primary-gold-light);
+}
+
+/* Portfolio stats positioning for team members */
+.leadership-team .portfolio-stats,
+.our-story .portfolio-stats {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    align-items: center;
+    margin-top: var(--space-md);
+}
+
+/* Content area styling */
+.leadership-team .portfolio-detailed-content,
+.our-story .portfolio-detailed-content {
+    padding: 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Job title styling */
+.leadership-team .portfolio-detailed-content h4,
+.our-story .portfolio-detailed-content h4 {
+    color: var(--primary-gold) !important;
+    margin-bottom: var(--space-md) !important;
+    font-size: var(--font-xl) !important;
+    font-family: var(--font-heading);
+    font-weight: 500;
+}
+
+/* Team member name styling */
+.leadership-team .portfolio-detailed-content h3,
+.our-story .portfolio-detailed-content h3 {
+    font-family: var(--font-heading);
+    font-size: var(--font-3xl);
+    color: var(--primary-gold);
+    margin-bottom: var(--space-sm);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Bio text styling */
+.leadership-team .portfolio-detailed-content p,
+.our-story .portfolio-detailed-content p {
+    font-family: var(--font-body);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: var(--font-base);
+    margin-bottom: var(--space-lg);
+    max-width: none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Service benefits grid for team members */
+.leadership-team .service-benefits,
+.our-story .service-benefits {
+    margin-top: var(--space-xl);
+}
+
+.leadership-team .benefits-grid,
+.our-story .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.leadership-team .benefit-item,
+.our-story .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: var(--radius-base);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: var(--transition-base);
+    font-size: var(--font-sm);
+    white-space: nowrap;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+/* === RESPONSIVE DESIGN FOR TEAM BIOS === */
+
+/* Large Desktop (1200px and up) */
+@media (min-width: 1200px) {
+    .leadership-team .portfolio-detailed-item,
+    .our-story .portfolio-detailed-item {
+        grid-template-columns: 220px 1fr;
+        gap: var(--space-4xl);
+        padding: var(--space-4xl);
+    }
+    
+    .leadership-team .team-member-image,
+    .our-story .team-member-image {
+        width: 180px !important;
+        height: 180px !important;
+    }
+}
+
+/* Medium Desktop (992px to 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+    .leadership-team .portfolio-detailed-item,
+    .our-story .portfolio-detailed-item {
+        grid-template-columns: 180px 1fr;
+        gap: var(--space-2xl);
+        padding: var(--space-2xl);
+    }
+    
+    .leadership-team .team-member-image,
+    .our-story .team-member-image {
+        width: 150px !important;
+        height: 150px !important;
+    }
+}
+
+/* Tablet (768px to 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+    .leadership-team .portfolio-detailed-item,
+    .our-story .portfolio-detailed-item {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+        text-align: center;
+        padding: var(--space-2xl);
+    }
+    
+    .leadership-team .portfolio-detailed-image,
+    .our-story .portfolio-detailed-image {
+        order: -1;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .leadership-team .team-member-image,
+    .our-story .team-member-image {
+        width: 140px !important;
+        height: 140px !important;
+        margin: 0 auto var(--space-lg) auto;
+    }
+    
+    .leadership-team .portfolio-detailed-content,
+    .our-story .portfolio-detailed-content {
+        text-align: center;
+        align-items: center;
+    }
+    
+    .leadership-team .benefits-grid,
+    .our-story .benefits-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        justify-items: center;
+    }
+}
+
+/* Mobile (767px and below) */
+@media (max-width: 767px) {
+    .leadership-team .portfolio-detailed-item,
+    .our-story .portfolio-detailed-item {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+        text-align: center;
+        padding: var(--space-xl);
+    }
+    
+    .leadership-team .portfolio-detailed-image,
+    .our-story .portfolio-detailed-image {
+        order: -1;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .leadership-team .team-member-image,
+    .our-story .team-member-image {
+        width: 120px !important;
+        height: 120px !important;
+        margin: 0 auto var(--space-md) auto;
+    }
+    
+    .leadership-team .portfolio-detailed-content,
+    .our-story .portfolio-detailed-content {
+        text-align: center;
+        align-items: center;
+    }
+    
+    .leadership-team .portfolio-detailed-content h3,
+    .our-story .portfolio-detailed-content h3 {
+        font-size: var(--font-2xl);
+    }
+    
+    .leadership-team .portfolio-detailed-content h4,
+    .our-story .portfolio-detailed-content h4 {
+        font-size: var(--font-lg) !important;
+    }
+    
+    .leadership-team .benefits-grid,
+    .our-story .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xs);
+    }
+    
+    .leadership-team .benefit-item,
+    .our-story .benefit-item {
+        justify-content: center;
+        text-align: center;
+        font-size: var(--font-xs);
+        padding: var(--space-xs) var(--space-sm);
+    }
+}
+
+/* Extra Small Mobile (480px and below) */
+@media (max-width: 480px) {
+    .leadership-team .portfolio-detailed-item,
+    .our-story .portfolio-detailed-item {
+        padding: var(--space-lg);
+        gap: var(--space-lg);
+    }
+    
+    .leadership-team .team-member-image,
+    .our-story .team-member-image {
+        width: 100px !important;
+        height: 100px !important;
+        border-width: 3px;
+    }
+    
+    .leadership-team .portfolio-detailed-content h3,
+    .our-story .portfolio-detailed-content h3 {
+        font-size: var(--font-xl);
+        margin-bottom: var(--space-xs);
+    }
+    
+    .leadership-team .portfolio-detailed-content h4,
+    .our-story .portfolio-detailed-content h4 {
+        font-size: var(--font-base) !important;
+        margin-bottom: var(--space-sm) !important;
+    }
+    
+    .leadership-team .portfolio-detailed-content p,
+    .our-story .portfolio-detailed-content p {
+        font-size: var(--font-sm);
+        margin-bottom: var(--space-md);
+    }
+}
+
+/* === ALTERNATING LAYOUT FIXES === */
+
+/* Ensure proper alternating layout on larger screens */
+@media (min-width: 992px) {
+    .leadership-team .portfolio-detailed-item:nth-child(even) .portfolio-detailed-image,
+    .our-story .portfolio-detailed-item:nth-child(even) .portfolio-detailed-image {
+        order: 2;
+    }
+    
+    .leadership-team .portfolio-detailed-item:nth-child(even) .portfolio-detailed-content,
+    .our-story .portfolio-detailed-item:nth-child(even) .portfolio-detailed-content {
+        order: 1;
+    }
+    
+    .leadership-team .portfolio-detailed-item:nth-child(odd) .portfolio-detailed-image,
+    .our-story .portfolio-detailed-item:nth-child(odd) .portfolio-detailed-image {
+        order: 1;
+    }
+    
+    .leadership-team .portfolio-detailed-item:nth-child(odd) .portfolio-detailed-content,
+    .our-story .portfolio-detailed-item:nth-child(odd) .portfolio-detailed-content {
+        order: 2;
+    }
+}
+
+/* Reset order for smaller screens */
+@media (max-width: 991px) {
+    .leadership-team .portfolio-detailed-item .portfolio-detailed-image,
+    .our-story .portfolio-detailed-item .portfolio-detailed-image,
+    .leadership-team .portfolio-detailed-item .portfolio-detailed-content,
+    .our-story .portfolio-detailed-item .portfolio-detailed-content {
+        order: unset !important;
+    }
+}
+
+/* === STAT BADGE STYLING FOR TEAM MEMBERS === */
+.leadership-team .stat-badge,
+.our-story .stat-badge {
+    background: rgba(212, 175, 55, 0.9);
+    color: var(--bg-primary);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: var(--font-xs);
+    backdrop-filter: blur(10px);
+    font-family: var(--font-body);
+    box-shadow: var(--shadow-base);
+    transition: var(--transition-base);
+    white-space: nowrap;
+    text-align: center;
+    margin: var(--space-xs) 0;
+}
+
+.leadership-team .stat-badge:hover,
+.our-story .stat-badge:hover {
+    background: var(--primary-gold);
+    transform: scale(1.05);
+}
+
 /* === TEAM MEMBER STYLES - ELEGANT CIRCLES === */
 .team-member-image {
     width: 200px;
@@ -2716,7 +3083,7 @@ a:active {
 .footer-brand h3 {
     font-family: var(--font-heading);
     font-size: var(--font-2xl);
-    color: var(--primary-gold);
+    color: var(--primary-gold-accessible);
     font-weight: 700;
     margin-bottom: var(--space-md);
 }
@@ -2729,20 +3096,6 @@ a:active {
     max-width: none;
     word-wrap: break-word;
     overflow-wrap: break-word;
-}
-
-/* === ENHANCED FOOTER WITH UPDATED SOCIAL LINKS === */
-.footer-brand {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-brand h3 {
-    font-family: var(--font-heading);
-    font-size: var(--font-2xl);
-    color: var(--primary-gold-accessible);
-    font-weight: 700;
-    margin-bottom: var(--space-md);
 }
 
 .footer-brand .social-links {
@@ -3499,13 +3852,6 @@ a:active {
     font-family: var(--font-body);
     word-wrap: break-word;
     overflow-wrap: break-word;
-}
-
-.cta-buttons {
-    display: flex;
-    gap: var(--space-xl);
-    justify-content: center;
-    flex-wrap: wrap;
 }
 
 /* === CONTACT PAGE STYLES === */
