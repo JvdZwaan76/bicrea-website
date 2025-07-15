@@ -1,4 +1,4 @@
-// BicRea Website - ENHANCED Production JavaScript
+// BicRea Website - ENHANCED Production JavaScript with LinkedIn Integration
 // Sophisticated, high-performance luxury real estate website functionality
 
 (function() {
@@ -19,7 +19,8 @@
         openFAQItems: new Set(),
         loadedImages: new WeakSet(),
         lastScrollY: 0,
-        ticking: false
+        ticking: false,
+        teamMemberLinkedInProfiles: new Map() // NEW: Store LinkedIn profile mappings
     };
     
     // Configuration - Enhanced
@@ -30,7 +31,13 @@
         intersectionThreshold: 0.1,
         slideDuration: 6000,
         minLoadTime: 800,
-        maxButtonAnimationDistance: 5 // Prevent excessive button movement
+        maxButtonAnimationDistance: 5, // Prevent excessive button movement
+        linkedInProfileUrls: {
+            // Team member LinkedIn profile mappings
+            'jasper-van-der-zwaan': 'https://www.linkedin.com/in/jasper-van-der-zwaan/',
+            // Add more team members here as needed
+            // 'other-team-member': 'https://www.linkedin.com/in/other-member-profile/'
+        }
     };
     
     // === INITIALIZATION === //
@@ -52,6 +59,7 @@
         initializeScrollEffects();
         initializeInteractiveElements();
         initializeAccessibility();
+        initializeTeamMemberProfiles(); // NEW: Initialize team member LinkedIn profiles
         
         // Enhanced button controls - FIXED
         initializeEnhancedButtonControls();
@@ -68,6 +76,170 @@
         initializeAdvancedAnimations();
         initializeAnalytics();
         initializeTrustSignals();
+    }
+    
+    // === NEW: TEAM MEMBER LINKEDIN PROFILE INTEGRATION === //
+    function initializeTeamMemberProfiles() {
+        console.log('Initializing team member LinkedIn profiles...');
+        
+        // Find all team member bio sections
+        const teamSections = document.querySelectorAll('.leadership-team, .our-story');
+        
+        teamSections.forEach(section => {
+            const teamMembers = section.querySelectorAll('.portfolio-detailed-item');
+            
+            teamMembers.forEach(member => {
+                const memberName = extractMemberName(member);
+                const memberSlug = generateMemberSlug(memberName);
+                
+                if (memberSlug && config.linkedInProfileUrls[memberSlug]) {
+                    addLinkedInProfileToMember(member, memberSlug, memberName);
+                }
+            });
+        });
+        
+        console.log('Team member LinkedIn profiles initialized');
+    }
+    
+    function extractMemberName(memberElement) {
+        // Try to find the member name in various possible locations
+        const nameSelectors = [
+            '.portfolio-detailed-content h3',
+            '.team-member-name',
+            '.member-name',
+            'h3'
+        ];
+        
+        for (const selector of nameSelectors) {
+            const nameElement = memberElement.querySelector(selector);
+            if (nameElement && nameElement.textContent.trim()) {
+                return nameElement.textContent.trim();
+            }
+        }
+        
+        return null;
+    }
+    
+    function generateMemberSlug(memberName) {
+        if (!memberName) return null;
+        
+        return memberName
+            .toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+            .replace(/\s+/g, '-') // Replace spaces with hyphens
+            .replace(/-+/g, '-') // Replace multiple hyphens with single
+            .trim();
+    }
+    
+    function addLinkedInProfileToMember(memberElement, memberSlug, memberName) {
+        const linkedInUrl = config.linkedInProfileUrls[memberSlug];
+        if (!linkedInUrl) return;
+        
+        // Find the content area where we'll add the LinkedIn link
+        const contentArea = memberElement.querySelector('.portfolio-detailed-content');
+        if (!contentArea) return;
+        
+        // Check if LinkedIn link already exists
+        if (contentArea.querySelector('.team-member-linkedin')) {
+            return; // Already exists
+        }
+        
+        // Create LinkedIn profile link
+        const linkedInContainer = document.createElement('div');
+        linkedInContainer.className = 'team-member-social';
+        
+        const linkedInLink = document.createElement('a');
+        linkedInLink.href = linkedInUrl;
+        linkedInLink.target = '_blank';
+        linkedInLink.rel = 'noopener noreferrer';
+        linkedInLink.className = 'team-member-linkedin';
+        linkedInLink.setAttribute('aria-label', `View ${memberName}'s LinkedIn profile`);
+        
+        // Add FontAwesome LinkedIn icon
+        const linkedInIcon = document.createElement('i');
+        linkedInIcon.className = 'fab fa-linkedin-in';
+        linkedInIcon.setAttribute('aria-hidden', 'true');
+        
+        const linkedInText = document.createElement('span');
+        linkedInText.textContent = 'View LinkedIn Profile';
+        
+        linkedInLink.appendChild(linkedInIcon);
+        linkedInLink.appendChild(linkedInText);
+        linkedInContainer.appendChild(linkedInLink);
+        
+        // Add click tracking
+        linkedInLink.addEventListener('click', function(e) {
+            trackLinkedInClick(memberName, linkedInUrl);
+        });
+        
+        // Enhanced hover effects
+        linkedInLink.addEventListener('mouseenter', function() {
+            if (!isReducedMotion) {
+                this.style.transform = 'translateY(-3px) scale(1.02)';
+                this.style.boxShadow = '0 8px 25px rgba(0, 119, 181, 0.4), 0 4px 12px rgba(0, 119, 181, 0.3)';
+            }
+        });
+        
+        linkedInLink.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+            this.style.boxShadow = '';
+        });
+        
+        // Find the best place to insert the LinkedIn link
+        const insertTarget = findBestInsertionPoint(contentArea);
+        if (insertTarget) {
+            insertTarget.appendChild(linkedInContainer);
+        } else {
+            contentArea.appendChild(linkedInContainer);
+        }
+        
+        // Store the mapping for future reference
+        state.teamMemberLinkedInProfiles.set(memberSlug, {
+            name: memberName,
+            url: linkedInUrl,
+            element: linkedInLink
+        });
+        
+        console.log(`Added LinkedIn profile for ${memberName}: ${linkedInUrl}`);
+    }
+    
+    function findBestInsertionPoint(contentArea) {
+        // Look for service benefits section first
+        let target = contentArea.querySelector('.service-benefits');
+        if (target) return target;
+        
+        // Look for any existing social links container
+        target = contentArea.querySelector('.team-member-social, .team-member-links');
+        if (target) return target.parentNode;
+        
+        // Look for the last paragraph
+        const paragraphs = contentArea.querySelectorAll('p');
+        if (paragraphs.length > 0) {
+            return paragraphs[paragraphs.length - 1].parentNode;
+        }
+        
+        // Default to content area itself
+        return contentArea;
+    }
+    
+    function trackLinkedInClick(memberName, linkedInUrl) {
+        // Track LinkedIn profile clicks for analytics
+        if (typeof gtag === 'function') {
+            gtag('event', 'linkedin_profile_click', {
+                event_category: 'Team Member Interaction',
+                event_label: memberName,
+                custom_parameters: {
+                    member_name: memberName,
+                    linkedin_url: linkedInUrl,
+                    page_section: 'team_bio'
+                }
+            });
+        }
+        
+        // Optional: Show a trust signal
+        addTrustSignal(`Viewing ${memberName}'s professional profile`);
+        
+        console.log(`LinkedIn profile clicked: ${memberName} - ${linkedInUrl}`);
     }
     
     // === ENHANCED BUTTON CONTROLS - PREVENT UNWANTED ROTATION === //
@@ -1513,16 +1685,20 @@
         showNotification,
         smoothScrollTo,
         addTrustSignal,
+        trackLinkedInClick, // NEW: Expose LinkedIn tracking function
         state: {
             get isNavOpen() { return state.isNavOpen; },
             get isLoaded() { return state.isLoaded; },
-            get currentSlide() { return state.currentSlide; }
+            get currentSlide() { return state.currentSlide; },
+            get teamMemberLinkedInProfiles() { return state.teamMemberLinkedInProfiles; } // NEW: Expose LinkedIn profiles
         },
         utils: {
             throttle,
             debounce,
             isValidEmail,
-            isValidPhone
+            isValidPhone,
+            generateMemberSlug, // NEW: Expose utility function
+            extractMemberName // NEW: Expose utility function
         }
     };
     
@@ -1569,6 +1745,55 @@
             
             .notification {
                 font-family: var(--font-body);
+            }
+            
+            /* Enhanced LinkedIn button animations */
+            .team-member-linkedin {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .team-member-linkedin::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #005885, #004770);
+                transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1;
+            }
+            
+            .team-member-linkedin:hover::before {
+                left: 0;
+            }
+            
+            .team-member-linkedin i,
+            .team-member-linkedin span {
+                position: relative;
+                z-index: 2;
+            }
+            
+            /* Professional link hover effects */
+            .professional-link {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .professional-link::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: rgba(212, 175, 55, 0.2);
+                transition: left 0.3s ease;
+            }
+            
+            .professional-link:hover::before {
+                left: 0;
             }
         `;
         document.head.appendChild(style);
