@@ -205,7 +205,7 @@
                     <p class="section-subtitle animate-on-scroll">Founded in 1990, BicRea has become synonymous with excellence in luxury property investments and mineral rights services, serving distinguished clients across the United States from our headquarters in Sarasota, Florida.</p>
                 </div>
                 
-                <!-- A Legacy Built on Excellence - UPDATED STRUCTURE -->
+                <!-- A Legacy Built on Excellence - CONSISTENT STRUCTURE -->
                 <div class="portfolio-detailed-item animate-on-scroll">
                     <div class="portfolio-detailed-content">
                         <h3>A Legacy Built on Excellence</h3>
@@ -245,7 +245,7 @@
                     </div>
                 </div>
                 
-                <!-- Jasper van der Zwaan - Chief of Marketing (PERFECT STRUCTURE) -->
+                <!-- Jasper van der Zwaan - Chief of Marketing (PERFECT STRUCTURE - REFERENCE) -->
                 <div class="portfolio-detailed-item animate-on-scroll">
                     <div class="portfolio-detailed-content">
                         <h3>Jasper van der Zwaan</h3>
@@ -284,15 +284,8 @@
                     </div>
                 </div>
                 
-                <!-- JJ van der Zwaan - UPDATED STRUCTURE -->
+                <!-- JJ van der Zwaan - CONSISTENT STRUCTURE -->
                 <div class="portfolio-detailed-item animate-on-scroll">
-                    <div class="portfolio-detailed-image">
-                        <img src="/images/team5.jpg" alt="JJ van der Zwaan, Senior Real Estate Acquisition Specialist at BicRea, expert in property identification and acquisition" loading="lazy" width="400" height="300" class="team-member-image">
-                        <div class="portfolio-stats">
-                            <div class="stat-badge">Acquisition Specialist</div>
-                            <div class="stat-badge">2 Years Exp.</div>
-                        </div>
-                    </div>
                     <div class="portfolio-detailed-content">
                         <h3>JJ van der Zwaan</h3>
                         <h4>Senior Real Estate Acquisition Specialist</h4>
@@ -319,6 +312,13 @@
                                     <span>Industry Network</span>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-detailed-image">
+                        <img src="/images/team5.jpg" alt="JJ van der Zwaan, Senior Real Estate Acquisition Specialist at BicRea, expert in property identification and acquisition" loading="lazy" width="400" height="300" class="team-member-image">
+                        <div class="portfolio-stats">
+                            <div class="stat-badge">Acquisition Specialist</div>
+                            <div class="stat-badge">2 Years Exp.</div>
                         </div>
                     </div>
                 </div>
@@ -395,15 +395,8 @@
                     <p class="section-subtitle animate-on-scroll">Meet the visionary leaders who drive BicRea's continued success and innovation</p>
                 </div>
                 
-                <!-- Devin Molina - UPDATED STRUCTURE -->
+                <!-- Devin Molina - CONSISTENT STRUCTURE -->
                 <div class="portfolio-detailed-item animate-on-scroll">
-                    <div class="portfolio-detailed-image">
-                        <img src="/images/team1.jpg" alt="Devin Molina, Founder and CEO of BicRea, luxury real estate investment expert with 35 years of experience" loading="lazy" width="400" height="300" class="team-member-image">
-                        <div class="portfolio-stats">
-                            <div class="stat-badge">Founder & CEO</div>
-                            <div class="stat-badge">35 Years Exp.</div>
-                        </div>
-                    </div>
                     <div class="portfolio-detailed-content">
                         <h3>Devin Molina</h3>
                         <h4>Founder & Chief Executive Officer</h4>
@@ -432,9 +425,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="portfolio-detailed-image">
+                        <img src="/images/team1.jpg" alt="Devin Molina, Founder and CEO of BicRea, luxury real estate investment expert with 35 years of experience" loading="lazy" width="400" height="300" class="team-member-image">
+                        <div class="portfolio-stats">
+                            <div class="stat-badge">Founder & CEO</div>
+                            <div class="stat-badge">35 Years Exp.</div>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Sandra Petkov - UPDATED STRUCTURE -->
+                <!-- Sandra Petkov - CONSISTENT STRUCTURE -->
                 <div class="portfolio-detailed-item animate-on-scroll">
                     <div class="portfolio-detailed-content">
                         <h3>Sandra Petkov</h3>
@@ -473,15 +473,8 @@
                     </div>
                 </div>
                 
-                <!-- Christian Hickey - UPDATED STRUCTURE -->
+                <!-- Christian Hickey - CONSISTENT STRUCTURE -->
                 <div class="portfolio-detailed-item animate-on-scroll">
-                    <div class="portfolio-detailed-image">
-                        <img src="/images/team3.jpg" alt="Christian Hickey, Investment Director at BicRea, portfolio management specialist with expertise in luxury real estate" loading="lazy" width="400" height="300" class="team-member-image">
-                        <div class="portfolio-stats">
-                            <div class="stat-badge">Investment Director</div>
-                            <div class="stat-badge">20 Years Exp.</div>
-                        </div>
-                    </div>
                     <div class="portfolio-detailed-content">
                         <h3>Christian Hickey</h3>
                         <h4>Investment Director</h4>
@@ -508,6 +501,13 @@
                                     <span>Market Timing</span>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-detailed-image">
+                        <img src="/images/team3.jpg" alt="Christian Hickey, Investment Director at BicRea, portfolio management specialist with expertise in luxury real estate" loading="lazy" width="400" height="300" class="team-member-image">
+                        <div class="portfolio-stats">
+                            <div class="stat-badge">Investment Director</div>
+                            <div class="stat-badge">20 Years Exp.</div>
                         </div>
                     </div>
                 </div>
@@ -788,6 +788,87 @@
             </div>
         </div>
     </footer>
+
+    <!-- Enhanced Bio Layout Styles -->
+    <style>
+    /* === ENHANCED TEAM MEMBER BIO STYLING - PERFECTED CONSISTENT LAYOUT === */
+    .leadership-team .portfolio-detailed-item,
+    .our-story .portfolio-detailed-item {
+        display: grid;
+        grid-template-columns: 1fr 240px;
+        gap: var(--space-4xl);
+        align-items: start;
+        background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+        border-radius: var(--radius-2xl);
+        padding: var(--space-4xl);
+        border: 1px solid rgba(212, 175, 55, 0.15);
+        transition: all var(--transition-base);
+        margin-bottom: var(--space-4xl);
+        position: relative;
+        overflow: hidden;
+        word-wrap: break-word;
+        overflow-wrap: anywhere;
+        box-shadow: var(--shadow-lg);
+    }
+
+    /* Alternating Layout for Desktop */
+    @media (min-width: 992px) {
+        /* Default layout: content left, image right */
+        .leadership-team .portfolio-detailed-item,
+        .our-story .portfolio-detailed-item {
+            grid-template-columns: 1fr 240px;
+        }
+        
+        .leadership-team .portfolio-detailed-item .portfolio-detailed-content,
+        .our-story .portfolio-detailed-item .portfolio-detailed-content {
+            order: 1;
+        }
+        
+        .leadership-team .portfolio-detailed-item .portfolio-detailed-image,
+        .our-story .portfolio-detailed-item .portfolio-detailed-image {
+            order: 2;
+        }
+        
+        /* Even items: image left, content right */
+        .leadership-team .portfolio-detailed-item:nth-child(even),
+        .our-story .portfolio-detailed-item:nth-child(even) {
+            grid-template-columns: 240px 1fr;
+        }
+        
+        .leadership-team .portfolio-detailed-item:nth-child(even) .portfolio-detailed-content,
+        .our-story .portfolio-detailed-item:nth-child(even) .portfolio-detailed-content {
+            order: 2;
+        }
+        
+        .leadership-team .portfolio-detailed-item:nth-child(even) .portfolio-detailed-image,
+        .our-story .portfolio-detailed-item:nth-child(even) .portfolio-detailed-image {
+            order: 1;
+        }
+    }
+
+    /* Tablet and Mobile Layout */
+    @media (max-width: 991px) {
+        .leadership-team .portfolio-detailed-item,
+        .our-story .portfolio-detailed-item {
+            grid-template-columns: 1fr !important;
+            gap: var(--space-2xl);
+            text-align: center;
+            padding: var(--space-3xl);
+        }
+        
+        .leadership-team .portfolio-detailed-item .portfolio-detailed-image,
+        .our-story .portfolio-detailed-item .portfolio-detailed-image {
+            order: -1 !important;
+            justify-self: center;
+        }
+        
+        .leadership-team .portfolio-detailed-item .portfolio-detailed-content,
+        .our-story .portfolio-detailed-item .portfolio-detailed-content {
+            order: 1 !important;
+            text-align: center;
+        }
+    }
+    </style>
 
     <!-- Scripts -->
     <script src="/script.js" defer></script>
