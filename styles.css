@@ -1273,11 +1273,11 @@ a[href*="linkedin.com"]:hover i,
     }
 }
 
-/* === ENHANCED TEAM MEMBER BIO STYLING - PERFECTED LAYOUT === */
+/* === ENHANCED TEAM MEMBER BIO STYLING - PERFECTED CONSISTENT LAYOUT === */
 .leadership-team .portfolio-detailed-item,
 .our-story .portfolio-detailed-item {
     display: grid;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 1fr 240px;
     gap: var(--space-4xl);
     align-items: start;
     background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
@@ -1495,128 +1495,61 @@ a[href*="linkedin.com"]:hover i,
     margin-top: 2px;
 }
 
-/* === BIO CONSISTENCY FIXES === */
-/* Standardize job title styling across all bio sections */
-.our-story .portfolio-detailed-item h4,
-.leadership-team .portfolio-detailed-item h4 {
-    color: var(--primary-gold-light) !important;
-    margin-bottom: var(--space-xl) !important;
-    font-size: var(--font-xl) !important;
-    font-family: var(--font-heading);
-    font-weight: 500;
-    font-style: italic;
-    letter-spacing: 0.02em;
-}
-
-/* Ensure consistent spacing for service benefits sections */
-.our-story .service-benefits,
-.leadership-team .service-benefits {
-    margin-top: var(--space-xl) !important;
-}
-
-/* Standardize team member image dimensions and styling */
-.our-story .team-member-image,
-.leadership-team .team-member-image {
-    width: 180px !important;
-    height: 180px !important;
-    border-radius: var(--radius-full);
-    object-fit: cover;
-    border: 4px solid var(--primary-gold);
-    box-shadow: 
-        var(--shadow-gold-lg),
-        inset 0 0 0 4px rgba(255, 255, 255, 0.1);
-    transition: all var(--transition-base);
-    position: relative;
-    z-index: 3;
-    margin-bottom: var(--space-xl);
-    background: var(--bg-primary);
-}
-
-/* === RESPONSIVE DESIGN FOR TEAM BIOS === */
-@media (min-width: 1400px) {
+/* Alternating Layout for Desktop - UPDATED */
+@media (min-width: 992px) {
+    /* Default layout: content left, image right */
     .leadership-team .portfolio-detailed-item,
     .our-story .portfolio-detailed-item {
-        grid-template-columns: 260px 1fr;
-        gap: var(--space-5xl);
-        padding: var(--space-5xl);
+        grid-template-columns: 1fr 240px;
     }
     
-    .leadership-team .team-member-image,
-    .our-story .team-member-image {
-        width: 200px !important;
-        height: 200px !important;
+    .leadership-team .portfolio-detailed-item .portfolio-detailed-content,
+    .our-story .portfolio-detailed-item .portfolio-detailed-content {
+        order: 1;
     }
     
-    .benefits-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    .leadership-team .portfolio-detailed-item .portfolio-detailed-image,
+    .our-story .portfolio-detailed-item .portfolio-detailed-image {
+        order: 2;
     }
-}
-
-@media (max-width: 1399px) and (min-width: 1200px) {
-    .leadership-team .portfolio-detailed-item,
-    .our-story .portfolio-detailed-item {
+    
+    /* Even items: image left, content right */
+    .leadership-team .portfolio-detailed-item:nth-child(even),
+    .our-story .portfolio-detailed-item:nth-child(even) {
         grid-template-columns: 240px 1fr;
-        gap: var(--space-4xl);
-        padding: var(--space-4xl);
     }
     
-    .leadership-team .team-member-image,
-    .our-story .team-member-image {
-        width: 180px !important;
-        height: 180px !important;
+    .leadership-team .portfolio-detailed-item:nth-child(even) .portfolio-detailed-content,
+    .our-story .portfolio-detailed-item:nth-child(even) .portfolio-detailed-content {
+        order: 2;
     }
     
-    .benefits-grid {
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    .leadership-team .portfolio-detailed-item:nth-child(even) .portfolio-detailed-image,
+    .our-story .portfolio-detailed-item:nth-child(even) .portfolio-detailed-image {
+        order: 1;
     }
 }
 
-@media (max-width: 1199px) and (min-width: 992px) {
+/* Tablet and Mobile Layout - UPDATED */
+@media (max-width: 991px) {
     .leadership-team .portfolio-detailed-item,
     .our-story .portfolio-detailed-item {
-        grid-template-columns: 200px 1fr;
-        gap: var(--space-3xl);
-        padding: var(--space-3xl);
-    }
-    
-    .leadership-team .team-member-image,
-    .our-story .team-member-image {
-        width: 160px !important;
-        height: 160px !important;
-    }
-    
-    .benefits-grid {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-}
-
-@media (max-width: 991px) and (min-width: 768px) {
-    .leadership-team .portfolio-detailed-item,
-    .our-story .portfolio-detailed-item {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         gap: var(--space-2xl);
         text-align: center;
         padding: var(--space-3xl);
     }
     
-    .leadership-team .portfolio-detailed-image,
-    .our-story .portfolio-detailed-image {
-        order: -1;
-        align-items: center;
-        justify-content: center;
+    .leadership-team .portfolio-detailed-item .portfolio-detailed-image,
+    .our-story .portfolio-detailed-item .portfolio-detailed-image {
+        order: -1 !important;
+        justify-self: center;
     }
     
-    .leadership-team .team-member-image,
-    .our-story .team-member-image {
-        width: 150px !important;
-        height: 150px !important;
-        margin: 0 auto var(--space-lg) auto;
-    }
-    
-    .leadership-team .portfolio-detailed-content,
-    .our-story .portfolio-detailed-content {
+    .leadership-team .portfolio-detailed-item .portfolio-detailed-content,
+    .our-story .portfolio-detailed-item .portfolio-detailed-content {
+        order: 1 !important;
         text-align: center;
-        align-items: center;
     }
     
     .leadership-team .portfolio-detailed-content p,
@@ -1648,25 +1581,12 @@ a[href*="linkedin.com"]:hover i,
         margin-bottom: var(--space-2xl);
     }
     
-    .leadership-team .portfolio-detailed-image,
-    .our-story .portfolio-detailed-image {
-        order: -1;
-        align-items: center;
-        justify-content: center;
-    }
-    
     .leadership-team .team-member-image,
     .our-story .team-member-image {
         width: 130px !important;
         height: 130px !important;
         margin: 0 auto var(--space-md) auto;
         border-width: 3px;
-    }
-    
-    .leadership-team .portfolio-detailed-content,
-    .our-story .portfolio-detailed-content {
-        text-align: center;
-        align-items: center;
     }
     
     .leadership-team .portfolio-detailed-content h3,
@@ -1744,38 +1664,6 @@ a[href*="linkedin.com"]:hover i,
         font-size: var(--font-xs);
         padding: var(--space-xs) var(--space-sm);
         min-height: 40px;
-    }
-}
-
-/* === ALTERNATING LAYOUT FIXES === */
-@media (min-width: 992px) {
-    .leadership-team .portfolio-detailed-item:nth-child(even) .portfolio-detailed-image,
-    .our-story .portfolio-detailed-item:nth-child(even) .portfolio-detailed-image {
-        order: 2;
-    }
-    
-    .leadership-team .portfolio-detailed-item:nth-child(even) .portfolio-detailed-content,
-    .our-story .portfolio-detailed-item:nth-child(even) .portfolio-detailed-content {
-        order: 1;
-    }
-    
-    .leadership-team .portfolio-detailed-item:nth-child(odd) .portfolio-detailed-image,
-    .our-story .portfolio-detailed-item:nth-child(odd) .portfolio-detailed-image {
-        order: 1;
-    }
-    
-    .leadership-team .portfolio-detailed-item:nth-child(odd) .portfolio-detailed-content,
-    .our-story .portfolio-detailed-item:nth-child(odd) .portfolio-detailed-content {
-        order: 2;
-    }
-}
-
-@media (max-width: 991px) {
-    .leadership-team .portfolio-detailed-item .portfolio-detailed-image,
-    .our-story .portfolio-detailed-item .portfolio-detailed-image,
-    .leadership-team .portfolio-detailed-item .portfolio-detailed-content,
-    .our-story .portfolio-detailed-item .portfolio-detailed-content {
-        order: unset !important;
     }
 }
 
