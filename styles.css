@@ -514,6 +514,20 @@ a:active {
     -ms-hyphens: manual;
 }
 
+/* Mobile-specific link improvements */
+@media (max-width: 767px) {
+    a,
+    a:link,
+    a:visited,
+    a:active {
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -ms-hyphens: none !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+    }
+}
+
 a:hover {
     color: var(--primary-gold-light) !important;
     background: rgba(244, 208, 63, 0.15);
@@ -1363,10 +1377,27 @@ a[href*="linkedin.com"]:hover i,
 }
 
 .leadership-team .team-member-image,
-.our-story .team-member-image {
+.our-story .portfolio-detailed-item:not(:first-child) .team-member-image {
     width: 180px !important;
     height: 180px !important;
     border-radius: var(--radius-full);
+    object-fit: cover;
+    border: 4px solid var(--primary-gold);
+    box-shadow: 
+        var(--shadow-gold-lg),
+        inset 0 0 0 4px rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-base);
+    position: relative;
+    z-index: 3;
+    margin-bottom: var(--space-xl);
+    background: var(--bg-primary);
+}
+
+/* Square image for "A Legacy Built on Excellence" section */
+.our-story .portfolio-detailed-item:first-child .team-member-image {
+    width: 300px !important;
+    height: 200px !important;
+    border-radius: var(--radius-xl) !important;
     object-fit: cover;
     border: 4px solid var(--primary-gold);
     box-shadow: 
@@ -1701,9 +1732,17 @@ a[href*="linkedin.com"]:hover i,
     }
     
     .leadership-team .team-member-image,
-    .our-story .team-member-image {
+    .our-story .portfolio-detailed-item:not(:first-child) .team-member-image {
         width: 110px !important;
         height: 110px !important;
+        border-width: 3px;
+    }
+    
+    /* Square image for "A Legacy Built on Excellence" on small mobile */
+    .our-story .portfolio-detailed-item:first-child .team-member-image {
+        width: 180px !important;
+        height: 120px !important;
+        border-radius: var(--radius-base) !important;
         border-width: 3px;
     }
     
@@ -4480,6 +4519,62 @@ section {
         justify-content: center;
         text-align: center;
     }
+    
+    /* COMPREHENSIVE MOBILE TEXT IMPROVEMENTS FOR 767px AND BELOW */
+    h1, h2, h3, h4, h5, h6,
+    p, span, div, li, a,
+    .portfolio-detailed-content *,
+    .service-content *,
+    .stat-label,
+    .benefit-item *,
+    .advantage-item *,
+    .testimonial-content *,
+    .step-content *,
+    .section-subtitle,
+    .page-subtitle,
+    .hero-tagline,
+    .footer-brand p,
+    .legal-section p,
+    .cta-content p {
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -ms-hyphens: none !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+        text-wrap: pretty !important;
+        word-spacing: normal !important;
+        letter-spacing: normal !important;
+        text-align: left !important;
+        text-justify: none !important;
+    }
+    
+    /* Specific mobile text alignment fixes */
+    .leadership-team .portfolio-detailed-content,
+    .our-story .portfolio-detailed-content {
+        text-align: center !important;
+    }
+    
+    .leadership-team .portfolio-detailed-content p,
+    .our-story .portfolio-detailed-content p {
+        text-align: left !important;
+        text-justify: none !important;
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -ms-hyphens: none !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+        line-height: 1.5 !important;
+    }
+    
+    .advantage-item,
+    .benefit-item,
+    .contact-method {
+        text-align: center !important;
+    }
+    
+    .advantage-item p {
+        text-align: center !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -4631,6 +4726,36 @@ section {
     .benefits-grid {
         grid-template-columns: 1fr;
         gap: var(--space-xs);
+    }
+    
+    /* COMPREHENSIVE MOBILE TEXT IMPROVEMENTS */
+    h1, h2, h3, h4, h5, h6,
+    p, span, div, li,
+    .portfolio-detailed-content *,
+    .service-content *,
+    .stat-label,
+    .benefit-item span,
+    .advantage-item p,
+    .testimonial-content p,
+    .step-content p {
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -ms-hyphens: none !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+        text-wrap: pretty !important;
+        line-height: 1.5 !important;
+        word-spacing: normal !important;
+        letter-spacing: normal !important;
+    }
+    
+    /* Force no hyphenation on mobile for better readability */
+    * {
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -ms-hyphens: none !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
     }
 }
 
