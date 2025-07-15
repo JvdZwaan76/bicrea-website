@@ -85,6 +85,42 @@
         });
     </script>
     
+    <style>
+        /* Additional styling to ensure consistent bio layouts */
+        .our-story .portfolio-detailed-item h4,
+        .leadership-team .portfolio-detailed-item h4 {
+            color: var(--primary-gold-light) !important;
+            margin-bottom: var(--space-xl) !important;
+            font-size: var(--font-xl) !important;
+            font-family: var(--font-heading);
+            font-weight: 500;
+            font-style: italic;
+            letter-spacing: 0.02em;
+        }
+        
+        .our-story .service-benefits,
+        .leadership-team .service-benefits {
+            margin-top: var(--space-xl) !important;
+        }
+        
+        .our-story .team-member-image,
+        .leadership-team .team-member-image {
+            width: 180px !important;
+            height: 180px !important;
+            border-radius: var(--radius-full);
+            object-fit: cover;
+            border: 4px solid var(--primary-gold);
+            box-shadow: 
+                var(--shadow-gold-lg),
+                inset 0 0 0 4px rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-base);
+            position: relative;
+            z-index: 3;
+            margin-bottom: var(--space-xl);
+            background: var(--bg-primary);
+        }
+    </style>
+    
     <!-- Enhanced Structured Data -->
     <script type="application/ld+json">
     {
@@ -225,11 +261,11 @@
                 <div class="portfolio-detailed-item animate-on-scroll">
                     <div class="portfolio-detailed-content">
                         <h3>Jasper van der Zwaan</h3>
-                        <h4 style="color: var(--primary-gold); margin-bottom: var(--space-md); font-size: var(--font-xl);">Chief of Marketing</h4>
+                        <h4>Chief of Marketing</h4>
                         <p>Jasper van der Zwaan leads BicRea's marketing and brand strategy with over 25 years of international experience in lifecycle, brand marketing and digital innovation. His expertise in high-net-worth client acquisition and brand positioning has significantly expanded BicRea's market presence and client base.</p>
                         <p>With an international background and fluency in multiple languages, Jasper brings a global perspective to our team. His innovative approaches to digital marketing and client relationship management have positioned BicRea as a thought leader in the real estate investment space.</p>
                         
-                        <div class="service-benefits" style="margin-top: 1.5rem;">
+                        <div class="service-benefits">
                             <h4>Expertise & Achievements</h4>
                             <div class="benefits-grid">
                                 <div class="benefit-item">
@@ -252,7 +288,7 @@
                         </div>
                     </div>
                     <div class="portfolio-detailed-image">
-                        <img src="/images/team4.jpg" alt="Jasper van der Zwaan, Chief of Marketing at BicRea, brand marketing specialist with 25 years international experience" loading="lazy" width="400" height="300" class="team-member-image" style="width: 120px; height: 120px; object-fit: cover;">
+                        <img src="/images/team4.jpg" alt="Jasper van der Zwaan, Chief of Marketing at BicRea, brand marketing specialist with 25 years international experience" loading="lazy" width="400" height="300" class="team-member-image">
                         <div class="portfolio-stats">
                             <div class="stat-badge">Chief of Marketing</div>
                             <div class="stat-badge">25 Years Exp.</div>
@@ -263,7 +299,7 @@
                 <!-- JJ van der Zwaan - Senior Real Estate Acquisition Specialist -->
                 <div class="portfolio-detailed-item animate-on-scroll">
                     <div class="portfolio-detailed-image">
-                        <img src="/images/team5.jpg" alt="JJ van der Zwaan, Senior Real Estate Acquisition Specialist at BicRea, expert in property identification and acquisition" loading="lazy" width="400" height="300" class="team-member-image" style="width: 120px; height: 120px; object-fit: cover;">
+                        <img src="/images/team5.jpg" alt="JJ van der Zwaan, Senior Real Estate Acquisition Specialist at BicRea, expert in property identification and acquisition" loading="lazy" width="400" height="300" class="team-member-image">
                         <div class="portfolio-stats">
                             <div class="stat-badge">Acquisition Specialist</div>
                             <div class="stat-badge">2 Years Exp.</div>
@@ -271,11 +307,11 @@
                     </div>
                     <div class="portfolio-detailed-content">
                         <h3>JJ van der Zwaan</h3>
-                        <h4 style="color: var(--primary-gold); margin-bottom: var(--space-md); font-size: var(--font-xl);">Senior Real Estate Acquisition Specialist</h4>
+                        <h4>Senior Real Estate Acquisition Specialist</h4>
                         <p>JJ van der Zwaan specializes in identifying and acquiring exceptional properties for BicRea's clientele. With over 2 years of experience in real estate markets, he has developed an exceptional eye for properties with superior investment potential and unique value propositions.</p>
                         <p>His strategic approach to property evaluation and emerging market analysis brings fresh perspectives to BicRea's acquisition process, contributing to the firm's continued success in identifying outstanding investment opportunities for our distinguished clients.</p>
                         
-                        <div class="service-benefits" style="margin-top: 1.5rem;">
+                        <div class="service-benefits">
                             <h4>Expertise & Achievements</h4>
                             <div class="benefits-grid">
                                 <div class="benefit-item">
@@ -374,7 +410,7 @@
                 <!-- Devin Molina - Founder & CEO -->
                 <div class="portfolio-detailed-item animate-on-scroll">
                     <div class="portfolio-detailed-image">
-                        <img src="/images/team1.jpg" alt="Devin Molina, Founder and CEO of BicRea, luxury real estate investment expert with 35 years of experience" loading="lazy" width="400" height="300" class="team-member-image" style="width: 120px; height: 120px; object-fit: cover;">
+                        <img src="/images/team1.jpg" alt="Devin Molina, Founder and CEO of BicRea, luxury real estate investment expert with 35 years of experience" loading="lazy" width="400" height="300" class="team-member-image">
                         <div class="portfolio-stats">
                             <div class="stat-badge">Founder & CEO</div>
                             <div class="stat-badge">35 Years Exp.</div>
@@ -382,11 +418,11 @@
                     </div>
                     <div class="portfolio-detailed-content">
                         <h3>Devin Molina</h3>
-                        <h4 style="color: var(--primary-gold); margin-bottom: var(--space-md); font-size: var(--font-xl);">Founder & Chief Executive Officer</h4>
+                        <h4>Founder & Chief Executive Officer</h4>
                         <p>Devin Molina founded BicRea in 1990 with a vision to revolutionize luxury property investments. With over 35 years of experience in real estate and finance, he has built the company from a small Florida firm into a nationally recognized leader managing $2.1 billion in assets.</p>
                         <p>His expertise in identifying undervalued properties and emerging markets has generated exceptional returns for clients. Devin is a licensed real estate broker in multiple states and frequently speaks at industry conferences. He has been featured in prestigious financial publications for his innovative investment strategies.</p>
                         
-                        <div class="service-benefits" style="margin-top: 1.5rem;">
+                        <div class="service-benefits">
                             <h4>Expertise & Achievements</h4>
                             <div class="benefits-grid">
                                 <div class="benefit-item">
@@ -414,11 +450,11 @@
                 <div class="portfolio-detailed-item animate-on-scroll">
                     <div class="portfolio-detailed-content">
                         <h3>Sandra Petkov</h3>
-                        <h4 style="color: var(--primary-gold); margin-bottom: var(--space-md); font-size: var(--font-xl);">Chief Analyst</h4>
+                        <h4>Chief Analyst</h4>
                         <p>Sandra Petkov brings over 25 years of analytical expertise to BicRea's mineral title and property research division. Her meticulous approach to due diligence and title verification has prevented countless potential issues and saved clients millions in avoided complications.</p>
                         <p>With a background in legal research, Sandra leads our title research team with unparalleled attention to detail. Her comprehensive reports have become the industry standard for accuracy and thoroughness, earning recognition from legal professionals nationwide for their exceptional quality and reliability.</p>
                         
-                        <div class="service-benefits" style="margin-top: 1.5rem;">
+                        <div class="service-benefits">
                             <h4>Expertise & Achievements</h4>
                             <div class="benefits-grid">
                                 <div class="benefit-item">
@@ -441,7 +477,7 @@
                         </div>
                     </div>
                     <div class="portfolio-detailed-image">
-                        <img src="/images/team2.jpg" alt="Sandra Petkov, Chief Analyst at BicRea, legal expert specializing in mineral title research with 25 years experience" loading="lazy" width="400" height="300" class="team-member-image" style="width: 120px; height: 120px; object-fit: cover;">
+                        <img src="/images/team2.jpg" alt="Sandra Petkov, Chief Analyst at BicRea, legal expert specializing in mineral title research with 25 years experience" loading="lazy" width="400" height="300" class="team-member-image">
                         <div class="portfolio-stats">
                             <div class="stat-badge">Chief Analyst</div>
                             <div class="stat-badge">25 Years Exp.</div>
@@ -452,7 +488,7 @@
                 <!-- Christian Hickey - Investment Director -->
                 <div class="portfolio-detailed-item animate-on-scroll">
                     <div class="portfolio-detailed-image">
-                        <img src="/images/team3.jpg" alt="Christian Hickey, Investment Director at BicRea, portfolio management specialist with expertise in luxury real estate" loading="lazy" width="400" height="300" class="team-member-image" style="width: 120px; height: 120px; object-fit: cover;">
+                        <img src="/images/team3.jpg" alt="Christian Hickey, Investment Director at BicRea, portfolio management specialist with expertise in luxury real estate" loading="lazy" width="400" height="300" class="team-member-image">
                         <div class="portfolio-stats">
                             <div class="stat-badge">Investment Director</div>
                             <div class="stat-badge">20 Years Exp.</div>
@@ -460,11 +496,11 @@
                     </div>
                     <div class="portfolio-detailed-content">
                         <h3>Christian Hickey</h3>
-                        <h4 style="color: var(--primary-gold); margin-bottom: var(--space-md); font-size: var(--font-xl);">Investment Director</h4>
+                        <h4>Investment Director</h4>
                         <p>Christian Hickey oversees BicRea's investment strategy and client portfolio management with over 20 years of experience in luxury real estate and alternative investments. His sophisticated approach to risk assessment and portfolio optimization has consistently delivered superior returns for our clients.</p>
                         <p>Christian specializes in creating bespoke investment strategies that align with each client's unique objectives. His innovative approaches to market timing and asset allocation have earned him recognition as one of the industry's leading investment professionals with expertise in complex financial instruments.</p>
                         
-                        <div class="service-benefits" style="margin-top: 1.5rem;">
+                        <div class="service-benefits">
                             <h4>Expertise & Achievements</h4>
                             <div class="benefits-grid">
                                 <div class="benefit-item">
@@ -585,7 +621,7 @@
                         <p>From this strategic location, we serve clients across the United States while maintaining deep roots in the Florida market. Our proximity to major airports and business centers allows us to efficiently manage properties and relationships nationwide while enjoying the quality of life that Sarasota offers.</p>
                         <p>The city's commitment to arts, education, and sustainable development aligns perfectly with our company values and provides an inspiring environment for our team to deliver exceptional results for our clients.</p>
                         
-                        <div class="service-benefits" style="margin-top: 1.5rem;">
+                        <div class="service-benefits">
                             <h4>Location Advantages</h4>
                             <div class="benefits-grid">
                                 <div class="benefit-item">
