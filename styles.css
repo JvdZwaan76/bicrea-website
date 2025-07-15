@@ -2064,8 +2064,8 @@ section {
 .leadership-team .benefits-grid,
 .our-story .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: var(--space-sm);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* UPDATED WIDTH */
+    gap: var(--space-md);
     margin-top: var(--space-md);
 }
 
@@ -2074,15 +2074,17 @@ section {
     display: flex;
     align-items: center;
     gap: var(--space-sm);
-    padding: var(--space-sm);
+    padding: var(--space-md) var(--space-lg); /* UPDATED PADDING */
     background: rgba(212, 175, 55, 0.05);
-    border-radius: var(--radius-base);
+    border-radius: var(--radius-lg); /* UPDATED RADIUS */
     border: 1px solid rgba(212, 175, 55, 0.1);
     transition: var(--transition-base);
-    font-size: var(--font-sm);
+    font-size: var(--font-base); /* UPDATED FONT SIZE */
     white-space: nowrap;
-    justify-content: flex-start;
-    text-align: left;
+    justify-content: flex-start; /* UPDATED ALIGNMENT */
+    text-align: left; /* UPDATED ALIGNMENT */
+    min-height: 44px; /* UPDATED HEIGHT */
+    font-weight: 500; /* UPDATED WEIGHT */
 }
 
 /* === RESPONSIVE DESIGN FOR TEAM BIOS === */
@@ -2116,6 +2118,10 @@ section {
     .our-story .team-member-image {
         width: 150px !important;
         height: 150px !important;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     }
 }
 
@@ -2151,8 +2157,14 @@ section {
     
     .leadership-team .benefits-grid,
     .our-story .benefits-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         justify-items: center;
+    }
+    
+    .benefit-item {
+        padding: var(--space-sm) var(--space-md);
+        font-size: var(--font-sm);
+        min-height: 40px;
     }
 }
 
@@ -2198,8 +2210,8 @@ section {
     
     .leadership-team .benefits-grid,
     .our-story .benefits-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-xs);
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: var(--space-sm);
     }
     
     .leadership-team .benefit-item,
@@ -2242,6 +2254,11 @@ section {
     .our-story .portfolio-detailed-content p {
         font-size: var(--font-sm);
         margin-bottom: var(--space-md);
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xs);
     }
 }
 
@@ -3502,7 +3519,7 @@ a:active {
     border-bottom: none;
 }
 
-/* === SERVICE BENEFITS === */
+/* === SERVICE BENEFITS - UPDATED FOR PROPER TEXT DISPLAY === */
 .service-benefits {
     margin-top: var(--space-xl);
 }
@@ -3514,41 +3531,51 @@ a:active {
     font-family: var(--font-heading);
 }
 
+/* Benefits grid - increased minimum width for longer text */
 .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Increased from 150px to 180px */
     gap: var(--space-md);
 }
 
+/* Enhanced benefit item styling */
 .benefit-item {
     display: flex;
     align-items: center;
     gap: var(--space-sm);
-    padding: var(--space-sm);
+    padding: var(--space-md) var(--space-lg); /* Increased padding for better balance */
     background: rgba(212, 175, 55, 0.05);
-    border-radius: var(--radius-base);
+    border-radius: var(--radius-lg); /* Slightly more rounded for luxury feel */
     border: 1px solid rgba(212, 175, 55, 0.1);
     transition: var(--transition-base);
-    font-size: var(--font-sm);
+    font-size: var(--font-base); /* Increased from font-sm to font-base */
     white-space: nowrap;
-    justify-content: center; /* Added for centering */
-    text-align: center; /* Added for centering */
+    justify-content: flex-start; /* Changed from center to flex-start for better text alignment */
+    text-align: left; /* Changed from center to left */
+    min-height: 44px; /* Ensure consistent height */
+    font-weight: 500; /* Slightly bolder for better readability */
 }
 
 .benefit-item:hover {
     background: rgba(212, 175, 55, 0.1);
     border-color: rgba(212, 175, 55, 0.2);
+    transform: translateY(-1px); /* Subtle lift effect */
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.15); /* Subtle shadow on hover */
 }
 
 .benefit-item i {
     color: var(--primary-gold);
-    font-size: var(--font-base);
+    font-size: var(--font-lg); /* Slightly larger icon */
     flex-shrink: 0;
+    width: 20px; /* Fixed width for icon alignment */
+    text-align: center;
 }
 
 .benefit-item span {
     color: var(--text-secondary);
     font-weight: 500;
+    flex: 1;
+    min-width: 0; /* Allow text to shrink if needed */
 }
 
 /* === TESTIMONIALS === */
@@ -4320,7 +4347,7 @@ a:active {
     }
     
     .benefits-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
     
     .portfolio-content {
@@ -4492,6 +4519,11 @@ a:active {
     
     .contact-method .service-icon {
         margin: 0 auto var(--space-md) auto;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xs);
     }
 }
 
