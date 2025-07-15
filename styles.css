@@ -376,6 +376,19 @@ h1, h2, h3, h4, h5, h6 {
     overflow-wrap: anywhere;
 }
 
+/* Mobile-specific typography improvements */
+@media (max-width: 767px) {
+    h1, h2, h3, h4, h5, h6 {
+        hyphens: none;
+        -webkit-hyphens: none;
+        -ms-hyphens: none;
+        word-break: normal;
+        overflow-wrap: normal;
+        line-height: 1.3;
+        text-wrap: pretty;
+    }
+}
+
 h1, .page-title {
     font-size: var(--font-5xl);
     font-weight: 700;
@@ -460,6 +473,24 @@ p {
     hyphenate-limit-zone: 8%;
     word-spacing: 0.05em;
     letter-spacing: 0.01em;
+}
+
+/* Mobile-specific paragraph improvements */
+@media (max-width: 767px) {
+    p {
+        max-width: none;
+        hyphens: none;
+        -webkit-hyphens: none;
+        -ms-hyphens: none;
+        word-break: normal;
+        overflow-wrap: normal;
+        text-wrap: pretty;
+        line-height: 1.6;
+        word-spacing: normal;
+        letter-spacing: normal;
+        text-align: left;
+        text-justify: none;
+    }
 }
 
 /* === ENHANCED LINK STYLES - ADA COMPLIANT === */
@@ -1438,6 +1469,25 @@ a[href*="linkedin.com"]:hover i,
     text-justify: inter-word;
 }
 
+/* Mobile-specific bio text improvements */
+@media (max-width: 767px) {
+    .leadership-team .portfolio-detailed-content p,
+    .our-story .portfolio-detailed-content p {
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -ms-hyphens: none !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+        text-align: left !important;
+        text-justify: none !important;
+        line-height: 1.6 !important;
+        font-size: var(--font-base) !important;
+        margin-bottom: var(--space-md) !important;
+        word-spacing: normal !important;
+        letter-spacing: normal !important;
+    }
+}
+
 .leadership-team .service-benefits,
 .our-story .service-benefits {
     margin-top: var(--space-xl);
@@ -1474,6 +1524,28 @@ a[href*="linkedin.com"]:hover i,
     -ms-hyphens: auto;
     hyphenate-limit-chars: 8 4 4;
     hyphenate-limit-lines: 1;
+}
+
+/* Mobile-specific benefit item improvements */
+@media (max-width: 767px) {
+    .leadership-team .benefit-item,
+    .our-story .benefit-item {
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
+        -ms-hyphens: none !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+        justify-content: center !important;
+        text-align: center !important;
+        font-size: var(--font-sm) !important;
+        padding: var(--space-sm) var(--space-md) !important;
+        white-space: nowrap !important;
+    }
+    
+    .leadership-team .benefit-item span,
+    .our-story .benefit-item span {
+        white-space: nowrap !important;
+    }
 }
 
 .leadership-team .benefit-item:hover,
