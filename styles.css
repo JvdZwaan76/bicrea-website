@@ -2064,7 +2064,7 @@ section {
 .leadership-team .benefits-grid,
 .our-story .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* UPDATED WIDTH */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* UPDATED WIDTH */
     gap: var(--space-md);
     margin-top: var(--space-md);
 }
@@ -2080,11 +2080,14 @@ section {
     border: 1px solid rgba(212, 175, 55, 0.1);
     transition: var(--transition-base);
     font-size: var(--font-base); /* UPDATED FONT SIZE */
-    white-space: nowrap;
+    white-space: normal; /* CHANGED: Allow text wrapping */
     justify-content: flex-start; /* UPDATED ALIGNMENT */
     text-align: left; /* UPDATED ALIGNMENT */
     min-height: 44px; /* UPDATED HEIGHT */
     font-weight: 500; /* UPDATED WEIGHT */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 /* === RESPONSIVE DESIGN FOR TEAM BIOS === */
@@ -2102,6 +2105,10 @@ section {
     .our-story .team-member-image {
         width: 180px !important;
         height: 180px !important;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Even larger on big screens */
     }
 }
 
@@ -2121,7 +2128,7 @@ section {
     }
     
     .benefits-grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 }
 
@@ -2210,7 +2217,7 @@ section {
     
     .leadership-team .benefits-grid,
     .our-story .benefits-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         gap: var(--space-sm);
     }
     
@@ -2218,8 +2225,26 @@ section {
     .our-story .benefit-item {
         justify-content: center;
         text-align: center;
-        font-size: var(--font-xs);
+        font-size: var(--font-sm);
         padding: var(--space-xs) var(--space-sm);
+    }
+    
+    .benefit-item {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: var(--font-sm);
+        min-height: 40px;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .benefit-item i {
+        align-self: center; /* Reset alignment for mobile center layout */
+        margin-top: 0;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: var(--space-sm);
     }
 }
 
@@ -3482,9 +3507,9 @@ a:active {
 }
 
 .faq-answer p {
-    padding: 0 var(--space-xl) var(--space-xl);
+    padding: var(--space-lg) var(--space-xl) var(--space-xl);
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.7;
     max-width: none;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -3519,7 +3544,7 @@ a:active {
     border-bottom: none;
 }
 
-/* === SERVICE BENEFITS - UPDATED FOR PROPER TEXT DISPLAY === */
+/* === SERVICE BENEFITS - COMPLETELY FIXED FOR ALL TEXT LENGTHS === */
 .service-benefits {
     margin-top: var(--space-xl);
 }
@@ -3531,51 +3556,57 @@ a:active {
     font-family: var(--font-heading);
 }
 
-/* Benefits grid - increased minimum width for longer text */
+/* Benefits grid - significantly increased minimum width */
 .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Increased from 150px to 180px */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Increased from 180px to 220px */
     gap: var(--space-md);
 }
 
-/* Enhanced benefit item styling */
+/* Enhanced benefit item styling - allows text wrapping */
 .benefit-item {
     display: flex;
     align-items: center;
     gap: var(--space-sm);
-    padding: var(--space-md) var(--space-lg); /* Increased padding for better balance */
+    padding: var(--space-md) var(--space-lg);
     background: rgba(212, 175, 55, 0.05);
-    border-radius: var(--radius-lg); /* Slightly more rounded for luxury feel */
+    border-radius: var(--radius-lg);
     border: 1px solid rgba(212, 175, 55, 0.1);
     transition: var(--transition-base);
-    font-size: var(--font-base); /* Increased from font-sm to font-base */
-    white-space: nowrap;
-    justify-content: flex-start; /* Changed from center to flex-start for better text alignment */
-    text-align: left; /* Changed from center to left */
-    min-height: 44px; /* Ensure consistent height */
-    font-weight: 500; /* Slightly bolder for better readability */
+    font-size: var(--font-base);
+    white-space: normal; /* CHANGED: Allow text wrapping */
+    justify-content: flex-start;
+    text-align: left;
+    min-height: 44px;
+    font-weight: 500;
+    word-wrap: break-word; /* ADDED: Ensure long words can break */
+    overflow-wrap: break-word; /* ADDED: Better text wrapping */
+    hyphens: auto; /* ADDED: Allow hyphenation for very long words */
 }
 
 .benefit-item:hover {
     background: rgba(212, 175, 55, 0.1);
     border-color: rgba(212, 175, 55, 0.2);
-    transform: translateY(-1px); /* Subtle lift effect */
-    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.15); /* Subtle shadow on hover */
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.15);
 }
 
 .benefit-item i {
     color: var(--primary-gold);
-    font-size: var(--font-lg); /* Slightly larger icon */
+    font-size: var(--font-lg);
     flex-shrink: 0;
-    width: 20px; /* Fixed width for icon alignment */
+    width: 20px;
     text-align: center;
+    align-self: flex-start; /* ADDED: Keep icon at top when text wraps */
+    margin-top: 2px; /* ADDED: Slight adjustment for better alignment */
 }
 
 .benefit-item span {
     color: var(--text-secondary);
     font-weight: 500;
     flex: 1;
-    min-width: 0; /* Allow text to shrink if needed */
+    min-width: 0;
+    line-height: 1.4; /* ADDED: Better line height for readability */
 }
 
 /* === TESTIMONIALS === */
