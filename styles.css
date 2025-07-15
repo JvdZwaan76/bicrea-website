@@ -1,4 +1,4 @@
-/* BicRea - Enhanced Luxury Production Stylesheet - FIXED VERSION */
+/* BicRea - Enhanced Luxury Production Stylesheet - POLISHED VERSION */
 /* Sophisticated, high-performance luxury real estate website styling */
 
 /* === CSS CUSTOM PROPERTIES === */
@@ -350,7 +350,7 @@ body::before {
     border: 0;
 }
 
-/* === ENHANCED TYPOGRAPHY - FIXED TO REMOVE GRADIENT BACKGROUNDS === */
+/* === ENHANCED TYPOGRAPHY - FIXED H1 READABILITY === */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     color: var(--primary-gold);
@@ -366,6 +366,39 @@ h1, h2, h3, h4, h5, h6 {
     background-image: none !important;
     background-color: transparent !important;
     animation: none !important;
+    /* IMPROVED: Add better text styling for readability */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    /* IMPROVED: Prevent excessive hyphenation */
+    hyphens: manual;
+    -webkit-hyphens: manual;
+    -ms-hyphens: manual;
+}
+
+/* FIXED: Specific H1 styling for better readability */
+h1, .page-title {
+    font-size: var(--font-5xl);
+    font-weight: 700;
+    color: var(--primary-gold-accessible) !important;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(212, 175, 55, 0.3) !important;
+    background: none !important;
+    background-image: none !important;
+    background-color: transparent !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    background-clip: unset !important;
+    animation: none !important;
+    /* Enhanced contrast for better readability */
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    /* Prevent hyphenation on titles */
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    word-break: normal;
+    overflow-wrap: normal;
 }
 
 /* FIXED: Section titles - remove gradient backgrounds */
@@ -373,13 +406,17 @@ h1, h2, h3, h4, h5, h6 {
     background: none !important;
     background-image: none !important;
     background-color: transparent !important;
-    color: var(--primary-gold) !important;
-    text-shadow: none;
+    color: var(--primary-gold-accessible) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     animation: none !important;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.02em;
     text-align: center;
     margin-bottom: var(--space-lg);
+    /* Prevent hyphenation */
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
 }
 
 /* FIXED: Ensure animations don't interfere with readability */
@@ -425,7 +462,13 @@ p {
     line-height: 1.7;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    /* IMPROVED: Better hyphenation control */
     hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphenate-limit-chars: 6 3 3;
+    hyphenate-limit-lines: 2;
+    hyphenate-limit-last: always;
 }
 
 /* === ADA COMPLIANT LINK STYLES === */
@@ -775,18 +818,32 @@ a:focus {
     z-index: 2;
 }
 
+/* FIXED: Page title styling for better readability */
 .page-title {
     font-size: var(--font-5xl);
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: var(--space-lg);
-    background: var(--gold-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-gold-accessible) !important;
     font-family: var(--font-heading);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 
+        0 3px 6px rgba(0, 0, 0, 0.7),
+        0 0 30px rgba(212, 175, 55, 0.4) !important;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    background: none !important;
+    background-image: none !important;
+    background-color: transparent !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    background-clip: unset !important;
+    animation: none !important;
+    /* Prevent hyphenation on page titles */
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    word-break: normal;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
 }
 
 .page-subtitle {
@@ -800,6 +857,11 @@ a:focus {
     font-family: var(--font-body);
     word-wrap: break-word;
     overflow-wrap: break-word;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    /* Improved hyphenation */
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
 }
 
 .breadcrumb {
@@ -904,15 +966,25 @@ a:focus {
     font-family: var(--font-heading);
     font-size: var(--font-5xl);
     font-weight: 700;
-    background: var(--gold-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-gold-accessible) !important;
     margin-bottom: var(--space-md);
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(212, 175, 55, 0.4);
     letter-spacing: 0.05em;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    background: none !important;
+    background-image: none !important;
+    background-color: transparent !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    background-clip: unset !important;
+    animation: none !important;
+    /* Prevent hyphenation */
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
 }
 
 .hero-tagline {
@@ -924,6 +996,7 @@ a:focus {
     font-family: var(--font-body);
     word-wrap: break-word;
     overflow-wrap: break-word;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes hero-fade-in {
@@ -1370,7 +1443,7 @@ a:focus {
     }
 }
 
-/* === ENHANCED BUTTONS - ADA COMPLIANT === */
+/* === ENHANCED BUTTONS - ADA COMPLIANT & FIXED CTA ROTATION === */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -1396,20 +1469,9 @@ a:focus {
     box-shadow: var(--shadow-base);
 }
 
+/* FIXED: Remove problematic shimmer effect for all buttons */
 .btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: var(--gold-shimmer);
-    transition: left 0.6s var(--transition-base);
-    z-index: 1;
-}
-
-.btn:hover::before {
-    left: 100%;
+    display: none !important;
 }
 
 .btn span {
@@ -1602,7 +1664,7 @@ a:focus {
     letter-spacing: 0.5px;
 }
 
-/* Legal action buttons - ADA COMPLIANT UPDATE */
+/* FIXED: Legal action buttons - NO ROTATION EFFECT */
 .legal-actions .btn {
     min-width: 180px;
     font-weight: 600;
@@ -1612,6 +1674,14 @@ a:focus {
     border-radius: 25px;
     position: relative;
     overflow: hidden;
+    /* IMPORTANT: Remove all problematic effects */
+    animation: none !important;
+    transform-origin: center !important;
+}
+
+/* FIXED: Remove shimmer effects from legal buttons */
+.legal-actions .btn::before {
+    display: none !important;
 }
 
 .legal-actions .btn-primary {
@@ -1625,10 +1695,13 @@ a:focus {
 
 .legal-actions .btn-primary:hover {
     background: linear-gradient(135deg, #ffeb3b 0%, #fff59d 50%, #ffeb3b 100%);
-    transform: translateY(-2px) scale(1.02);
+    transform: translateY(-2px) scale(1.02) !important; /* Controlled simple transform */
     box-shadow: var(--shadow-gold-lg);
     color: #000000 !important;
     border-color: #ffeb3b;
+    /* PREVENT rotation */
+    animation: none !important;
+    transition: all 0.3s ease !important;
 }
 
 .legal-actions .btn-primary:focus {
@@ -1639,6 +1712,7 @@ a:focus {
         0 0 0 4px #ffffff,
         0 0 0 8px var(--primary-gold-accessible);
     color: #000000 !important;
+    transform: none !important; /* No transform on focus */
 }
 
 .legal-actions .btn-outline {
@@ -1653,10 +1727,13 @@ a:focus {
 .legal-actions .btn-outline:hover {
     background: var(--primary-gold-accessible);
     color: #000000 !important;
-    transform: translateY(-2px) scale(1.02);
+    transform: translateY(-2px) scale(1.02) !important; /* Controlled simple transform */
     box-shadow: var(--shadow-gold);
     border-color: #f4d03f;
     text-shadow: none;
+    /* PREVENT rotation */
+    animation: none !important;
+    transition: all 0.3s ease !important;
 }
 
 .legal-actions .btn-outline:focus {
@@ -1667,6 +1744,7 @@ a:focus {
         0 0 0 4px #ffffff,
         0 0 0 8px var(--primary-gold-accessible);
     color: var(--primary-gold-accessible) !important;
+    transform: none !important; /* No transform on focus */
 }
 
 /* Form submit buttons */
