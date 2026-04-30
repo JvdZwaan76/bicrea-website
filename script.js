@@ -1003,41 +1003,62 @@
     }
     
     async function submitForm(form, formData) {
-        const submitButton = form.querySelector('button[type="submit"]');
-        const formType = form.getAttribute('data-form-type') || 'contact';
+    const submitButton = form.querySelector('button[type="submit"]');
+    const formType = form.getAttribute('data-form-type') || 'contact';
+    
+    try {
+        // Show loading state
+        if (submitButton) {
+            submitButton.classList.add('loading');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+        }
         
-        try {
-            // Show loading state
-            if (submitButton) {
-                submitButton.classList.add('loading');
-                submitButton.disabled = true;
-                submitButton.textContent = 'Sending...';
+        // REAL Formspree submission
+        const response = await fetch('https://formspree.io/f/xaqvwqbg', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
             }
-            
-            // Simulate form submission (replace with actual endpoint)
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            
+        });
+
+        if (response.ok) {
             showNotification('Thank you! We will get back to you soon.', 'success');
             form.reset();
             
-            // Trigger trust signal
-            addTrustSignal('Form submitted successfully');
-            
-        } catch (error) {
-            showNotification('Sorry, there was an error sending your message. Please try again.', 'error');
-            console.error('Form submission error:', error);
-        } finally {
-            // Reset loading state
-            if (submitButton) {
-                submitButton.classList.remove('loading');
-                submitButton.disabled = false;
-                submitButton.innerHTML = `
-                    <span>Submit Inquiry</span>
-                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                `;
+            // Track successful form submission in Google Analytics
+            if (typeof gtag === 'function') {
+                gtag('event', 'form_submission_success', {
+                    event_category: 'Lead Generation',
+                    event_label: 'Contact Form Submitted'
+                });
             }
+            
+            // Trigger trust signal (keeps your existing beautiful UX)
+            if (typeof addTrustSignal === 'function') {
+                addTrustSignal('Form submitted successfully');
+            }
+            
+        } else {
+            throw new Error('Formspree returned an error');
+        }
+        
+    } catch (error) {
+        showNotification('Sorry, there was an error sending your message. Please try again.', 'error');
+        console.error('Form submission error:', error);
+    } finally {
+        // Reset loading state
+        if (submitButton) {
+            submitButton.classList.remove('loading');
+            submitButton.disabled = false;
+            submitButton.innerHTML = `
+                <span>Submit Inquiry</span>
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            `;
         }
     }
+}
     
     // === FAQ === //
     function initializeFAQ() {
