@@ -1223,15 +1223,74 @@
                 </div>
 
                 <!-- Other Content Sections -->
-                <div id="documentsContent" class="portal-content">
-                    <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Document Library</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 2rem;">Manage and view all your project documents</p>
-                    
-                    <div style="text-align: center; padding: 3rem; color: var(--text-muted);">
-                        <i data-lucide="file-text" style="width: 4rem; height: 4rem; margin: 0 auto 1rem; display: block; opacity: 0.5;"></i>
-                        <h3>Document management system coming soon</h3>
-                        <p>Upload, view, and organize your project documents</p>
+                                <!-- Documents Section - Phase 1 Live -->
+                <div id="documentsContent" class="portal-content active">
+                    <div class="portal-header">
+                        <h2>Document Library</h2>
+                        <p class="portal-subtitle">Secure access to your project reports and documents • Last updated just now</p>
                     </div>
+
+                    <div class="documents-table-container">
+                        <table class="documents-table">
+                            <thead>
+                                <tr>
+                                    <th>Document</th>
+                                    <th>Project</th>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Investment Summary - Q2 2026</strong></td>
+                                    <td>Tampa Bay Commercial Complex</td>
+                                    <td>Apr 28, 2026</td>
+                                    <td><span class="doc-type pdf">PDF</span></td>
+                                    <td>
+                                        <button onclick="downloadReport('investment-summary-q2-2026.pdf')" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-download"></i> Download
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Property Appraisal Report</strong></td>
+                                    <td>Clearwater Investment Portfolio</td>
+                                    <td>Apr 15, 2026</td>
+                                    <td><span class="doc-type pdf">PDF</span></td>
+                                    <td>
+                                        <button onclick="downloadReport('property-appraisal-clearwater.pdf')" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-download"></i> Download
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Closing Statement - Sarasota Retail</strong></td>
+                                    <td>Sarasota Retail Development</td>
+                                    <td>Mar 22, 2026</td>
+                                    <td><span class="doc-type pdf">PDF</span></td>
+                                    <td>
+                                        <button onclick="downloadReport('closing-statement-sarasota.pdf')" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-download"></i> Download
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ROI Performance Dashboard</strong></td>
+                                    <td>Tampa Bay Commercial Complex</td>
+                                    <td>Apr 30, 2026</td>
+                                    <td><span class="doc-type xlsx">XLSX</span></td>
+                                    <td>
+                                        <button onclick="downloadReport('roi-dashboard.xlsx')" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-download"></i> Download
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="portal-footer-note">All documents are encrypted and accessible only to authorized clients. Need a new report? <a href="#" onclick="switchSection('messagesContent'); return false;">Message your advisor</a></p>
                 </div>
 
                 <div id="projectsContent" class="portal-content">
@@ -1708,6 +1767,15 @@
         } else {
             lucide.createIcons();
         }
+    function downloadReport(filename) {
+        showNotification(`Downloading ${filename}...`, 'success');
+        const link = document.createElement('a');
+        link.href = `documents/${filename}`;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
     </script>
 </body>
 </html>
