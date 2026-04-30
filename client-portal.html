@@ -810,7 +810,62 @@
             color: var(--text-muted);
             font-size: 0.75rem;
         }
+/* ====================== DOCUMENT LIBRARY STYLES ====================== */
+.document-search-bar {
+    margin-bottom: 1.5rem;
+}
 
+.documents-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.documents-table th,
+.documents-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.documents-table th {
+    background: rgba(31, 41, 55, 0.6);
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.documents-table tr:last-child td {
+    border-bottom: none;
+}
+
+.doc-type {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.doc-type.pdf  { background: #e53e3e; color: white; }
+.doc-type.xlsx { background: #10b981; color: white; }
+
+.documents-table-container {
+    overflow-x: auto;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+}
+
+/* Mobile improvements */
+@media (max-width: 768px) {
+    .documents-table th,
+    .documents-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}
         /* Responsive */
         @media (max-width: 768px) {
             .container {
@@ -1223,64 +1278,77 @@
                 </div>
 
                 <!-- Other Content Sections -->
-                                <!-- Documents Section - Phase 1 Live -->
+                                                <!-- Polished Document Library - Phase 1.5 -->
                 <div id="documentsContent" class="portal-content active">
                     <div class="portal-header">
                         <h2>Document Library</h2>
                         <p class="portal-subtitle">Secure access to your project reports and documents • Last updated just now</p>
                     </div>
 
+                    <!-- Search & Filter -->
+                    <div class="document-search-bar">
+                        <input 
+                            type="text" 
+                            id="documentSearchInput" 
+                            placeholder="Search documents or projects..." 
+                            style="width: 100%; max-width: 420px; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text-primary); font-size: 1rem;">
+                    </div>
+
                     <div class="documents-table-container">
-                        <table class="documents-table">
+                        <table class="documents-table" id="documentsTable">
                             <thead>
                                 <tr>
                                     <th>Document</th>
                                     <th>Project</th>
-                                    <th>Date</th>
+                                    <th>Uploaded</th>
                                     <th>Type</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
+                            <tbody id="documentsTableBody">
+                                <tr data-search="investment summary tampa bay">
                                     <td><strong>Investment Summary - Q2 2026</strong></td>
                                     <td>Tampa Bay Commercial Complex</td>
                                     <td>Apr 28, 2026</td>
                                     <td><span class="doc-type pdf">PDF</span></td>
                                     <td>
+                                        <button onclick="viewDocument('investment-summary-q2-2026.pdf')" class="btn btn-secondary btn-sm">View</button>
                                         <button onclick="downloadReport('investment-summary-q2-2026.pdf')" class="btn btn-primary btn-sm">
                                             <i class="fas fa-download"></i> Download
                                         </button>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr data-search="property appraisal clearwater">
                                     <td><strong>Property Appraisal Report</strong></td>
                                     <td>Clearwater Investment Portfolio</td>
                                     <td>Apr 15, 2026</td>
                                     <td><span class="doc-type pdf">PDF</span></td>
                                     <td>
+                                        <button onclick="viewDocument('property-appraisal-clearwater.pdf')" class="btn btn-secondary btn-sm">View</button>
                                         <button onclick="downloadReport('property-appraisal-clearwater.pdf')" class="btn btn-primary btn-sm">
                                             <i class="fas fa-download"></i> Download
                                         </button>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr data-search="closing statement sarasota">
                                     <td><strong>Closing Statement - Sarasota Retail</strong></td>
                                     <td>Sarasota Retail Development</td>
                                     <td>Mar 22, 2026</td>
                                     <td><span class="doc-type pdf">PDF</span></td>
                                     <td>
+                                        <button onclick="viewDocument('closing-statement-sarasota.pdf')" class="btn btn-secondary btn-sm">View</button>
                                         <button onclick="downloadReport('closing-statement-sarasota.pdf')" class="btn btn-primary btn-sm">
                                             <i class="fas fa-download"></i> Download
                                         </button>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr data-search="roi dashboard tampa">
                                     <td><strong>ROI Performance Dashboard</strong></td>
                                     <td>Tampa Bay Commercial Complex</td>
                                     <td>Apr 30, 2026</td>
                                     <td><span class="doc-type xlsx">XLSX</span></td>
                                     <td>
+                                        <button onclick="viewDocument('roi-dashboard.xlsx')" class="btn btn-secondary btn-sm">View</button>
                                         <button onclick="downloadReport('roi-dashboard.xlsx')" class="btn btn-primary btn-sm">
                                             <i class="fas fa-download"></i> Download
                                         </button>
@@ -1289,7 +1357,6 @@
                             </tbody>
                         </table>
                     </div>
-
                     <p class="portal-footer-note">All documents are encrypted and accessible only to authorized clients. Need a new report? <a href="#" onclick="switchSection('messagesContent'); return false;">Message your advisor</a></p>
                 </div>
 
@@ -1767,15 +1834,39 @@
         } else {
             lucide.createIcons();
         }
-    function downloadReport(filename) {
-        showNotification(`Downloading ${filename}...`, 'success');
-        const link = document.createElement('a');
-        link.href = `documents/${filename}`;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
+                    // Phase 1.5: Document Library Functions
+        function downloadReport(filename) {
+            showNotification(`Downloading ${filename}...`, 'success');
+            const link = document.createElement('a');
+            link.href = `documents/${filename}`;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function viewDocument(filename) {
+            window.open(`documents/${filename}`, '_blank');
+        }
+
+        // Live search/filter for Document Library
+        function initDocumentSearch() {
+            const searchInput = document.getElementById('documentSearchInput');
+            if (!searchInput) return;
+
+            searchInput.addEventListener('input', function() {
+                const term = this.value.toLowerCase().trim();
+                const rows = document.querySelectorAll('#documentsTableBody tr');
+
+                rows.forEach(row => {
+                    const searchText = row.getAttribute('data-search') || '';
+                    row.style.display = searchText.includes(term) ? '' : 'none';
+                });
+            });
+        }
+
+        // Initialize document search when page loads
+        document.addEventListener('DOMContentLoaded', initDocumentSearch);
     </script>
 </body>
 </html>
