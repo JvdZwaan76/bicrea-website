@@ -200,7 +200,9 @@
                 <div class="portfolio-detailed-item animate-on-scroll">
                     <div class="portfolio-detailed-content">
                         <form class="contact-form" id="contact-form" method="POST" action="https://formspree.io/f/xaqvwqbg" novalidate>
-                            <div class="form-row">
+    <!-- Formspree routing: send everything to the new info@bicrea.com mailbox -->
+    <input type="hidden" name="_to" value="info@bicrea.com">
+    <input type="hidden" name="_subject" value="New BicRea Website Inquiry">
                                 <div class="form-group">
                                     <label for="firstName">First Name *</label>
                                     <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter your first name" required aria-describedby="firstName-error">
