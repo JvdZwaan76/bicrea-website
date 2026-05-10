@@ -171,11 +171,11 @@ ul, ol {
     --font-md:  clamp(1rem,       0.2vw + 0.95rem, 1.0625rem);   /* 16-17px */
     --font-lg:  clamp(1.0625rem,  0.4vw + 1rem,    1.1875rem);   /* 17-19px */
     --font-xl:  clamp(1.1875rem,  0.6vw + 1rem,    1.375rem);    /* 19-22px */
-    --font-2xl: clamp(1.375rem,   1vw + 1rem,      1.75rem);     /* 22-28px */
-    --font-3xl: clamp(1.625rem,   1.6vw + 1rem,    2.25rem);     /* 26-36px */
-    --font-4xl: clamp(2rem,       2.2vw + 1.25rem, 3rem);        /* 32-48px */
-    --font-5xl: clamp(2.5rem,     3vw + 1.5rem,    4rem);        /* 40-64px */
-    --font-6xl: clamp(2.75rem,    4vw + 1.5rem,    5.5rem);      /* 44-88px */
+    --font-2xl: clamp(1.25rem,    0.8vw + 1rem,    1.5rem);      /* 20-24px */
+    --font-3xl: clamp(1.5rem,     1.2vw + 1rem,    2rem);        /* 24-32px */
+    --font-4xl: clamp(1.75rem,    1.5vw + 1.125rem, 2.5rem);     /* 28-40px */
+    --font-5xl: clamp(2rem,       2vw + 1.25rem,   3rem);        /* 32-48px */
+    --font-6xl: clamp(2.25rem,    2.5vw + 1.5rem,  3.75rem);     /* 36-60px */
 
     --leading-none:    1;
     --leading-tight:   1.12;
@@ -184,8 +184,8 @@ ul, ol {
     --leading-relaxed: 1.65;
     --leading-loose:   1.8;
 
-    --tracking-tighter: -0.03em;
-    --tracking-tight:   -0.02em;
+    --tracking-tighter: -0.022em;
+    --tracking-tight:   -0.014em;
     --tracking-normal:  0;
     --tracking-wide:    0.04em;
     --tracking-wider:   0.1em;
@@ -205,9 +205,9 @@ ul, ol {
     --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-out-back:  cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    --transition-fast:  150ms var(--ease-out);
-    --transition-base:  250ms var(--ease-out);
-    --transition-slow:  400ms var(--ease-out);
+    --transition-fast:  200ms var(--ease-out);
+    --transition-base:  300ms var(--ease-out);
+    --transition-slow:  500ms var(--ease-out);
 
     /* --- Layout constants --- */
     --container-max:     1240px;
@@ -739,13 +739,14 @@ section.hero-compact {
     overflow: hidden;
     display: flex;
     align-items: center;
-    min-height: clamp(540px, 80svh, 760px);
+    min-height: clamp(440px, 62svh, 620px);
 }
 
-/* When the hero is the first child of <main> (no contact bar above), it
-   carries the navbar offset itself. */
-main > .hero:first-child,
-main > section.hero:first-child {
+/* Hero margin-top: only when no contact-bar precedes it. Using :has() so
+   pages with a contact-bar (homepage) don't get a double offset that
+   creates a phantom empty band above the hero image. */
+body:not(:has(.contact-bar)) main > .hero:first-child,
+body:not(:has(.contact-bar)) main > section.hero:first-child {
     margin-top: var(--navbar-height);
 }
 
@@ -815,7 +816,7 @@ main > section.hero:first-child {
     color: var(--text-secondary);
     line-height: var(--leading-relaxed);
     margin-bottom: var(--space-7);
-    max-width: 60ch;
+    max-width: 56ch;
     font-weight: 400;
     text-wrap: pretty;
 }
@@ -849,7 +850,7 @@ main > section.hero:first-child {
 
 /* Hero compact — for inner pages, shorter and lighter */
 .hero-compact {
-    min-height: clamp(380px, 50svh, 520px);
+    min-height: clamp(320px, 45svh, 460px);
 }
 
 .hero-compact .hero-title {
@@ -857,16 +858,11 @@ main > section.hero:first-child {
     max-width: 24ch;
 }
 
-/* Decorative ambient chain (methodology page only — preserved hook for JS) */
+/* Ambient chain — was a decorative call-out to the methodology page but
+   added visual noise above the hero. Hidden by default; the methodology
+   page has its own dedicated chain-viz that fills that role properly. */
 .hero-chain-ambient {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    pointer-events: none;
-    opacity: 0.35;
+    display: none;
 }
 
 
@@ -904,11 +900,11 @@ main > section.hero:first-child {
 .eyebrow {
     display: inline-block;
     font-family: var(--font-body);
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 600;
     color: var(--primary-gold);
     text-transform: uppercase;
-    letter-spacing: var(--tracking-widest);
+    letter-spacing: 0.14em;
     margin-bottom: var(--space-4);
     line-height: 1.4;
 }
@@ -926,9 +922,10 @@ main > section.hero:first-child {
 
 .section-divider {
     display: block;
-    width: 56px;
-    height: 2px;
-    background: var(--gold-gradient);
+    width: 40px;
+    height: 1px;
+    background: var(--primary-gold);
+    opacity: 0.7;
     border-radius: var(--radius-full);
     margin: var(--space-4) auto var(--space-5);
 }
@@ -1007,7 +1004,6 @@ main > section.hero:first-child {
     min-height: 44px;
     white-space: nowrap;
     transition:
-        transform var(--transition-fast),
         background var(--transition-fast),
         border-color var(--transition-fast),
         color var(--transition-fast),
@@ -1029,14 +1025,12 @@ main > section.hero:first-child {
 
 .btn-primary:hover {
     color: var(--text-inverse);
-    filter: brightness(1.08);
-    transform: translateY(-1px);
+    filter: brightness(1.06);
     box-shadow: var(--shadow-gold-lg);
 }
 
 .btn-primary:active {
-    transform: translateY(0);
-    filter: brightness(0.96);
+    filter: brightness(0.97);
 }
 
 .btn-outline {
@@ -1116,9 +1110,9 @@ main > section.hero:first-child {
     color: var(--text-primary);
     text-decoration: none;
     transition:
-        transform 400ms var(--ease-out-quint),
         border-color 400ms var(--ease-out-quint),
-        box-shadow 400ms var(--ease-out-quint);
+        box-shadow 400ms var(--ease-out-quint),
+        background 400ms var(--ease-out-quint);
     position: relative;
     overflow: hidden;
 }
@@ -1126,9 +1120,11 @@ main > section.hero:first-child {
 @media (hover: hover) and (pointer: fine) {
     .path-card:hover,
     .path-card-3d:hover {
-        transform: translateY(-4px);
         border-color: var(--border-gold);
         box-shadow: var(--shadow-lg);
+        background: linear-gradient(165deg,
+            rgba(34, 34, 34, 0.7) 0%,
+            rgba(22, 22, 22, 0.95) 100%);
     }
 }
 
@@ -1144,7 +1140,7 @@ main > section.hero:first-child {
 
 .path-card-title {
     font-family: var(--font-heading);
-    font-size: var(--font-3xl);
+    font-size: var(--font-2xl);
     font-weight: 600;
     line-height: var(--leading-tight);
     letter-spacing: var(--tracking-tight);
@@ -1168,11 +1164,6 @@ main > section.hero:first-child {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: var(--tracking-wider);
-    transition: gap var(--transition-base);
-}
-
-.path-card:hover .path-card-cta {
-    gap: calc(var(--space-2) + 4px);
 }
 
 .path-card-arrow {
@@ -1181,7 +1172,7 @@ main > section.hero:first-child {
 }
 
 .path-card:hover .path-card-arrow {
-    transform: translateX(3px);
+    transform: translateX(4px);
 }
 
 
@@ -1200,7 +1191,6 @@ main > section.hero:first-child {
     border: 1px solid var(--border-default);
     border-radius: var(--radius-lg);
     transition:
-        transform 350ms var(--ease-out-quint),
         border-color 350ms var(--ease-out-quint),
         background 350ms var(--ease-out-quint);
 }
@@ -1213,7 +1203,6 @@ section[style*="--bg-secondary"] .card {
 
 @media (hover: hover) and (pointer: fine) {
     .card:hover {
-        transform: translateY(-3px);
         border-color: var(--border-gold);
         background: var(--bg-elevated);
     }
@@ -1334,9 +1323,7 @@ section[style*="--bg-secondary"] .card {
     border: 1px solid var(--border-default);
     border-radius: var(--radius-lg);
     text-align: center;
-    transition:
-        transform 350ms var(--ease-out-quint),
-        border-color 350ms var(--ease-out-quint);
+    transition: border-color 350ms var(--ease-out-quint);
 }
 
 section[style*="bg-secondary"] .stat,
@@ -1346,7 +1333,6 @@ section[style*="--bg-secondary"] .stat {
 
 @media (hover: hover) and (pointer: fine) {
     .stat:hover {
-        transform: translateY(-2px);
         border-color: var(--border-gold);
     }
 }
@@ -1557,8 +1543,8 @@ section[style*="--bg-secondary"] .faq-item {
     border-radius: var(--radius-lg);
     counter-increment: step;
     transition:
-        transform 350ms var(--ease-out-quint),
-        border-color 350ms var(--ease-out-quint);
+        border-color 350ms var(--ease-out-quint),
+        background 350ms var(--ease-out-quint);
 }
 
 section[style*="bg-secondary"] .process-step,
@@ -1568,8 +1554,8 @@ section[style*="--bg-secondary"] .process-step {
 
 @media (hover: hover) and (pointer: fine) {
     .process-step:hover {
-        transform: translateY(-3px);
         border-color: var(--border-gold);
+        background: var(--bg-elevated);
     }
 }
 
@@ -1715,6 +1701,7 @@ section[style*="--bg-secondary"] .situation {
     font-size: var(--font-4xl);
     text-align: center;
     margin-bottom: var(--space-4);
+    letter-spacing: var(--tracking-tight);
 }
 
 .cta-banner p {
@@ -1760,8 +1747,8 @@ section[style*="--bg-secondary"] .situation {
     border-radius: var(--radius-xl);
     padding: var(--space-6);
     transition:
-        transform 350ms var(--ease-out-quint),
-        border-color 350ms var(--ease-out-quint);
+        border-color 350ms var(--ease-out-quint),
+        background 350ms var(--ease-out-quint);
 }
 
 section[style*="bg-secondary"] .team-member,
@@ -1771,8 +1758,8 @@ section[style*="--bg-secondary"] .team-member {
 
 @media (hover: hover) and (pointer: fine) {
     .team-member:hover {
-        transform: translateY(-3px);
         border-color: var(--border-gold);
+        background: var(--bg-elevated);
     }
 }
 
@@ -3398,22 +3385,18 @@ section[style*="--bg-secondary"] .methodology-step {
     border-bottom-color: var(--border-default);
 }
 
-/* Hero content fades as the user scrolls past — JS sets --hero-opacity */
-.hero-content {
-    opacity: var(--hero-opacity, 1);
-}
+/* Hero content stays fully visible — no JS-driven opacity fade.
+   The earlier --hero-opacity hook faded content out too aggressively as
+   the user started scrolling, which felt jarring and broke full-page
+   screenshots. Apple's heroes are static; we follow that lead. */
 
-/* Subtle hero background parallax — JS sets --scroll-y in pixels. We move
-   the background up at 30% of scroll speed, capped via clamp() so it
-   never drifts too far. */
-.hero-bg {
-    transform: translate3d(0, calc(var(--scroll-y, 0px) * 0.3), 0);
-    will-change: transform;
-}
+/* Hero background parallax is intentionally NOT enabled. Static heroes
+   feel more refined; a parallax that drifts at 30% of scroll speed
+   competed with the content scrolling normally above it and read as
+   "the page is sliding wrong." */
 
 @media (prefers-reduced-motion: reduce) {
     .hero-bg { transform: none; }
-    .hero-content { opacity: 1; }
 }
 
 /* Stat value count-up — JS animates from 0 to the data-count-to value */
@@ -3539,27 +3522,26 @@ section[style*="--bg-secondary"] .methodology-step {
 
 
 /* ==========================================================================
-   34. ARROW-LOOP — micro-animation when hovering link arrows
+   34. ARROW-LOOP — subtle micro-interaction on link arrows
    --------------------------------------------------------------------------
-   Arrow slides right, fades to invisible, then re-appears from the left
-   to settle in its original position. Subtle but adds life to call-to-
-   action links.
+   Originally an animation that slid the arrow right, faded it, and brought
+   it back in from the left. That was jarring. We replaced it with a
+   single subtle translateX that defers to the parent component's hover
+   transition for elegance.
    ========================================================================== */
-@keyframes arrow-loop {
-    0%   { transform: translateX(0); opacity: 1; }
-    45%  { transform: translateX(8px); opacity: 0; }
-    55%  { transform: translateX(-8px); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+.arrow-loop {
+    display: inline-block;
+    transition: transform var(--transition-base);
 }
 
 @media (hover: hover) and (pointer: fine) {
     .path-card:hover .arrow-loop,
     .card-link:hover .arrow-loop,
     .path-card-cta:hover .arrow-loop {
-        animation: arrow-loop 0.55s var(--ease-out);
+        transform: translateX(4px);
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .arrow-loop { animation: none !important; }
+    .arrow-loop { transition: none; }
 }
