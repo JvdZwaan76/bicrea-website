@@ -1,0 +1,57 @@
+{
+    "name": "BICREA Florida — Mineral Title & Distressed Property",
+    "short_name": "BICREA Florida",
+    "description": "Institutional-grade mineral title research nationwide and cash purchases of difficult Florida properties. Sarasota-based, owner-led.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#0a0a0a",
+    "theme_color": "#0a0a0a",
+    "lang": "en-US",
+    "dir": "ltr",
+    "categories": ["business", "professional", "real-estate"],
+    "icons": [
+        {
+            "src": "/favicon/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/favicon/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/favicon/maskable-icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Mineral title research",
+            "short_name": "Mineral Title",
+            "description": "Chain-of-title research, runsheets, curative work",
+            "url": "/mineral-title",
+            "icons": [{ "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "Distressed Florida property cash sale",
+            "short_name": "Sell Property",
+            "description": "Code violations, liens, title clouds — clean cash purchases",
+            "url": "/distressed-properties",
+            "icons": [{ "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "Talk to a specialist",
+            "short_name": "Contact",
+            "description": "Smart intake form — about 90 seconds",
+            "url": "/contact",
+            "icons": [{ "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192" }]
+        }
+    ]
+}
