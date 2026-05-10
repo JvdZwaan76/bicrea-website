@@ -3597,9 +3597,14 @@ section[style*="--bg-secondary"] .map-link {
         border-radius: var(--radius-xl);
         color: var(--text-primary);
         box-shadow: 0 32px 64px rgba(0, 0, 0, 0.65);
+        /* Flexbox column so body can scroll while header/footer stay pinned.
+           Critical: overflow: hidden + the form's flex layout below ensure
+           the footer (Save / Accept buttons) is ALWAYS visible regardless
+           of content length. */
+        display: flex;
+        flex-direction: column;
         overflow: hidden;
         font-family: var(--font-body);
-        /* Native <dialog> styling reset */
     }
     .consent-dialog::backdrop {
         background: rgba(0, 0, 0, 0.65);
@@ -3613,7 +3618,19 @@ section[style*="--bg-secondary"] .map-link {
         }
     }
 
+    /* The <form> wrapping the dialog content must propagate the flex column
+       so body can flex-grow + scroll. Without this, the form has no height
+       constraint and the body's overflow-y has nothing to overflow within. */
+    .consent-dialog > form {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        min-block-size: 0;
+        overflow: hidden;
+    }
+
     .consent-dialog-header {
+        flex: 0 0 auto;
         padding: var(--space-xl) var(--space-xl) var(--space-md);
         border-block-end: 1px solid var(--border-subtle);
         position: relative;
@@ -3650,9 +3667,14 @@ section[style*="--bg-secondary"] .map-link {
     .consent-dialog-close:hover { color: var(--text-primary); background: var(--bg-tertiary); }
 
     .consent-dialog-body {
-        padding: var(--space-md) var(--space-xl);
+        /* Flex item: grow to fill remaining space between header and footer,
+           scroll on overflow. min-block-size: 0 is REQUIRED to allow shrinking
+           below content size in a flex column (browser default is min-content). */
+        flex: 1 1 auto;
+        min-block-size: 0;
         overflow-y: auto;
-        max-block-size: calc(80vh - 220px);
+        overscroll-behavior: contain;
+        padding: var(--space-md) var(--space-xl);
     }
 
     /* Category row */
@@ -3757,6 +3779,7 @@ section[style*="--bg-secondary"] .map-link {
     }
 
     .consent-dialog-footer {
+        flex: 0 0 auto;
         padding: var(--space-md) var(--space-xl) var(--space-xl);
         border-block-start: 1px solid var(--border-subtle);
         display: flex;
