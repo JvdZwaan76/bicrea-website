@@ -783,23 +783,43 @@
     }
     .card-title { font-size: var(--font-2xl); margin-block-end: var(--space-md); }
     .card-body { color: var(--text-secondary); margin-block-end: var(--space-lg); }
-    .card-list { margin-block: var(--space-lg); }
+    .card-list {
+        margin-block: var(--space-lg);
+        /* Defensive: explicit list reset + zero padding so the rule below has clean ground */
+        list-style: none;
+        padding-inline-start: 0;
+        padding-left: 0; /* physical fallback */
+    }
     .card-list li {
         position: relative;
+        /* Logical + physical fallbacks. If a downstream cascade clobbers the logical
+           property, the physical one still wins. Both must be present. */
         padding-inline-start: 1.75rem;
+        padding-left: 1.75rem; /* fallback for older Safari/edge cases */
         padding-block: var(--space-2xs);
         color: var(--text-secondary);
         font-size: var(--font-sm);
+        list-style: none;
     }
     .card-list li::before {
         content: '';
         position: absolute;
-        inset-inline-start: 0;
-        inset-block-start: 0.85em;
-        inline-size: 1rem;
+        /* Logical + physical fallbacks for position */
+        inset-inline-start: 0.125rem;
+        left: 0.125rem;
+        inset-block-start: 0.95em;
+        top: 0.95em;
+        /* Logical + physical fallbacks for size */
+        inline-size: 0.875rem;
+        width: 0.875rem;
         block-size: 1.5px;
+        height: 1.5px;
         background: var(--primary-gold);
         border-radius: var(--radius-full);
+        /* Belt-and-braces: ensure the pseudo-element never accidentally inherits
+           text-decoration from a parent and never gets pulled into text flow */
+        text-decoration: none;
+        pointer-events: none;
     }
     .card-link {
         display: inline-flex;
@@ -3424,4 +3444,85 @@
         transition: color var(--transition-fast);
     }
     .consent-footer-link:hover { color: var(--primary-gold); }
+}
+
+/* ==========================================================================
+   v10 Defensive Overrides — bulletproof rendering against cascade bugs
+   --------------------------------------------------------------------------
+   These rules are last-resort defenses against cache/cascade problems that
+   were observed in the v9 deploy where:
+   - .card-list li::before was overlapping text instead of sitting in the
+     padding gutter (because `padding-inline-start: 1.75rem` wasn't being
+     honored — likely a stale cached CSS issue).
+   - Buttons appeared to have horizontal lines through text (likely from
+     `.btn::before` shimmer not starting offscreen, or a third-party
+     extension like Grammarly).
+
+   Highest-priority @layer so these win every cascade fight.
+   ========================================================================== */
+@layer overrides {
+    /* 1. Force list-marker dash to NEVER overlap text. Both logical and
+       physical properties for maximum browser compatibility. */
+    .card-list,
+    ul.card-list {
+        list-style: none !important;
+        padding-inline-start: 0 !important;
+        padding-left: 0 !important;
+    }
+    .card-list > li,
+    ul.card-list > li {
+        position: relative !important;
+        padding-inline-start: 1.75rem !important;
+        padding-left: 1.75rem !important;
+        list-style: none !important;
+    }
+    .card-list > li::before,
+    ul.card-list > li::before {
+        content: '' !important;
+        position: absolute !important;
+        inset-inline-start: 0.125rem !important;
+        left: 0.125rem !important;
+        inset-block-start: 0.95em !important;
+        top: 0.95em !important;
+        inline-size: 0.875rem !important;
+        width: 0.875rem !important;
+        block-size: 1.5px !important;
+        height: 1.5px !important;
+        background: var(--primary-gold) !important;
+        border-radius: var(--radius-full) !important;
+        text-decoration: none !important;
+        pointer-events: none !important;
+    }
+
+    /* 2. Force button shimmer to start offscreen. Defensive against any
+       cascade issue where the initial transform isn't applied. */
+    .btn::before {
+        transform: translateX(-100%) !important;
+    }
+    @media (hover: hover) {
+        .btn:hover::before {
+            transform: translateX(100%) !important;
+        }
+    }
+
+    /* 3. Force no text-decoration on elements that should never have it.
+       Defends against extensions or odd cascade interactions. */
+    .btn,
+    .btn *,
+    .nav-link,
+    .nav-link *,
+    .faq-toggle,
+    .faq-toggle *,
+    .card-list li,
+    .card-list li *:not(.email-link):not([class*="link"]) {
+        text-decoration: none !important;
+    }
+
+    /* 4. Belt-and-braces for buttons: ensure inner spans don't get any
+       weird underline/strikethrough. */
+    .btn span,
+    .btn .btn-arrow {
+        text-decoration: none !important;
+        display: inline-block;
+    }
 }
