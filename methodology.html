@@ -5,17 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>How We Conduct Mineral Title Research — BICREA Methodology</title>
 <meta name="description" content="A detailed, public methodology disclosure: the records BICREA examines, the chain-of-title verification process, runsheet construction, curative identification, internal QA, and the explicit limits of our work. Demonstrates how rigorous mineral title research is actually done.">
-<link rel="canonical" href="https://florida.bicrea.com/methodology">
+<link rel="canonical" href="https://bicrea.com/methodology">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#0a0a0a">
 <meta name="color-scheme" content="dark">
 
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://florida.bicrea.com/methodology">
+<meta property="og:url" content="https://bicrea.com/methodology">
 <meta property="og:site_name" content="BICREA Florida">
 <meta property="og:title" content="How BICREA Conducts Mineral Title Research — Methodology Disclosure">
 <meta property="og:description" content="A public, documented description of how BICREA conducts mineral title research, what records we examine, and the explicit limits of our work.">
-<meta property="og:image" content="https://florida.bicrea.com/images/hero-mineral-title.webp">
+<meta property="og:image" content="https://bicrea.com/images/hero-mineral-title.webp">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="BICREA Methodology — Mineral Title Research">
@@ -44,8 +44,8 @@
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://florida.bicrea.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Methodology", "item": "https://florida.bicrea.com/methodology" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://bicrea.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Methodology", "item": "https://bicrea.com/methodology" }
       ]
     },
     {
@@ -57,20 +57,20 @@
       "author": {
         "@type": "Organization",
         "name": "BICREA",
-        "url": "https://florida.bicrea.com/"
+        "url": "https://bicrea.com/"
       },
       "publisher": {
         "@type": "Organization",
         "name": "BICREA",
-        "url": "https://florida.bicrea.com/",
+        "url": "https://bicrea.com/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://florida.bicrea.com/images/logo.png"
+          "url": "https://bicrea.com/images/logo.png"
         }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://florida.bicrea.com/methodology"
+        "@id": "https://bicrea.com/methodology"
       }
     },
     {
@@ -180,7 +180,7 @@
   <div class="container">
     <div class="section-header animate-on-scroll" style="margin-block-end: var(--space-2xl);">
       <span class="eyebrow">A Visual</span>
-      <h2 id="chain-title" class="section-title" class="case-stat-value-lg">The chain we trace</h2>
+      <h2 id="chain-title" class="section-title">The chain we trace</h2>
       <div class="section-divider" aria-hidden="true"></div>
       <p class="section-subtitle">Every mineral title runs from sovereignty forward through every grantor and grantee until present-day ownership. Each conveyance is a link. Our work is to find them all and put them in order.</p>
     </div>
@@ -264,51 +264,58 @@
       <!-- Sticky vertical chain visualization (storytelling) -->
       <div class="methodology-story-viz" aria-hidden="true">
         <div class="chain-viz">
-          <svg class="chain-viz-svg" viewBox="0 0 480 940" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-            <!-- Connecting lines: gentle zigzag bezier curves -->
-            <path class="chain-line" d="M 240 60 C 240 130 180 130 180 200" />
-            <path class="chain-line" d="M 180 200 C 180 270 300 270 300 340" />
-            <path class="chain-line" d="M 300 340 C 300 410 180 410 180 480" />
-            <path class="chain-line" d="M 180 480 C 180 550 300 550 300 620" />
-            <path class="chain-line" d="M 300 620 C 300 690 180 690 180 760" />
-            <path class="chain-line" d="M 180 760 C 180 810 240 810 240 880" />
-            <path class="chain-line" d="M 240 880 C 240 880 240 880 240 880" /> <!-- placeholder for symmetry -->
+          <svg class="chain-viz-svg" viewBox="0 0 480 1000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+            <!-- 8 nodes evenly spaced vertically (Y: 70, 200, 330, 460, 590, 720, 850, 970)
+                 with a zigzag X pattern: centre → left → right → left → right → left → right → centre.
+                 Each line connects consecutive nodes with a smooth bezier curve. -->
 
-            <!-- 8 nodes — match the 8 process steps below -->
-            <g class="chain-node" transform="translate(240 60)">
+            <!-- Connecting lines: 7 segments (one fewer than 8 nodes) -->
+            <path class="chain-line" d="M 240 70 C 240 130 180 140 180 200" />
+            <path class="chain-line" d="M 180 200 C 180 260 300 270 300 330" />
+            <path class="chain-line" d="M 300 330 C 300 390 180 400 180 460" />
+            <path class="chain-line" d="M 180 460 C 180 520 300 530 300 590" />
+            <path class="chain-line" d="M 300 590 C 300 650 180 660 180 720" />
+            <path class="chain-line" d="M 180 720 C 180 780 300 790 300 850" />
+            <path class="chain-line" d="M 300 850 C 300 910 240 920 240 970" />
+
+            <!-- 8 nodes — match the 8 process steps below.
+                 Each is a numbered circle; the final node is a star (delivery). -->
+            <g class="chain-node" transform="translate(240 70)">
               <circle class="outer" r="26"/><circle class="inner" r="16"/><text>1</text>
             </g>
             <g class="chain-node" transform="translate(180 200)">
               <circle class="outer" r="26"/><circle class="inner" r="16"/><text>2</text>
             </g>
-            <g class="chain-node" transform="translate(300 340)">
+            <g class="chain-node" transform="translate(300 330)">
               <circle class="outer" r="26"/><circle class="inner" r="16"/><text>3</text>
             </g>
-            <g class="chain-node" transform="translate(180 480)">
+            <g class="chain-node" transform="translate(180 460)">
               <circle class="outer" r="26"/><circle class="inner" r="16"/><text>4</text>
             </g>
-            <g class="chain-node" transform="translate(300 620)">
+            <g class="chain-node" transform="translate(300 590)">
               <circle class="outer" r="26"/><circle class="inner" r="16"/><text>5</text>
             </g>
-            <g class="chain-node" transform="translate(180 760)">
+            <g class="chain-node" transform="translate(180 720)">
               <circle class="outer" r="26"/><circle class="inner" r="16"/><text>6</text>
             </g>
-            <g class="chain-node" transform="translate(300 760)">
+            <g class="chain-node" transform="translate(300 850)">
               <circle class="outer" r="26"/><circle class="inner" r="16"/><text>7</text>
             </g>
-            <g class="chain-node" transform="translate(240 880)">
-              <circle class="outer" r="32"/><circle class="inner" r="22"/><text>★</text>
+            <g class="chain-node chain-node-star" transform="translate(240 970)">
+              <circle class="outer" r="30"/><circle class="inner" r="20"/><text>★</text>
             </g>
 
-            <!-- Side labels -->
-            <text class="chain-label chain-label-bold" x="40" y="60" dy="5">Engagement</text>
-            <text class="chain-label chain-label-bold" x="40" y="200" dy="5">Sovereignty</text>
-            <text class="chain-label chain-label-bold" x="350" y="340" dy="5">Chain build</text>
-            <text class="chain-label chain-label-bold" x="40" y="480" dy="5">Severance</text>
-            <text class="chain-label chain-label-bold" x="350" y="620" dy="5">Encumbrances</text>
-            <text class="chain-label chain-label-bold" x="40" y="760" dy="5">Curative</text>
-            <text class="chain-label chain-label-bold" x="350" y="760" dy="5">Review</text>
-            <text class="chain-label chain-label-bold" x="40" y="880" dy="5">Delivered</text>
+            <!-- Side labels — alternating sides matching node positions.
+                 text-anchor controls alignment: 'end' for labels left of node,
+                 'start' for labels right of node. -->
+            <text class="chain-label" x="290" y="70"  text-anchor="start">Engagement</text>
+            <text class="chain-label" x="130" y="200" text-anchor="end">Sovereignty</text>
+            <text class="chain-label" x="350" y="330" text-anchor="start">Chain build</text>
+            <text class="chain-label" x="130" y="460" text-anchor="end">Severance</text>
+            <text class="chain-label" x="350" y="590" text-anchor="start">Encumbrances</text>
+            <text class="chain-label" x="130" y="720" text-anchor="end">Curative</text>
+            <text class="chain-label" x="350" y="850" text-anchor="start">Review</text>
+            <text class="chain-label" x="190" y="970" text-anchor="end">Delivered</text>
           </svg>
         </div>
       </div>

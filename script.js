@@ -459,8 +459,16 @@
     /* ---------- Scroll-pinned methodology storytelling ----------
        Each step in the story has data-step="N" matching a chain element.
        As each step enters the central viewport band, that step becomes
-       active, and the corresponding chain elements (line N-1 → N, node N)
-       get the .is-active class for the highlight.
+       the active one. The chain visualization reflects two distinct states:
+
+       1. .is-completed  — every node BEFORE the current step (subtle gold)
+       2. .is-active     — ONLY the current step (full gold highlight + scale)
+
+       Lines that connect node N → node N+1 light up once node N is
+       completed (i.e., once the user has scrolled past step N).
+
+       This gives the user a clear sense of "where they are in the chain"
+       instead of just spotlighting one node in isolation.
     */
     var storySteps = document.querySelectorAll('.methodology-story-steps .methodology-step[data-step]');
     var chainSvg = document.querySelector('.methodology-story-viz .chain-viz-svg');
@@ -473,13 +481,20 @@
             storySteps.forEach(function (s) {
                 s.classList.toggle('is-active', s.getAttribute('data-step') === String(num));
             });
-            // Lines connect node N to node N+1, so up to step N highlight lines 1..N-1
+            // Lines: line i (0-indexed) connects node (i+1) to node (i+2).
+            // A line is "completed" once both endpoints are at-or-before
+            // the current step — i.e., when (i + 1) < num (the destination
+            // node has been reached).
             stepLines.forEach(function (line, i) {
                 line.classList.toggle('is-active', (i + 1) < num);
             });
-            // Nodes 1..N highlight progressively up to active step
+            // Nodes: progressive accumulation.
+            //   .is-active     → exactly the current step (1-indexed === num)
+            //   .is-completed  → every step strictly before the current one
             stepNodes.forEach(function (node, i) {
-                node.classList.toggle('is-active', (i + 1) === num);
+                var n = i + 1;
+                node.classList.toggle('is-active', n === num);
+                node.classList.toggle('is-completed', n < num);
             });
         }
 

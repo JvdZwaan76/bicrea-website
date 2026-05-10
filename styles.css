@@ -892,6 +892,10 @@ body:not(:has(.contact-bar)) main > section.hero:first-child {
     color: var(--text-muted);
     font-size: 0.875rem;
     line-height: 1.4;
+    /* Design system vertical rhythm: trust pills are a secondary content block
+       between the subtitle and the primary CTA. They need breathing room so
+       the CTA doesn't visually collide with the small italic-toned text. */
+    margin-bottom: var(--space-7);
 }
 
 .hero-trust-item {
@@ -2010,7 +2014,11 @@ section[style*="--bg-secondary"] .case-study {
 
 @media (min-width: 992px) {
     .methodology-story {
-        grid-template-columns: 1fr 1fr;
+        /* Chain visualization column is constrained — it doesn't need half
+           the row width since the SVG itself is narrow. The steps column
+           takes the remainder so step text doesn't get cramped into a thin
+           1fr while the chain column sits mostly empty. */
+        grid-template-columns: minmax(280px, 360px) 1fr;
         gap: var(--space-7);
         /* No align-items here. Default 'stretch' lets the chain-viz cell
            grow to match the much taller steps column, which is what makes
@@ -2162,9 +2170,9 @@ section[style*="--bg-secondary"] .methodology-step {
     transition: fill 0.4s var(--ease-out);
 }
 
-.chain-node .num {
+.chain-node > text {
     font-family: var(--font-heading);
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     fill: var(--text-muted);
     text-anchor: middle;
@@ -2185,8 +2193,50 @@ section[style*="--bg-secondary"] .methodology-step {
     fill: var(--primary-gold);
 }
 
-.chain-node.is-active .num {
+.chain-node.is-active > text {
     fill: var(--bg-primary);
+}
+
+/* Progressive state: completed steps (everything before current) get a
+   subdued gold accent so the user can see how far they've come. */
+.chain-node.is-completed .outer {
+    fill: rgba(212, 175, 55, 0.10);
+    stroke: rgba(212, 175, 55, 0.55);
+}
+
+.chain-node.is-completed .inner {
+    fill: var(--bg-card);
+    stroke: rgba(212, 175, 55, 0.4);
+}
+
+.chain-node.is-completed > text {
+    fill: var(--primary-gold);
+}
+
+/* The final star node (8th node, "Delivered") always reads as the
+   destination — fully gold regardless of scroll position. */
+.chain-node-star .outer {
+    fill: rgba(212, 175, 55, 0.16);
+    stroke: var(--primary-gold);
+}
+
+.chain-node-star .inner {
+    fill: var(--primary-gold);
+}
+
+.chain-node-star > text {
+    fill: var(--bg-primary);
+    font-size: 17px;
+}
+
+/* Tabular reference number — used in the contact-form confirmation
+   ("Reference: BCR-{timestamp}") and anywhere a numeric ID renders inline. */
+.num {
+    font-family: var(--font-body);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--primary-gold);
+    letter-spacing: 0.02em;
 }
 
 .chain-label {
