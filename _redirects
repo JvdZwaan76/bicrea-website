@@ -1,0 +1,33 @@
+# Cloudflare Pages: Redirects configuration
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Strip .html extension — 301 permanent redirects for SEO
+/index.html                  /                          301
+/mineral-title.html          /mineral-title             301
+/methodology.html            /methodology               301
+/distressed-properties.html  /distressed-properties     301
+/about.html                  /about                     301
+/process.html                /process                   301
+/case-studies.html           /case-studies              301
+/contact.html                /contact                   301
+/privacy.html                /privacy                   301
+/terms.html                  /terms                     301
+/disclosures.html            /disclosures               301
+
+# Methodology aliases
+/how-we-work                 /methodology               301
+/research-methodology        /methodology               301
+/title-research-methodology  /methodology               301
+
+# Common alternate URLs people might try
+/services                /                          301
+/services/mineral-title  /mineral-title             301
+/services/distressed     /distressed-properties     301
+/we-buy-houses           /distressed-properties     301
+/sell-house              /distressed-properties     301
+/cash-offer              /distressed-properties     301
+/team                    /about                     301
+/portfolio               /case-studies              301
+
+# 404 catch-all (Cloudflare Pages serves /404.html automatically; this ensures it)
+/* /404.html 404

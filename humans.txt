@@ -1,0 +1,22 @@
+/* TEAM */
+Founder & CEO: Devin Molina
+Chief Analyst: Sandra Petkov
+Investment Director: Christian Hickey
+Location: Sarasota, Florida, USA
+Contact: info@bicrea.com
+
+/* SITE */
+Last update: 2026-05-10
+Standards: HTML5, CSS3 (modern: @layer, container queries, color-mix, text-wrap)
+Components: vanilla JS (no framework dependencies)
+Hosting: Cloudflare Pages
+Software: GitHub, Cloudflare DNS, Formspree
+
+/* THANKS */
+This site is built with care for the people who use it.
+If you find an issue, please tell us at info@bicrea.com.
+
+                       BICREA
+                       4360 Winners Circle
+                       Sarasota, FL 34238
+                       florida.bicrea.com

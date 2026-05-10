@@ -1,0 +1,86 @@
+# Cloudflare Pages: Headers configuration
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+# All routes — security baseline
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-XSS-Protection: 1; mode=block
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https://formspree.io https://www.google-analytics.com; form-action 'self' https://formspree.io;
+
+# Long-cache static assets
+/styles.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/script.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/favicon/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML — short cache, must revalidate
+/*.html
+  Cache-Control: public, max-age=300, must-revalidate
+
+# Service Worker — must be served from same origin with correct content type
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+  Service-Worker-Allowed: /
+  Content-Type: application/javascript; charset=utf-8
+
+# Critical CSS reference (won't typically be requested directly)
+/critical.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# robots, sitemap, well-known — short cache
+/robots.txt
+  Cache-Control: public, max-age=3600
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+/humans.txt
+  Cache-Control: public, max-age=86400
+
+/.well-known/security.txt
+  Cache-Control: public, max-age=86400
+  Content-Type: text/plain; charset=utf-8
+
+# Internal documentation files — discourage search-engine indexing.
+# These files exist in the deploy for maintainers but are not for public reading.
+# To eliminate from the deploy entirely (maximum privacy), delete them from the
+# build output before pushing to Cloudflare Pages.
+/README.md
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: private, no-store
+
+/EMAIL-ROUTING.md
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: private, no-store
+
+/GA4-SETUP.md
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: private, no-store
+
+/SUBSTANTIATION-CHECKLIST.md
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: private, no-store
+
+# v9: new JavaScript modules — same long-cache treatment as styles.css/script.js
+/email-protect.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/consent.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/analytics.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/smart-form.js
+  Cache-Control: public, max-age=31536000, immutable

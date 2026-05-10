@@ -1,0 +1,31 @@
+# BICREA Florida — robots.txt
+# https://florida.bicrea.com/
+
+User-agent: *
+Allow: /
+Disallow: /404
+Disallow: /functions/
+Disallow: /README.md
+Disallow: /EMAIL-ROUTING.md
+Disallow: /GA4-SETUP.md
+Disallow: /SUBSTANTIATION-CHECKLIST.md
+
+# Disallow common AI training crawlers (preserves content for editorial use)
+# Remove these blocks if you want AI training inclusion
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+# Sitemap
+Sitemap: https://florida.bicrea.com/sitemap.xml
