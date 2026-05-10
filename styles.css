@@ -379,9 +379,19 @@ section.hero-compact {
 .text-left   { text-align: left; }
 .text-right  { text-align: right; }
 
-.text-muted  { color: var(--text-muted); }
-.text-faint  { color: var(--text-faint); }
-.text-accent { color: var(--primary-gold); }
+.text-muted     { color: var(--text-muted); }
+.text-faint     { color: var(--text-faint); }
+.text-accent    { color: var(--primary-gold); }
+.text-primary   { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+
+.text-sm { font-size: 0.875rem; }
+.text-lg { font-size: var(--font-lg); line-height: var(--leading-relaxed); }
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .mt-xs  { margin-top: var(--space-2); }
 .mt-sm  { margin-top: var(--space-3); }
@@ -402,6 +412,53 @@ section.hero-compact {
 }
 @media (min-width: 768px) {
     .hidden-desktop { display: none; }
+}
+
+/* Centered button group (used in section footers) */
+.btn-group-center {
+    justify-content: center;
+}
+
+/* Button group with extra top spacing — used when group sits below a body block */
+.btn-group-top-spaced {
+    margin-top: var(--space-5);
+}
+
+/* Centred narrow CTA card (used on distressed-properties and mineral-title pages
+   for the in-content "next step" cards) */
+.card-cta-tight {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--space-7);
+    text-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+}
+
+section.section-alt .card-cta-tight,
+section[style*="bg-secondary"] .card-cta-tight,
+section[style*="--bg-secondary"] .card-cta-tight {
+    background: var(--bg-card-alt);
+}
+
+/* Block-margin shorthand utility (replaces inline margin-block: ... ...) */
+.my-block-lg-md {
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-4);
+}
+
+/* Light label — used in case-study stats, etc. */
+.contact-label-light {
+    display: block;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+}
+
+/* Larger case-study stat values */
+.case-stat-value-lg {
+    font-size: var(--font-3xl);
 }
 
 /* iOS input zoom prevention */
@@ -1196,7 +1253,8 @@ body:not(:has(.contact-bar)) main > section.hero:first-child {
 }
 
 /* On a bg-secondary section, use the lighter card colour for contrast */
-section[style*="bg-secondary"] .card,
+section.section-alt .card,
+    section[style*="bg-secondary"] .card,
 section[style*="--bg-secondary"] .card {
     background: var(--bg-card-alt);
 }
@@ -1326,7 +1384,8 @@ section[style*="--bg-secondary"] .card {
     transition: border-color 350ms var(--ease-out-quint);
 }
 
-section[style*="bg-secondary"] .stat,
+section.section-alt .stat,
+    section[style*="bg-secondary"] .stat,
 section[style*="--bg-secondary"] .stat {
     background: var(--bg-card-alt);
 }
@@ -1375,7 +1434,8 @@ section[style*="--bg-secondary"] .stat {
     text-align: center;
 }
 
-section[style*="bg-secondary"] .testimonial,
+section.section-alt .testimonial,
+    section[style*="bg-secondary"] .testimonial,
 section[style*="--bg-secondary"] .testimonial {
     background: var(--bg-card-alt);
 }
@@ -1442,7 +1502,8 @@ section[style*="--bg-secondary"] .testimonial {
         background var(--transition-base);
 }
 
-section[style*="bg-secondary"] .faq-item,
+section.section-alt .faq-item,
+    section[style*="bg-secondary"] .faq-item,
 section[style*="--bg-secondary"] .faq-item {
     background: var(--bg-card-alt);
 }
@@ -1547,7 +1608,8 @@ section[style*="--bg-secondary"] .faq-item {
         background 350ms var(--ease-out-quint);
 }
 
-section[style*="bg-secondary"] .process-step,
+section.section-alt .process-step,
+    section[style*="bg-secondary"] .process-step,
 section[style*="--bg-secondary"] .process-step {
     background: var(--bg-card-alt);
 }
@@ -1622,7 +1684,8 @@ section[style*="--bg-secondary"] .process-step {
     transition: border-color var(--transition-base);
 }
 
-section[style*="bg-secondary"] .situation,
+section.section-alt .situation,
+    section[style*="bg-secondary"] .situation,
 section[style*="--bg-secondary"] .situation {
     background: var(--bg-card-alt);
 }
@@ -1751,7 +1814,8 @@ section[style*="--bg-secondary"] .situation {
         background 350ms var(--ease-out-quint);
 }
 
-section[style*="bg-secondary"] .team-member,
+section.section-alt .team-member,
+    section[style*="bg-secondary"] .team-member,
 section[style*="--bg-secondary"] .team-member {
     background: var(--bg-card-alt);
 }
@@ -1835,7 +1899,8 @@ section[style*="--bg-secondary"] .team-member {
     border-radius: var(--radius-xl);
 }
 
-section[style*="bg-secondary"] .case-study,
+section.section-alt .case-study,
+    section[style*="bg-secondary"] .case-study,
 section[style*="--bg-secondary"] .case-study {
     background: var(--bg-card-alt);
 }
@@ -1979,7 +2044,8 @@ section[style*="--bg-secondary"] .case-study {
         background var(--transition-base);
 }
 
-section[style*="bg-secondary"] .methodology-step,
+section.section-alt .methodology-step,
+    section[style*="bg-secondary"] .methodology-step,
 section[style*="--bg-secondary"] .methodology-step {
     background: var(--bg-card-alt);
 }
@@ -2394,7 +2460,297 @@ section[style*="--bg-secondary"] .methodology-step {
 
 
 /* ==========================================================================
-   29. CONSENT FOOTER LINK (small "Cookie preferences" trigger)
+   28a. SECTION VARIANTS — apply via class, not inline style
+   --------------------------------------------------------------------------
+   Every page used `style="background: var(--bg-secondary);"` directly on
+   <section> tags to alternate dark bands. That's 13 inline styles — moved
+   here to a single named class so the alternation is part of the design
+   system, not page-level guesswork.
+   ========================================================================== */
+.section-alt {
+    background: var(--bg-secondary);
+}
+
+
+/* ==========================================================================
+   28b. CONTACT BLOCK — used on contact.html "Direct contact" panel
+   --------------------------------------------------------------------------
+   Each contact row (Phone / Email / Office) used to be 3 nested divs with
+   8 inline styles between them. This component captures that pattern as
+   reusable structure. Markup:
+
+     <div class="contact-block">
+       <span class="contact-label">Phone</span>
+       <a class="contact-value" href="tel:...">+1 (805) 233-2942</a>
+       <p class="contact-note">Monday-Friday...</p>
+     </div>
+   ========================================================================== */
+.contact-block {
+    margin-bottom: var(--space-7);
+}
+
+.contact-block:last-of-type {
+    margin-bottom: var(--space-5);
+}
+
+.contact-panel-title {
+    font-family: var(--font-heading);
+    font-size: var(--font-2xl);
+    font-weight: 600;
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--text-primary);
+    margin-bottom: var(--space-6);
+}
+
+.contact-label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: var(--space-2);
+    line-height: 1.4;
+}
+
+.contact-value {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: var(--font-3xl);
+    font-weight: 600;
+    color: var(--primary-gold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    text-decoration: none;
+    border: 0;
+    transition: color var(--transition-fast);
+}
+
+.contact-value.contact-value-sm {
+    font-size: var(--font-2xl);
+}
+
+a.contact-value:hover {
+    color: var(--primary-gold-light);
+}
+
+.contact-text {
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+}
+
+.contact-note {
+    margin-top: var(--space-2);
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    line-height: var(--leading-relaxed);
+}
+
+
+/* ==========================================================================
+   28c. MAP LINK — elegant row replacement for embedded map iframes
+   ========================================================================== */
+.map-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition:
+        border-color var(--transition-base),
+        background var(--transition-base);
+}
+
+section.section-alt .map-link,
+section.section-alt .map-link,
+    section[style*="bg-secondary"] .map-link,
+section[style*="--bg-secondary"] .map-link {
+    background: var(--bg-card-alt);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .map-link:hover {
+        border-color: var(--border-gold);
+        background: var(--bg-elevated);
+    }
+    .map-link:hover .map-link-arrow {
+        transform: translateX(4px);
+    }
+}
+
+.map-link-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    border-radius: var(--radius-md);
+    color: var(--primary-gold);
+}
+
+.map-link-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.map-link-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.map-link-meta {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.map-link-arrow {
+    flex-shrink: 0;
+    color: var(--primary-gold);
+    font-size: 1rem;
+    line-height: 1;
+    transition: transform var(--transition-base);
+}
+
+
+/* ==========================================================================
+   28d. PROSE — long-form article content (legal pages, methodology)
+   --------------------------------------------------------------------------
+   The .form-card.mb-xl pattern on privacy/terms/disclosures already gives
+   article sections a card-style enclosure. These additions standardise
+   what lives inside: bulleted prose lists, sub-headings, fine-print blocks.
+   Replaces ~30 inline styles across the legal pages.
+   ========================================================================== */
+.prose-list {
+    list-style: disc;
+    margin: var(--space-4) 0;
+    padding-left: 1.25rem;
+}
+
+.prose-list > li {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-3);
+    list-style: disc;
+}
+
+.prose-list > li:last-child {
+    margin-bottom: 0;
+}
+
+.prose-list > li::marker {
+    color: var(--text-muted);
+}
+
+.prose-list strong {
+    color: var(--text-primary);
+}
+
+/* Tighter variant for nested or dense lists */
+.prose-list.prose-list-tight > li {
+    margin-bottom: var(--space-2);
+    font-size: 0.875rem;
+}
+
+/* Sub-heading inside a .form-card article (was 4× inline) */
+.prose-subhead {
+    display: block;
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-3);
+    font-family: var(--font-body);
+    font-size: var(--font-base);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: var(--leading-snug);
+}
+
+
+/* ==========================================================================
+   28e. NOTE — small disclaimer / helper text
+   --------------------------------------------------------------------------
+   Replaces inline patterns like
+       style="font-size: var(--font-sm); color: var(--text-muted);..."
+   that appeared scattered across pages for fine print and aside text.
+   ========================================================================== */
+.note {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: var(--leading-relaxed);
+}
+
+.note-block {
+    margin-top: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: var(--leading-relaxed);
+}
+
+.note-block strong {
+    color: var(--text-primary);
+}
+
+/* Section-end fine print — small centred print at the bottom of a section */
+.section-fineprint {
+    margin-top: var(--space-7);
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: var(--leading-relaxed);
+}
+
+
+/* ==========================================================================
+   28f. NARROW CONTENT — centred text columns
+   --------------------------------------------------------------------------
+   Replaces inline patterns like
+       style="text-align:center; max-inline-size:640px; margin-inline:auto;"
+   ========================================================================== */
+.text-narrow {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-center-block {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.text-center-block-tight {
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+/* ==========================================================================
+   28g. CONSENT FOOTER LINK (small "Cookie preferences" trigger)
    ========================================================================== */
 .consent-footer-link {
     color: var(--text-muted);

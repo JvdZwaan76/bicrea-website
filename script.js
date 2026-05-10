@@ -292,34 +292,15 @@
         });
     });
 
-    /* ---------------- Magnetic CTA hover (subtle, hover-only) ---------------- */
-    if (canHover && !prefersReducedMotion) {
-        document.querySelectorAll('.btn-primary, .btn-outline').forEach(function (btn) {
-            var rect = null;
-            var rafId = null;
+    /* ---------------- Magnetic CTA hover REMOVED ----------------
+       Previously: hovering .btn-primary / .btn-outline made the button
+       physically follow the mouse cursor (strength 0.15). That created
+       a "wonky" feeling where buttons drifted as the user mouse-moved
+       over them. Apple-style design keeps buttons static; subtle CSS
+       brightness on hover is enough.
 
-            function move(e) {
-                if (!rect) rect = btn.getBoundingClientRect();
-                var x = e.clientX - rect.left - rect.width / 2;
-                var y = e.clientY - rect.top - rect.height / 2;
-                var strength = 0.15;
-                cancelAnimationFrame(rafId);
-                rafId = requestAnimationFrame(function () {
-                    btn.style.transform = 'translate(' + (x * strength) + 'px, calc(-2px + ' + (y * strength) + 'px))';
-                });
-            }
-            function reset() {
-                rect = null;
-                cancelAnimationFrame(rafId);
-                rafId = requestAnimationFrame(function () {
-                    btn.style.transform = '';
-                });
-            }
-            btn.addEventListener('mouseenter', function (e) { rect = btn.getBoundingClientRect(); move(e); });
-            btn.addEventListener('mousemove', move);
-            btn.addEventListener('mouseleave', reset);
-        });
-    }
+       Hover state is now entirely CSS-driven (see .btn-primary:hover
+       in styles.css). No JS effect on hover.                          */
 
     /* ---------------- Chain-of-title viz observer ---------------- */
     var chainViz = document.querySelector('.chain-viz-svg');
@@ -407,92 +388,28 @@
     var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-    /* ---------- Hero parallax + scroll fade ---------- */
-    var heroEl = document.querySelector('.hero:not(.hero-compact)');
-    if (heroEl && !prefersReducedMotion) {
-        var heroHeight = heroEl.offsetHeight;
-        var heroTicking = false;
+    /* ---------- Hero parallax + scroll fade REMOVED ----------
+       The CSS rules consuming --scroll-y and --hero-opacity were
+       removed in the v13 polish pass (parallax drift competed with
+       page scroll; the fade hid hero content too aggressively).
+       Setting unused CSS variables on every scroll frame was wasted
+       CPU. JS now leaves the hero alone — it's static, which is
+       more refined.                                                */
 
-        function updateHeroParallax() {
-            var y = window.scrollY;
-            // Only update while user is in the hero region
-            if (y > heroHeight * 1.2) { heroTicking = false; return; }
-            heroEl.style.setProperty('--scroll-y', y + 'px');
-            // Fade content as user scrolls past hero
-            var fade = Math.max(0, 1 - (y / (heroHeight * 0.7)));
-            heroEl.style.setProperty('--hero-opacity', fade.toFixed(3));
-            heroTicking = false;
-        }
-        window.addEventListener('scroll', function () {
-            if (!heroTicking) {
-                window.requestAnimationFrame(updateHeroParallax);
-                heroTicking = true;
-            }
-        }, { passive: true });
-        window.addEventListener('resize', function () { heroHeight = heroEl.offsetHeight; }, { passive: true });
-        updateHeroParallax();
-    }
+    /* ---------- Card 3D tilt REMOVED ----------
+       The tilt-on-mouse-move effect set --tilt-x and --tilt-y on
+       .card-3d / .path-card-3d, but the v13 CSS doesn't consume
+       those variables. The tilt was also one of the effects users
+       described as "wonky" — fine when subtle, awkward when the
+       mouse moves quickly. Cards now stay static; hover state is a
+       refined border-color + background shift (see styles.css).    */
 
-    /* ---------- Card 3D tilt ---------- */
-    if (canHover && !prefersReducedMotion) {
-        var TILT_MAX = 4; // degrees — subtle by design
-        document.querySelectorAll('.card-3d, .path-card-3d').forEach(function (card) {
-            var rect = null;
-            var rafId = null;
-
-            function updateTilt(e) {
-                if (!rect) rect = card.getBoundingClientRect();
-                var x = e.clientX - rect.left;
-                var y = e.clientY - rect.top;
-                var px = x / rect.width;   // 0 → 1
-                var py = y / rect.height;  // 0 → 1
-                var rotY = (px - 0.5) * 2 * TILT_MAX; // mouse left = -, right = +
-                var rotX = (0.5 - py) * 2 * TILT_MAX; // mouse top = +, bottom = -
-                cancelAnimationFrame(rafId);
-                rafId = requestAnimationFrame(function () {
-                    card.style.setProperty('--tilt-x', rotX.toFixed(2) + 'deg');
-                    card.style.setProperty('--tilt-y', rotY.toFixed(2) + 'deg');
-                });
-            }
-            function reset() {
-                rect = null;
-                cancelAnimationFrame(rafId);
-                card.classList.remove('is-hovering');
-                card.style.removeProperty('--tilt-x');
-                card.style.removeProperty('--tilt-y');
-            }
-            card.addEventListener('mouseenter', function (e) {
-                rect = card.getBoundingClientRect();
-                card.classList.add('is-hovering');
-                updateTilt(e);
-            });
-            card.addEventListener('mousemove', updateTilt);
-            card.addEventListener('mouseleave', reset);
-        });
-    }
-
-    /* ---------- Button ripple ---------- */
-    if (!prefersReducedMotion) {
-        document.addEventListener('click', function (e) {
-            var btn = e.target.closest('.btn');
-            if (!btn || btn.disabled) return;
-            // Skip ripple on right-click and modifier-key clicks
-            if (e.button !== 0) return;
-
-            var rect = btn.getBoundingClientRect();
-            var size = Math.max(rect.width, rect.height);
-            var ripple = document.createElement('span');
-            ripple.className = 'ripple';
-            ripple.style.width = size + 'px';
-            ripple.style.height = size + 'px';
-            ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-            ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
-            btn.appendChild(ripple);
-            setTimeout(function () {
-                if (ripple.parentNode) ripple.parentNode.removeChild(ripple);
-            }, 650);
-        });
-    }
+    /* ---------- Button ripple REMOVED ----------
+       Material-style ripple effects were appending a <span> element
+       to every clicked .btn, then removing it 650ms later. That's
+       DOM churn on every click for a heavy visual effect that reads
+       as "not Apple." The CSS :active state on buttons provides a
+       subtle brightness shift as click feedback, which is enough.   */
 
     /* ---------- Floating-label data-filled detection ---------- */
     document.querySelectorAll('.form-floating .form-control').forEach(function (input) {

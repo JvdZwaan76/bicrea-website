@@ -131,41 +131,45 @@
 
 <section aria-labelledby="contact-title">
   <div class="container">
-    <div class="section-header">
-      <h2 id="contact-title" class="sr-only">Contact information and inquiry form</h2>
-    </div>
+    <h2 id="contact-title" class="sr-only">Contact information and inquiry form</h2>
 
     <div class="grid grid-2" style="gap: var(--space-3xl); align-items: start;">
 
       <div class="animate-on-scroll" style="order: 2;">
-        <h3 style="font-size: var(--font-2xl); margin-bottom: var(--space-lg);">Direct contact</h3>
+        <h3 class="contact-panel-title">Direct contact</h3>
 
-        <div style="margin-bottom: var(--space-xl);">
-          <div style="font-size: var(--font-xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: var(--space-2xs);">Phone</div>
-          <a href="tel:+18052332942" style="font-size: var(--font-2xl); color: var(--primary-gold); font-family: var(--font-heading); border: 0;">+1 (805) 233-2942</a>
-          <p style="font-size: var(--font-sm); color: var(--text-muted); margin-top: var(--space-xs);">Monday–Friday, 9:00 AM – 6:00 PM Eastern. After-hours messages reviewed Monday morning.</p>
+        <div class="contact-block">
+          <span class="contact-label">Phone</span>
+          <a class="contact-value" href="tel:+18052332942">+1 (805) 233-2942</a>
+          <p class="contact-note">Monday–Friday, 9:00 AM – 6:00 PM Eastern. After-hours messages reviewed Monday morning.</p>
         </div>
 
-        <div style="margin-bottom: var(--space-xl);">
-          <div style="font-size: var(--font-xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: var(--space-2xs);">Email</div>
-          <a href="#" class="email-link" style="font-size: var(--font-xl); color: var(--primary-gold); font-family: var(--font-heading); border: 0;" data-u="vasb" data-d="ovpern.pbz" rel="nofollow">[email]</a>
-          <p style="font-size: var(--font-sm); color: var(--text-muted); margin-top: var(--space-xs);">Response within one business day on weekdays.</p>
+        <div class="contact-block">
+          <span class="contact-label">Email</span>
+          <a href="#" class="contact-value contact-value-sm email-link" data-u="vasb" data-d="ovpern.pbz" rel="nofollow">[email]</a>
+          <p class="contact-note">Response within one business day on weekdays.</p>
         </div>
 
-        <div style="margin-bottom: var(--space-xl);">
-          <div style="font-size: var(--font-xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: var(--space-2xs);">Office</div>
-          <p style="color: var(--text-secondary); margin-bottom: 0;">BICREA<br>4360 Winners Circle<br>Sarasota, FL 34238<br>United States</p>
+        <div class="contact-block">
+          <span class="contact-label">Office</span>
+          <p class="contact-text">BICREA<br>4360 Winners Circle<br>Sarasota, FL 34238<br>United States</p>
         </div>
 
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3553.5!2d-82.5306!3d27.3364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s!2s!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-          width="100%"
-          height="280"
-          style="border: 1px solid var(--border-default); border-radius: var(--radius-lg); margin-top: var(--space-md);"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="BICREA office location"></iframe>
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=4360+Winners+Circle+Sarasota+FL+34238"
+          target="_blank"
+          rel="noopener"
+          class="map-link"
+          aria-label="View BICREA office on Google Maps (opens in new tab)">
+          <span class="map-link-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span class="map-link-text">
+            <span class="map-link-title">View on Google Maps</span>
+            <span class="map-link-meta">4360 Winners Circle, Sarasota, FL 34238</span>
+          </span>
+          <span class="map-link-arrow" aria-hidden="true">→</span>
+        </a>
       </div>
 
       <div class="animate-on-scroll" style="order: 1;">
@@ -607,7 +611,7 @@
             <h2>Thank you. Your inquiry is in.</h2>
             <p data-smart-summary>A BICREA specialist will reply within one business day.</p>
             <div class="smart-form-success-summary">
-              <strong style="color: var(--text-secondary); display: block; margin-block-end: var(--space-xs);">What happens next:</strong>
+              <strong class="contact-label-light">What happens next:</strong>
               You'll receive a confirmation email shortly. A specialist will then reach out by your preferred method to either book a brief call or, if your inquiry is straightforward, send a written engagement letter or property visit proposal directly. Reference: <span class="num">BCR-<time datetime="">∼</time></span>
             </div>
           </div>
