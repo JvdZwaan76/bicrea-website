@@ -1345,27 +1345,33 @@
     /* Testimonial — magazine quality */
     .testimonial {
         max-inline-size: 760px;
+        max-width: 760px;
         margin-inline: auto;
+        margin-left: auto;
+        margin-right: auto;
         padding: var(--space-3xl) var(--space-2xl);
+        padding-top: var(--space-3xl);
+        padding-bottom: var(--space-3xl);
+        padding-left: var(--space-2xl);
+        padding-right: var(--space-2xl);
         background: var(--bg-card);
         border: 1px solid var(--border-default);
         border-radius: var(--radius-xl);
         text-align: center;
-        position: relative;
     }
+    /* v12: in-flow quote mark — no absolute positioning, structurally
+       impossible to overlap the testimonial body text. */
     .testimonial::before {
-        content: '\201C';  /* left double quotation mark */
-        position: absolute;
-        inset-block-start: -2.5rem;
-        inset-inline-start: 50%;
-        transform: translateX(-50%);
+        content: '\201C';
+        display: block;
         font-family: var(--font-heading);
-        font-size: 7rem;
+        font-size: 5rem;
+        line-height: 0.9;
         color: var(--primary-gold);
-        line-height: 1;
         font-weight: 700;
-        background: var(--bg-secondary);
-        padding: 0 var(--space-md);
+        opacity: 0.85;
+        margin-bottom: var(--space-md);
+        text-align: center;
     }
     .testimonial-quote {
         font-family: var(--font-heading);
@@ -1374,6 +1380,7 @@
         color: var(--text-primary);
         line-height: var(--leading-snug);
         margin-block-end: var(--space-xl);
+        margin-bottom: var(--space-xl);
         text-wrap: balance;
         font-weight: 500;
     }
@@ -1382,6 +1389,7 @@
         color: var(--text-muted);
         font-size: var(--font-sm);
         margin-block-start: var(--space-2xs);
+        margin-top: var(--space-2xs);
     }
 
     /* Case study */
@@ -3729,5 +3737,346 @@
         max-width: 880px;
         margin-left: auto;
         margin-right: auto;
+    }
+}
+
+/* ==========================================================================
+   v12 Breathing-Room Pass
+   --------------------------------------------------------------------------
+   The v11 design system is right; the spacing was wrong. Sections felt
+   uniformly cramped — every block had the same density, with no editorial
+   pacing. This pass dials in proper generosity:
+
+   - Section padding bumped ~40% (more vertical air per section)
+   - Card internal padding generous (content rests, doesn't press to edges)
+   - Section header → body margin generous (titles breathe before content)
+   - Path cards on homepage given hero treatment (this is the conversion point)
+   - Stats grid spaced for clarity not density
+   - Background variation between sections strengthened so transitions register
+   - Footer breathing room significantly increased
+
+   Sophisticated layouts feel calm. Calm comes from generous whitespace, not
+   tight efficient packing.
+   ========================================================================== */
+@layer overrides {
+
+    /* ===== SECTION VERTICAL PADDING — significantly more generous ===== */
+    section {
+        padding-top: clamp(5rem, 8vw + 3rem, 9rem) !important;
+        padding-bottom: clamp(5rem, 8vw + 3rem, 9rem) !important;
+    }
+    section.hero {
+        padding-top: clamp(7rem, 6rem + 6vw, 11rem) !important;
+        padding-bottom: clamp(5rem, 4rem + 4vw, 8rem) !important;
+    }
+    section.hero-compact {
+        padding-top: clamp(6rem, 5rem + 4vw, 9rem) !important;
+        padding-bottom: clamp(3rem, 2.5rem + 2vw, 4.5rem) !important;
+    }
+
+    /* ===== SECTION HEADER → CONTENT MARGIN — more space ===== */
+    .section-header {
+        margin-block-end: clamp(3rem, 5vw + 1.5rem, 5rem) !important;
+        margin-bottom: clamp(3rem, 5vw + 1.5rem, 5rem) !important;
+    }
+    .section-divider {
+        margin-top: 1.5rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    /* ===== CARD INTERNAL PADDING — generous editorial spacing ===== */
+    .card {
+        padding: clamp(2rem, 3vw + 1rem, 2.75rem) !important;
+        padding-top: clamp(2rem, 3vw + 1rem, 2.75rem) !important;
+        padding-bottom: clamp(2rem, 3vw + 1rem, 2.75rem) !important;
+        padding-left: clamp(2rem, 3vw + 1rem, 2.75rem) !important;
+        padding-right: clamp(2rem, 3vw + 1rem, 2.75rem) !important;
+    }
+    .card-body {
+        line-height: 1.7;
+        margin-bottom: 1.25rem !important;
+    }
+
+    /* ===== PATH CARDS (homepage primary conversion points) ===== */
+    /* These are the most important UI on the homepage. Treat them with
+       editorial weight: more padding, clearer hover state, more distinct
+       visual presence. */
+    .path-card,
+    .path-card-3d {
+        padding: clamp(2.5rem, 4vw + 1rem, 3.5rem) !important;
+        padding-top: clamp(2.5rem, 4vw + 1rem, 3.5rem) !important;
+        padding-bottom: clamp(2.5rem, 4vw + 1rem, 3.5rem) !important;
+        padding-left: clamp(2.5rem, 4vw + 1rem, 3.5rem) !important;
+        padding-right: clamp(2.5rem, 4vw + 1rem, 3.5rem) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        background: linear-gradient(
+            165deg,
+            rgba(28, 28, 28, 0.6) 0%,
+            rgba(18, 18, 18, 0.95) 100%
+        );
+        border-radius: var(--radius-lg);
+    }
+    .path-card-eyebrow {
+        font-size: 0.75rem !important;
+        font-weight: 600 !important;
+        color: var(--primary-gold) !important;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        margin-bottom: 1rem !important;
+    }
+    .path-card-title {
+        font-family: var(--font-heading);
+        font-size: clamp(1.625rem, 1.4rem + 1vw, 2.25rem) !important;
+        line-height: 1.2;
+        margin-bottom: 1.25rem !important;
+        color: var(--text-primary);
+    }
+    .path-card-body,
+    .path-card p {
+        line-height: 1.7;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* ===== STATS GRID — clarity over density ===== */
+    .stats-grid {
+        gap: clamp(1.5rem, 2vw + 0.5rem, 2.5rem) !important;
+    }
+    .stat {
+        padding: clamp(1.75rem, 2.5vw + 0.75rem, 2.5rem) !important;
+        padding-top: clamp(1.75rem, 2.5vw + 0.75rem, 2.5rem) !important;
+        padding-bottom: clamp(1.75rem, 2.5vw + 0.75rem, 2.5rem) !important;
+        padding-left: clamp(1.5rem, 2vw + 0.5rem, 2rem) !important;
+        padding-right: clamp(1.5rem, 2vw + 0.5rem, 2rem) !important;
+    }
+    .stat-value {
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* ===== GRID GAPS — generous between siblings ===== */
+    .grid {
+        gap: clamp(1.5rem, 2.5vw + 0.5rem, 2.5rem) !important;
+    }
+    .grid-2 {
+        gap: clamp(2rem, 3vw + 1rem, 3rem) !important;
+    }
+
+    /* ===== HERO TITLE → SUBTITLE → CTA RHYTHM ===== */
+    .hero-title {
+        margin-bottom: clamp(1.5rem, 2vw + 0.5rem, 2.25rem) !important;
+        line-height: 1.05;
+    }
+    .hero-subtitle {
+        margin-bottom: clamp(2.5rem, 3.5vw + 1rem, 4rem) !important;
+        line-height: 1.6;
+    }
+    .hero-cta {
+        gap: 1rem;
+    }
+
+    /* ===== BACKGROUND VARIATION — make alternating sections register ===== */
+    /* Sections with bg-secondary should clearly read as different surfaces.
+       v11 used a near-identical dark; v12 makes it visibly distinct. */
+    section[style*="bg-secondary"],
+    section[style*="--bg-secondary"] {
+        background: linear-gradient(
+            180deg,
+            rgba(20, 20, 20, 1) 0%,
+            rgba(24, 24, 24, 1) 50%,
+            rgba(20, 20, 20, 1) 100%
+        ) !important;
+        position: relative;
+    }
+    /* Subtle top + bottom borders on alternating sections — frames the band */
+    section[style*="bg-secondary"]::before,
+    section[style*="--bg-secondary"]::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(212, 175, 55, 0.2) 50%,
+            transparent 100%
+        );
+    }
+    section[style*="bg-secondary"]::after,
+    section[style*="--bg-secondary"]::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(212, 175, 55, 0.2) 50%,
+            transparent 100%
+        );
+    }
+
+    /* ===== FOOTER — significantly more breathing room ===== */
+    .footer,
+    footer.footer,
+    footer {
+        padding-top: clamp(4rem, 5vw + 2rem, 6rem) !important;
+        padding-bottom: clamp(2.5rem, 3vw + 1rem, 3.5rem) !important;
+    }
+    .footer .container,
+    footer .container {
+        padding-bottom: 2rem;
+    }
+    .footer-grid {
+        gap: clamp(2.5rem, 4vw + 1rem, 4rem) !important;
+        margin-bottom: clamp(3rem, 4vw + 1.5rem, 4.5rem) !important;
+    }
+    .footer-bottom {
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* ===== TESTIMONIAL — extra breathing room ===== */
+    .testimonial {
+        padding: clamp(3rem, 5vw + 1.5rem, 4.5rem) clamp(2rem, 4vw + 1rem, 3.5rem) !important;
+    }
+    .testimonial-quote {
+        font-size: clamp(1.375rem, 1.1rem + 1vw, 1.75rem) !important;
+        line-height: 1.5 !important;
+        margin-bottom: 2rem !important;
+    }
+
+    /* ===== TYPOGRAPHY: PARAGRAPH RHYTHM ===== */
+    p {
+        line-height: 1.7;
+    }
+    .container-narrow p,
+    .section-header p,
+    .section-subtitle {
+        line-height: 1.65;
+    }
+
+    /* ===== HERO TRUST PILLS / SECONDARY ELEMENTS ===== */
+    .hero-trust {
+        margin-top: clamp(3rem, 4vw + 1rem, 4rem) !important;
+        gap: clamp(1.5rem, 2vw + 0.5rem, 2.5rem);
+    }
+    .hero-trust-item {
+        line-height: 1.5;
+    }
+
+    /* ===== PROCESS STEPS — generous spacing ===== */
+    .process-step {
+        padding: clamp(2rem, 3vw + 1rem, 2.75rem) !important;
+        padding-top: clamp(2.5rem, 3.5vw + 1rem, 3.25rem) !important;
+        padding-bottom: clamp(2rem, 3vw + 1rem, 2.75rem) !important;
+        padding-left: clamp(1.75rem, 2.5vw + 0.5rem, 2.5rem) !important;
+        padding-right: clamp(1.75rem, 2.5vw + 0.5rem, 2.5rem) !important;
+    }
+    .process-step-title {
+        margin-top: 0.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    .process-step-body {
+        line-height: 1.65;
+    }
+
+    /* ===== FAQ — refined spacing ===== */
+    .faq-list {
+        gap: 1rem !important;
+    }
+
+    /* ===== CTA BANNER — generous internal padding ===== */
+    .cta-banner {
+        padding-top: clamp(4rem, 5vw + 2rem, 6rem) !important;
+        padding-bottom: clamp(4rem, 5vw + 2rem, 6rem) !important;
+    }
+    .cta-banner h2 {
+        margin-bottom: 1.25rem !important;
+    }
+    .cta-banner p {
+        margin-bottom: 2rem !important;
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.65;
+    }
+
+    /* ===== SMART FORM SUCCESS / CTA CARD ===== */
+    .smart-form-success-summary,
+    .smart-form-cta-card {
+        padding: clamp(2.5rem, 4vw + 1rem, 4rem) !important;
+    }
+}
+
+/* ==========================================================================
+   v12 Layer Layout Fixes — navbar / contact-bar / hero stacking
+   --------------------------------------------------------------------------
+   Same root cause as v11: logical inset properties failing in production.
+   These rules add physical fallbacks so the navbar pins to top:0 reliably
+   and the contact-bar stacks cleanly below it.
+   ========================================================================== */
+@layer overrides {
+
+    /* ===== NAVBAR — physical fallbacks for fixed positioning ===== */
+    .navbar {
+        position: fixed !important;
+        inset-block-start: var(--safe-area-top, 0) !important;
+        top: var(--safe-area-top, 0) !important;
+        inset-inline: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 300;
+    }
+
+    /* ===== CONTACT BAR — sits BELOW the fixed navbar ===== */
+    /* The contact-bar comes after </nav> in markup but the navbar is fixed
+       at top:0 with z-index 300. Without margin-top, the contact-bar slides
+       under the navbar. With it, it sits cleanly below. */
+    .contact-bar {
+        margin-top: var(--navbar-height, 76px);
+        margin-block-start: var(--navbar-height, 76px);
+        padding-block: var(--space-md);
+        padding-top: 0.875rem;
+        padding-bottom: 0.875rem;
+        position: relative;
+        z-index: 50;
+    }
+
+    /* ===== HERO — remove the duplicate top margin ===== */
+    /* If the contact-bar already accounts for navbar height, hero shouldn't
+       also push down by navbar-height. Clear it so layout stacks correctly. */
+    .hero {
+        margin-block-start: 0 !important;
+        margin-top: 0 !important;
+    }
+    /* Pages without a contact-bar still need hero clearance — handle via main */
+    main > section:first-child:not(.contact-bar) {
+        /* If the first section IS the hero (no contact-bar above), it needs
+           navbar clearance. The :not(.contact-bar) excludes pages where bar exists. */
+    }
+    /* Cleaner approach: hero on pages without contact-bar */
+    body:not(:has(.contact-bar)) main > section.hero,
+    body:not(:has(.contact-bar)) main > section:first-child {
+        margin-top: var(--navbar-height, 76px);
+    }
+
+    /* ===== HERO CONTENT — ensure visibility above bg image ===== */
+    /* Force z-index stacking so headline is never hidden by the image */
+    .hero-bg {
+        z-index: 1 !important;
+    }
+    .hero-bg::before,
+    .hero-bg::after {
+        z-index: 2 !important;
+    }
+    .hero-content {
+        position: relative !important;
+        z-index: 3 !important;
+        max-inline-size: 880px !important;
+        max-width: 880px !important;
     }
 }

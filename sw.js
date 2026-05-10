@@ -7,7 +7,7 @@
  *
  * Versioned cache name — bump on deploys to invalidate
  */
-const VERSION = 'v11-2026-05-10';
+const VERSION = 'v12-2026-05-10';
 const SHELL_CACHE = 'bicrea-shell-' + VERSION;
 const PAGES_CACHE = 'bicrea-pages-' + VERSION;
 const ASSETS_CACHE = 'bicrea-assets-' + VERSION;
