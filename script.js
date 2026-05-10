@@ -458,8 +458,7 @@
 
     /* ---------- Scroll-pinned methodology storytelling ----------
        Each step in the story has data-step="N" matching a chain element.
-       As each step enters the central viewport band, that step becomes
-       the active one. The chain visualization reflects two distinct states:
+       The chain visualization reflects two distinct states:
 
        1. .is-completed  — every node BEFORE the current step (subtle gold)
        2. .is-active     — ONLY the current step (full gold highlight + scale)
@@ -467,24 +466,40 @@
        Lines that connect node N → node N+1 light up once node N is
        completed (i.e., once the user has scrolled past step N).
 
-       This gives the user a clear sense of "where they are in the chain"
-       instead of just spotlighting one node in isolation.
+       Implementation note — why we don't use IntersectionObserver:
+       Each methodology-step card is long (600-800px). With a narrow
+       central band (typical IO pattern), the observation is binary
+       and produces "jumps" — multiple steps in the band at once,
+       brief gaps with no step in the band, last-wins iteration order
+       creating backward jumps.
+
+       Instead, we use a scroll-position approach: on every animation
+       frame (throttled with requestAnimationFrame), we compute which
+       step's center is closest to the viewport center. This gives
+       smooth, deterministic, monotonic tracking — exactly one step
+       is always active, and it never jumps backward unless the user
+       scrolls backward.
+
+       Hysteresis: we only re-render the chain when the active step
+       actually changes, avoiding unnecessary class-toggle work on
+       every scroll frame.
     */
     var storySteps = document.querySelectorAll('.methodology-story-steps .methodology-step[data-step]');
     var chainSvg = document.querySelector('.methodology-story-viz .chain-viz-svg');
 
-    if (storySteps.length && chainSvg && 'IntersectionObserver' in window) {
+    if (storySteps.length && chainSvg) {
         var stepLines = chainSvg.querySelectorAll('.chain-line');
         var stepNodes = chainSvg.querySelectorAll('.chain-node');
+        var currentStep = 0; // 0 = nothing active yet (forces initial render)
 
         function setActiveStep(num) {
+            if (num === currentStep) return; // hysteresis — skip if unchanged
+            currentStep = num;
             storySteps.forEach(function (s) {
                 s.classList.toggle('is-active', s.getAttribute('data-step') === String(num));
             });
             // Lines: line i (0-indexed) connects node (i+1) to node (i+2).
-            // A line is "completed" once both endpoints are at-or-before
-            // the current step — i.e., when (i + 1) < num (the destination
-            // node has been reached).
+            // A line is "completed" once the destination node has been reached.
             stepLines.forEach(function (line, i) {
                 line.classList.toggle('is-active', (i + 1) < num);
             });
@@ -498,24 +513,64 @@
             });
         }
 
-        var stepObserver = new IntersectionObserver(function (entries) {
-            // Pick the entry closest to viewport center
-            var activeNum = null;
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    var num = parseInt(entry.target.getAttribute('data-step'), 10);
-                    if (!isNaN(num)) activeNum = num;
+        function computeActiveStep() {
+            /* Reading-line approach: the active step is whichever step has
+               scrolled its TOP edge above the "reading line" — a horizontal
+               line at 30% down the viewport.
+
+               Why this works better than center-tracking:
+               - Methodology step cards are long (600-800px of prose). The
+                 user's reading focus is on the upper portion of whatever
+                 step has just entered the viewport, not the geometric
+                 center of the entire card.
+               - With center-tracking, a step's center stays below the
+                 viewport while the user is reading its first paragraph,
+                 so the JS thinks the previous step is still active — the
+                 highlight lags behind reading.
+               - With the reading-line approach, the highlight changes the
+                 moment a new step's top crosses the line — which is
+                 exactly when the user starts reading that step.
+
+               Algorithm: walk all steps, pick the one with the highest
+               data-step number whose top edge is at-or-above the line.
+               That's the deepest step the user has scrolled into. */
+            var readingLine = window.innerHeight * 0.3;
+            var activeNum = 1;
+            storySteps.forEach(function (s) {
+                var rect = s.getBoundingClientRect();
+                if (rect.top <= readingLine) {
+                    var num = parseInt(s.getAttribute('data-step'), 10);
+                    if (!isNaN(num) && num > activeNum) {
+                        activeNum = num;
+                    }
                 }
             });
-            if (activeNum !== null) setActiveStep(activeNum);
-        }, {
-            threshold: 0,
-            rootMargin: '-40% 0px -40% 0px' // 20% band centered on viewport
-        });
+            return activeNum;
+        }
 
-        storySteps.forEach(function (step) { stepObserver.observe(step); });
+        var ticking = false;
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(function () {
+                    setActiveStep(computeActiveStep());
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
 
-        // Default: first step is active
+        // Passive listener — never blocks scrolling, never janks the main thread.
+        window.addEventListener('scroll', onScroll, { passive: true });
+        // Also recompute on resize (viewport height changes the anchor).
+        window.addEventListener('resize', onScroll, { passive: true });
+
+        // Initial render — set step 1 active immediately so the chain
+        // isn't empty on first paint before the user scrolls.
         setActiveStep(1);
+        // And do one position-based pass in case the page loads scrolled
+        // (e.g., navigating to /methodology#step-5 with a hash anchor).
+        requestAnimationFrame(function () {
+            setActiveStep(computeActiveStep());
+        });
     }
 })();

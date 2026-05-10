@@ -134,9 +134,9 @@
             'Nothing is shared with advertisers. <a href="/privacy#cookies">See what we collect</a>.' +
             '</p>' +
             '<div class="consent-actions">' +
-            '<button class="consent-btn consent-btn-primary" type="button" data-consent-action="accept">Accept all</button>' +
-            '<button class="consent-btn consent-btn-ghost" type="button" data-consent-action="reject">Reject all</button>' +
-            '<button class="consent-btn consent-btn-text" type="button" data-consent-action="customize">Customize</button>' +
+            '<button class="btn btn-primary" type="button" data-consent-action="accept">Accept all</button>' +
+            '<button class="btn btn-outline" type="button" data-consent-action="reject">Reject all</button>' +
+            '<button class="btn btn-ghost" type="button" data-consent-action="customize">Customize</button>' +
             '</div>';
         document.body.appendChild(banner);
 
@@ -239,8 +239,8 @@
             '<p class="consent-dialog-meta">' +
             'Your choice is stored locally on this device. Read our <a href="/privacy#cookies">Cookie Policy</a> for the full list and retention periods.' +
             '</p>' +
-            '<button type="button" class="consent-btn consent-btn-primary" data-consent-action="save">Save preferences</button>' +
-            '<button type="button" class="consent-btn consent-btn-ghost" data-consent-action="accept">Accept all</button>' +
+            '<button type="button" class="btn btn-primary" data-consent-action="save">Save preferences</button>' +
+            '<button type="button" class="btn btn-outline" data-consent-action="accept">Accept all</button>' +
             '</div>' +
             '</form>';
         document.body.appendChild(dialog);

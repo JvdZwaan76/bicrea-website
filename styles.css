@@ -3523,49 +3523,29 @@ section[style*="--bg-secondary"] .map-link {
         flex-wrap: wrap;
         gap: var(--space-xs);
     }
-    .consent-actions .consent-btn {
+    /* Site-wide .btn classes are used for all consent UI buttons (banner +
+       dialog). These rules just adjust their flex behaviour inside the
+       consent containers — they don't redefine any colors, sizes, or
+       interactions, so the buttons stay visually identical to every other
+       CTA on the site. */
+    .consent-actions .btn,
+    .consent-dialog-footer .btn {
         flex: 1 1 auto;
         min-inline-size: 0;
-        font-family: var(--font-body);
-        font-size: var(--font-sm);
-        font-weight: 600;
-        padding: var(--space-sm) var(--space-md);
-        border-radius: var(--radius-md);
-        cursor: pointer;
-        min-block-size: 44px;
-        transition:
-            background var(--transition-fast),
-            color var(--transition-fast),
-            border-color var(--transition-fast),
-            transform var(--transition-fast);
-        text-align: center;
-        white-space: nowrap;
     }
-    .consent-btn:active:not(:disabled) { transform: scale(0.985); }
-    .consent-btn-primary {
-        background: var(--gold-gradient);
-        color: var(--bg-primary);
-        border: 0;
+
+    /* Defensive: SVG icons inside button targets should never intercept
+       clicks. Without this, click events whose e.target is an inner <path>
+       can fail closest() lookups if any ancestor inadvertently has
+       pointer-events: none. Forcing pointer-events: none on the svg/path
+       means clicks always bubble to the button element itself, where our
+       handler is wired. */
+    .consent-banner-close svg,
+    .consent-banner-close svg *,
+    .consent-dialog-close svg,
+    .consent-dialog-close svg * {
+        pointer-events: none;
     }
-    .consent-btn-primary:hover { filter: brightness(1.08); }
-    .consent-btn-ghost {
-        background: transparent;
-        color: var(--text-secondary);
-        border: 1px solid var(--border-default);
-    }
-    .consent-btn-ghost:hover {
-        color: var(--text-primary);
-        border-color: var(--border-strong);
-        background: var(--bg-tertiary);
-    }
-    .consent-btn-text {
-        background: transparent;
-        color: var(--primary-gold);
-        border: 0;
-        flex: 0 0 auto;
-        padding-inline: var(--space-sm);
-    }
-    .consent-btn-text:hover { color: var(--gold-200); }
 
     .consent-banner-close {
         position: absolute;
@@ -3787,12 +3767,9 @@ section[style*="--bg-secondary"] .map-link {
         gap: var(--space-xs);
         align-items: center;
     }
-    .consent-dialog-footer .consent-btn-primary {
-        flex: 1 1 200px;
-    }
-    .consent-dialog-footer .consent-btn-ghost {
-        flex: 1 1 140px;
-    }
+    /* Note: button flex behavior in the dialog footer is handled by the
+       unified `.consent-actions .btn, .consent-dialog-footer .btn` rule
+       in the consent-actions section above. No per-variant overrides here. */
     .consent-dialog-meta {
         flex: 1 1 100%;
         font-size: var(--font-xs);
