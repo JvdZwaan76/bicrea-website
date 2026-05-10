@@ -783,43 +783,45 @@
     }
     .card-title { font-size: var(--font-2xl); margin-block-end: var(--space-md); }
     .card-body { color: var(--text-secondary); margin-block-end: var(--space-lg); }
+    /* v11: flexbox-based list rendering. The dash and text are flex siblings,
+       not parent + absolutely-positioned child, so they cannot overlap regardless
+       of cascade or browser quirks. This replaces the fragile position:absolute
+       pattern that caused rendering bugs in v9–v10 production. */
     .card-list {
         margin-block: var(--space-lg);
-        /* Defensive: explicit list reset + zero padding so the rule below has clean ground */
+        margin-top: var(--space-lg);
+        margin-bottom: var(--space-lg);
         list-style: none;
         padding-inline-start: 0;
-        padding-left: 0; /* physical fallback */
+        padding-left: 0;
     }
     .card-list li {
-        position: relative;
-        /* Logical + physical fallbacks. If a downstream cascade clobbers the logical
-           property, the physical one still wins. Both must be present. */
-        padding-inline-start: 1.75rem;
-        padding-left: 1.75rem; /* fallback for older Safari/edge cases */
+        display: flex;
+        align-items: baseline;
+        gap: 0.875rem;
         padding-block: var(--space-2xs);
+        padding-top: 0.375rem;
+        padding-bottom: 0.375rem;
         color: var(--text-secondary);
         font-size: var(--font-sm);
+        line-height: var(--leading-relaxed);
         list-style: none;
     }
     .card-list li::before {
         content: '';
-        position: absolute;
-        /* Logical + physical fallbacks for position */
-        inset-inline-start: 0.125rem;
-        left: 0.125rem;
-        inset-block-start: 0.95em;
-        top: 0.95em;
-        /* Logical + physical fallbacks for size */
+        flex-shrink: 0;
+        flex-grow: 0;
+        flex-basis: 0.875rem;
         inline-size: 0.875rem;
         width: 0.875rem;
         block-size: 1.5px;
         height: 1.5px;
         background: var(--primary-gold);
-        border-radius: var(--radius-full);
-        /* Belt-and-braces: ensure the pseudo-element never accidentally inherits
-           text-decoration from a parent and never gets pulled into text flow */
-        text-decoration: none;
-        pointer-events: none;
+        border-radius: 999px;
+        /* Visually align with x-height of adjacent text */
+        align-self: center;
+        margin-top: 0.1em;
+        opacity: 0.85;
     }
     .card-link {
         display: inline-flex;
@@ -3446,83 +3448,286 @@
     .consent-footer-link:hover { color: var(--primary-gold); }
 }
 
-/* ==========================================================================
-   v10 Defensive Overrides — bulletproof rendering against cascade bugs
-   --------------------------------------------------------------------------
-   These rules are last-resort defenses against cache/cascade problems that
-   were observed in the v9 deploy where:
-   - .card-list li::before was overlapping text instead of sitting in the
-     padding gutter (because `padding-inline-start: 1.75rem` wasn't being
-     honored — likely a stale cached CSS issue).
-   - Buttons appeared to have horizontal lines through text (likely from
-     `.btn::before` shimmer not starting offscreen, or a third-party
-     extension like Grammarly).
 
-   Highest-priority @layer so these win every cascade fight.
+/* ==========================================================================
+   v11 Sophistication Pass — overrides layer
+   --------------------------------------------------------------------------
+   Replaces v10 overrides. Built around the observation that logical
+   positioning properties (inset-block-start, inline-size, etc.) were not
+   winning the cascade in production. Every critical layout rule below has
+   physical-property fallbacks (top/left/width/height) so it cannot fail.
+
+   Also tightens the design itself: heavier hero overlay, visible section
+   dividers, real card hover state, FAQ polish, eyebrow legibility.
+
+   This is the highest-priority @layer in the cascade.
    ========================================================================== */
 @layer overrides {
-    /* 1. Force list-marker dash to NEVER overlap text. Both logical and
-       physical properties for maximum browser compatibility. */
-    .card-list,
-    ul.card-list {
-        list-style: none !important;
-        padding-inline-start: 0 !important;
-        padding-left: 0 !important;
-    }
-    .card-list > li,
-    ul.card-list > li {
+
+    /* ===== 1. PROCESS STEP NUMBERS — physical-property fallbacks ===== */
+    /* The "01 / 02 / 03 / 04" badges were rendering ON TOP of the title text
+       because inset-block-start / inset-inline-start were being clobbered.
+       Adding physical fallbacks fixes it universally. */
+    .process-step {
         position: relative !important;
-        padding-inline-start: 1.75rem !important;
-        padding-left: 1.75rem !important;
-        list-style: none !important;
     }
-    .card-list > li::before,
-    ul.card-list > li::before {
-        content: '' !important;
+    .process-step::before {
         position: absolute !important;
-        inset-inline-start: 0.125rem !important;
-        left: 0.125rem !important;
-        inset-block-start: 0.95em !important;
-        top: 0.95em !important;
-        inline-size: 0.875rem !important;
-        width: 0.875rem !important;
-        block-size: 1.5px !important;
-        height: 1.5px !important;
-        background: var(--primary-gold) !important;
-        border-radius: var(--radius-full) !important;
-        text-decoration: none !important;
-        pointer-events: none !important;
+        inset-block-start: -1rem !important;
+        top: -1rem !important;
+        inset-inline-start: var(--space-lg) !important;
+        left: var(--space-lg) !important;
+        z-index: 2;
     }
 
-    /* 2. Force button shimmer to start offscreen. Defensive against any
-       cascade issue where the initial transform isn't applied. */
+    /* ===== 2. SECTION DIVIDER — make the gold accent visible ===== */
+    /* Was using inline-size which collapsed to 0 in production. Physical
+       width fixes it. Also bumping size from 60×2 to 80×3 for presence. */
+    .section-divider {
+        inline-size: 80px !important;
+        width: 80px !important;
+        block-size: 3px !important;
+        height: 3px !important;
+        margin: var(--space-md) auto var(--space-xl) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* ===== 2b. SECTION HEADER — centered + constrained, with physical fallbacks ===== */
+    .section-header {
+        text-align: center;
+        max-inline-size: 720px !important;
+        max-width: 720px !important;
+        margin-inline: auto !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-block-end: var(--space-3xl) !important;
+        margin-bottom: var(--space-3xl) !important;
+    }
+
+    /* ===== 3. HERO OVERLAY — darken aggressively ===== */
+    /* Photographic backgrounds (the desk image) need a much heavier overlay
+       than v10 had so the headline reads on a near-black surface. The image
+       reads as texture, not subject. */
+    .hero-bg::before {
+        background:
+            linear-gradient(135deg,
+                rgba(10, 10, 10, 0.95) 0%,
+                rgba(10, 10, 10, 0.82) 30%,
+                rgba(10, 10, 10, 0.78) 55%,
+                rgba(10, 10, 10, 0.97) 100%
+            ),
+            radial-gradient(ellipse at 75% 30%,
+                rgba(212, 175, 55, 0.06) 0%,
+                transparent 55%
+            ) !important;
+    }
+
+    /* ===== 4. CARDS — proper editorial polish ===== */
+    /* Subtle 1px border, internal padding, hover lift with gold-border draw. */
+    .card {
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        background: linear-gradient(
+            180deg,
+            rgba(22, 22, 22, 0.6) 0%,
+            rgba(22, 22, 22, 0.95) 100%
+        ) !important;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        transition:
+            transform 350ms var(--ease-out-quint),
+            border-color 350ms var(--ease-out-quint),
+            box-shadow 350ms var(--ease-out-quint),
+            background 350ms var(--ease-out-quint) !important;
+    }
+    @media (hover: hover) and (pointer: fine) {
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(212, 175, 55, 0.35) !important;
+            box-shadow:
+                0 12px 32px -12px rgba(0, 0, 0, 0.6),
+                0 0 0 1px rgba(212, 175, 55, 0.1) inset;
+            background: linear-gradient(
+                180deg,
+                rgba(28, 28, 28, 0.8) 0%,
+                rgba(22, 22, 22, 0.95) 100%
+            ) !important;
+        }
+    }
+    .card-icon {
+        inline-size: 56px !important;
+        width: 56px !important;
+        block-size: 56px !important;
+        height: 56px !important;
+        background: linear-gradient(
+            135deg,
+            rgba(212, 175, 55, 0.12) 0%,
+            rgba(212, 175, 55, 0.04) 100%
+        ) !important;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-gold);
+        margin-bottom: var(--space-md);
+    }
+    .card-title {
+        margin-bottom: var(--space-sm);
+        font-size: var(--font-xl);
+        line-height: 1.25;
+    }
+
+    /* ===== 5. FAQ — proper expanded state, hover polish ===== */
+    .faq-item {
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        transition: border-color 250ms var(--ease-out), background 250ms var(--ease-out);
+    }
+    .faq-item:has(.faq-toggle[aria-expanded="true"]) {
+        border-color: rgba(212, 175, 55, 0.4) !important;
+        border-left: 3px solid var(--primary-gold);
+        background: linear-gradient(
+            90deg,
+            rgba(212, 175, 55, 0.04) 0%,
+            transparent 60%
+        );
+    }
+    .faq-toggle {
+        padding: var(--space-lg) var(--space-xl) !important;
+        padding-top: 1.25rem !important;
+        padding-bottom: 1.25rem !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        font-weight: 500;
+        line-height: 1.4;
+    }
+    @media (hover: hover) and (pointer: fine) {
+        .faq-toggle:hover {
+            background: rgba(212, 175, 55, 0.04);
+        }
+    }
+    .faq-content-inner {
+        padding: 0 1.5rem 1.25rem !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        padding-bottom: 1.25rem !important;
+        line-height: var(--leading-relaxed);
+        color: var(--text-secondary);
+    }
+    .faq-content-inner p {
+        margin-bottom: 0.75rem;
+    }
+    .faq-content-inner p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* ===== 6. EYEBROWS — consistent visibility ===== */
+    .eyebrow {
+        display: inline-block;
+        font-family: var(--font-body);
+        font-size: 0.8125rem !important;
+        font-weight: 600 !important;
+        color: var(--primary-gold) !important;
+        text-transform: uppercase;
+        letter-spacing: 0.18em !important;
+        margin-bottom: 1rem !important;
+        line-height: 1.4;
+    }
+
+    /* ===== 7. SECTION TITLES — consistent rhythm ===== */
+    .section-title {
+        margin-bottom: 1.25rem !important;
+        line-height: 1.1;
+        text-wrap: balance;
+    }
+    .section-subtitle {
+        max-inline-size: 720px;
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: var(--space-2xl);
+        line-height: 1.65;
+        color: var(--text-muted);
+        text-wrap: pretty;
+    }
+
+    /* ===== 8. BUTTONS — defensive (still need this from v10) ===== */
     .btn::before {
         transform: translateX(-100%) !important;
     }
     @media (hover: hover) {
-        .btn:hover::before {
-            transform: translateX(100%) !important;
-        }
+        .btn:hover::before { transform: translateX(100%) !important; }
     }
-
-    /* 3. Force no text-decoration on elements that should never have it.
-       Defends against extensions or odd cascade interactions. */
     .btn,
     .btn *,
     .nav-link,
     .nav-link *,
     .faq-toggle,
-    .faq-toggle *,
-    .card-list li,
-    .card-list li *:not(.email-link):not([class*="link"]) {
+    .faq-toggle * {
         text-decoration: none !important;
     }
-
-    /* 4. Belt-and-braces for buttons: ensure inner spans don't get any
-       weird underline/strikethrough. */
     .btn span,
     .btn .btn-arrow {
         text-decoration: none !important;
         display: inline-block;
+    }
+
+    /* ===== 9. SECTION VERTICAL RHYTHM — consistent breathing room ===== */
+    section {
+        padding-top: clamp(4rem, 6vw + 2rem, 7rem);
+        padding-bottom: clamp(4rem, 6vw + 2rem, 7rem);
+    }
+    section.hero,
+    section.hero-compact {
+        padding-top: clamp(6rem, 5rem + 5vw, 8.5rem);
+        padding-bottom: clamp(3.5rem, 3rem + 2.5vw, 5rem);
+    }
+
+    /* ===== 10. FOOTER — hierarchy and breathing room ===== */
+    .footer {
+        padding-top: var(--space-3xl) !important;
+        padding-bottom: var(--space-xl) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .footer-grid {
+        gap: var(--space-2xl) !important;
+    }
+    .footer h4,
+    .footer-col-title {
+        font-family: var(--font-body) !important;
+        font-size: 0.75rem !important;
+        font-weight: 600 !important;
+        color: var(--text-muted) !important;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 1rem !important;
+    }
+    .footer ul li {
+        padding: 0.375rem 0;
+        list-style: none;
+    }
+    .footer a {
+        color: var(--text-secondary);
+        transition: color 200ms var(--ease-out);
+    }
+    .footer a:hover {
+        color: var(--primary-gold);
+    }
+
+    /* ===== 11. COOKIE BANNER POSITIONING ===== */
+    /* Make sure it doesn't bleed into form CTAs */
+    .consent-banner,
+    [class*="consent-banner"] {
+        z-index: 9999;
+    }
+
+    /* ===== 12. CONTAINER NARROW VARIANT (for content-heavy sections) ===== */
+    .container-narrow {
+        max-inline-size: 880px;
+        max-width: 880px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
