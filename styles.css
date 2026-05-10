@@ -2012,7 +2012,9 @@ section[style*="--bg-secondary"] .case-study {
     .methodology-story {
         grid-template-columns: 1fr 1fr;
         gap: var(--space-7);
-        align-items: start;
+        /* No align-items here. Default 'stretch' lets the chain-viz cell
+           grow to match the much taller steps column, which is what makes
+           position: sticky work properly on the cell's child. */
     }
 }
 
@@ -2024,7 +2026,12 @@ section[style*="--bg-secondary"] .case-study {
     .methodology-story-viz {
         position: sticky;
         top: calc(var(--navbar-height) + var(--space-7));
-        height: fit-content;
+        align-self: start;
+        /* No height: fit-content here. The grid cell stretches to match the
+           row height (set by the much taller steps column), and the chain-viz
+           stays sticky throughout the scroll range — instead of "falling out"
+           halfway through. align-self: start keeps the cell anchored at the
+           top, so sticky behaviour activates immediately. */
     }
 }
 
@@ -2104,10 +2111,16 @@ section[style*="--bg-secondary"] .methodology-step {
    ========================================================================== */
 .chain-viz {
     width: 100%;
-    max-width: 360px;
+    max-width: 720px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
+}
+
+/* Inside the methodology-story sticky sidebar, use the narrower variant
+   so the tall vertical chain visualization fits the 1fr column. */
+.methodology-story-viz .chain-viz {
+    max-width: 360px;
 }
 
 .chain-viz-svg {

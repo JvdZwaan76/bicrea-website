@@ -5,15 +5,22 @@
  *   - Images: cache-first (immutable, long-cache)
  *   - Cross-origin (Google Fonts): cache-first with reasonable expiry
  *
+ * Install strategy: best-effort (Promise.allSettled, not addAll). A missing
+ * file in the shell list should NOT prevent the SW from activating — it just
+ * means that file isn't precached and will fetch from network on first use.
+ * Previously we used cache.addAll() which is atomic: any single 404 caused
+ * the whole install to reject, leaving the SW in "redundant" state forever.
+ *
  * Versioned cache name — bump on deploys to invalidate
  */
-const VERSION = 'v13.3-2026-05-10';
+const VERSION = 'v13.4-2026-05-10';
 const SHELL_CACHE = 'bicrea-shell-' + VERSION;
 const PAGES_CACHE = 'bicrea-pages-' + VERSION;
 const ASSETS_CACHE = 'bicrea-assets-' + VERSION;
 const FONTS_CACHE = 'bicrea-fonts-' + VERSION;
 
-// Files to pre-cache on install (the shell)
+// Files to pre-cache on install (the shell). Best-effort: missing files are
+// silently skipped.
 const SHELL_URLS = [
     '/',
     '/styles.css',
@@ -21,12 +28,21 @@ const SHELL_URLS = [
     '/favicon/favicon.svg'
 ];
 
-// Install: pre-cache the shell
+// Install: best-effort pre-cache (no atomic failures)
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open(SHELL_CACHE)
-            .then((cache) => cache.addAll(SHELL_URLS))
-            .then(() => self.skipWaiting())
+        caches.open(SHELL_CACHE).then((cache) => {
+            // Cache each file independently. A failure for one URL doesn't
+            // reject the whole install.
+            return Promise.allSettled(
+                SHELL_URLS.map((url) =>
+                    cache.add(url).catch((err) => {
+                        // Log but don't propagate — keep install successful
+                        console.warn('[SW] precache skip:', url, err.message);
+                    })
+                )
+            );
+        }).then(() => self.skipWaiting())
     );
 });
 
