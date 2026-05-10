@@ -1,5 +1,5 @@
 # BICREA Florida — robots.txt
-# https://florida.bicrea.com/
+# https://bicrea.com/
 
 User-agent: *
 Allow: /
@@ -28,4 +28,4 @@ User-agent: Google-Extended
 Disallow: /
 
 # Sitemap
-Sitemap: https://florida.bicrea.com/sitemap.xml
+Sitemap: https://bicrea.com/sitemap.xml
