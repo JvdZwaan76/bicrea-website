@@ -654,7 +654,7 @@ section[style*="--bg-secondary"] .card-cta-tight {
     background: rgba(10, 10, 10, 0.97);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    z-index: 290;
+    z-index: 295;
     padding: var(--space-6) var(--container-padding);
     transform: translateY(-100%);
     opacity: 0;
