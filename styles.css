@@ -1925,6 +1925,48 @@ section[style*="--bg-secondary"] .case-study {
     background: var(--bg-elevated);
 }
 
+/* ==========================================================================
+   SECTION BANNER (category lead image)
+   --------------------------------------------------------------------------
+   A cinematic banner image that sits above a section-header to visually
+   anchor a major content category (e.g., "Mineral title engagements"
+   on the case-studies page). Used in addition to — not instead of —
+   the section-header text block below it.
+
+   Constraints from the design system:
+   - Aspect ratio is cinematic (21:9 on desktop, 16:9 on mobile) so it
+     reads as a category lead rather than competing with the page hero.
+   - Same border-radius as case-study cards (--radius-lg) for visual
+     consistency with the content below.
+   - Margin-block-end uses the same scale as section-header internal
+     rhythm — pushed enough to separate the visual from the title block
+     but not so much that the two feel disconnected.
+   - aria-hidden on the wrapper because these images are decorative
+     context, not informational content. The section-header below
+     supplies the actual semantic heading.
+   ========================================================================== */
+.section-banner {
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-elevated);
+    margin-block-end: clamp(2.5rem, 4vw + 1rem, 5rem);
+}
+
+.section-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .section-banner {
+        aspect-ratio: 16 / 9;
+    }
+}
+
 .case-study-tag {
     display: inline-block;
     padding: 0.25rem 0.75rem;
