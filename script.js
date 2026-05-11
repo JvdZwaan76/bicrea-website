@@ -76,18 +76,17 @@
     var navBackdrop = null;
 
     if (navToggle && navMobile) {
-        /* CRITICAL: Move the mobile drawer to be a direct child of <body>.
-           Why: the drawer is `position: fixed` and needs to be positioned
-           relative to the viewport. But its parent <nav class="navbar"> has
-           `backdrop-filter` for the frosted-glass effect, and per CSS spec,
-           ANY element with `backdrop-filter` (or `filter`, `transform`,
-           `perspective`, `contain: paint`) creates a containing block that
-           traps position:fixed children inside it. Without this move, the
-           drawer would be positioned relative to the (64px-tall) navbar
-           instead of the viewport — collapsing to near-zero height and
-           appearing as a thin sliver at the top of the screen on mobile.
-           Moving the element to <body> at runtime escapes the trap without
-           requiring changes to every HTML file. */
+        /* DEFENSIVE: Ensure the mobile drawer is a direct child of <body>.
+           As of v13.5.9 the drawer is correctly placed as a sibling of
+           <nav class="navbar"> in HTML, so this check is a no-op on
+           current pages. It remains as defense-in-depth: if a future page
+           accidentally nests the drawer inside the navbar (or any other
+           element with backdrop-filter / filter / transform / perspective
+           / contain:paint), CSS spec creates a containing block that
+           traps position:fixed children, collapsing the drawer's
+           rendered height. This guard moves the drawer to <body> at
+           runtime to escape any such trap. Event listeners attached
+           below remain valid because they are bound to the element. */
         if (navMobile.parentNode !== document.body) {
             document.body.appendChild(navMobile);
         }
@@ -100,6 +99,7 @@
 
         function openNav() {
             navMobile.classList.add('is-open');
+            navMobile.setAttribute('aria-hidden', 'false');
             navBackdrop.classList.add('is-active');
             navToggle.setAttribute('aria-expanded', 'true');
             navToggle.setAttribute('aria-label', 'Close menu');
@@ -112,6 +112,7 @@
         }
         function closeNav(returnFocus) {
             navMobile.classList.remove('is-open');
+            navMobile.setAttribute('aria-hidden', 'true');
             navBackdrop.classList.remove('is-active');
             navToggle.setAttribute('aria-expanded', 'false');
             navToggle.setAttribute('aria-label', 'Open menu');
