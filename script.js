@@ -76,6 +76,22 @@
     var navBackdrop = null;
 
     if (navToggle && navMobile) {
+        /* CRITICAL: Move the mobile drawer to be a direct child of <body>.
+           Why: the drawer is `position: fixed` and needs to be positioned
+           relative to the viewport. But its parent <nav class="navbar"> has
+           `backdrop-filter` for the frosted-glass effect, and per CSS spec,
+           ANY element with `backdrop-filter` (or `filter`, `transform`,
+           `perspective`, `contain: paint`) creates a containing block that
+           traps position:fixed children inside it. Without this move, the
+           drawer would be positioned relative to the (64px-tall) navbar
+           instead of the viewport — collapsing to near-zero height and
+           appearing as a thin sliver at the top of the screen on mobile.
+           Moving the element to <body> at runtime escapes the trap without
+           requiring changes to every HTML file. */
+        if (navMobile.parentNode !== document.body) {
+            document.body.appendChild(navMobile);
+        }
+
         // Inject a backdrop element on demand (CSS in styles.css handles the rest)
         navBackdrop = document.createElement('div');
         navBackdrop.className = 'nav-backdrop';
