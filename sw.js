@@ -1,141 +1,64 @@
-/* BICREA Florida — Service Worker
- * Caching strategy:
- *   - HTML pages: network-first (always try fresh, fall back to cache)
- *   - CSS/JS: stale-while-revalidate (instant from cache, revalidate in background)
- *   - Images: cache-first (immutable, long-cache)
- *   - Cross-origin (Google Fonts): cache-first with reasonable expiry
+/*
+ * BICREA Florida — Tombstone Service Worker (v13.5.9)
+ * ============================================================================
  *
- * Install strategy: best-effort (Promise.allSettled, not addAll). A missing
- * file in the shell list should NOT prevent the SW from activating — it just
- * means that file isn't precached and will fetch from network on first use.
- * Previously we used cache.addAll() which is atomic: any single 404 caused
- * the whole install to reject, leaving the SW in "redundant" state forever.
+ * Starting in v13.5.9, bicrea.com no longer uses a Service Worker. This file
+ * exists solely to clean up Service Workers installed by earlier versions
+ * (v13.5.6 through v13.5.8). Those SWs had caching strategies that occasionally
+ * served stale code during deploys; eliminating the SW entirely is the
+ * simplest robust path for a marketing site.
  *
- * Versioned cache name — bump on deploys to invalidate
+ * When a user who previously had an SW installed visits the site, the browser
+ * automatically checks /sw.js for an update. The browser sees this new
+ * version, installs it, and activates it (skipWaiting forces immediate
+ * activation). On activation, this tombstone:
+ *
+ *   1. Claims all open tabs
+ *   2. Deletes every cache the site previously created
+ *   3. Unregisters itself
+ *   4. Force-reloads open tabs so they pick up fresh code with no SW
+ *
+ * Subsequent page loads will register no Service Worker at all (the
+ * registration code was removed from script.js in v13.5.9). The site
+ * behaves as a standard CDN-served static site.
+ *
+ * NOTE: After ~30 days from deploy, this file can safely be deleted from
+ * the repo. At that point, every plausible repeat visitor will have come
+ * through and had their SW cleaned up. New visitors never had an SW to
+ * begin with.
+ *
+ * No fetch handler is registered — all requests pass through to the network
+ * unmodified, exactly as if there were no Service Worker.
+ * ============================================================================
  */
-const VERSION = 'v13.5.6-2026-05-11';
-const SHELL_CACHE = 'bicrea-shell-' + VERSION;
-const PAGES_CACHE = 'bicrea-pages-' + VERSION;
-const ASSETS_CACHE = 'bicrea-assets-' + VERSION;
-const FONTS_CACHE = 'bicrea-fonts-' + VERSION;
 
-// Files to pre-cache on install (the shell). Best-effort: missing files are
-// silently skipped.
-const SHELL_URLS = [
-    '/',
-    '/styles.css',
-    '/script.js',
-    '/favicon/favicon.svg'
-];
-
-// Install: best-effort pre-cache (no atomic failures)
-self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open(SHELL_CACHE).then((cache) => {
-            // Cache each file independently. A failure for one URL doesn't
-            // reject the whole install.
-            return Promise.allSettled(
-                SHELL_URLS.map((url) =>
-                    cache.add(url).catch((err) => {
-                        // Log but don't propagate — keep install successful
-                        console.warn('[SW] precache skip:', url, err.message);
-                    })
-                )
-            );
-        }).then(() => self.skipWaiting())
-    );
+self.addEventListener('install', () => {
+    // Skip the "waiting" phase — activate immediately
+    self.skipWaiting();
 });
 
-// Activate: clean up old version caches
 self.addEventListener('activate', (event) => {
-    const VALID = [SHELL_CACHE, PAGES_CACHE, ASSETS_CACHE, FONTS_CACHE];
     event.waitUntil(
-        caches.keys().then((keys) => {
-            return Promise.all(
-                keys.filter((k) => k.startsWith('bicrea-') && !VALID.includes(k))
-                    .map((k) => caches.delete(k))
-            );
-        }).then(() => self.clients.claim())
+        (async () => {
+            // 1. Take control of all open tabs from any prior SW
+            await self.clients.claim();
+
+            // 2. Delete every cache this site created in prior versions
+            const cacheKeys = await caches.keys();
+            const bicreaCaches = cacheKeys.filter((k) => k.startsWith('bicrea-'));
+            await Promise.all(bicreaCaches.map((k) => caches.delete(k)));
+
+            // 3. Unregister this Service Worker
+            await self.registration.unregister();
+
+            // 4. Force-reload all open tabs so they get fresh code without
+            //    any SW interference
+            const clients = await self.clients.matchAll({ type: 'window' });
+            for (const client of clients) {
+                if ('navigate' in client) {
+                    client.navigate(client.url);
+                }
+            }
+        })()
     );
 });
-
-// Fetch: routing strategy
-self.addEventListener('fetch', (event) => {
-    const req = event.request;
-    if (req.method !== 'GET') return;
-
-    const url = new URL(req.url);
-
-    // Skip Formspree, analytics, and any 3rd party we don't want to cache
-    if (url.hostname.includes('formspree.io')) return;
-    if (url.hostname.includes('google-analytics.com')) return;
-    if (url.hostname.includes('googletagmanager.com')) return;
-
-    // Google Fonts — cache-first
-    if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
-        event.respondWith(cacheFirst(req, FONTS_CACHE));
-        return;
-    }
-
-    // Same-origin only beyond this point
-    if (url.origin !== self.location.origin) return;
-
-    // HTML — network-first
-    if (req.destination === 'document' || req.headers.get('accept')?.includes('text/html')) {
-        event.respondWith(networkFirst(req, PAGES_CACHE));
-        return;
-    }
-
-    // CSS/JS — stale-while-revalidate
-    if (req.destination === 'style' || req.destination === 'script') {
-        event.respondWith(staleWhileRevalidate(req, SHELL_CACHE));
-        return;
-    }
-
-    // Images — cache-first
-    if (req.destination === 'image') {
-        event.respondWith(cacheFirst(req, ASSETS_CACHE));
-        return;
-    }
-
-    // Default: stale-while-revalidate
-    event.respondWith(staleWhileRevalidate(req, ASSETS_CACHE));
-});
-
-async function cacheFirst(req, cacheName) {
-    const cache = await caches.open(cacheName);
-    const cached = await cache.match(req);
-    if (cached) return cached;
-    try {
-        const response = await fetch(req);
-        if (response && response.status === 200) cache.put(req, response.clone());
-        return response;
-    } catch (e) {
-        return cached || Response.error();
-    }
-}
-
-async function networkFirst(req, cacheName) {
-    const cache = await caches.open(cacheName);
-    try {
-        const response = await fetch(req);
-        if (response && response.status === 200) cache.put(req, response.clone());
-        return response;
-    } catch (e) {
-        const cached = await cache.match(req);
-        if (cached) return cached;
-        // Offline fallback to homepage if it exists in cache
-        const home = await caches.match('/');
-        return home || Response.error();
-    }
-}
-
-async function staleWhileRevalidate(req, cacheName) {
-    const cache = await caches.open(cacheName);
-    const cached = await cache.match(req);
-    const fetchPromise = fetch(req).then((response) => {
-        if (response && response.status === 200) cache.put(req, response.clone());
-        return response;
-    }).catch(() => cached);
-    return cached || fetchPromise;
-}

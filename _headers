@@ -1,7 +1,29 @@
 # Cloudflare Pages: Headers configuration
 # https://developers.cloudflare.com/pages/configuration/headers/
+#
+# CACHE STRATEGY (v13.5.9 — content-hashed assets under /assets/)
+# ============================================================================
+# The build script (build.js) renames CSS/JS assets to include a content hash
+# (e.g. styles.css → styles.a3f2c91xxx.css) and places them under /assets/.
+# That subdirectory boundary is intentional: it isolates the immutable rule
+# from rules at the root (notably /sw.js), so Cloudflare's "matching rules
+# inherit all headers" semantics can't accidentally apply `immutable` to
+# files we want to revalidate.
+#
+# Cache invalidation is automatic: when an asset's content changes, its
+# filename changes, the HTML now references a different URL, browsers and
+# CDNs fetch the new file, and the old hashed URL just stops being
+# requested (and naturally evicts from caches).
 
-# All routes — security baseline
+# ============================================================================
+# SECURITY BASELINE (applies to all routes)
+# ----------------------------------------------------------------------------
+# `/*` does NOT set Cache-Control here. Each path category sets its own
+# Cache-Control below. This avoids the inheritance/concatenation problem
+# documented at https://developers.cloudflare.com/pages/configuration/headers/
+# ("If a header is applied twice in the _headers file, the values are joined
+# with a comma separator.")
+# ============================================================================
 /*
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
@@ -9,36 +31,59 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-XSS-Protection: 1; mode=block
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https://formspree.io https://www.google-analytics.com https://cloudflareinsights.com; form-action 'self' https://formspree.io;
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https://formspree.io https://www.google-analytics.com https://cloudflareinsights.com; form-action 'self' https://formspree.io; frame-ancestors 'self'; base-uri 'self';
 
-# Long-cache static assets
-/styles.css
+# ============================================================================
+# CONTENT-HASHED ASSETS — cache FOREVER (immutable)
+# ----------------------------------------------------------------------------
+# These rules match files under /assets/, output by build.js. The /sw.js
+# at the root is in a different path namespace and cannot match these globs,
+# so there's zero risk of header conflict.
+# ============================================================================
+/assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-/script.js
-  Cache-Control: public, max-age=31536000, immutable
+# ============================================================================
+# SERVICE WORKER — never cache (must always check for updates)
+# ----------------------------------------------------------------------------
+# /sw.js cannot be content-hashed (Service Worker spec requires a stable URL).
+# In v13.5.9 it's a "tombstone" SW that unregisters legacy SWs from prior
+# versions on the user's next visit, then exits. It MUST never be cached so
+# the browser checks for updates on every page load.
+# ============================================================================
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+  Content-Type: application/javascript; charset=utf-8
+  Service-Worker-Allowed: /
 
+# ============================================================================
+# HTML — short cache, must revalidate
+# ----------------------------------------------------------------------------
+# HTML is the entry point that references the hashed asset URLs. Brief edge
+# cache for snappy navigation, but always revalidate so users get the new
+# asset references soon after each deploy.
+# ============================================================================
+/*.html
+  Cache-Control: public, max-age=300, must-revalidate
+
+/
+  Cache-Control: public, max-age=300, must-revalidate
+
+# ============================================================================
+# IMAGES AND FAVICONS — long cache
+# ----------------------------------------------------------------------------
+# Image filenames are stable (content-named like hero-mineral-title.webp),
+# so immutable is safe. To replace an image, give it a new filename.
+# ============================================================================
 /images/*
   Cache-Control: public, max-age=31536000, immutable
 
 /favicon/*
   Cache-Control: public, max-age=31536000, immutable
 
-# HTML — short cache, must revalidate
-/*.html
-  Cache-Control: public, max-age=300, must-revalidate
-
-# Service Worker — must be served from same origin with correct content type
-/sw.js
-  Cache-Control: public, max-age=0, must-revalidate
-  Service-Worker-Allowed: /
-  Content-Type: application/javascript; charset=utf-8
-
-# Critical CSS reference (won't typically be requested directly)
-/critical.css
-  Cache-Control: public, max-age=31536000, immutable
-
-# robots, sitemap, well-known — short cache
+# ============================================================================
+# OPERATIONAL FILES
+# ============================================================================
 /robots.txt
   Cache-Control: public, max-age=3600
 
@@ -52,35 +97,6 @@
   Cache-Control: public, max-age=86400
   Content-Type: text/plain; charset=utf-8
 
-# Internal documentation files — discourage search-engine indexing.
-# These files exist in the deploy for maintainers but are not for public reading.
-# To eliminate from the deploy entirely (maximum privacy), delete them from the
-# build output before pushing to Cloudflare Pages.
-/README.md
-  X-Robots-Tag: noindex, nofollow, noarchive
-  Cache-Control: private, no-store
-
-/EMAIL-ROUTING.md
-  X-Robots-Tag: noindex, nofollow, noarchive
-  Cache-Control: private, no-store
-
-/GA4-SETUP.md
-  X-Robots-Tag: noindex, nofollow, noarchive
-  Cache-Control: private, no-store
-
-/SUBSTANTIATION-CHECKLIST.md
-  X-Robots-Tag: noindex, nofollow, noarchive
-  Cache-Control: private, no-store
-
-# v9: new JavaScript modules — same long-cache treatment as styles.css/script.js
-/email-protect.js
-  Cache-Control: public, max-age=31536000, immutable
-
-/consent.js
-  Cache-Control: public, max-age=31536000, immutable
-
-/analytics.js
-  Cache-Control: public, max-age=31536000, immutable
-
-/smart-form.js
-  Cache-Control: public, max-age=31536000, immutable
+/build-info.json
+  Cache-Control: public, max-age=300
+  Content-Type: application/json; charset=utf-8
