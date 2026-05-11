@@ -3404,12 +3404,16 @@ section[style*="--bg-secondary"] .map-link {
         }
     }
 
-    /* Mobile nav backdrop — for click-outside-to-close affordance */
+    /* Mobile nav backdrop — for click-outside-to-close affordance.
+       MUST sit BELOW .nav-mobile in stacking order. Same z-index value
+       defaults to DOM-order tiebreaker, and the JS appendChild's this
+       backdrop to <body> AFTER the .nav-mobile is rendered, which would
+       put the backdrop on top of drawer links and intercept all taps. */
     .nav-backdrop {
         position: fixed;
         inset: 0;
         background: rgba(0, 0, 0, 0);
-        z-index: 290; /* below navbar (300), above content */
+        z-index: 280; /* below drawer (290), below navbar (300), above all content */
         pointer-events: none;
         opacity: 0;
         transition: opacity 0.3s var(--ease-out), background-color 0.3s var(--ease-out);
