@@ -58,22 +58,10 @@
         progressBar.style.setProperty('--progress', pct + '%');
     }
 
-    /* ---------------- Mobile nav toggle (v7: class-name fix + iOS scroll lock) ----------------
-       Bug fixed in v7: previous implementation toggled .classList.add('open') but
-       the matching CSS rule is .nav-mobile.is-open (with the 'is-' prefix that
-       every other state class on this site uses — .is-active, .is-completed,
-       .is-visible, etc). Tapping the hamburger fired the JS but no styles
-       activated, leaving the drawer invisibly off-screen (transform:translateY(-100%),
-       opacity:0, pointer-events:none all stayed at their default-state values).
-
-       Also upgraded the body-scroll-lock pattern from naive `overflow:hidden`
-       (which iOS Safari ignores for the scroll context — background continues
-       to scroll behind the drawer) to the scroll-position-save + position:fixed
-       pattern that actually prevents scroll on iOS. */
+    /* ---------------- Mobile nav toggle (v6: backdrop + focus trap) ---------------- */
     var navToggle = document.getElementById('navToggle');
     var navMobile = document.getElementById('navMobile');
     var navBackdrop = null;
-    var savedScrollY = 0;
 
     if (navToggle && navMobile) {
         // Inject a backdrop element on demand (CSS in styles.css handles the rest)
@@ -82,38 +70,12 @@
         navBackdrop.setAttribute('aria-hidden', 'true');
         document.body.appendChild(navBackdrop);
 
-        function lockBodyScroll() {
-            // iOS Safari ignores `body { overflow: hidden }` because the scroll
-            // context is on the documentElement, not body. The reliable way to
-            // freeze the page on iOS is to save the scroll position, then pin
-            // body with position:fixed at a negative top offset. When the menu
-            // closes we restore the original scroll position.
-            savedScrollY = window.scrollY || document.documentElement.scrollTop || 0;
-            document.body.style.position = 'fixed';
-            document.body.style.top = '-' + savedScrollY + 'px';
-            document.body.style.insetInlineStart = '0';
-            document.body.style.insetInlineEnd = '0';
-            document.body.style.overflow = 'hidden';
-            // Also lock html so iOS doesn't bounce-scroll the underlying surface
-            document.documentElement.style.overflow = 'hidden';
-        }
-        function unlockBodyScroll() {
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.insetInlineStart = '';
-            document.body.style.insetInlineEnd = '';
-            document.body.style.overflow = '';
-            document.documentElement.style.overflow = '';
-            // Restore the scroll position from before the lock
-            window.scrollTo(0, savedScrollY);
-        }
-
         function openNav() {
-            navMobile.classList.add('is-open');
+            navMobile.classList.add('open');
             navBackdrop.classList.add('is-active');
             navToggle.setAttribute('aria-expanded', 'true');
             navToggle.setAttribute('aria-label', 'Close menu');
-            lockBodyScroll();
+            document.body.style.overflow = 'hidden';
             // Focus first link inside nav (after small delay for visual transition)
             setTimeout(function () {
                 var firstLink = navMobile.querySelector('a');
@@ -121,14 +83,14 @@
             }, 80);
         }
         function closeNav(returnFocus) {
-            navMobile.classList.remove('is-open');
+            navMobile.classList.remove('open');
             navBackdrop.classList.remove('is-active');
             navToggle.setAttribute('aria-expanded', 'false');
             navToggle.setAttribute('aria-label', 'Open menu');
-            unlockBodyScroll();
+            document.body.style.overflow = '';
             if (returnFocus) navToggle.focus();
         }
-        function isOpen() { return navMobile.classList.contains('is-open'); }
+        function isOpen() { return navMobile.classList.contains('open'); }
 
         navToggle.addEventListener('click', function () {
             if (isOpen()) closeNav(true); else openNav();
