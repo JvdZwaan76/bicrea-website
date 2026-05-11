@@ -101,6 +101,7 @@ ul, ol {
     --bg-card:         #161616;
     --bg-card-alt:     #1a1a1a;
     --bg-elevated:     #1f1f1f;
+    --bg-tertiary:     #242424;  /* hover-fill for close buttons + tertiary surfaces */
 
     --text-primary:    #f5f5f7;
     --text-secondary:  rgba(245, 245, 247, 0.78);
@@ -124,6 +125,7 @@ ul, ol {
 
     --error:   #ef4444;
     --success: #22c55e;
+    --warning: #f59e0b;  /* amber — legal-warning panels, foreclosure ack accents */
 
     /* --- Shadows --- */
     --shadow-sm:      0 1px 2px rgba(0, 0, 0, 0.4);
@@ -652,7 +654,7 @@ section[style*="--bg-secondary"] .card-cta-tight {
     background: rgba(10, 10, 10, 0.97);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    z-index: 290;
+    z-index: 295;
     padding: var(--space-6) var(--container-padding);
     transform: translateY(-100%);
     opacity: 0;
@@ -2179,15 +2181,34 @@ section[style*="--bg-secondary"] .methodology-step {
     display: block;
 }
 
+/* ============================================================
+   METHODOLOGY CHAIN VISUALIZATION
+
+   Visibility model (v3): the default (inactive) state must already
+   be visible — previously these elements rendered against the dark
+   background with near-zero contrast (.inner fill = --bg-card =
+   same color as page, .outer fill = 8% gold, strokes = subtle
+   --border-default), so the user saw text labels floating in space
+   with no visible chain.
+
+   New baseline: muted-gold defaults (~30% opacity) so the entire
+   chain reads as one continuous visual the moment it scrolls into
+   view. Active state still brightens to full gold with scale up,
+   and completed state sits between the two. Progressive enhancement
+   pattern: each state is an *additive* visual emphasis on top of an
+   already-visible baseline.
+   ============================================================ */
+
 .chain-line {
-    stroke: var(--border-default);
-    stroke-width: 1.5;
+    stroke: rgba(212, 175, 55, 0.28);
+    stroke-width: 2;
     fill: none;
-    transition: stroke 0.4s var(--ease-out);
+    transition: stroke 0.4s var(--ease-out), stroke-width 0.4s var(--ease-out);
 }
 
 .chain-line.is-active {
     stroke: var(--primary-gold);
+    stroke-width: 2.5;
 }
 
 .chain-node {
@@ -2199,24 +2220,24 @@ section[style*="--bg-secondary"] .methodology-step {
 }
 
 .chain-node .outer {
-    fill: rgba(212, 175, 55, 0.08);
-    stroke: var(--border-gold);
+    fill: rgba(212, 175, 55, 0.12);
+    stroke: rgba(212, 175, 55, 0.55);
     stroke-width: 1.5;
     transition: fill 0.4s var(--ease-out), stroke 0.4s var(--ease-out);
 }
 
 .chain-node .inner {
-    fill: var(--bg-card);
-    stroke: var(--border-default);
+    fill: var(--bg-elevated);
+    stroke: rgba(212, 175, 55, 0.40);
     stroke-width: 1;
-    transition: fill 0.4s var(--ease-out);
+    transition: fill 0.4s var(--ease-out), stroke 0.4s var(--ease-out);
 }
 
 .chain-node > text {
     font-family: var(--font-heading);
     font-size: 13px;
     font-weight: 700;
-    fill: var(--text-muted);
+    fill: rgba(212, 175, 55, 0.85);
     text-anchor: middle;
     dominant-baseline: central;
     transition: fill 0.4s var(--ease-out);
@@ -2227,38 +2248,39 @@ section[style*="--bg-secondary"] .methodology-step {
 }
 
 .chain-node.is-active .outer {
-    fill: rgba(212, 175, 55, 0.18);
+    fill: rgba(212, 175, 55, 0.22);
     stroke: var(--primary-gold);
 }
 
 .chain-node.is-active .inner {
     fill: var(--primary-gold);
+    stroke: var(--primary-gold);
 }
 
 .chain-node.is-active > text {
     fill: var(--bg-primary);
 }
 
-/* Progressive state: completed steps (everything before current) get a
-   subdued gold accent so the user can see how far they've come. */
+/* Completed state: steps the user has scrolled past — visibly gold-tinted
+   to show progress, but distinct from the bright active node. */
 .chain-node.is-completed .outer {
-    fill: rgba(212, 175, 55, 0.10);
-    stroke: rgba(212, 175, 55, 0.55);
+    fill: rgba(212, 175, 55, 0.18);
+    stroke: rgba(212, 175, 55, 0.75);
 }
 
 .chain-node.is-completed .inner {
-    fill: var(--bg-card);
-    stroke: rgba(212, 175, 55, 0.4);
+    fill: var(--bg-elevated);
+    stroke: rgba(212, 175, 55, 0.60);
 }
 
 .chain-node.is-completed > text {
     fill: var(--primary-gold);
 }
 
-/* The final star node (8th node, "Delivered") always reads as the
-   destination — fully gold regardless of scroll position. */
+/* The final star node ("Delivered") always reads as the destination —
+   fully gold regardless of scroll position. */
 .chain-node-star .outer {
-    fill: rgba(212, 175, 55, 0.16);
+    fill: rgba(212, 175, 55, 0.20);
     stroke: var(--primary-gold);
 }
 
@@ -3397,11 +3419,24 @@ section[style*="--bg-secondary"] .map-link {
     @keyframes smart-spin {
         to { transform: rotate(360deg); }
     }
+    /* Form-success animations: subtle rise-in for the success panel, gentle
+       pulse on the success icon. GPU-only properties (transform/opacity),
+       so cheap. Both respect prefers-reduced-motion below. */
+    @keyframes success-rise {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes success-icon-pulse {
+        0%, 100% { transform: scale(1); }
+        50%      { transform: scale(1.06); }
+    }
     @media (prefers-reduced-motion: reduce) {
         .smart-spinner {
             animation: smart-spin 1.8s linear infinite;
             opacity: 0.5;
         }
+        .smart-form-success.is-shown { animation: none; }
+        .smart-form-success-icon     { animation: none; }
     }
 
     /* Mobile nav backdrop — for click-outside-to-close affordance */

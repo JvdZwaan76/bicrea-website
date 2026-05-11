@@ -58,12 +58,39 @@
         progressBar.style.setProperty('--progress', pct + '%');
     }
 
-    /* ---------------- Mobile nav toggle (v6: backdrop + focus trap) ---------------- */
+    /* ---------------- Mobile nav toggle (v7: class-name fix) ----------------
+       The single bug fixed in v7: this code previously toggled '.open' on
+       the .nav-mobile drawer, but the CSS rule is .nav-mobile.is-open
+       (matches the 'is-' state-class convention used by .is-active,
+       .is-completed, .is-visible, etc throughout this site). Result:
+       tapping the hamburger fired the JS handler but no visual styles
+       activated — drawer stayed at default state (translateY(-100%),
+       opacity:0, pointer-events:none).
+
+       Fix is minimal: only the three classList operations changed from
+       'open' to 'is-open'. Body scroll-lock preserved (overflow:hidden
+       only — NOT position:fixed, which broke iOS link navigation in an
+       earlier attempt). */
     var navToggle = document.getElementById('navToggle');
     var navMobile = document.getElementById('navMobile');
     var navBackdrop = null;
 
     if (navToggle && navMobile) {
+        /* DEFENSIVE: Ensure the mobile drawer is a direct child of <body>.
+           As of v13.5.9 the drawer is correctly placed as a sibling of
+           <nav class="navbar"> in HTML, so this check is a no-op on
+           current pages. It remains as defense-in-depth: if a future page
+           accidentally nests the drawer inside the navbar (or any other
+           element with backdrop-filter / filter / transform / perspective
+           / contain:paint), CSS spec creates a containing block that
+           traps position:fixed children, collapsing the drawer's
+           rendered height. This guard moves the drawer to <body> at
+           runtime to escape any such trap. Event listeners attached
+           below remain valid because they are bound to the element. */
+        if (navMobile.parentNode !== document.body) {
+            document.body.appendChild(navMobile);
+        }
+
         // Inject a backdrop element on demand (CSS in styles.css handles the rest)
         navBackdrop = document.createElement('div');
         navBackdrop.className = 'nav-backdrop';
@@ -71,7 +98,8 @@
         document.body.appendChild(navBackdrop);
 
         function openNav() {
-            navMobile.classList.add('open');
+            navMobile.classList.add('is-open');
+            navMobile.setAttribute('aria-hidden', 'false');
             navBackdrop.classList.add('is-active');
             navToggle.setAttribute('aria-expanded', 'true');
             navToggle.setAttribute('aria-label', 'Close menu');
@@ -83,14 +111,15 @@
             }, 80);
         }
         function closeNav(returnFocus) {
-            navMobile.classList.remove('open');
+            navMobile.classList.remove('is-open');
+            navMobile.setAttribute('aria-hidden', 'true');
             navBackdrop.classList.remove('is-active');
             navToggle.setAttribute('aria-expanded', 'false');
             navToggle.setAttribute('aria-label', 'Open menu');
             document.body.style.overflow = '';
             if (returnFocus) navToggle.focus();
         }
-        function isOpen() { return navMobile.classList.contains('open'); }
+        function isOpen() { return navMobile.classList.contains('is-open'); }
 
         navToggle.addEventListener('click', function () {
             if (isOpen()) closeNav(true); else openNav();
@@ -360,13 +389,28 @@
         });
     }
 
-    /* ---------------- Service Worker registration ---------------- */
-    if ('serviceWorker' in navigator && location.protocol === 'https:') {
-        window.addEventListener('load', function () {
-            navigator.serviceWorker.register('/sw.js').catch(function () {
-                // Silent fallback — SW is enhancement, not requirement
-            });
-        });
+    /* ---------------- Service Worker DEACTIVATION ----------------
+       v13.5.9 removed the Service Worker entirely. The site is now served
+       as standard static files with proper cache headers — no SW
+       interception layer. This block actively unregisters any SW that
+       earlier versions (v13.5.6-v13.5.8) installed.
+
+       Belt-and-suspenders alongside the tombstone /sw.js: even if a user
+       has an old SW that for some reason doesn't fetch the tombstone,
+       this client-side code will unregister it on their next page load.
+       After ~30 days from this deploy, this block can be deleted along
+       with the sw.js tombstone file. */
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function (regs) {
+            regs.forEach(function (reg) { reg.unregister(); });
+        }).catch(function () { /* silent */ });
+        if ('caches' in window) {
+            caches.keys().then(function (keys) {
+                keys.forEach(function (k) {
+                    if (k.indexOf('bicrea-') === 0) caches.delete(k);
+                });
+            }).catch(function () { /* silent */ });
+        }
     }
 })();
 

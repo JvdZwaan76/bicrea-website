@@ -89,18 +89,20 @@
       <span></span><span></span><span></span>
     </button>
   </div>
-  <div class="nav-mobile" id="navMobile">
-    <ul>
-      <li><a href="/mineral-title" class="nav-link">Mineral Title Research</a></li>
-      <li><a href="/distressed-properties" class="nav-link">Distressed Property Solutions</a></li>
-      <li><a href="/methodology" class="nav-link">Our Methodology</a></li>
-      <li><a href="/process" class="nav-link">Engagement Process</a></li>
-      <li><a href="/case-studies" class="nav-link">Case Studies</a></li>
-      <li><a href="/about" class="nav-link">About BICREA</a></li>
-      <li><a href="/contact" class="nav-link nav-cta">Get In Touch</a></li>
-    </ul>
-  </div>
 </nav>
+
+<!-- Mobile navigation drawer (sibling of navbar to avoid CSS containing-block trap from navbar's backdrop-filter) -->
+<div class="nav-mobile" id="navMobile" role="dialog" aria-modal="true" aria-label="Mobile navigation menu" aria-hidden="true">
+  <ul>
+    <li><a href="/mineral-title" class="nav-link">Mineral Title Research</a></li>
+    <li><a href="/distressed-properties" class="nav-link">Distressed Property Solutions</a></li>
+    <li><a href="/methodology" class="nav-link">Our Methodology</a></li>
+    <li><a href="/process" class="nav-link">Engagement Process</a></li>
+    <li><a href="/case-studies" class="nav-link">Case Studies</a></li>
+    <li><a href="/about" class="nav-link">About BICREA</a></li>
+    <li><a href="/contact" class="nav-link nav-cta">Get In Touch</a></li>
+  </ul>
+</div>
 
 <main id="main">
 
