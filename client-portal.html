@@ -1438,7 +1438,9 @@
 
     <script>
         // Initialize Lucide icons
-        lucide.createIcons();
+        // Guarded: lucide is loaded from a CDN and may be blocked by CSP.
+        // A failure here must not abort the rest of the script.
+        try { if (typeof lucide !== 'undefined') lucide.createIcons(); } catch (e) { console.warn('lucide.createIcons failed:', e); }
 
         // Global State
         let isAuthenticated = false;
@@ -1472,7 +1474,7 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             setupEventListeners();
-            lucide.createIcons();
+            try { if (typeof lucide !== 'undefined') lucide.createIcons(); } catch (e) { console.warn('lucide.createIcons failed:', e); }
             // Check whether the user already has a valid server-side session
             // (e.g. they reloaded the tab). If so, skip straight to the portal.
             checkExistingSession();
@@ -1956,10 +1958,10 @@
         // Initialize on load
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
-                lucide.createIcons();
+                try { if (typeof lucide !== 'undefined') lucide.createIcons(); } catch (e) { console.warn('lucide.createIcons failed:', e); }
             });
         } else {
-            lucide.createIcons();
+            try { if (typeof lucide !== 'undefined') lucide.createIcons(); } catch (e) { console.warn('lucide.createIcons failed:', e); }
         }
                     // Phase 1.5: Document Library Functions
         function downloadReport(filename) {
