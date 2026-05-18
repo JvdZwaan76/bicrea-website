@@ -1,0 +1,32 @@
+# wrangler.toml — Cloudflare Pages Functions configuration for the bicrea
+# client portal backend (Phase A).
+#
+# This file is additive to your existing Pages deployment. If you already
+# have a wrangler.toml for the marketing site, merge the [[d1_databases]]
+# block into it rather than creating a second config.
+#
+# After editing this file, run the steps in README.md to:
+#   1. Create the D1 database
+#   2. Run the migration
+#   3. Seed the demo user
+#   4. Deploy
+
+name = "bicrea-portal"
+compatibility_date = "2024-09-01"
+pages_build_output_dir = "."
+
+# ---------- D1 (relational data) ----------
+# The `binding` value is what code reads as env.DB — keep it lowercase 'DB'
+# to match the API code in functions/api/_lib/* and functions/api/auth/*.
+#
+# Replace `database_id` with the value you get from:
+#     wrangler d1 create bicrea_portal
+[[d1_databases]]
+binding       = "DB"
+database_name = "bicrea_portal"
+database_id   = "d19d2423-a57e-4e09-a4a0-b2bc40491abd"
+
+# ---------- R2 (Phase B — uncomment when you start the documents migration) ----------
+# [[r2_buckets]]
+# binding     = "DOCS"
+# bucket_name = "bicrea-portal-docs"

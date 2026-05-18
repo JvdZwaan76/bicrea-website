@@ -1075,7 +1075,11 @@
                 </div>
             </div>
 
-            <!-- Demo Credentials -->
+            <!-- Demo Credentials
+                 TODO(production): remove this block before public launch.
+                 The portal now talks to a real backend; demo creds visible in
+                 the markup are a credential-disclosure issue once real users
+                 exist. Safe during the v10 cutover while testing. -->
             <div class="demo-credentials">
                 <h3 class="demo-title">Demo Credentials</h3>
                 <div class="demo-list">
@@ -1181,7 +1185,7 @@
                 <div id="dashboardContent" class="portal-content active">
                     <!-- Welcome Section -->
                     <div class="welcome-section">
-                        <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">Welcome back, John!</h2>
+                        <h2 id="welcomeHeading" style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">Welcome back!</h2>
                         <p style="color: rgba(201, 169, 97, 0.8);">Here's an overview of your current projects and recent activity.</p>
                     </div>
 
@@ -1439,12 +1443,16 @@
         // Global State
         let isAuthenticated = false;
         let loginStep = 'credentials';
-        let loginAttempts = 0;
+        // loginAttempts/isLocked are now server-authoritative — the server
+        // tracks consecutive failures and returns 423 with Retry-After when
+        // locked. The locals below are reflections of server state, used
+        // only to gate the form during the lockout countdown.
         let isLocked = false;
         let lockoutTime = 0;
-        let sessionTime = 1800; // 30 minutes
+        let sessionTime = 1800; // 30 minutes — synced with server on /me
         let sessionWarning = false;
         let currentSection = 'dashboard';
+        let currentUser = null;  // { id, email, role, displayName, sessionExpiresAt } once authenticated
 
         // DOM Elements
         const loginScreen = document.getElementById('loginScreen');
@@ -1465,7 +1473,33 @@
         document.addEventListener('DOMContentLoaded', () => {
             setupEventListeners();
             lucide.createIcons();
+            // Check whether the user already has a valid server-side session
+            // (e.g. they reloaded the tab). If so, skip straight to the portal.
+            checkExistingSession();
         });
+
+        async function checkExistingSession() {
+            try {
+                const response = await fetch('/api/auth/me', {
+                    method: 'GET',
+                    credentials: 'same-origin',
+                });
+                if (!response.ok) return; // 401 is expected when not signed in; stay on login.
+                const data = await response.json();
+                currentUser = data.user;
+
+                // Sync local timer with server-side expiry.
+                const now = Math.floor(Date.now() / 1000);
+                sessionTime = Math.max(0, data.user.sessionExpiresAt - now);
+
+                isAuthenticated = true;
+                showPortal();
+                startSessionTimer();
+            } catch (e) {
+                // Network failure during session restore is not actionable —
+                // user can still sign in manually. Don't surface an error.
+            }
+        }
 
         // Event Listeners
         function setupEventListeners() {
@@ -1566,47 +1600,114 @@
 
             const email = emailInput.value;
             const password = passwordInput.value;
-            const validCredentials = email === 'demo@client.com' && password === 'SecurePass123!';
-            
-            if (!validCredentials) {
-                loginAttempts++;
-                
-                if (loginAttempts >= 3) {
-                    isLocked = true;
-                    lockoutTime = 300; // 5 minutes
-                    showAlert('Account locked due to multiple failed attempts. Locked for 5 minutes.', 'error');
-                    startLockoutTimer();
-                } else {
-                    showAlert(`Invalid credentials. ${3 - loginAttempts} attempts remaining.`, 'error');
-                }
+
+            // Disable the button while in-flight so double-clicks don't fire
+            // duplicate requests (and don't count against the lockout twice).
+            loginBtn.disabled = true;
+
+            let response;
+            try {
+                response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'same-origin',
+                    body: JSON.stringify({ email, password }),
+                });
+            } catch (networkErr) {
+                showAlert('Network error. Please check your connection and try again.', 'error');
+                validateForm();
                 return;
             }
 
-            // Reset attempts on successful credential validation
-            loginAttempts = 0;
+            if (response.status === 423) {
+                // Server-enforced lockout. Honor Retry-After if present.
+                const retryAfter = parseInt(response.headers.get('Retry-After'), 10);
+                isLocked = true;
+                lockoutTime = Number.isFinite(retryAfter) ? retryAfter : 300;
+                startLockoutTimer();
+                const body = await response.json().catch(() => ({}));
+                showAlert((body.error && body.error.message) || 'Account locked. Please wait.', 'error');
+                return;
+            }
+
+            if (!response.ok) {
+                const body = await response.json().catch(() => ({}));
+                const msg = (body.error && body.error.message) || 'Invalid credentials.';
+                showAlert(msg, 'error');
+                validateForm();
+                return;
+            }
+
+            // 200 — credentials accepted, pre-MFA session cookie is now set.
             switchLoginStep('mfa');
             showAlert('Credentials verified. Please enter MFA code.', 'info');
         }
 
-        function handleMFA() {
+        async function handleMFA() {
             const code = mfaInput.value;
-            
-            if (code === '123456') {
-                switchLoginStep('success');
-                setTimeout(() => {
-                    isAuthenticated = true;
-                    sessionTime = 1800; // Reset session time
-                    showPortal();
-                    startSessionTimer();
-                    showNotification('Login successful. Welcome back!', 'success');
-                }, 1500);
-            } else {
-                showAlert('Invalid MFA code. Please try again.', 'error');
+            if (code.length !== 6) {
+                showAlert('Please enter the 6-digit code.', 'error');
+                return;
             }
+
+            mfaVerifyBtn.disabled = true;
+
+            let response;
+            try {
+                response = await fetch('/api/auth/mfa', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'same-origin',
+                    body: JSON.stringify({ code }),
+                });
+            } catch (networkErr) {
+                showAlert('Network error. Please try again.', 'error');
+                handleMfaInput();
+                return;
+            }
+
+            if (!response.ok) {
+                const body = await response.json().catch(() => ({}));
+                const code = body.error && body.error.code;
+                if (code === 'session_expired' || code === 'no_session') {
+                    // Pre-MFA cookie expired or got cleared — back to credentials.
+                    switchLoginStep('credentials');
+                    showAlert('Your sign-in window expired. Please enter your credentials again.', 'error');
+                } else {
+                    showAlert((body.error && body.error.message) || 'Invalid MFA code.', 'error');
+                }
+                handleMfaInput();
+                return;
+            }
+
+            const data = await response.json();
+            currentUser = data.user;
+
+            switchLoginStep('success');
+            setTimeout(() => {
+                isAuthenticated = true;
+                sessionTime = 1800;
+                showPortal();
+                startSessionTimer();
+                showNotification(`Welcome back, ${currentUser.displayName.split(' ')[0]}!`, 'success');
+            }, 1500);
         }
 
-        function handleLogout() {
+        async function handleLogout() {
+            // Best-effort server-side session delete. We never block UI on this —
+            // the user wants out *now*, and clearing client state is the actual
+            // logout from their perspective.
+            try {
+                await fetch('/api/auth/logout', {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                });
+            } catch (e) {
+                // Swallow — local clear below still happens.
+            }
+
             isAuthenticated = false;
+            currentUser = null;
             sessionWarning = false;
             sessionTime = 1800;
             clearTimers();
@@ -1642,6 +1743,14 @@
         function showPortal() {
             loginScreen.style.display = 'none';
             portalContainer.classList.add('active');
+            // Populate the welcome heading from the authenticated user.
+            if (currentUser && currentUser.displayName) {
+                const heading = document.getElementById('welcomeHeading');
+                if (heading) {
+                    const firstName = currentUser.displayName.split(' ')[0];
+                    heading.textContent = `Welcome back, ${firstName}!`;
+                }
+            }
         }
 
         function clearForm() {
@@ -1704,11 +1813,28 @@
             sessionWarningEl.classList.remove('hidden');
         }
 
-        function extendSession() {
-            sessionTime = 1800;
-            sessionWarning = false;
-            sessionWarningEl.classList.add('hidden');
-            showNotification('Session extended for 30 minutes.', 'success');
+        async function extendSession() {
+            // /api/auth/me slides server expiry forward as a side effect of
+            // any authenticated request. We rely on that here.
+            try {
+                const response = await fetch('/api/auth/me', {
+                    method: 'GET',
+                    credentials: 'same-origin',
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    const now = Math.floor(Date.now() / 1000);
+                    sessionTime = Math.max(0, data.user.sessionExpiresAt - now);
+                    sessionWarning = false;
+                    sessionWarningEl.classList.add('hidden');
+                    showNotification('Session extended for 30 minutes.', 'success');
+                } else {
+                    // Server lost the session — force logout cleanly.
+                    handleLogout();
+                }
+            } catch (e) {
+                showNotification('Could not reach the server to extend your session.', 'error');
+            }
         }
 
         function startLockoutTimer() {
@@ -1716,7 +1842,8 @@
                 lockoutTime--;
                 if (lockoutTime <= 0) {
                     isLocked = false;
-                    loginAttempts = 0;
+                    // failed_attempts is reset server-side on the next
+                    // successful login; no local counter to clear here.
                     clearInterval(timer);
                     validateForm();
                 }
