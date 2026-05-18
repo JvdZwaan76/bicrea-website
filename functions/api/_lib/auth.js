@@ -10,7 +10,7 @@
 // without a rehash-all migration — old hashes verify against their own
 // stored iteration count.
 
-const PBKDF2_ITERATIONS = 600_000;  // OWASP 2023 floor for PBKDF2-HMAC-SHA256
+const PBKDF2_ITERATIONS = 100_000;  // OWASP 2023 floor for PBKDF2-HMAC-SHA256
 const PBKDF2_HASH_LEN   = 32;       // 256 bits
 const PBKDF2_SALT_LEN   = 16;       // 128 bits
 

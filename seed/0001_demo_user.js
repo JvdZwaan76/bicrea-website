@@ -17,7 +17,7 @@
 
 const crypto = require('node:crypto');
 
-const PBKDF2_ITERATIONS = 600_000;
+const PBKDF2_ITERATIONS = 100_000;
 const PBKDF2_HASH_LEN   = 32;
 const PBKDF2_SALT_LEN   = 16;
 
