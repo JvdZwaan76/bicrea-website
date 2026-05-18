@@ -1,173 +1,200 @@
-# bicrea Client Portal — v10 (Phase A: real backend, auth only)
+# bicrea Client Portal — v10 (Phase A: real auth backend)
 
-Pivot from the v9 mock-mode client portal to a real, server-authoritative
-authentication backend running on Cloudflare Pages Functions + D1.
+Replaces the v9 mock-mode portal with a server-authoritative authentication
+backend running on Cloudflare Pages Functions + D1. This document reflects
+what actually shipped after staging validation (not the original plan —
+that diverged in three meaningful ways, documented below).
 
-This is **Phase A** of the backend pivot. Auth works end-to-end against a real
-database. **Documents are still served as static public files** and the three
-"coming soon" sections (Projects, Messages, Settings) are unchanged. See
-[What's next](#whats-next) for the planned phases.
+**Status:** Phase A validated on staging preview, awaiting Phase B (R2
+documents) before merge to `main`.
 
 ---
 
-## What this delivers
+## What ships in v10
 
-- **`functions/api/auth/login.js`** — POST /api/auth/login. Verifies password
-  against a PBKDF2-SHA256 hash in D1. Server-side 3-strike lockout (5 min),
-  matching the existing UI. Returns a pre-MFA session cookie.
-- **`functions/api/auth/mfa.js`** — POST /api/auth/mfa. Verifies a 6-digit code
-  (TOTP if the user has `mfa_secret` enrolled, otherwise accepts `123456` for
-  the demo flow). Promotes the session to fully authenticated.
-- **`functions/api/auth/me.js`** — GET /api/auth/me. Returns the current user
-  and slides the session expiry forward. Used for page-reload session restore
-  and for the "Extend Session" button.
-- **`functions/api/auth/logout.js`** — POST /api/auth/logout. Deletes the
-  server-side session row and clears the cookie.
-- **`functions/api/_lib/auth.js`** — Web Crypto password hashing and session
-  token generation. No external dependencies.
-- **`functions/api/_lib/http.js`** — Cookie helpers, JSON response helpers,
-  client IP/UA extraction.
-- **`migrations/0001_initial.sql`** — D1 schema for `users`, `sessions`, and
-  `login_attempts`.
-- **`seed/0001_demo_user.js`** — Generates a SQL INSERT for the demo user
-  with a correctly-hashed password. Re-runnable.
-- **`client-portal.html`** — Patched to call the real endpoints. The diff is
-  surgical: only `handleLogin`, `handleMFA`, `handleLogout`, `extendSession`,
-  `showPortal`, `startLockoutTimer`, the `DOMContentLoaded` handler, and the
-  welcome heading are modified. UI, styling, and dashboard rendering are
-  unchanged.
+### New backend (Cloudflare Pages Functions, all under `functions/api/`)
 
-## Security properties
+- `auth/login.js` — POST /api/auth/login. PBKDF2 password verify, 3-strike
+  server-side lockout, pre-MFA session cookie issuance.
+- `auth/mfa.js` — POST /api/auth/mfa. TOTP verification (RFC 6238) when
+  user has `mfa_secret` enrolled; falls back to accepting `123456` for
+  users with no enrolled secret (preserves demo-flow parity during cutover).
+- `auth/me.js` — GET /api/auth/me. Returns the current user and slides
+  session expiry forward. Used for page-reload session restore.
+- `auth/logout.js` — POST /api/auth/logout. Deletes server-side session,
+  clears cookie.
+- `_lib/auth.js` — Web Crypto PBKDF2-SHA256 hashing + session token gen.
+- `_lib/http.js` — Cookie + JSON helpers.
 
-- **Passwords never leave the API in any form.** Hashing happens inside the
-  Worker; the plaintext is discarded as soon as PBKDF2 returns.
-- **PBKDF2-SHA256, 600 000 iterations** — meets OWASP 2023 floor. Each hash
-  embeds its own salt and iteration count, so iterations can be bumped later
-  without a rehash-all migration.
-- **Session tokens are 64-char hex (256 bits of entropy).** The DB stores
-  `SHA-256(token)` only. A DB compromise alone does not yield usable cookies.
-- **Cookies are HttpOnly + Secure + SameSite=Lax.** Inaccessible to JavaScript;
-  not sent on cross-site POSTs.
-- **No account enumeration.** "Unknown email" and "wrong password" return the
-  same 401 with the same code (`invalid_credentials`). Even timing is roughly
-  consistent because we do not short-circuit on missing-user — though Node's
-  `pbkdf2Sync` doesn't run on the unknown-user path, so a timing attacker
-  could in theory distinguish them; treat this as best-effort, not perfect.
-- **Lockout is server-side.** The client UI is a reflection, not the gate.
-  Bypassing the client (curl, devtools) cannot bypass the lockout.
-- **`login_attempts` is an audit trail.** Every credential check is logged
-  with IP, UA, success/failure, and reason. Indexed for cross-email pattern
-  spotting.
+### D1 schema (`migrations/0001_initial.sql`)
 
-## Deployment runbook
+- `users` — id, email, password_hash, role, display_name, mfa_secret,
+  failed_attempts, locked_until, timestamps. `role` is one of
+  `'investor' | 'minerals_buyer' | 'distressed_seller' | 'admin'`.
+- `sessions` — token_hash (sha256 of raw cookie value), user_id,
+  expires_at, mfa_verified flag.
+- `login_attempts` — append-only audit trail with IP/UA/reason.
 
-Run these from this directory (assuming `wrangler` is authenticated to the
-Cloudflare account that owns the Pages project):
+### Modified marketing-site files
+
+- `client-portal.html` — `handleLogin`, `handleMFA`, `handleLogout`,
+  `extendSession`, `checkExistingSession` now call the real API.
+  `lucide.createIcons()` calls (4 of them) wrapped in try/catch guards.
+  Demo Credentials panel removed for production.
+- `_headers` — `script-src` extended to allow `https://unpkg.com` for
+  the Lucide icon library.
+- `_redirects` — `/api/*` passthrough rule added before the `/*` 404
+  catch-all so Pages Functions get the request instead of the static
+  404 page.
+
+---
+
+## How shipped diverged from the original plan
+
+Three corrections came out of staging validation. Documented here so
+nobody re-introduces them later thinking they were missed.
+
+### 1. PBKDF2 iterations: 600,000 → 100,000
+
+**Why:** Cloudflare Workers' Web Crypto runtime hard-caps PBKDF2 at
+100,000 iterations and rejects anything above with `NotSupportedError:
+iteration counts above 100000 are not supported`. The cap applies
+regardless of plan tier — it's not a CPU-time limit.
+
+**Tradeoff:** 100k is below OWASP 2023's general-purpose floor of 600k.
+Acceptable here because (a) password complexity requirements push
+individual passwords outside dictionary range, (b) attack surface is
+limited to a single-tenant portal, (c) compromise model is offline
+cracking after D1 leak, which 100k still slows substantially.
+
+**Long-term:** Argon2-via-Wasm is the upgrade path when we need stronger
+hashing. Out of scope for Phase A.
+
+### 2. `_redirects` `/api/*` passthrough
+
+**Why:** The existing `/* /404.html 404` catch-all was shadowing Pages
+Functions, returning the Function's response body but with the
+catch-all's 404 status. Diagnostic test 1 caught the mismatched
+status:body pairing before it could mislead Phase B.
+
+**Fix:** Explicit `/api/* /api/:splat 200` rule inserted directly
+before the catch-all.
+
+### 3. Lucide CDN guards
+
+**Why:** The v9 portal calls `lucide.createIcons()` in four places,
+including one at the very top of the script block before any `let`
+declarations. When CSP blocks the unpkg.com CDN (default for any clean-
+cache visitor), the unguarded call throws `ReferenceError`, aborts
+script parsing, and every `let` below it (including `isLocked`) never
+declares. `validateForm()` then fails with `isLocked is not defined`
+and the Sign In button never enables. The v9 portal worked only when
+Lucide loaded successfully — clean-cache visitors couldn't log in.
+
+**Fix (two-part):**
+- All four `lucide.createIcons()` calls wrapped in
+  `try { if (typeof lucide !== 'undefined') ... } catch { console.warn(...) }`.
+  Even if Lucide is permanently unavailable, the portal works (icons
+  just don't render).
+- `_headers` `script-src` extended to allow `https://unpkg.com` so
+  Lucide loads cleanly under normal conditions.
+
+---
+
+## Security properties confirmed in staging
+
+- **Cookies:** HttpOnly + Secure + SameSite=Lax + Path=/ + Max-Age=1800.
+  `document.cookie` returns empty string from the authenticated dashboard
+  even though the cookie exists — JS-inaccessible by browser enforcement.
+- **Session tokens:** 256-bit random hex, stored in D1 as SHA-256 hash.
+  DB compromise alone doesn't yield usable cookies.
+- **Lockout:** Server-enforced. curl-bypassing the client UI still
+  triggers the 423 lockout response on the 3rd failed attempt, and the
+  correct password is rejected during the 5-minute window.
+- **MFA gate:** Pre-MFA cookies receive 401 `mfa_required` from `/me`.
+  Cannot reach authenticated routes without completing MFA.
+- **No account enumeration:** Unknown email and wrong password return
+  the same `401 invalid_credentials` response.
+- **Audit trail:** Every login attempt logged with IP, UA, success,
+  failure reason. Indexed for cross-email pattern spotting.
+
+---
+
+## Demo credentials (now in this doc, not in the UI)
+
+The "Demo Credentials" panel was removed from `client-portal.html` to
+prevent credential disclosure in production. For testing:
+
+```
+Email:    demo@client.com
+Password: SecurePass123!
+MFA code: 123456
+```
+
+These work on the demo user (created by `seed/0001_demo_user.js`,
+role = `investor`, no `mfa_secret` enrolled). To rotate the password,
+edit the `DEMO.password` value in the seed script, regenerate the SQL,
+and re-apply to D1. To create real users, see "Phase E — Admin" below.
+
+---
+
+## Deployment runbook (post-validation, for reference / rebuild)
+
+If you ever need to recreate this from scratch:
 
 ```bash
-# 1. Create the D1 database. Paste the printed database_id into wrangler.toml.
+# 1. Create the D1 database. Paste the printed UUID into wrangler.toml.
 wrangler d1 create bicrea_portal
 
-# 2. Edit wrangler.toml — replace REPLACE_WITH_ID_FROM_WRANGLER_D1_CREATE
-#    with the value from step 1.
+# 2. Apply the schema.
+wrangler d1 execute bicrea_portal --remote --file=migrations/0001_initial.sql
 
-# 3. Apply the schema migration.
-wrangler d1 execute bicrea_portal --file=migrations/0001_initial.sql --remote
-
-# 4. Generate and apply the demo-user seed.
+# 3. Seed the demo user.
 node seed/0001_demo_user.js > seed/0001_demo_user.sql
-wrangler d1 execute bicrea_portal --file=seed/0001_demo_user.sql --remote
+wrangler d1 execute bicrea_portal --remote --file=seed/0001_demo_user.sql
 
-# 5. Deploy. If the Pages project is already connected to GitHub, push to
-#    the production branch and Cloudflare deploys automatically. Otherwise:
-wrangler pages deploy .
+# 4. In the Cloudflare dashboard, bind D1 to the Pages project:
+#    Settings → Functions → Bindings → Add → D1 database
+#    Variable name: DB
+#    Database: bicrea_portal
+#    (Bindings apply to both Production and Preview environments.)
+
+# 5. Push to portal-v10 branch (preview) or main (production).
+git push
 ```
 
-After deploy, hit `https://your-domain/client-portal.html` and sign in with
-the demo creds shown in the UI. The "Demo Credentials" panel is annotated
-with a TODO to remove before public launch — do that as part of Phase B.
+The dashboard step is mandatory for Git-connected Pages projects.
+`wrangler.toml` bindings only apply to direct `wrangler pages deploy`
+uploads, not Git-triggered builds.
 
-## Local dev
-
-```bash
-# Local D1 (creates a separate local SQLite file under .wrangler/)
-wrangler d1 execute bicrea_portal --file=migrations/0001_initial.sql --local
-node seed/0001_demo_user.js > seed/0001_demo_user.sql
-wrangler d1 execute bicrea_portal --file=seed/0001_demo_user.sql --local
-
-# Run the site + functions locally
-wrangler pages dev .
-```
+---
 
 ## What's next
 
-### Phase B — Documents to R2 (urgent)
+### Phase B — Documents to R2 (urgent, security-critical)
 
-**Right now, `/documents/investment-summary-q2-2026.pdf` and friends are
-publicly fetchable.** The login UI is theater on top of static public files.
-Phase B is non-negotiable before this portal can be considered "real":
+`/documents/*.pdf` is still publicly fetchable. The Phase A auth wraps a
+login UI around files that anyone with a URL can already pull. Phase B
+moves documents into R2 and streams them through `/api/documents/:id`
+behind the session check.
 
-1. Create R2 bucket `bicrea-portal-docs`, uncomment the `[[r2_buckets]]`
-   block in `wrangler.toml`.
-2. Migration `0002` — add `documents` table (id, owner_user_id, project_id,
-   filename, mime_type, r2_key, uploaded_at).
-3. Upload the four existing PDFs / XLSX into R2 under
-   `<user_id>/<document_id>/<original_filename>`, insert rows.
-4. New endpoint `functions/api/documents/[id]/download.js` — verifies the
-   session owns the document, generates a short-lived signed URL or streams
-   the R2 object directly through the Worker (use a streaming response, not
-   `.arrayBuffer()`, so large files don't blow the 128 MB Worker memory).
-5. Patch the Documents tab — replace hardcoded `<tr>`s with a fetch to
-   `GET /api/documents` and render the table from the response.
-6. Delete the `/documents/` folder from the site root.
-7. Remove the "Demo Credentials" block from `client-portal.html`.
+Confirmed Phase B parameters (from staging-validation conversation):
+- Delivery: **stream R2 objects through the Worker** (no signed-URL infra)
+- Personas: **model all three (investor, minerals_buyer, distressed_seller)
+  from day one** with sample seed docs per persona
+- Schedule: starts after Phase A merges to `main`
 
-### Phase C — Projects (Engagements) per persona
+### Phase C / D / E
 
-Currently a "coming soon" stub. Build out:
-- `engagements` table (id, user_id, type, title, location, value, timeline,
-  progress_pct, status, created_at).
-- Persona-specific dashboard widgets: investors see portfolio value + ROI;
-  minerals-buyers see open report orders; sellers see offer status.
-- Engagement detail view with milestone timeline.
+Projects (engagements per persona), Messages, Admin — unchanged from
+original plan. See git history / earlier conversation for shape.
 
-### Phase D — Messages
-
-Threaded messaging between a client and their Bicrea advisor. Tables:
-`message_threads`, `messages`. Polling, not websockets, for v1.
-
-### Phase E — Admin
-
-Bicrea-staff-only UI behind `role = 'admin'`. Create users, upload documents,
-post messages on behalf of an engagement, view login_attempts for security
-review.
-
-## File map
-
-```
-.
-├── README.md                                  # this file
-├── wrangler.toml                              # Pages Functions + D1 binding
-├── client-portal.html                         # patched (drop-in replacement)
-├── migrations/
-│   └── 0001_initial.sql                       # users, sessions, login_attempts
-├── seed/
-│   └── 0001_demo_user.js                      # generates the demo INSERT
-└── functions/
-    └── api/
-        ├── _lib/
-        │   ├── auth.js                        # PBKDF2 + session tokens (Web Crypto)
-        │   └── http.js                        # cookies + JSON responses
-        └── auth/
-            ├── login.js                       # POST /api/auth/login
-            ├── mfa.js                         # POST /api/auth/mfa
-            ├── me.js                          # GET  /api/auth/me
-            └── logout.js                      # POST /api/auth/logout
-```
+---
 
 ## Reverting
 
-If something goes wrong post-deploy: redeploy the v9 `client-portal.html`
-(the pre-pivot mock-mode version). The new API routes will still exist but
-nothing will call them; the v9 file's hardcoded checks resume working. The
-D1 database can stay; it does no harm in isolation.
+If Phase A misbehaves after merge to `main`: `git revert <merge-sha>`.
+The D1 database and dashboard binding can stay; they do no harm in
+isolation. The previous (v9) `client-portal.html` will resume working —
+its mock-mode auth checks the hardcoded demo creds and never calls the
+real API.
