@@ -39,4 +39,8 @@
 /portfolio               /case-studies              301
 
 # 404 catch-all (must be last)
+# Pages Functions live under /api/* — bypass the catch-all so the
+# Function-router gets the request instead of /404.html.
+/api/*  /api/:splat  200
+
 /* /404.html 404
