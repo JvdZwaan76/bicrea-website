@@ -1,5 +1,5 @@
 /* ==========================================================================
-   BICREA Florida — Cookie Consent Module
+   BICREA Florida — Cookie Consent Module (v1.1)
    --------------------------------------------------------------------------
    GDPR + ePrivacy Directive + CCPA/CPRA + FDBR + state laws compliant.
 
@@ -25,6 +25,12 @@
      - openPreferences()             → opens the dialog
      - reset()                       → clears decision + reopens banner
      - VERSION                       → schema version
+
+   v1.1 (CCPA bridge):
+     - Listens for `bicrea:privacy-choices-changed` from ccpa.js
+     - If the user opts out of sale, share, or targeted advertising via the
+       CCPA modal, analytics + marketing categories are force-disabled and
+       any in-flight GA4 instance is told to stop collecting personal data.
    ========================================================================== */
 (function () {
     'use strict';
@@ -354,6 +360,59 @@
     } else {
         init();
     }
+
+    // ============================================================
+    // CCPA bridge (v1.1)
+    // ------------------------------------------------------------
+    // When ccpa.js fires `bicrea:privacy-choices-changed`, react. If the
+    // user opts out of sale, share, or targeted advertising — which CCPA
+    // §1798.140 defines to include cross-context behavioral advertising —
+    // the analytics and marketing cookie categories MUST be disabled.
+    //
+    // We do this regardless of the user's prior cookie-banner choice
+    // because the CCPA opt-out is a statutory right that overrides a
+    // previously expressed cookie consent. ePrivacy and CCPA both honor
+    // the more restrictive of the two signals.
+    // ============================================================
+    window.addEventListener('bicrea:privacy-choices-changed', function (e) {
+        var p = (e && e.detail) || {};
+        var optedOut = !!(p.optOutSale || p.optOutShare || p.optOutTargetedAds);
+        if (!optedOut) return;
+        // Read whatever the current cookie decision is, force analytics +
+        // marketing to false, and persist. If no decision exists yet,
+        // create one that records the CCPA-driven opt-out.
+        var existing = loadDecision();
+        var updated = {
+            version:    VERSION,
+            timestamp:  Date.now(),
+            necessary:  true,
+            functional: existing ? existing.functional : false,
+            analytics:  false,
+            marketing:  false,
+            gpc:        existing ? existing.gpc : hasGPC,
+            dnt:        existing ? existing.dnt : hasDNT,
+            method:     'ccpa_opt_out_propagation'
+        };
+        saveDecision(updated);
+        // Signal any already-loaded GA4 instance to stop tracking — gtag()
+        // honors 'set' calls with consent-mode parameters even after load.
+        if (typeof window.gtag === 'function') {
+            try {
+                window.gtag('consent', 'update', {
+                    'analytics_storage': 'denied',
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied'
+                });
+            } catch (err) { /* gtag missing or not yet configured */ }
+        }
+        // If the banner is currently visible, swap it for a small confirmation
+        // toast and dismiss. The user has already made their privacy choice
+        // via the CCPA modal — re-asking via the cookie banner would be noise.
+        if (banner && banner.classList.contains('is-visible')) {
+            hideBanner();
+        }
+    });
 
     // ============================================================
     // Public API

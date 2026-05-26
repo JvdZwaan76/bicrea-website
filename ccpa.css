@@ -1,0 +1,987 @@
+/* ==========================================================================
+   BICREA Florida — CCPA / U.S. Privacy Rights Modal Styles
+   --------------------------------------------------------------------------
+   Companion to ccpa.js. Extends and harmonizes with the existing
+   .consent-dialog system in styles.css — reuses every design token
+   (--primary-gold, --bg-card, --font-heading, --ease-out-quint, etc.)
+   so the privacy modal is visually indistinguishable in voice from the
+   rest of the site.
+
+   Layout strategy:
+     • Desktop / tablet:  centered modal, max-width 760px, flex column shell
+                          with sticky header/tabs and sticky footer; body scrolls.
+     • Mobile (<600px):   bottom-sheet variant — modal slides up from the
+                          bottom edge, occupies up to 92vh, safe-area-aware.
+     • Reduced motion:    every transform replaced with opacity only.
+
+   Animation hierarchy (precedence, fastest → slowest):
+     - tab indicator slide:      220ms ease-out-quint
+     - panel fade:               200ms ease-out
+     - toast in/out:             240ms ease-out-quint
+     - modal open (desktop):     360ms ease-out-quint, scale 0.96 → 1
+     - modal open (mobile):      360ms ease-out-quint, translateY 100% → 0
+     - backdrop fade:            260ms ease-out
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. Layer setup & body-lock helper
+   ========================================================================== */
+
+/* When the modal is open, prevent the underlying page from scrolling. We
+   use position:fixed instead of overflow:hidden so iOS doesn't lose its
+   scroll position when the modal closes. The width:100% prevents the page
+   from collapsing to its content width when fixed. */
+html.ccpa-modal-open,
+html.ccpa-modal-open body {
+    overflow: hidden;
+}
+@media (max-width: 599px) {
+    html.ccpa-modal-open body {
+        position: fixed;
+        inline-size: 100%;
+    }
+}
+
+
+/* ==========================================================================
+   2. Modal shell (extends .consent-dialog from styles.css)
+   --------------------------------------------------------------------------
+   .ccpa-modal IS a .consent-dialog — same flex-column, same border, same
+   backdrop, same focus styles. These rules ONLY add or override what's
+   specific to the larger, tabbed privacy panel.
+   ========================================================================== */
+
+.ccpa-modal {
+    /* Wider than the cookie dialog because the rights table and the request
+       form both need horizontal room to breathe. Still constrained on small
+       screens by the calc() guard. */
+    max-inline-size: min(760px, calc(100vw - 2 * var(--space-md)));
+    max-block-size: min(86vh, 820px);
+
+    /* Initial state for the open transition. The native <dialog> sets its
+       own display:flex when .showModal() runs, so we tween scale+opacity
+       and snap-in via .is-visible. */
+    opacity: 0;
+    transform: scale(0.96);
+    transition:
+        opacity 360ms var(--ease-out-quint),
+        transform 360ms var(--ease-out-quint);
+}
+
+.ccpa-modal.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* The native ::backdrop fades in alongside the modal. Pseudo-elements
+   can't be transitioned by class state on the parent in all engines, so
+   we use the @starting-style trick where supported and a fallback
+   animation otherwise. */
+.ccpa-modal::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px) saturate(0.9);
+    -webkit-backdrop-filter: blur(8px) saturate(0.9);
+    animation: ccpa-backdrop-in 260ms var(--ease-out) both;
+}
+@keyframes ccpa-backdrop-in {
+    from { opacity: 0; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); }
+    to   { opacity: 1; }
+}
+
+/* Mobile bottom-sheet variant ----------------------------------------- */
+@media (max-width: 599px) {
+    .ccpa-modal {
+        /* Pin to the bottom edge, full width, rounded top corners only */
+        inset-inline: 0;
+        inset-block-end: 0;
+        inset-block-start: auto;
+        margin: 0;
+        max-inline-size: 100vw;
+        max-block-size: 92vh;
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        border-inline: 0;
+        border-block-end: 0;
+        /* Translate-from-below instead of scale-from-center on mobile */
+        transform: translateY(100%);
+        transition: transform 360ms var(--ease-out-quint), opacity 200ms var(--ease-out);
+        /* Account for the iPhone home indicator */
+        padding-block-end: env(safe-area-inset-bottom, 0);
+    }
+    .ccpa-modal.is-visible {
+        transform: translateY(0);
+    }
+    /* On mobile, give the bottom-sheet a subtle drag handle for affordance */
+    .ccpa-modal .ccpa-header::before {
+        content: '';
+        position: absolute;
+        inset-block-start: 8px;
+        inset-inline: 0;
+        margin-inline: auto;
+        inline-size: 36px;
+        block-size: 4px;
+        border-radius: var(--radius-full);
+        background: var(--border-strong);
+        opacity: 0.6;
+    }
+}
+
+/* Reduced motion — opacity-only transitions, no transforms */
+@media (prefers-reduced-motion: reduce) {
+    .ccpa-modal {
+        transition: opacity 180ms ease;
+        transform: none !important;
+    }
+    .ccpa-modal::backdrop { animation: none; }
+}
+
+/* The shell that organizes header / tabs / body / footer into a flex
+   column with a scrollable middle. We use a <div> here (not a <form>)
+   because the request panel contains its OWN <form> and nested forms
+   are stripped by HTML parsers. The existing `.consent-dialog > form`
+   rule in styles.css would have applied if we'd used a form, but a
+   div needs this rule explicitly. */
+.ccpa-form-shell {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-block-size: 0;
+    overflow: hidden;
+}
+
+
+/* ==========================================================================
+   3. Header
+   ========================================================================== */
+
+.ccpa-header {
+    /* The base .consent-dialog-header already provides padding + border —
+       we add an eyebrow row above the title and pin the close button. */
+    position: relative;
+    padding-block-start: var(--space-lg);
+}
+
+.ccpa-header-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    font-size: var(--font-2xs);
+    font-weight: 600;
+    color: var(--primary-gold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    margin-block-end: var(--space-xs);
+}
+.ccpa-header-eyebrow svg { color: var(--primary-gold); }
+
+.ccpa-header h2 {
+    /* Already styled by .consent-dialog-header h2, but we bump weight + size
+       slightly because this dialog is more prominent than the cookie dialog. */
+    font-size: clamp(1.375rem, 1vw + 1rem, 1.75rem);
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-tight);
+}
+
+
+/* ==========================================================================
+   4. Tab bar
+   ========================================================================== */
+
+.ccpa-tabs {
+    flex: 0 0 auto;
+    position: relative;
+    display: flex;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-xl);
+    border-block-end: 1px solid var(--border-subtle);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    /* Hide scrollbar but keep functionality (tabs scroll horizontally on mobile) */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.ccpa-tabs::-webkit-scrollbar { display: none; }
+
+.ccpa-tab {
+    /* Reset button defaults, layout horizontal */
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    background: transparent;
+    border: 0;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    padding: var(--space-sm) var(--space-md);
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition:
+        color var(--transition-fast),
+        background var(--transition-fast);
+    white-space: nowrap;
+}
+.ccpa-tab:hover {
+    color: var(--text-primary);
+    background: var(--bg-tertiary);
+}
+.ccpa-tab.is-active {
+    color: var(--text-primary);
+}
+.ccpa-tab.is-active svg { color: var(--primary-gold); }
+.ccpa-tab:focus-visible {
+    outline: 2px solid var(--primary-gold);
+    outline-offset: 2px;
+}
+.ccpa-tab svg {
+    color: var(--text-muted);
+    transition: color var(--transition-fast);
+}
+
+/* The animated indicator pill — a span anchored at offset (0,0) inside
+   .ccpa-tabs that slides horizontally to follow the active tab. We can't
+   use ::after on each tab because we want one continuous slide animation,
+   not a static highlight per tab. */
+.ccpa-tab-indicator {
+    --ccpa-indicator-x: 0px;
+    --ccpa-indicator-w: 0px;
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: var(--space-xl);
+    block-size: 2px;
+    inline-size: var(--ccpa-indicator-w);
+    transform: translateX(var(--ccpa-indicator-x));
+    background: var(--gold-gradient);
+    border-radius: var(--radius-full);
+    transition:
+        transform 220ms var(--ease-out-quint),
+        inline-size 220ms var(--ease-out-quint);
+    pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    .ccpa-tab-indicator { transition: none; }
+}
+
+/* Tab label is hidden on narrowest screens — icons only */
+@media (max-width: 419px) {
+    .ccpa-tab span { display: none; }
+    .ccpa-tab { padding-inline: var(--space-sm); }
+    .ccpa-tab svg { inline-size: 18px; block-size: 18px; }
+}
+
+
+/* ==========================================================================
+   5. Panels — fade-and-slight-slide crossfade on tab change
+   ========================================================================== */
+
+.ccpa-body { padding-block-start: var(--space-md); }
+
+.ccpa-panel {
+    /* The site's global `section { padding: ... }` rule (styles.css:346)
+       gives every <section> ~108px of vertical padding. We use <section>
+       here for tabpanel semantics, so we explicitly zero that inheritance. */
+    padding: 0;
+}
+.ccpa-panel.is-active {
+    animation: ccpa-panel-in 220ms var(--ease-out) both;
+}
+@keyframes ccpa-panel-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0);   }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ccpa-panel.is-active { animation: none; }
+}
+
+.ccpa-panel-intro {
+    margin-block-end: var(--space-md);
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+}
+.ccpa-panel-intro p { margin: 0 0 var(--space-xs); }
+.ccpa-panel-intro p:last-child { margin-block-end: 0; }
+
+.ccpa-state-hint {
+    display: inline-block;
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    padding: var(--space-2xs) var(--space-sm);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+}
+
+.ccpa-section-head {
+    font-family: var(--font-heading);
+    font-size: var(--font-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-block-start: var(--space-lg);
+    margin-block-end: var(--space-sm);
+    letter-spacing: var(--tracking-tight);
+}
+
+
+/* ==========================================================================
+   6. GPC signal banner — high-prominence, gold-accented status message
+   ========================================================================== */
+
+.ccpa-signal-banner {
+    display: flex;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: color-mix(in srgb, var(--primary-gold) 8%, var(--bg-card));
+    border: 1px solid var(--border-gold);
+    border-inline-start: 3px solid var(--primary-gold);
+    border-radius: var(--radius-md);
+    font-size: var(--font-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+    margin-block-end: var(--space-md);
+}
+.ccpa-signal-banner strong { color: var(--text-primary); }
+.ccpa-signal-banner svg {
+    color: var(--primary-gold);
+    flex-shrink: 0;
+    margin-block-start: 2px;
+}
+
+/* GPC variant — same shell as the base banner, but reserves a modifier
+   hook so we can differentiate from a future DNT-only or future-state
+   variant without re-painting the whole thing. */
+.ccpa-signal-banner--gpc {
+    /* Currently identical to the base — included for explicit BEM clarity
+       and to make future tweaks (e.g., a different inline-start color)
+       trivially applicable. */
+}
+
+.ccpa-status-note {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    font-size: var(--font-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+    margin-block-end: var(--space-md);
+}
+.ccpa-status-note strong { color: var(--text-primary); }
+
+
+/* ==========================================================================
+   7. Choice rows — the toggles
+   --------------------------------------------------------------------------
+   Reuses .consent-cat / .consent-toggle structure from styles.css for
+   visual consistency. .ccpa-choice = .consent-cat with renamed children.
+   ========================================================================== */
+
+.ccpa-choices-list {
+    margin-block-end: var(--space-md);
+}
+
+.ccpa-choice {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+    border-block-end: 1px solid var(--border-subtle);
+}
+.ccpa-choice:first-child { padding-block-start: 0; }
+.ccpa-choice:last-child { border-block-end: 0; padding-block-end: 0; }
+.ccpa-choice-content { flex: 1; min-inline-size: 0; }
+
+.ccpa-choice-title {
+    font-weight: 600;
+    font-size: var(--font-base);
+    color: var(--text-primary);
+    margin-block-end: var(--space-2xs);
+    letter-spacing: var(--tracking-tight);
+}
+.ccpa-choice-body {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0 0 var(--space-2xs);
+}
+.ccpa-choice-detail {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+}
+.ccpa-choice-detail strong { color: var(--text-secondary); }
+
+.ccpa-quick-links {
+    padding-block-start: var(--space-sm);
+    border-block-start: 1px dashed var(--border-subtle);
+    margin-block-start: var(--space-md);
+}
+
+.ccpa-link-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    background: transparent;
+    color: var(--primary-gold);
+    border: 0;
+    padding: var(--space-xs) 0;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+.ccpa-link-button:hover { color: var(--primary-gold-light); }
+.ccpa-link-button svg { color: var(--primary-gold); }
+
+
+/* ==========================================================================
+   8. Notice at Collection — collapsible category cards
+   ========================================================================== */
+
+.ccpa-cat-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.ccpa-cat-card {
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
+    overflow: hidden;
+}
+
+.ccpa-cat-card summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    transition: background var(--transition-fast);
+}
+.ccpa-cat-card summary::-webkit-details-marker { display: none; }
+.ccpa-cat-card summary:hover { background: var(--bg-card-alt); }
+
+.ccpa-cat-code {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 24px;
+    block-size: 24px;
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--primary-gold) 15%, transparent);
+    color: var(--primary-gold);
+    font-family: var(--font-mono);
+    font-size: var(--font-2xs);
+    font-weight: 600;
+    border: 1px solid var(--border-gold);
+}
+.ccpa-cat-name {
+    flex: 1;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: var(--font-sm);
+}
+.ccpa-cat-sold-pill {
+    flex: 0 0 auto;
+    font-size: var(--font-2xs);
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+}
+.ccpa-cat-sold-pill--no {
+    background: color-mix(in srgb, var(--success) 12%, transparent);
+    color: var(--success);
+    border: 1px solid color-mix(in srgb, var(--success) 35%, transparent);
+}
+
+.ccpa-cat-chevron {
+    flex: 0 0 auto;
+    color: var(--text-muted);
+    transition: transform 200ms var(--ease-out-quint);
+}
+.ccpa-cat-card[open] .ccpa-cat-chevron { transform: rotate(180deg); }
+.ccpa-cat-card[open] summary { background: var(--bg-card-alt); }
+
+.ccpa-cat-detail-grid {
+    padding: var(--space-sm) var(--space-md) var(--space-md);
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+    border-block-start: 1px solid var(--border-subtle);
+}
+@media (min-width: 600px) {
+    .ccpa-cat-detail-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-md);
+    }
+}
+.ccpa-cat-detail-grid dt {
+    font-size: var(--font-2xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+    margin-block-end: 2px;
+}
+.ccpa-cat-detail-grid dd {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+}
+
+.ccpa-third-parties {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+}
+.ccpa-third-parties li {
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+}
+
+.ccpa-empty-state {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-secondary);
+    border: 1px dashed var(--border-default);
+    border-radius: var(--radius-md);
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+}
+
+.ccpa-fineprint {
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    line-height: var(--leading-relaxed);
+    margin-block-start: var(--space-md);
+}
+.ccpa-fineprint a { color: var(--primary-gold); }
+
+
+/* ==========================================================================
+   9. Request form
+   ========================================================================== */
+
+.ccpa-request-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.ccpa-fieldset {
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md) var(--space-md);
+    background: var(--bg-secondary);
+    margin: 0;
+}
+.ccpa-fieldset legend {
+    font-size: var(--font-2xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-muted);
+    padding: 0 var(--space-2xs);
+}
+
+.ccpa-radio-grid {
+    display: grid;
+    gap: var(--space-xs);
+    grid-template-columns: 1fr;
+}
+@media (min-width: 600px) {
+    .ccpa-radio-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.ccpa-radio {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color var(--transition-fast), background var(--transition-fast);
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-snug);
+}
+.ccpa-radio:hover { border-color: var(--border-default); background: var(--bg-card-alt); }
+.ccpa-radio input { accent-color: var(--primary-gold); margin-block-start: 2px; }
+.ccpa-radio:has(input:checked) {
+    border-color: var(--primary-gold);
+    background: color-mix(in srgb, var(--primary-gold) 6%, var(--bg-card));
+}
+.ccpa-radio:has(input:checked) span strong { color: var(--text-primary); }
+
+.ccpa-form-row {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: 1fr;
+}
+@media (min-width: 600px) {
+    .ccpa-form-row { grid-template-columns: 1fr 1fr; }
+}
+
+.ccpa-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+}
+.ccpa-label {
+    font-size: var(--font-xs);
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: var(--tracking-wide);
+}
+.ccpa-label-hint {
+    font-weight: 400;
+    color: var(--text-muted);
+}
+.ccpa-label [aria-hidden="true"] {
+    color: var(--primary-gold);
+    margin-inline-start: 2px;
+}
+
+.ccpa-field input[type="text"],
+.ccpa-field input[type="email"],
+.ccpa-field input[type="tel"],
+.ccpa-field select,
+.ccpa-field textarea {
+    inline-size: 100%;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: var(--font-sm);
+    line-height: var(--leading-snug);
+    transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+.ccpa-field textarea {
+    resize: vertical;
+    min-block-size: 80px;
+}
+.ccpa-field input:focus-visible,
+.ccpa-field select:focus-visible,
+.ccpa-field textarea:focus-visible {
+    outline: 2px solid var(--primary-gold);
+    outline-offset: 1px;
+    border-color: var(--primary-gold);
+    background: var(--bg-card);
+}
+
+.ccpa-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    cursor: pointer;
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+}
+.ccpa-checkbox input {
+    accent-color: var(--primary-gold);
+    margin-block-start: 3px;
+    flex-shrink: 0;
+}
+.ccpa-checkbox span strong { color: var(--text-primary); }
+
+.ccpa-aa-section {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+}
+.ccpa-aa-fields {
+    margin-block-start: var(--space-sm);
+    padding-block-start: var(--space-sm);
+    border-block-start: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    animation: ccpa-panel-in 200ms var(--ease-out) both;
+}
+
+.ccpa-form-footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding-block-start: var(--space-sm);
+    border-block-start: 1px solid var(--border-subtle);
+}
+
+.ccpa-request-success {
+    display: flex;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background: color-mix(in srgb, var(--success) 8%, var(--bg-card));
+    border: 1px solid color-mix(in srgb, var(--success) 35%, transparent);
+    border-inline-start: 3px solid var(--success);
+    border-radius: var(--radius-md);
+    animation: ccpa-panel-in 240ms var(--ease-out) both;
+}
+.ccpa-request-success svg {
+    color: var(--success);
+    flex-shrink: 0;
+    margin-block-start: 2px;
+}
+.ccpa-request-success h4 {
+    font-family: var(--font-heading);
+    font-size: var(--font-lg);
+    margin: 0 0 var(--space-2xs);
+    color: var(--text-primary);
+    letter-spacing: var(--tracking-tight);
+}
+.ccpa-request-success h4:focus { outline: none; }
+.ccpa-request-success p {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+}
+
+.ccpa-error-banner {
+    padding: var(--space-sm) var(--space-md);
+    background: color-mix(in srgb, var(--error) 8%, var(--bg-card));
+    border: 1px solid color-mix(in srgb, var(--error) 35%, transparent);
+    border-inline-start: 3px solid var(--error);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: var(--font-sm);
+}
+
+
+/* ==========================================================================
+   10. Rights summary table
+   ========================================================================== */
+
+.ccpa-rights-table-wrap {
+    /* Horizontal scroll on small screens — the rights column gets wide. */
+    overflow-x: auto;
+    margin-block-end: var(--space-md);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
+}
+
+.ccpa-rights-table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-sm);
+}
+.ccpa-rights-table thead th {
+    text-align: start;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-card-alt);
+    color: var(--text-muted);
+    font-size: var(--font-2xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    border-block-end: 1px solid var(--border-default);
+}
+.ccpa-rights-table tbody th,
+.ccpa-rights-table tbody td {
+    padding: var(--space-sm) var(--space-md);
+    border-block-end: 1px solid var(--border-subtle);
+    vertical-align: top;
+}
+.ccpa-rights-table tbody tr:last-child th,
+.ccpa-rights-table tbody tr:last-child td { border-block-end: 0; }
+
+.ccpa-state-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-inline-size: 120px;
+}
+.ccpa-state-cell strong { color: var(--text-primary); }
+.ccpa-state-law {
+    font-size: var(--font-2xs);
+    font-weight: 600;
+    color: var(--primary-gold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+}
+.ccpa-rights-cell {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+    margin-block-end: var(--space-2xs);
+}
+.ccpa-right-chip {
+    display: inline-block;
+    padding: 2px 8px;
+    background: color-mix(in srgb, var(--primary-gold) 8%, transparent);
+    border: 1px solid var(--border-gold);
+    color: var(--text-secondary);
+    border-radius: var(--radius-full);
+    font-size: var(--font-2xs);
+    font-weight: 500;
+    line-height: var(--leading-snug);
+}
+.ccpa-citation {
+    font-size: var(--font-2xs);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    letter-spacing: 0;
+}
+
+.ccpa-bullets {
+    /* Site styles.css sets `ul, ol { list-style: none }` globally — we restore
+       disc markers here because the rights-summary bullets are visually clearer
+       with them, and there's no card framing to imply structure otherwise. */
+    list-style: disc;
+    padding-inline-start: var(--space-md);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+.ccpa-bullets li::marker { color: var(--primary-gold); }
+.ccpa-bullets li {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+}
+.ccpa-bullets li strong { color: var(--text-primary); }
+
+
+/* ==========================================================================
+   11. Footer (Save / Reject buttons)
+   --------------------------------------------------------------------------
+   .ccpa-footer is a .consent-dialog-footer with the same button-flex rule —
+   we just adjust the meta block to span full width before the buttons.
+   ========================================================================== */
+
+.ccpa-footer-meta {
+    /* Same as .consent-dialog-meta but slightly larger because there's more
+       legal weight to this dialog than the cookie one. */
+    flex: 1 1 100%;
+    font-size: var(--font-xs);
+    color: var(--text-muted);
+    margin-block-end: var(--space-sm);
+    line-height: var(--leading-relaxed);
+}
+.ccpa-footer-meta a { color: var(--primary-gold); }
+
+/* Reuse .consent-dialog-footer .btn flex behavior — already defined */
+
+
+/* ==========================================================================
+   12. Toast (transient "saved" confirmation)
+   ========================================================================== */
+
+.ccpa-toast {
+    position: absolute;
+    inset-block-end: calc(72px + env(safe-area-inset-bottom, 0));
+    inset-inline-start: 50%;
+    transform: translateX(-50%) translateY(8px);
+    padding: var(--space-xs) var(--space-md);
+    background: color-mix(in srgb, var(--success) 90%, var(--bg-primary));
+    color: var(--bg-primary);
+    border-radius: var(--radius-full);
+    font-size: var(--font-sm);
+    font-weight: 600;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+        opacity 240ms var(--ease-out-quint),
+        transform 240ms var(--ease-out-quint);
+    z-index: 10;
+}
+.ccpa-toast.is-visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+    .ccpa-toast { transition: opacity 180ms ease; transform: translateX(-50%) !important; }
+}
+
+
+/* ==========================================================================
+   13. Footer trigger link styling
+   --------------------------------------------------------------------------
+   The link in the page footer that opens this modal. Sibling to the
+   existing .consent-footer-link (cookie preferences) — same visual weight,
+   slightly different icon affordance.
+   ========================================================================== */
+
+.privacy-choices-link {
+    /* Base styles match .consent-footer-link so the row looks unified */
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    background: transparent;
+    color: var(--text-muted);
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    text-align: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+.privacy-choices-link:hover { color: var(--primary-gold); }
+.privacy-choices-link:hover .privacy-choices-icon { color: var(--primary-gold); }
+.privacy-choices-link:focus-visible {
+    outline: 2px solid var(--primary-gold);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
+}
+
+/* The "Your Privacy Choices" toggle icon — the IAB-style blue/white
+   pictogram, in our gold palette. Visually communicates "this is the
+   privacy-rights toggle" the way the IAB icon does on other sites. */
+.privacy-choices-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 16px;
+    block-size: 16px;
+    color: var(--text-muted);
+    transition: color var(--transition-fast);
+}
+
+
+/* ==========================================================================
+   14. Fallback: when <dialog> is unsupported
+   ========================================================================== */
+
+.ccpa-modal--no-native {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    z-index: 1000;
+    background: var(--bg-card);
+}
+.ccpa-modal--no-native::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
