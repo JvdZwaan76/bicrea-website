@@ -149,6 +149,19 @@ html.ccpa-modal-open body {
     overflow: hidden;
 }
 
+/* The HTML `hidden` attribute applies `display: none` from the user-agent
+   stylesheet, but any of our own `display: flex` rules below would override
+   it via specificity. Force the hidden attribute to win on the specific
+   elements we toggle programmatically — the request form (hides after
+   successful submit), the AA fields section (toggles with the AA checkbox),
+   the AA wrapper section, and the success confirmation block. */
+.ccpa-request-form[hidden],
+.ccpa-aa-fields[hidden],
+.ccpa-aa-section[hidden],
+.ccpa-request-success[hidden] {
+    display: none;
+}
+
 
 /* ==========================================================================
    3. Header
