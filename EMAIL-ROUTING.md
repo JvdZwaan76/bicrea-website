@@ -1,4 +1,4 @@
-# BICREA Florida — Email Routing Setup
+# BIC REA LLC (BICREA Florida) — Email Routing Setup
 
 This document describes the email infrastructure that backs the public-facing
 addresses on `florida.bicrea.com`. The site exposes only **two** generic
@@ -11,6 +11,8 @@ table cannot.
 ---
 
 ## 1. Public aliases (the only addresses on the site)
+
+> **Email header / letterhead name:** all outbound mail and signatures use **"BIC REA LLC"** (not "BICREA").
 
 | Public alias | Used for | Where it appears |
 |---|---|---|
@@ -39,7 +41,7 @@ Default fan-out target: a small distribution group that everyone in the team
 who handles inquiries belongs to. Recommended group: **`leads@bicrea.com`** (a
 private group, not exposed publicly), with members:
 
-- Christian Hickey (`christian.hickey@bicrea.com`) — Investment Director
+- Christian Hickey (`christian.hickey@bicrea.com`) — Investment Director — intake line +1 (805) 233-2942
 - JJ van der Zwaan (`jj.vanderzwaan@bicrea.com`) — Operations
 - Sandra Petkov (`sandra.petkov@bicrea.com`) — Chief Analyst (mineral)
 - Shervin Tavakoli (`shervin.tavakoli@bicrea.com`) — Distressed property

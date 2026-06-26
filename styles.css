@@ -617,6 +617,12 @@ section[style*="--bg-secondary"] .card-cta-tight {
     display: none;
 }
 
+.nav-portal { display:inline-flex; align-items:center; gap:0.4rem; border:1px solid var(--border-default); color:var(--text-primary); padding:0.5rem 1rem; border-radius:var(--radius-full); font-weight:600; font-size:0.875rem; transition:border-color var(--transition-fast),color var(--transition-fast),background var(--transition-fast); }
+.nav-portal:hover { border-color:var(--primary-gold); color:var(--primary-gold); background:rgba(212,175,55,0.06); }
+.nav-portal::after { display:none; }
+.nav-mobile .nav-portal { display:flex; justify-content:center; margin-top:var(--space-4); min-height:48px; }
+
+
 /* Mobile hamburger button */
 .nav-toggle {
     display: flex;

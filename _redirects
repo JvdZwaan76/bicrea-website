@@ -10,6 +10,20 @@
 /GA4-SETUP.md                /                          301
 /SUBSTANTIATION-CHECKLIST.md /                          301
 
+# === TEMPORARY: pages under development — mineral-title focus (reversible) ===
+/distressed-properties       /under-development   302
+/distressed-properties.html  /under-development   302
+/process                     /under-development   302
+/process.html                /under-development   302
+/case-studies                /under-development   302
+/case-studies.html           /under-development   302
+/we-buy-houses               /under-development   302
+/sell-house                  /under-development   302
+/cash-offer                  /under-development   302
+/services/distressed         /under-development   302
+/portfolio                   /under-development   302
+/under-development.html      /under-development   301
+
 # Strip .html extension — 301 permanent redirects for SEO
 /index.html                  /                          301
 /mineral-title.html          /mineral-title             301

@@ -941,6 +941,11 @@
             transform: translateY(0);
             transition: all 0.3s ease;
         }
+    
+        /* DEMO ONLY — persona toggle */
+        .demo-persona-opt{display:flex;align-items:center;justify-content:center;min-height:48px;padding:.6rem .75rem;border:1px solid var(--border-default,#2c2b25);border-radius:.5rem;cursor:pointer;font-size:.85rem;color:var(--text-muted,#9a9588);text-align:center;transition:border-color .15s,color .15s,background .15s;}
+        .demo-persona-opt:has(input:checked){border-color:var(--primary-gold,#d4af37);color:var(--primary-gold,#d4af37);background:rgba(212,175,55,.08);}
+        .demo-persona-opt:has(input:focus-visible){outline:2px solid var(--primary-gold,#d4af37);outline-offset:2px;}
     </style>
 </head>
 <body>
@@ -971,6 +976,10 @@
                     <div class="form-header">
                         <h2 class="form-title">Sign In</h2>
                         <p class="form-subtitle">Enter your credentials to access your portal</p>
+                        <div class="demo-persona" role="radiogroup" aria-label="Choose a demo view" style="display:flex;gap:.5rem;margin:1rem 0;">
+                            <label class="demo-persona-opt" style="flex:1;"><input type="radio" name="demoPersona" value="mineral" checked style="position:absolute;opacity:0;"><span>Mineral-Title Client</span></label>
+                            <label class="demo-persona-opt" style="flex:1;"><input type="radio" name="demoPersona" value="investor" style="position:absolute;opacity:0;"><span>Investor Client</span></label>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -1082,6 +1091,7 @@
                     <div>Email: demo@client.com</div>
                     <div>Password: SecurePass123!</div>
                     <div>MFA Code: 123456</div>
+                    <div style="margin-top:.4rem;opacity:.85;">Pick a view above, then sign in.</div>
                 </div>
             </div>
         </div>
@@ -1557,7 +1567,61 @@
             mfaVerifyBtn.disabled = code.length !== 6;
         }
 
-        // Authentication
+        // ===== DEMO ONLY — remove/disable when Phase B real backend lands =====
+        const BICREA_PERSONAS = {
+            mineral: { label:'Mineral-Title Client', greeting:'Welcome back, Frazier Oil Properties',
+                stats:[{h:'Active Title Reports',p:'4'},{h:'Parcels Under Research',p:'128'},{h:'Documents',p:'36'},{h:'Avg. Turnaround',p:'11 days'}],
+                projects:[
+                    {name:'Dry Falls Solar — Grant County, WA', a:'Parcels: 128', b:'Stage: Curative', status:'In Progress', cls:'status-progress', icon:'clock', prog:70},
+                    {name:'Permian Basin Lease Check — Reeves County, TX', a:'Parcels: 64', b:'Stage: Runsheet', status:'Under Review', cls:'status-pending', icon:'alert-circle', prog:40},
+                    {name:'Cascade Transmission ROW — Yakima County, WA', a:'Parcels: 212', b:'Stage: Delivered', status:'Completed', cls:'status-completed', icon:'check-circle', prog:100}
+                ],
+                docs:[
+                    {name:'Title Report — Dry Falls Solar', project:'Dry Falls Solar', date:'Jun 02, 2026', type:'PDF', cls:'pdf'},
+                    {name:'Runsheet — Permian Basin', project:'Permian Basin Lease Check', date:'May 21, 2026', type:'XLSX', cls:'xlsx'},
+                    {name:'Curative Memo — Yakima ROW', project:'Cascade Transmission ROW', date:'May 09, 2026', type:'PDF', cls:'pdf'}
+                ] },
+            investor: { label:'Investor Client', greeting:'Welcome back, John',
+                stats:[{h:'Active Projects',p:'3'},{h:'Total Portfolio Value',p:'$7.5M'},{h:'Documents',p:'12'},{h:'Avg. ROI',p:'24.5%'}],
+                projects:[
+                    {name:'Tampa Bay Commercial Complex', a:'Value: $2.8M', b:'Timeline: 45 days', status:'In Progress', cls:'status-progress', icon:'clock', prog:75},
+                    {name:'Clearwater Investment Portfolio', a:'Value: $1.2M', b:'Timeline: 60 days', status:'Under Review', cls:'status-pending', icon:'alert-circle', prog:30},
+                    {name:'Sarasota Retail Development', a:'Value: $3.5M', b:'Timeline: Completed', status:'Completed', cls:'status-completed', icon:'check-circle', prog:100}
+                ],
+                docs:[
+                    {name:'Investment Summary — Q2 2026', project:'Tampa Bay Commercial Complex', date:'Apr 28, 2026', type:'PDF', cls:'pdf'},
+                    {name:'Property Appraisal Report', project:'Clearwater Investment Portfolio', date:'Apr 15, 2026', type:'PDF', cls:'pdf'},
+                    {name:'ROI Performance Dashboard', project:'Tampa Bay Commercial Complex', date:'Apr 30, 2026', type:'XLSX', cls:'xlsx'}
+                ] }
+        };
+        function bicreaPersonaKey(){ const q=new URLSearchParams(location.search).get('persona');
+            if(q&&BICREA_PERSONAS[q])return q;
+            const sel=document.querySelector('input[name="demoPersona"]:checked');
+            return (sel&&BICREA_PERSONAS[sel.value])?sel.value:'mineral'; }
+        function bicreaApplyPersona(){ const p=BICREA_PERSONAS[bicreaPersonaKey()];
+            const g=document.querySelector('.welcome-section h2'); if(g)g.textContent=p.greeting+'!';
+            document.querySelectorAll('.stats-grid .stat-card').forEach((card,i)=>{ if(!p.stats[i])return;
+                const h=card.querySelector('h3'),v=card.querySelector('p'); if(h)h.textContent=p.stats[i].h; if(v)v.textContent=p.stats[i].p; });
+            const cards=document.querySelectorAll('.projects-section .project-card');
+            cards.forEach((card,i)=>{ const pr=p.projects[i];
+                if(!pr){ card.style.display='none'; return; } card.style.display='';
+                const nm=card.querySelector('.project-name'); if(nm)nm.textContent=pr.name;
+                const st=card.querySelector('.project-status'); if(st){ st.className='project-status '+pr.cls;
+                    st.innerHTML='<i data-lucide="'+pr.icon+'" style="width: 1rem; height: 1rem;"></i> '+pr.status; }
+                const det=card.querySelectorAll('.project-details span');
+                if(det[0])det[0].innerHTML=pr.a; if(det[1])det[1].innerHTML=pr.b;
+                const fill=card.querySelector('.progress-fill'); if(fill)fill.style.width=pr.prog+'%';
+                const ptxt=card.querySelector('.progress-text'); if(ptxt)ptxt.textContent=pr.prog+'% Complete'; });
+            const rows=document.querySelectorAll('#documentsTableBody tr');
+            rows.forEach((row,i)=>{ const d=p.docs[i];
+                if(!d){ row.style.display='none'; return; } row.style.display='';
+                const cells=row.querySelectorAll('td');
+                if(cells[0])cells[0].innerHTML='<strong>'+d.name+'</strong>';
+                if(cells[1])cells[1].textContent=d.project;
+                if(cells[2])cells[2].textContent=d.date;
+                if(cells[3])cells[3].innerHTML='<span class="doc-type '+d.cls+'">'+d.type+'</span>'; });
+            if(window.lucide&&lucide.createIcons)lucide.createIcons(); }
+
         async function handleLogin() {
             if (isLocked) {
                 showAlert('Account is temporarily locked. Please wait.', 'error');
@@ -1567,10 +1631,10 @@
             const email = emailInput.value;
             const password = passwordInput.value;
             const validCredentials = email === 'demo@client.com' && password === 'SecurePass123!';
-            
+
             if (!validCredentials) {
                 loginAttempts++;
-                
+
                 if (loginAttempts >= 3) {
                     isLocked = true;
                     lockoutTime = 300; // 5 minutes
@@ -1584,6 +1648,7 @@
 
             // Reset attempts on successful credential validation
             loginAttempts = 0;
+            try { const u=new URL(location); u.searchParams.set('persona',bicreaPersonaKey()); history.replaceState(null,'',u); } catch(e){}
             switchLoginStep('mfa');
             showAlert('Credentials verified. Please enter MFA code.', 'info');
         }
@@ -1597,6 +1662,7 @@
                     isAuthenticated = true;
                     sessionTime = 1800; // Reset session time
                     showPortal();
+                    bicreaApplyPersona();
                     startSessionTimer();
                     showNotification('Login successful. Welcome back!', 'success');
                 }, 1500);
