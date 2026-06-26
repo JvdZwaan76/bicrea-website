@@ -577,7 +577,7 @@
                 if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = origText; }
                 showSubmitError(
                     'We couldn\'t send your inquiry',
-                    'Something went wrong on our end. Your answers are preserved — please try again, or reach us directly at +1 (805) 233-2942 or ' + decodeRot13('vasb@ovpern.pbz') + '.',
+                    'Something went wrong on our end. Your answers are preserved — please try again, or reach us directly at +1 (310) 963-1569 or ' + decodeRot13('vasb@ovpern.pbz') + '.',
                     true
                 );
                 // Dispatch submit_error analytics event
@@ -634,7 +634,7 @@
                                path === 'distressed' ? 'a Florida property cash sale' :
                                'your inquiry';
                 summary.textContent = 'A BICREA specialist will reply within one business day about ' + pathName + '. ' +
-                    'If your matter is urgent, you can also reach us directly at +1 (805) 233-2942 or ' + decodeRot13('vasb@ovpern.pbz') + '.';
+                    'If your matter is urgent, you can also reach us directly at +1 (310) 963-1569 or ' + decodeRot13('vasb@ovpern.pbz') + '.';
             }
 
             // Remove unload warning
