@@ -334,15 +334,7 @@
     /* ---------------- Chain-of-title viz observer ---------------- */
     var chainViz = document.querySelector('.chain-viz-svg');
     if (chainViz && 'IntersectionObserver' in window && !prefersReducedMotion) {
-        // Set --len on each line to its actual path length so the dasharray works
-        chainViz.querySelectorAll('.chain-line').forEach(function (path) {
-            try {
-                var len = path.getTotalLength();
-                path.style.setProperty('--len', len);
-                path.style.strokeDasharray = len;
-                path.style.strokeDashoffset = len;
-            } catch (e) { /* fallback: CSS handles it */ }
-        });
+        // (v3) connector lines render at their CSS baseline; no draw-in setup.
 
         var chainObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
@@ -535,6 +527,8 @@
         var stepLines = chainSvg.querySelectorAll('.chain-line');
         var stepNodes = chainSvg.querySelectorAll('.chain-node');
         var currentStep = 0; // 0 = nothing active yet (forces initial render)
+        var progressDots  = document.querySelectorAll('.methodology-progress .methodology-progress-dot');
+        var progressTrack = document.querySelector('.methodology-progress .methodology-progress-dots');
 
         function setActiveStep(num) {
             if (num === currentStep) return; // hysteresis — skip if unchanged
@@ -555,6 +549,15 @@
                 node.classList.toggle('is-active', n === num);
                 node.classList.toggle('is-completed', n < num);
             });
+            // Mobile sticky dot-bar — same active/completed model as the chain.
+            progressDots.forEach(function (dot, i) {
+                var n = i + 1;
+                dot.classList.toggle('is-active', n === num);
+                dot.classList.toggle('is-completed', n < num);
+            });
+            if (progressTrack) {
+                progressTrack.style.setProperty('--progress-fill', (num - 1) / 7);
+            }
         }
 
         function computeActiveStep() {

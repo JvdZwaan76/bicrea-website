@@ -2159,6 +2159,113 @@ section[style*="--bg-secondary"] .methodology-step {
     font-size: 0.8125rem;
 }
 
+/* ==========================================================================
+   22b. METHODOLOGY MOBILE PROGRESS (sticky 8-dot bar, < 992px only)
+   --------------------------------------------------------------------------
+   Replaces the tall vertical chain on small screens. Pinned under the navbar;
+   fills left->right and marks the active step. Driven by the same
+   setActiveStep() in script.js that powers the desktop chain.
+   ========================================================================== */
+.methodology-progress {
+    position: sticky;
+    top: calc(var(--navbar-height) + var(--safe-area-top, 0px));
+    z-index: 40;
+    margin-bottom: var(--space-5);
+    padding: var(--space-3) var(--space-2);
+    background: color-mix(in srgb, var(--bg-primary) 90%, transparent);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+}
+
+/* Desktop: the vertical chain takes over, so hide the dot bar. */
+@media (min-width: 992px) {
+    .methodology-progress { display: none; }
+}
+
+/* Below desktop: the tall vertical chain doesn't fit a phone -> hide it,
+   the dot bar carries the progress signal instead. */
+@media (max-width: 991.98px) {
+    .methodology-story-viz { display: none; }
+}
+
+.methodology-progress-dots {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Track line (base) + filled portion, both behind the dots. Insets of 14px
+   (half a 28px dot) make the line meet the centers of the first/last dots. */
+.methodology-progress-dots::before,
+.methodology-progress-dots::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+.methodology-progress-dots::before {
+    left: 14px;
+    right: 14px;
+    background: rgba(212, 175, 55, 0.22);
+}
+.methodology-progress-dots::after {
+    left: 14px;
+    width: calc((100% - 28px) * var(--progress-fill, 0));
+    background: var(--primary-gold);
+    transition: width 0.35s var(--ease-out);
+}
+
+.methodology-progress-dot {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    border: 1.5px solid rgba(212, 175, 55, 0.40);
+    color: rgba(212, 175, 55, 0.85);
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    transition: transform 0.3s var(--ease-out-back),
+                background 0.3s var(--ease-out),
+                border-color 0.3s var(--ease-out),
+                color 0.3s var(--ease-out);
+}
+
+.methodology-progress-dot.is-completed {
+    border-color: rgba(212, 175, 55, 0.75);
+    color: var(--primary-gold);
+}
+
+.methodology-progress-dot.is-active {
+    background: var(--primary-gold);
+    border-color: var(--primary-gold);
+    color: var(--bg-primary);
+    transform: scale(1.12);
+}
+
+.methodology-progress-dot-star {
+    border-color: var(--primary-gold);
+    color: var(--primary-gold);
+}
+.methodology-progress-dot-star.is-active {
+    background: var(--primary-gold);
+    color: var(--bg-primary);
+}
+
 
 /* ==========================================================================
    23. CHAIN-OF-TITLE VISUALISATION (the SVG signature element)

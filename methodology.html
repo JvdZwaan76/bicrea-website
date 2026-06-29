@@ -192,6 +192,21 @@
 
     <div class="methodology-story">
 
+      <!-- Mobile-only sticky progress indicator (8 steps). Hidden ≥992px via CSS;
+           driven by the same setActiveStep() that powers the desktop chain. -->
+      <div class="methodology-progress" aria-hidden="true">
+        <ol class="methodology-progress-dots">
+          <li class="methodology-progress-dot is-active" data-dot="1">1</li>
+          <li class="methodology-progress-dot" data-dot="2">2</li>
+          <li class="methodology-progress-dot" data-dot="3">3</li>
+          <li class="methodology-progress-dot" data-dot="4">4</li>
+          <li class="methodology-progress-dot" data-dot="5">5</li>
+          <li class="methodology-progress-dot" data-dot="6">6</li>
+          <li class="methodology-progress-dot" data-dot="7">7</li>
+          <li class="methodology-progress-dot methodology-progress-dot-star" data-dot="8">★</li>
+        </ol>
+      </div>
+
       <!-- Sticky vertical chain visualization (storytelling) -->
       <div class="methodology-story-viz" aria-hidden="true">
         <div class="chain-viz">
