@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>BLM Lease-Sale Tracker — BIC REA LLC (Internal)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-primary:#0a0a0a;--bg-secondary:#111;--bg-card:#161616;--bg-elevated:#1f1f1f;
+  --text-primary:#f5f5f7;--text-secondary:rgba(245,245,247,.80);--text-muted:rgba(245,245,247,.56);--text-faint:rgba(245,245,247,.40);
+  --gold:#d4af37;--gold-light:#f4d03f;--gold-deep:#b8941f;
+  --alert:#e8b84b;--ok:#7bbf7b;--muted-blue:#8aa9c9;
+  --border-subtle:rgba(255,255,255,.07);--border-default:rgba(255,255,255,.12);--border-gold:rgba(212,175,55,.35);
+  --font-h:'Cinzel','Times New Roman',Georgia,serif;--font-b:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg-primary);color:var(--text-primary);font-family:var(--font-b);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh}
+h1,h2,h3,.brand-word{font-family:var(--font-h);line-height:1.15}
+a{color:var(--gold-light);text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:26px 30px 90px}
+
+/* top bar */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--border-subtle);padding-bottom:18px;margin-bottom:22px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:9px}
+.dia{color:var(--gold)}
+.brand-word{font-weight:700;font-size:19px;letter-spacing:.05em}
+.brand .sub{color:var(--text-faint);font-size:11px;text-transform:uppercase;letter-spacing:.16em;margin-top:2px}
+.pill{display:inline-block;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);border:1px solid var(--border-gold);border-radius:999px;padding:3px 10px}
+.who{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-muted)}
+.who b{color:var(--text-secondary);font-weight:600}
+.btn{font:inherit;cursor:pointer;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;border:1px solid var(--border-default);background:var(--bg-elevated);color:var(--text-secondary)}
+.btn:hover{border-color:var(--border-gold);color:var(--text-primary)}
+.btn-gold{background:linear-gradient(135deg,#d4af37,#f4d03f);color:#0a0a0a;border:0}
+.btn-sm{padding:5px 10px;font-size:12px}
+
+/* title row */
+.head h1{font-weight:700;font-size:30px;letter-spacing:-.01em}
+.head h1 .accent{color:var(--gold)}
+.head p{color:var(--text-secondary);font-weight:300;margin-top:6px;max-width:70ch}
+
+/* poc/security banner */
+.banner{display:flex;gap:12px;align-items:flex-start;background:rgba(212,175,55,.07);border:1px solid var(--border-gold);border-radius:9px;padding:12px 16px;margin:18px 0 24px;font-size:12.5px;color:var(--text-secondary)}
+.banner .bico{color:var(--gold);font-size:15px;line-height:1.2}
+.banner b{color:var(--gold-light)}
+
+/* summary cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:24px}
+.card{background:var(--bg-card);border:1px solid var(--border-default);border-radius:11px;padding:16px 18px}
+.card .k{font-size:11px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px}
+.card .v{font-family:var(--font-h);font-weight:600;font-size:28px;color:var(--text-primary)}
+.card .v.gold{color:var(--gold)}
+.card .m{font-size:12.5px;color:var(--text-muted);margin-top:3px}
+
+/* controls */
+.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.seg{display:inline-flex;border:1px solid var(--border-default);border-radius:9px;overflow:hidden}
+.seg button{font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;background:transparent;color:var(--text-muted);border:0;padding:7px 13px;border-right:1px solid var(--border-subtle)}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--bg-elevated);color:var(--gold)}
+select{font:inherit;font-size:13px;background:var(--bg-elevated);color:var(--text-secondary);border:1px solid var(--border-default);border-radius:8px;padding:7px 10px}
+.spacer{flex:1}
+
+/* table */
+.tablewrap{border:1px solid var(--border-default);border-radius:12px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+thead th{text-align:left;font-family:var(--font-b);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);background:var(--bg-secondary);padding:12px 16px;border-bottom:1px solid var(--border-default)}
+tbody td{padding:13px 16px;border-bottom:1px solid var(--border-subtle);color:var(--text-secondary);vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:rgba(255,255,255,.02)}
+tbody tr.inwindow td{background:rgba(212,175,55,.06)}
+tbody tr.inwindow{box-shadow:inset 3px 0 0 var(--gold)}
+.sale-name{color:var(--text-primary);font-weight:600}
+.sale-name a{color:var(--text-primary)}
+.sale-name a:hover{color:var(--gold-light)}
+.days{font-family:var(--font-h);font-weight:600;font-size:15px}
+.days.soon{color:var(--gold)}
+.days.past{color:var(--text-faint)}
+.badge{display:inline-block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:999px;border:1px solid transparent}
+.badge.scheduled{color:var(--muted-blue);border-color:rgba(138,169,201,.4)}
+.badge.notice{color:var(--gold);border-color:var(--border-gold)}
+.badge.held{color:var(--text-muted);border-color:var(--border-default)}
+.badge.results{color:var(--ok);border-color:rgba(123,191,123,.4)}
+.alertchip{display:inline-block;margin-left:8px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#0a0a0a;background:var(--gold);border-radius:999px;padding:2px 8px}
+
+/* settings */
+.panel{background:var(--bg-card);border:1px solid var(--border-default);border-radius:12px;padding:20px 22px;margin-top:24px}
+.panel h3{font-weight:600;font-size:16px;margin-bottom:4px}
+.panel .ph{color:var(--text-muted);font-size:12.5px;margin-bottom:16px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.field .fk{font-size:11px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.12em;margin-bottom:7px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:12px;color:var(--text-secondary);background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:999px;padding:4px 11px}
+.chip.gold{color:var(--gold);border-color:var(--border-gold)}
+.recip{display:flex;flex-direction:column;gap:6px}
+.recip .r{display:flex;align-items:center;justify-content:space-between;font-size:13px;background:var(--bg-elevated);border:1px solid var(--border-default);border-radius:8px;padding:8px 12px}
+.recip .r .nm{color:var(--text-primary);font-weight:600}
+.recip .r .em{color:var(--text-muted);font-size:12px}
+.recip .r .todo{color:var(--gold);font-size:10.5px;text-transform:uppercase;letter-spacing:.08em}
+.cfgnote{margin-top:14px;font-size:12px;color:var(--text-faint);font-style:italic}
+
+/* footer */
+.foot{margin-top:34px;padding-top:18px;border-top:1px solid var(--border-subtle);font-size:11.5px;color:var(--text-faint);letter-spacing:.02em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.foot .cf{text-transform:uppercase;letter-spacing:.14em}
+
+/* gate overlay */
+.gate{position:fixed;inset:0;background:rgba(7,7,7,.97);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
+.gate.hide{display:none}
+.gatebox{width:100%;max-width:420px;background:var(--bg-card);border:1px solid var(--border-default);border-radius:14px;padding:32px 30px;text-align:center}
+.gatebox .dia{font-size:26px}
+.gatebox h2{font-weight:700;font-size:22px;margin:12px 0 4px}
+.gatebox p{color:var(--text-muted);font-size:13px;margin-bottom:20px}
+.gatebox input{width:100%;font:inherit;font-size:14px;background:var(--bg-elevated);color:var(--text-primary);border:1px solid var(--border-default);border-radius:9px;padding:11px 14px;margin-bottom:12px;text-align:center}
+.gatebox input:focus{outline:0;border-color:var(--gold)}
+.gatebox .go{width:100%;padding:12px}
+.gateerr{color:#e88;font-size:12.5px;min-height:18px;margin-top:10px}
+.gatehint{margin-top:16px;font-size:11px;color:var(--text-faint);line-height:1.5}
+.gatehint b{color:var(--gold)}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(5,5,5,.8);z-index:120;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
+.mbox{width:100%;max-width:520px;background:var(--bg-card);border:1px solid var(--border-gold);border-radius:14px;padding:0;overflow:hidden}
+.mhead{padding:16px 20px;border-bottom:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center}
+.mhead .t{font-family:var(--font-h);font-weight:600;font-size:15px}
+.mhead .x{cursor:pointer;color:var(--text-muted);font-size:20px;line-height:1}
+.mbody{padding:20px}
+.email-preview{background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:9px;padding:18px;font-size:13px;color:var(--text-secondary)}
+.email-preview .efrom{font-size:11.5px;color:var(--text-faint);border-bottom:1px solid var(--border-subtle);padding-bottom:10px;margin-bottom:12px}
+.email-preview .esub{color:var(--text-primary);font-weight:600;font-size:14px;margin-bottom:10px}
+.email-preview ul{margin:8px 0 0 18px}
+.email-preview li{margin-bottom:5px}
+.email-preview .foot2{margin-top:14px;padding-top:10px;border-top:1px solid var(--border-subtle);font-size:11px;color:var(--text-faint)}
+@media(max-width:640px){.wrap{padding:20px 16px 80px}.head h1{font-size:24px}thead th:nth-child(4),tbody td:nth-child(4){display:none}}
+</style>
+</head>
+<body>
+
+<!-- ============ ACCESS GATE (POC — NOT a security boundary; see README) ============ -->
+<div class="gate" id="gate">
+  <div class="gatebox">
+    <div class="dia">&#9674;</div>
+    <h2>BLM Lease-Sale Tracker</h2>
+    <p>Internal tool &middot; BIC REA LLC</p>
+    <input id="gateEmail" type="email" placeholder="your @bicrea.com email" autocomplete="off">
+    <button class="btn btn-gold go" onclick="tryEnter()">Enter</button>
+    <div class="gateerr" id="gateErr"></div>
+    <div class="gatehint">Access is limited to the approved team.<br><b>POC note:</b> this gate is a demo. In production it is enforced by the client-portal session, server-side.</div>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <span class="dia" style="font-size:20px">&#9674;</span>
+      <div>
+        <div class="brand-word">BIC REA LLC</div>
+        <div class="sub">Internal Tools</div>
+      </div>
+    </div>
+    <div class="who">
+      <span class="pill">POC &middot; mock data</span>
+      <span>Signed in as <b id="whoName">—</b></span>
+      <button class="btn btn-sm" onclick="lock()">Lock</button>
+    </div>
+  </div>
+
+  <div class="head">
+    <h1>BLM Lease-Sale <span class="accent">Tracker</span></h1>
+    <p>Upcoming BLM National Fluids competitive oil &amp; gas lease sales, with automatic heads-up alerts a few days before each sale.</p>
+  </div>
+
+  <div class="banner">
+    <span class="bico">&#9888;</span>
+    <div><b>Proof of concept.</b> Running on realistic <b>sample data</b>. The live BLM feed plugs into a single swap point (<code>DataSource.getSales</code>) once we have the data capture from the NFLSS site. Scheduled email alerts are designed but not yet sending — this view demonstrates the logic and content.</div>
+  </div>
+
+  <div class="cards" id="cards"></div>
+
+  <div class="controls">
+    <div class="seg" id="segFilter">
+      <button data-f="upcoming" class="on">Upcoming</button>
+      <button data-f="window">In alert window</button>
+      <button data-f="completed">Completed</button>
+      <button data-f="all">All</button>
+    </div>
+    <select id="stateFilter"><option value="">All watched states</option></select>
+    <div class="spacer"></div>
+    <button class="btn btn-sm" onclick="previewAlert()">Preview alert email</button>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr>
+        <th>Sale</th><th>State office</th><th>Sale date</th><th>Days</th><th>Status</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <!-- SETTINGS (reflects config; edit in blm-config in production) -->
+  <div class="panel">
+    <h3>Notification settings</h3>
+    <div class="ph">These drive the scheduled alerts. Shown here from the current configuration.</div>
+    <div class="grid2">
+      <div class="field">
+        <div class="fk">Alert lead times</div>
+        <div class="chips" id="leadChips"></div>
+      </div>
+      <div class="field">
+        <div class="fk">Trigger events</div>
+        <div class="chips" id="eventChips"></div>
+      </div>
+      <div class="field">
+        <div class="fk">Check frequency</div>
+        <div class="chips"><span class="chip">Once daily (cron)</span></div>
+      </div>
+      <div class="field">
+        <div class="fk">Watched states</div>
+        <div class="chips" id="stateChips"></div>
+      </div>
+    </div>
+    <div class="field" style="margin-top:18px">
+      <div class="fk">Recipients &middot; approved access</div>
+      <div class="recip" id="recipList"></div>
+    </div>
+    <div class="cfgnote">Recipient addresses verified active in Zoho Mail. Access list and settings live in <code>blm-config</code>.</div>
+  </div>
+
+  <div class="foot">
+    <div><span class="dia">&#9674;</span> BIC REA LLC &middot; 4360 Winners Circle, Sarasota, FL 34238 &middot; +1 (310) 963-1569 &middot; info@bicrea.com</div>
+    <div class="cf">Internal &middot; Confidential</div>
+  </div>
+</div>
+
+<!-- alert preview modal -->
+<div class="modal" id="modal">
+  <div class="mbox">
+    <div class="mhead"><span class="t">Alert email preview</span><span class="x" onclick="closeModal()">&times;</span></div>
+    <div class="mbody"><div class="email-preview" id="emailPreview"></div></div>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   BLM LEASE-SALE TRACKER — POC
+   Everything below is organized around ONE swap point and a few config blocks.
+   When Sandra's Capture 3 arrives, only DataSource.getSales() changes.
+   ========================================================================= */
+
+/* ---- 1. CONFIG ------------------------------------------------------------
+   Access allowlist + notification settings. In production these live in a
+   server-checked config; here they gate the POC and populate the settings UI.
+   All five addresses verified active in Zoho Mail (bicrea.com) on 2026-07-01. */
+const CONFIG = {
+  allowlist: [
+    { name:'Sandra Petkov',        email:'sandra.petkov@bicrea.com',    confirmed:true },
+    { name:'Christian Hickey',     email:'christian.hickey@bicrea.com', confirmed:true },
+    { name:'Jasper van der Zwaan', email:'jasper.vanderzwaan@bicrea.com', confirmed:true },
+    { name:'JJ van der Zwaan',     email:'jj.vanderzwaan@bicrea.com',   confirmed:true },
+    { name:'Shervin Tavakoli',     email:'shervin.tavakoli@bicrea.com', confirmed:true },
+  ],
+  leadTimesDays: [7, 1],                     // notify this many days before a sale
+  events: ['Scheduled','Held (X days before)','Completed'],  // which changes trigger alerts
+  watchedStates: ['New Mexico','Wyoming','Colorado','Utah','Montana-Dakotas','Nevada','Oklahoma'],
+  alertWindowDays: 7,                        // "in alert window" = sale within this many days
+};
+
+/* ---- 2. DATA SOURCE  <<< THE ONE SWAP POINT >>> ---------------------------
+   getSales() returns Promise<Sale[]>. Sale shape is the contract the whole
+   UI + notify logic depends on. Swap MOCK for the real NFLSS fetch later. */
+const Sale = "{ id, name, stateOffice, saleDate:'YYYY-MM-DD', status, parcels, acres, url }";
+
+const DataSource = {
+  // Pinned so the demo always shows a meaningful spread. Production: new Date().
+  today: new Date('2026-07-01T12:00:00Z'),
+
+  async getSales(){
+    return MOCK_SALES;   // <-- replace with nflss.fetchSales() once Capture 3 defines the endpoint
+  },
+
+  /* TODO (blocked on Sandra's Capture 3 + login answer):
+     nflss: async fetchSales(){
+       // POST the captured /s/sfsites/aura payload, parse the sales list,
+       // map each record to the Sale shape above. Handle auth if login is required.
+     }  */
+};
+
+const MOCK_SALES = [
+  { id:'nm-2026q3', name:'New Mexico Q3 2026 Competitive Oil & Gas Lease Sale', stateOffice:'New Mexico', saleDate:'2026-07-03', status:'Sale Notice Posted', parcels:18, acres:6240, url:'https://www.blm.gov/programs/energy-and-minerals/oil-and-gas/leasing/regional-lease-sales/new-mexico' },
+  { id:'wy-2026q3', name:'Wyoming Q3 2026 Competitive Oil & Gas Lease Sale',    stateOffice:'Wyoming',    saleDate:'2026-07-06', status:'Sale Notice Posted', parcels:42, acres:31850, url:'#' },
+  { id:'co-2026q3', name:'Colorado Q3 2026 Competitive Oil & Gas Lease Sale',   stateOffice:'Colorado',   saleDate:'2026-07-09', status:'Scheduled', parcels:9,  acres:2110,  url:'#' },
+  { id:'ut-2026q3', name:'Utah Q3 2026 Competitive Oil & Gas Lease Sale',       stateOffice:'Utah',       saleDate:'2026-07-15', status:'Scheduled', parcels:23, acres:14400, url:'#' },
+  { id:'mt-2026q3', name:'Montana-Dakotas Q3 2026 Competitive Lease Sale',      stateOffice:'Montana-Dakotas', saleDate:'2026-07-28', status:'Scheduled', parcels:31, acres:19870, url:'#' },
+  { id:'nv-2026q4', name:'Nevada Q4 2026 Competitive Oil & Gas Lease Sale',     stateOffice:'Nevada',     saleDate:'2026-08-12', status:'Scheduled', parcels:12, acres:8300,  url:'#' },
+  { id:'ok-2026q4', name:'Oklahoma Q4 2026 Competitive Oil & Gas Lease Sale',   stateOffice:'Oklahoma',   saleDate:'2026-09-02', status:'Scheduled', parcels:7,  acres:1490,  url:'#' },
+  { id:'wy-2026q2', name:'Wyoming Q2 2026 Competitive Oil & Gas Lease Sale',    stateOffice:'Wyoming',    saleDate:'2026-06-24', status:'Results Posted', parcels:38, acres:27600, url:'#' },
+  { id:'nm-2026q2', name:'New Mexico Q2 2026 Competitive Oil & Gas Lease Sale', stateOffice:'New Mexico', saleDate:'2026-06-10', status:'Results Posted', parcels:21, acres:7040,  url:'#' },
+];
+
+/* ---- 3. NOTIFY / DERIVE LOGIC (pure; reused by the future cron worker) ---- */
+const DAY = 86400000;
+function daysUntil(saleDate){
+  const d = new Date(saleDate+'T12:00:00Z');
+  return Math.round((d - DataSource.today) / DAY);
+}
+function statusClass(s){
+  if(/results/i.test(s)) return 'results';
+  if(/held/i.test(s))    return 'held';
+  if(/notice/i.test(s))  return 'notice';
+  return 'scheduled';
+}
+function isCompleted(sale){ return /results|held/i.test(sale.status); }
+function isUpcoming(sale){ return daysUntil(sale.saleDate) >= 0 && !isCompleted(sale); }
+function inAlertWindow(sale){ const d=daysUntil(sale.saleDate); return isUpcoming(sale) && d<=CONFIG.alertWindowDays; }
+// which sales should fire an alert today, given lead times (this is the cron's core)
+function dueAlerts(sales){
+  return sales.filter(s=>{ const d=daysUntil(s.saleDate); return isUpcoming(s) && CONFIG.leadTimesDays.includes(d); });
+}
+
+/* ---- 4. STATE + RENDER ---------------------------------------------------- */
+let VIEW = { filter:'upcoming', state:'' };
+let SALES = [];
+
+function fmtDate(s){ return new Date(s+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}); }
+
+function applyFilter(sales){
+  let out = sales.slice();
+  if(VIEW.filter==='upcoming')  out = out.filter(isUpcoming);
+  if(VIEW.filter==='window')    out = out.filter(inAlertWindow);
+  if(VIEW.filter==='completed') out = out.filter(isCompleted);
+  if(VIEW.state)                out = out.filter(s=>s.stateOffice===VIEW.state);
+  // sort: upcoming by soonest; completed by most recent
+  out.sort((a,b)=> new Date(a.saleDate)-new Date(b.saleDate));
+  if(VIEW.filter==='completed') out.reverse();
+  return out;
+}
+
+function renderCards(){
+  const up = SALES.filter(isUpcoming);
+  const win = SALES.filter(inAlertWindow);
+  const next = up.slice().sort((a,b)=>new Date(a.saleDate)-new Date(b.saleDate))[0];
+  const cards = [
+    { k:'Upcoming sales', v:up.length, m:'across watched states' },
+    { k:'In alert window', v:win.length, gold:true, m:'within '+CONFIG.alertWindowDays+' days' },
+    { k:'Next sale', v: next? daysUntil(next.saleDate)+'d' : '—', m: next? next.stateOffice+' · '+fmtDate(next.saleDate) : 'none scheduled' },
+    { k:'Watching', v:CONFIG.watchedStates.length, m:'state offices' },
+  ];
+  document.getElementById('cards').innerHTML = cards.map(c=>
+    `<div class="card"><div class="k">${c.k}</div><div class="v ${c.gold?'gold':''}">${c.v}</div><div class="m">${c.m}</div></div>`).join('');
+}
+
+function renderRows(){
+  const list = applyFilter(SALES);
+  const rows = list.map(s=>{
+    const d = daysUntil(s.saleDate);
+    const win = inAlertWindow(s);
+    const daysCell = isCompleted(s)
+      ? `<span class="days past">${Math.abs(d)}d ago</span>`
+      : `<span class="days ${win?'soon':''}">${d}d</span>`;
+    const alertChip = win ? `<span class="alertchip">Alert · ${d}d</span>` : '';
+    const nameCell = (s.url && s.url!=='#')
+      ? `<a href="${s.url}" target="_blank" rel="noopener">${s.name}</a>` : s.name;
+    return `<tr class="${win?'inwindow':''}">
+      <td class="sale-name">${nameCell}${alertChip}<div style="font-size:11.5px;color:var(--text-faint);font-weight:400;margin-top:3px">${s.parcels} parcels · ${s.acres.toLocaleString()} acres</div></td>
+      <td>${s.stateOffice}</td>
+      <td>${fmtDate(s.saleDate)}</td>
+      <td>${daysCell}</td>
+      <td><span class="badge ${statusClass(s.status)}">${s.status}</span></td>
+    </tr>`;
+  }).join('');
+  document.getElementById('rows').innerHTML = rows ||
+    `<tr><td colspan="5" style="padding:26px;text-align:center;color:var(--text-faint)">No sales match this filter.</td></tr>`;
+}
+
+function renderSettings(){
+  document.getElementById('leadChips').innerHTML  = CONFIG.leadTimesDays.map(d=>`<span class="chip gold">${d} day${d>1?'s':''} before</span>`).join('');
+  document.getElementById('eventChips').innerHTML = CONFIG.events.map(e=>`<span class="chip">${e}</span>`).join('');
+  document.getElementById('stateChips').innerHTML = CONFIG.watchedStates.map(s=>`<span class="chip">${s}</span>`).join('');
+  document.getElementById('recipList').innerHTML  = CONFIG.allowlist.map(p=>
+    `<div class="r"><span class="nm">${p.name}</span><span>${p.confirmed?`<span class="em">${p.email}</span>`:`<span class="em">${p.email}</span> <span class="todo">· TODO confirm</span>`}</span></div>`).join('');
+  // state filter dropdown
+  const sf = document.getElementById('stateFilter');
+  CONFIG.watchedStates.forEach(s=>{ const o=document.createElement('option'); o.value=s; o.textContent=s; sf.appendChild(o); });
+}
+
+function renderAll(){ renderCards(); renderRows(); }
+
+/* ---- 5. INTERACTIONS ------------------------------------------------------ */
+document.getElementById('segFilter').addEventListener('click',e=>{
+  if(e.target.tagName!=='BUTTON') return;
+  [...e.currentTarget.children].forEach(b=>b.classList.remove('on'));
+  e.target.classList.add('on'); VIEW.filter=e.target.dataset.f; renderRows();
+});
+document.getElementById('stateFilter').addEventListener('change',e=>{ VIEW.state=e.target.value; renderRows(); });
+
+function previewAlert(){
+  const win = SALES.filter(inAlertWindow).sort((a,b)=>new Date(a.saleDate)-new Date(b.saleDate));
+  const recips = CONFIG.allowlist.map(p=>p.name).join(', ');
+  const body = win.length ? `
+    <div class="efrom">From: BIC REA Tracker &lt;alerts@bicrea.com&gt; &nbsp;·&nbsp; To: ${recips}</div>
+    <div class="esub">Heads up — ${win.length} BLM lease sale${win.length>1?'s':''} within ${CONFIG.alertWindowDays} days</div>
+    <div>The following BLM competitive oil &amp; gas lease sales are coming up:</div>
+    <ul>${win.map(s=>`<li><b style="color:var(--text-primary)">${s.stateOffice}</b> — ${fmtDate(s.saleDate)} (<b>${daysUntil(s.saleDate)} days</b>) · ${s.parcels} parcels · ${s.status}</li>`).join('')}</ul>
+    <div class="foot2">You're receiving this because you're on the BIC REA BLM tracker list. Data: BLM NFLSS.</div>`
+    : `<div class="efrom">From: BIC REA Tracker &lt;alerts@bicrea.com&gt;</div><div>No sales are currently within the ${CONFIG.alertWindowDays}-day alert window. (This is a preview — no email is sent.)</div>`;
+  document.getElementById('emailPreview').innerHTML = body;
+  document.getElementById('modal').classList.add('show');
+}
+function closeModal(){ document.getElementById('modal').classList.remove('show'); }
+
+/* ---- 6. POC ACCESS GATE (demo only — real gate = portal session server-side) */
+function tryEnter(){
+  const email = document.getElementById('gateEmail').value.trim().toLowerCase();
+  const match = CONFIG.allowlist.find(p=>p.email.toLowerCase()===email);
+  if(match){
+    document.getElementById('whoName').textContent = match.name;
+    document.getElementById('gate').classList.add('hide');
+  } else {
+    document.getElementById('gateErr').textContent = 'That email isn\u2019t on the approved list.';
+  }
+}
+function lock(){ document.getElementById('gate').classList.remove('hide'); document.getElementById('gateEmail').value=''; document.getElementById('gateErr').textContent=''; }
+document.getElementById('gateEmail').addEventListener('keydown',e=>{ if(e.key==='Enter') tryEnter(); });
+
+/* ---- 7. BOOT -------------------------------------------------------------- */
+(async function init(){
+  SALES = await DataSource.getSales();
+  renderSettings();
+  renderAll();
+})();
+</script>
+</body>
+</html>
