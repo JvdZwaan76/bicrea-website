@@ -1154,14 +1154,14 @@ body:not(:has(.contact-bar)) main > section.hero:first-child {
 .path-selector {
     display: grid;
     gap: var(--space-5);
-    max-width: var(--container-narrow);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: var(--container-max);
     margin-left: auto;
     margin-right: auto;
 }
 
 @media (min-width: 768px) {
     .path-selector {
-        grid-template-columns: 1fr 1fr;
         gap: var(--space-6);
     }
 }
