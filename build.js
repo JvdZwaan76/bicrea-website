@@ -76,6 +76,7 @@ const IGNORE_NAMES = new Set([
     '.github',
     'build.js',
     'critical.css',  // inlined in HTML's <style id="critical-css">, source-only
+    'deck',          // internal: editable source for the Capabilities Overview PDF
 ]);
 
 function shouldIgnore(name) {

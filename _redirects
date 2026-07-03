@@ -52,5 +52,8 @@
 /team                    /about                     301
 /portfolio               /case-studies              301
 
+# Internal: deck source is excluded from the build (defense-in-depth)
+/deck/*                      /                          301
+
 # 404 catch-all (must be last)
 /* /404.html 404
