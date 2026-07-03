@@ -2,6 +2,7 @@
 # https://developers.cloudflare.com/pages/configuration/redirects/
 
 # Internal: deck source — must be first so it wins over the .html-stripping rules below
+/deck/deck-full.html         /                          301
 /deck/*                      /                          301
 
 # Block internal documentation files from public access.
