@@ -77,6 +77,7 @@ const IGNORE_NAMES = new Set([
     'build.js',
     'critical.css',  // inlined in HTML's <style id="critical-css">, source-only
     'deck',          // internal: editable source for the Capabilities Overview PDF
+    'scripts',       // internal: BLM tracker poller/notifier (runs in CI, not served)
 ]);
 
 function shouldIgnore(name) {

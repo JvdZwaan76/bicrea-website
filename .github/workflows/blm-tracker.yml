@@ -1,0 +1,38 @@
+name: BLM Lease Sale Tracker
+
+on:
+  schedule:
+    - cron: '0 13 * * *'      # daily ~09:00 ET
+  workflow_dispatch:          # manual run button (for testing)
+    inputs:
+      dry_run:
+        description: 'Dry run (no emails, no commit)'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write             # to commit refreshed data/*.json
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install nodemailer --no-save
+      - name: Poll feeds + send alerts
+        env:
+          ZOHO_USER: ${{ secrets.ZOHO_USER }}
+          ZOHO_APP_PASSWORD: ${{ secrets.ZOHO_APP_PASSWORD }}
+          BLM_RECIPIENTS: ${{ vars.BLM_RECIPIENTS }}
+        run: node scripts/blm-notify.js ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
+      - name: Commit refreshed data
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git config user.name "blm-tracker-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/blm-sales.json data/blm-state.json 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "BLM tracker: refresh sales data"
+          git push
