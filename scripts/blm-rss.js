@@ -55,7 +55,22 @@ function classify(item){
   return {bucket: sale?'sale':'review', sale_date:sale, states};
 }
 
-function run(items){const out={sale:[],pipeline:[],result:[],review:[],excluded:[]};for(const it of items){const c=classify(it);out[c.bucket].push({...it,...c});}out.sale.sort((x,y)=>(x.sale_date||'').localeCompare(y.sale_date||''));return out;}
+
+// collapse near-duplicate pipeline items (same states + same target sale month/year)
+function saleMonthYear(t){ const m=/(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{4})/i.exec(t); return m?(m[1].toLowerCase()+' '+m[2]):null; }
+function dedupePipeline(items){
+  const seen=new Map();
+  for(const it of items){
+    const my=saleMonthYear(it.title+' '+it.text);
+    const key=it.states.slice().sort().join('|')+'::'+(my||it.title.toLowerCase());
+    const adv=t=>/seeks?\s+input/i.test(t)&&!/initial/i.test(t);   // "seeks input" (comment stage) beats "initial input" (scoping)
+    const prev=seen.get(key);
+    if(!prev||(adv(it.title)&&!adv(prev.title))) seen.set(key,it);
+  }
+  return [...seen.values()];
+}
+
+function run(items){const out={sale:[],pipeline:[],result:[],review:[],excluded:[]};for(const it of items){const c=classify(it);out[c.bucket].push({...it,...c});}out.sale.sort((x,y)=>(x.sale_date||'').localeCompare(y.sale_date||''));out.pipeline=dedupePipeline(out.pipeline);return out;}
 
 async function fetchLive(){const all=[];for(const [region,url] of Object.entries(FEEDS)){try{const r=await fetch(url,{headers:{'user-agent':'BICREA-BLM-tracker'}});if(!r.ok){console.error('  feed '+region+' -> '+r.status);continue;}all.push(...parseFeed(await r.text(),region));}catch(e){console.error('  feed '+region+' error: '+e.message);}}return all;}
 
