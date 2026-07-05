@@ -9,6 +9,10 @@ on:
         description: 'Dry run (no emails, no commit)'
         type: boolean
         default: true
+      force_digest:
+        description: 'Force-send the digest now (real email)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write             # to commit refreshed data/*.json
@@ -27,7 +31,7 @@ jobs:
           ZOHO_USER: ${{ secrets.ZOHO_USER }}
           ZOHO_APP_PASSWORD: ${{ secrets.ZOHO_APP_PASSWORD }}
           BLM_RECIPIENTS: ${{ vars.BLM_RECIPIENTS }}
-        run: node scripts/blm-notify.js ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
+        run: node scripts/blm-notify.js ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }} ${{ github.event.inputs.force_digest == 'true' && '--digest' || '' }}
       - name: Commit refreshed data
         if: ${{ github.event.inputs.dry_run != 'true' }}
         run: |
