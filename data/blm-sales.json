@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-06",
+  "generated": "2026-07-07",
   "upcoming": [
     {
       "region": "Alaska",
@@ -87,6 +87,17 @@
     }
   ],
   "pipeline": [
+    {
+      "region": "National",
+      "title": "BLM Seeks Input for December 2026 Sale of Oil And Gas Leases in Wyoming",
+      "link": "https://www.blm.gov/press-release/blm-seeks-input-december-2026-sale-oil-and-gas-leases-wyoming-0",
+      "pubDate": "Mon, 06 Jul 2026 15:21:43 +0000",
+      "text": "CHEYENNNE, Wyo. – The Bureau of Land Management today opened a 30-day public comment period to receive public input on plans to include 284 oil and gas parcels totaling 378,305 acres in Wyoming in a December 2026 sale. The comment period ends Aug. 5, 2026.&nbsp;&nbsp; The BLM completed scoping on these parcels in May 2026 and is now seeking public comment on the parcels and related environmental analysis. The BLM will use input from the public to help complete its review of each parcel.&nbsp; Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders.&nbsp; All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets .&nbsp; The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at 2026 Fourth Quarter Oil and Gas Lease Sale .&nbsp;",
+      "bucket": "pipeline",
+      "states": [
+        "Wyoming"
+      ]
+    },
     {
       "region": "National",
       "title": "BLM Seeks Initial Input for Potential Oil and Gas Leases in California",
@@ -230,17 +241,6 @@
       ]
     },
     {
-      "region": "Wyoming",
-      "title": "BLM seeks initial input for December 2026 sale of oil and gas leases in Wyoming",
-      "link": "https://www.blm.gov/press-release/blm-seeks-initial-input-december-2026-sale-oil-and-gas-leases-wyoming",
-      "pubDate": "Mon, 20 Apr 2026 20:57:05 +0000",
-      "text": "CHEYENNE, Wyo. – The Bureau of Land Management today opened a 30-day public scoping period to receive public input on 274 oil and gas parcels totaling 363,618 acres that may be included in a December 2026 lease sale in Wyoming. The scoping period ends May 21, 2026.&nbsp; Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders.&nbsp; All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets .&nbsp; The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at: https://eplanning.blm.gov/Project-Home/?id=5F1E8B56-FA3C-F111-88B4-001DD8084607 &nbsp;&nbsp;",
-      "bucket": "pipeline",
-      "states": [
-        "Wyoming"
-      ]
-    },
-    {
       "region": "Nevada",
       "title": "BLM seeks input for September 2026 sale of oil and gas leases in Nevada",
       "link": "https://www.blm.gov/press-release/blm-seeks-input-september-2026-sale-oil-and-gas-leases-nevada",
@@ -275,18 +275,6 @@
     }
   ],
   "results": [
-    {
-      "region": "National",
-      "title": "BLM Oil and Gas Lease Sale in Utah Generates Nearly $14.8 Million in Revenue",
-      "link": "https://www.blm.gov/press-release/blm-oil-and-gas-lease-sale-utah-generates-nearly-148-million-revenue",
-      "pubDate": "Thu, 25 Jun 2026 15:01:12 +0000",
-      "text": "SALT LAKE CITY&nbsp;– The Bureau of Land Management leased 39 parcels totaling 54,114 acres in Utah for $14,757,534 in total receipts during a quarterly oil and gas lease sale. Combined lease bonus bids and rentals are distributed between the federal government and state where parcels are located. This lease sale was conducted under the&nbsp; One Big Beautiful Bill Act , which resets the royalty rate for new federal onshore oil and gas production to a minimum of 12.5%, reversing the 16.67% rate set by the Inflation Reduction Act. By lowering the federal onshore royalty rate from 16.67% to 12.5%, the One Big Beautiful Bill Act reduces the cost of doing business on public lands, making oil and gas development more economically attractive to industry. This is expected to spur additional leasing and drilling activity, which in turn supports increased domestic energy production and strengthens U.S. energy security. Oil and gas lease sales support domestic energy production and American energy independence, while contributing to the nation’s economic and military security. Consistent with&nbsp; Executive Order 14154 , “Unleashing American Energy,” the BLM's lease sales help meet the energy needs of U.S. citizens and solidify the nation as a global energy leader long into the future. Leasing is the first step in the process to develop federal oil and gas resources. The BLM ensures oil and gas development meets the requirements set forth by the National Environmental Policy Act of 1969 and other applicable legal authorities. Oil and gas leases are awarded for a term of 10 years and as long thereafter as there is production of oil and gas in paying quantities. Information on current and upcoming BLM leases is available through the&nbsp; National Fluid Lease Sale System . BLM lease sales are held online through&nbsp; Efficient Markets . Results are available on the&nbsp; National Fluid Lease Sale System . After navigating to the page, filter to the sale, and select the action “View Sale Documents” to view the sale results.",
-      "bucket": "result",
-      "sale_date": null,
-      "states": [
-        "Utah"
-      ]
-    },
     {
       "region": "Montana-Dakotas",
       "title": "Record-breaking BLM oil and gas lease sale in the Dakotas generates over $44.3 million in revenue",
@@ -395,6 +383,18 @@
       "link": "https://www.blm.gov/press-release/interior-generates-over-163-million-national-petroleum-reserve-alaska-oil-and-gas",
       "pubDate": "Wed, 18 Mar 2026 23:05:53 +0000",
       "text": "The Department of the Interior held a landmark oil and gas lease sale today for the National Petroleum Reserve in Alaska, resulting in 187 leases and $163,696,722&nbsp;in total receipts. The sale, which was the first for the reserve since 2019 and the first under President Donald J. Trump’s One Big Beautiful Bill Act, made history&nbsp;for&nbsp;the&nbsp;leasing program in&nbsp;the 23-million-acre&nbsp;National Petroleum Reserve in Alaska, with&nbsp;the most revenue generated&nbsp;ever,&nbsp;the most tracts receiving bids and the second most acreage sold&nbsp;in a single&nbsp;sale.&nbsp; “Today’s lease sale underscores the National Petroleum Reserve in Alaska’s vital role in strengthening America’s energy security while fueling economic growth across Alaska,” said Secretary of the Interior Doug Burgum . “The Reserve was created to support our nation’s energy needs, and this successful sale demonstrates what’s possible when we align responsible development with that original purpose. Revenues from these leases will help bolster local communities, create good‑paying jobs, and ensure that Alaska continues to be a cornerstone of America’s domestic energy production.”&nbsp; The Bureau of Land Management offered 625 tracts across approximately 5.5 million acres for bid in today’s sale. In response, 11 companies submitted bids on 187 tracts covering 1,334,967 acres.&nbsp;&nbsp; The State of Alaska will receive nearly $82 million, 50 percent of the bid receipts.&nbsp; A portion of those proceeds benefit&nbsp;North Slope communities through the National Petroleum Reserve in Alaska Impact&nbsp;Mitigation program.&nbsp; &nbsp;&nbsp; Since January 2025, the Bureau of Land Management has been expeditiously implementing direction to unlock the reserve’s energy potential through Executive Order 14153 , Secretary’s Order 3422 and the One Big Beautiful Bill Act.&nbsp; Actions taken include the rescission of the 2024 rule that restricted leasing and development in the reserve, withdrawal of three policy documents that sought to unnecessarily expand limitations in special areas, and approval of an updated Integrated Activity Plan that reopens nearly 82 percent of the reserve to oil and gas leasing.&nbsp;&nbsp;&nbsp; Under the One Big Beautiful Bill Act, the Bureau of Land Management must hold at least five lease sales in the reserve by 2035, each offering no fewer than four million acres.&nbsp;&nbsp;&nbsp; The Bureau of Land Management’s National Petroleum Reserve in Alaska lease sales have generated more than $457 million since 1999, with revenues supporting the U.S. Treasury, the State of Alaska, and North Slope communities. Information on all National Petroleum Reserve in Alaska sales, as well as a map, GIS shape files, and a table with today’s complete sale results by tract are available at Bureau of Land Management Alaska Oil and Gas Lease Sales website .",
+      "bucket": "result",
+      "sale_date": null,
+      "states": [
+        "Alaska"
+      ]
+    },
+    {
+      "region": "Alaska",
+      "title": "BLM seeks nominations for oil and gas lease sale in Alaska's National Petroleum Reserve",
+      "link": "https://www.blm.gov/press-release/blm-seeks-nominations-oil-and-gas-lease-sale-alaskas-national-petroleum-reserve",
+      "pubDate": "Thu, 13 Nov 2025 23:24:32 +0000",
+      "text": "ANCHORAGE, Alaska – Today the Bureau of Land Management took the first step toward holding a lease sale in the National Petroleum Reserve in Alaska (NPR-A) by publishing a Call for Nominations and Comments in the Federal Register. This notice solicits feedback on what tracts should be made available in a lease sale this coming winter, which will be the first sale in the 23-million-acre reserve since 2019 and the first sale directed by the One Big Beautiful Bill Act .&nbsp;&nbsp;&nbsp; “Congress directed a program of expeditious leasing and development in the NPR-A to support America’s energy independence, and that is more important today than ever,” said BLM Alaska State Director Kevin Pendergast . “This lease sale gets us back on track toward further exploration and development in the reserve, as Congress envisioned.”&nbsp; Under the One Big Beautiful Bill Act, the BLM must hold no fewer than five lease sales in the reserve by 2035, with each sale offering at least 4,000,000 acres for lease. When developing sales, the BLM can consider tracts currently available for leasing under the December 2020 Record of Decision for the reserve’s Integrated Activity Plan, a total of 18,581,000 acres. This action also fully supports the President’s direction to unleash Alaska’s extraordinary resource potential, consistent with Executive Order 14153.&nbsp; Interested parties may nominate or comment on tracts until Nov. 21, 2025. Additional information, including a map showing available areas and legal descriptions of the tracts, are available on the BLM Alaska NPR-A Oil and Gas Lease Sale webpage .&nbsp; After the 30-day period ends, the BLM will review nominations and comments received to determine what tracts to offer in the upcoming lease sale. The BLM will formally announce the lease sale with a Notice of Sale in the Federal Register at least 30 days in advance.&nbsp; Approximately 1.6 million acres are leased in the reserve . To date, BLM has generated over $294 million in NPR-A lease sales since 1999.&nbsp;&nbsp;",
       "bucket": "result",
       "sale_date": null,
       "states": [
