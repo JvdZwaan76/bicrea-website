@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-10",
+  "generated": "2026-07-11",
   "upcoming": [
     {
       "region": "Alaska",
@@ -109,6 +109,32 @@
       "bid_deadline": null,
       "states": [
         "Colorado"
+      ]
+    },
+    {
+      "region": "National",
+      "title": "BLM Announces September 2026 Sale of Oil and Gas Leases in Wyoming",
+      "link": "https://www.blm.gov/press-release/blm-announces-september-2026-sale-oil-and-gas-leases-wyoming-0",
+      "pubDate": "Fri, 10 Jul 2026 14:45:52 +0000",
+      "text": "CHEYENNNE, Wyo.– The Bureau of Land Management today announced an oil and gas lease sale scheduled for September 15, 2026, to offer 120 oil and gas parcels totaling 152,262 acres in Wyoming.&nbsp; The BLM completed scoping on these parcels in February 2026 and held a public comment period that closed in June 2026 on the parcels and the related environmental analysis. A 30-day public protest period to receive additional public input opened today and will close August 9, 2026.&nbsp; Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders.&nbsp; All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets .&nbsp; The parcels BLM analyzed, as well as maps and instructions on how to submit a protest, are available on BLM’s ePlanning website at 2026 Third Quarter Oil and Gas Lease Sale .&nbsp;",
+      "bucket": "sale",
+      "sale_date": "2026-09-15",
+      "bid_deadline": null,
+      "states": [
+        "Wyoming"
+      ]
+    },
+    {
+      "region": "Wyoming",
+      "title": "BLM Announces September 2026 Sale of Oil and Gas Leases in Wyoming",
+      "link": "https://www.blm.gov/press-release/blm-announces-september-2026-sale-oil-and-gas-leases-wyoming-0",
+      "pubDate": "Fri, 10 Jul 2026 14:45:52 +0000",
+      "text": "CHEYENNNE, Wyo.– The Bureau of Land Management today announced an oil and gas lease sale scheduled for September 15, 2026, to offer 120 oil and gas parcels totaling 152,262 acres in Wyoming.&nbsp; The BLM completed scoping on these parcels in February 2026 and held a public comment period that closed in June 2026 on the parcels and the related environmental analysis. A 30-day public protest period to receive additional public input opened today and will close August 9, 2026.&nbsp; Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders.&nbsp; All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets .&nbsp; The parcels BLM analyzed, as well as maps and instructions on how to submit a protest, are available on BLM’s ePlanning website at 2026 Third Quarter Oil and Gas Lease Sale .&nbsp;",
+      "bucket": "sale",
+      "sale_date": "2026-09-15",
+      "bid_deadline": null,
+      "states": [
+        "Wyoming"
       ]
     }
   ],
