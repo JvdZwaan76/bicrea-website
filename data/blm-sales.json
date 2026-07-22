@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-21",
+  "generated": "2026-07-22",
   "upcoming": [
     {
       "region": "Alaska",
@@ -96,6 +96,32 @@
       "bid_deadline": null,
       "states": [
         "Wyoming"
+      ]
+    },
+    {
+      "region": "National",
+      "title": "BLM Announces September 2026 Sale of Oil and Gas Leases in Utah",
+      "link": "https://www.blm.gov/press-release/blm-announces-september-2026-sale-oil-and-gas-leases-utah",
+      "pubDate": "Mon, 20 Jul 2026 21:23:34 +0000",
+      "text": "SALT LAKE CITY&nbsp;– The Bureau of Land Management today announced an oil and gas lease sale scheduled for&nbsp;September 22, 2026, to offer&nbsp;35 oil and gas parcels totaling 34,596 acres in&nbsp;Utah. The BLM completed scoping on these parcels in April 2026 and held a public comment period that closed in&nbsp;June 2026&nbsp;on the parcels and the related environmental analysis. A 30-day public protest period to receive additional public input opened today and will close&nbsp;August 21, 2026. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through&nbsp; Efficient Markets . The parcels BLM analyzed, as well as maps and instructions on how to submit a protest, are available on BLM’s ePlanning website at&nbsp; https://eplanning.blm.gov/Project-Home/?id=759276D6-511E-F111-8341-001DD800B811 .",
+      "bucket": "sale",
+      "sale_date": "2026-09-22",
+      "bid_deadline": null,
+      "states": [
+        "Utah"
+      ]
+    },
+    {
+      "region": "Utah",
+      "title": "BLM Announces September 2026 Sale of Oil and Gas Leases in Utah",
+      "link": "https://www.blm.gov/press-release/blm-announces-september-2026-sale-oil-and-gas-leases-utah",
+      "pubDate": "Mon, 20 Jul 2026 21:23:34 +0000",
+      "text": "SALT LAKE CITY&nbsp;– The Bureau of Land Management today announced an oil and gas lease sale scheduled for&nbsp;September 22, 2026, to offer&nbsp;35 oil and gas parcels totaling 34,596 acres in&nbsp;Utah. The BLM completed scoping on these parcels in April 2026 and held a public comment period that closed in&nbsp;June 2026&nbsp;on the parcels and the related environmental analysis. A 30-day public protest period to receive additional public input opened today and will close&nbsp;August 21, 2026. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through&nbsp; Efficient Markets . The parcels BLM analyzed, as well as maps and instructions on how to submit a protest, are available on BLM’s ePlanning website at&nbsp; https://eplanning.blm.gov/Project-Home/?id=759276D6-511E-F111-8341-001DD800B811 .",
+      "bucket": "sale",
+      "sale_date": "2026-09-22",
+      "bid_deadline": null,
+      "states": [
+        "Utah"
       ]
     }
   ],
