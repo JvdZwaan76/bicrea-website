@@ -54,5 +54,8 @@
 /cash-offer              /distressed-properties     301
 /team                    /about                     301
 
+/faq.html                    /faq                       301
+/faqs                        /faq                       301
+
 # 404 catch-all (must be last)
 /* /404.html 404

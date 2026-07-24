@@ -70,4 +70,11 @@
     <priority>0.3</priority>
   </url>
 
+  <url>
+    <loc>https://bicrea.com/faq</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
