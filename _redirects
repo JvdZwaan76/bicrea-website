@@ -25,7 +25,6 @@
 /sell-house                  /under-development   302
 /cash-offer                  /under-development   302
 /services/distressed         /under-development   302
-/portfolio                   /under-development   302
 /under-development.html      /under-development   301
 
 # Strip .html extension — 301 permanent redirects for SEO
@@ -54,7 +53,6 @@
 /sell-house              /distressed-properties     301
 /cash-offer              /distressed-properties     301
 /team                    /about                     301
-/portfolio               /case-studies              301
 
 # 404 catch-all (must be last)
 /* /404.html 404
