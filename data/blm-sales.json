@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-27",
+  "generated": "2026-07-28",
   "upcoming": [
     {
       "region": "Alaska",
@@ -138,20 +138,6 @@
       ]
     },
     {
-      "region": "National",
-      "title": "BLM Seeks Input for November 2026 Sale of Oil and Gas Leases in New Mexico, Oklahoma, Kansas and Texas",
-      "link": "https://www.blm.gov/press-release/blm-seeks-input-november-2026-sale-oil-and-gas-leases-new-mexico-oklahoma-kansas-and",
-      "pubDate": "Thu, 16 Jul 2026 21:55:07 +0000",
-      "text": "SANTA FE, N.M.&nbsp;– The Bureau of Land Management today opened a 30-day public comment period to receive public input on plans to include 30 oil and gas parcels totaling 8,071 acres in New Mexico, Oklahoma, Kansas and Texas in a November 2026 sale. The comment period ends August 17, 2026. The BLM completed scoping on these parcels in&nbsp;June 2026 and is now seeking public comment on the parcels and related environmental analysis. The BLM will use input from the public to help complete its review of each parcel. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the&nbsp; National Fluid Lease Sale System . BLM lease sales are held online through&nbsp; Efficient Markets . The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at:&nbsp; Carlsbad Field Office - DOI-BLM-NM-P020-2026-1065-EA Farmington Field Office - DOI-BLM-NM-F010-2026-0053-EA Oklahoma Field Office - DOI-BLM-NM-0040-2026-0027-EA",
-      "bucket": "pipeline",
-      "states": [
-        "Kansas",
-        "New Mexico",
-        "Oklahoma",
-        "Texas"
-      ]
-    },
-    {
       "region": "Montana-Dakotas",
       "title": "BLM Seeks Input for October 2026 Sale of Oil and Gas Leases in Montana and North Dakota",
       "link": "https://www.blm.gov/press-release/blm-seeks-input-october-2026-sale-oil-and-gas-leases-montana-and-north-dakota",
@@ -209,6 +195,20 @@
       "bucket": "pipeline",
       "states": [
         "Colorado"
+      ]
+    },
+    {
+      "region": "New Mexico",
+      "title": "BLM Seeks Input for November 2026 Sale of Oil and Gas Leases in New Mexico, Oklahoma, Kansas and Texas",
+      "link": "https://www.blm.gov/press-release/blm-seeks-input-november-2026-sale-oil-and-gas-leases-new-mexico-oklahoma-kansas-and",
+      "pubDate": "Thu, 16 Jul 2026 21:55:07 +0000",
+      "text": "SANTA FE, N.M.&nbsp;– The Bureau of Land Management today opened a 30-day public comment period to receive public input on plans to include 30 oil and gas parcels totaling 8,071 acres in New Mexico, Oklahoma, Kansas and Texas in a November 2026 sale. The comment period ends August 17, 2026. The BLM completed scoping on these parcels in&nbsp;June 2026 and is now seeking public comment on the parcels and related environmental analysis. The BLM will use input from the public to help complete its review of each parcel. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the&nbsp; National Fluid Lease Sale System . BLM lease sales are held online through&nbsp; Efficient Markets . The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at:&nbsp; Carlsbad Field Office - DOI-BLM-NM-P020-2026-1065-EA Farmington Field Office - DOI-BLM-NM-F010-2026-0053-EA Oklahoma Field Office - DOI-BLM-NM-0040-2026-0027-EA",
+      "bucket": "pipeline",
+      "states": [
+        "Kansas",
+        "New Mexico",
+        "Oklahoma",
+        "Texas"
       ]
     },
     {
