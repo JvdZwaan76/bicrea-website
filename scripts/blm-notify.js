@@ -56,7 +56,7 @@ function shell(kicker,title,body,preheader){
       `<tr><td style="padding:10px 32px 6px;font-family:Arial,Helvetica,sans-serif;color:${B.ink};font-size:15px;line-height:1.55">${body}</td></tr>`+
       `<tr><td style="padding:18px 32px 26px;border-top:1px solid ${B.line}"><p style="margin:0;font-family:Arial,sans-serif;font-size:11px;color:${B.muted};line-height:1.5">`+
         `Automated from official BLM state-office feeds. Verify all details on the linked notice before acting.<br>`+
-        `<a href="https://www.bicrea.com" style="color:${B.goldText};text-decoration:none">bicrea.com</a> &nbsp;&middot;&nbsp; BIC REA LLC &mdash; Mineral Title Research</p></td></tr>`+
+        `<a href="https://www.bicrea.com" style="color:${B.goldText};text-decoration:none">bicrea.com</a> &nbsp;&middot;&nbsp; BIC REA LLC &mdash; Comprehensive Title Research</p></td></tr>`+
     `</table></td></tr></table>`;
 }
 function sectionHdr(t){ return `<p style="font-family:Georgia,serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:${B.goldText};margin:22px 0 10px">${t}</p>`; }
