@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-05",
+  "generated": "2026-08-06",
   "upcoming": [
     {
       "region": "Alaska",
@@ -113,6 +113,18 @@
     }
   ],
   "pipeline": [
+    {
+      "region": "National",
+      "title": "BLM Invites Initial Public Feedback on Quarterly Oil and Gas Lease Sale in February 2027 in New Mexico and Oklahoma",
+      "link": "https://www.blm.gov/press-release/blm-invites-initial-public-feedback-quarterly-oil-and-gas-lease-sale-february-2027",
+      "pubDate": "Wed, 05 Aug 2026 14:28:44 +0000",
+      "text": "SANTA FE, N.M.&nbsp;– The Bureau of Land Management today opened a 30-day public scoping period to receive public input on 15 oil and gas parcels totaling 4,054 acres that may be included in a February 2027&nbsp;lease sale in New Mexico and Oklahoma. The scoping period ends&nbsp;Sept. 4, 2026. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the&nbsp; National Fluid Lease Sale System . BLM lease sales are held online through&nbsp; Efficient Markets . The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at:&nbsp; • Carlsbad Field Office:&nbsp; DOI-BLM-NM-P020-2026-1439-EA • Farmington Field Office:&nbsp; DOI-BLM-NM-F010-2026-0077-EA • Oklahoma Field Office:&nbsp; DOI-BLM-NM-0040-2026-0040-EA",
+      "bucket": "pipeline",
+      "states": [
+        "New Mexico",
+        "Oklahoma"
+      ]
+    },
     {
       "region": "Montana-Dakotas",
       "title": "BLM Seeks Input for October 2026 Sale of Oil and Gas Leases in Montana and North Dakota",
