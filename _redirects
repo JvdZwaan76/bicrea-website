@@ -52,7 +52,7 @@
 /we-buy-houses           /distressed-properties     301
 /sell-house              /distressed-properties     301
 /cash-offer              /distressed-properties     301
-/team                    /about                     301
+/team                    /team/                     301
 
 /faq.html                    /faq                       301
 /faqs                        /faq                       301
