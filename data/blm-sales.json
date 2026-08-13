@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-12",
+  "generated": "2026-08-13",
   "upcoming": [
     {
       "region": "Alaska",
@@ -115,6 +115,17 @@
   "pipeline": [
     {
       "region": "National",
+      "title": "BLM Invites Additional Public Feedback for December 2026 Oil and Gas Lease Sale in Colorado",
+      "link": "https://www.blm.gov/press-release/blm-invites-additional-public-feedback-december-2026-oil-and-gas-lease-sale-colorado",
+      "pubDate": "Wed, 12 Aug 2026 15:47:51 +0000",
+      "text": "LAKEWOOD, Colo.&nbsp;– The Bureau of Land Management today opened a 30-day public comment period to receive public input on plans to include 113 oil and gas parcels totaling 126,445 acres in Colorado in a December 2026 sale. The comment period ends&nbsp;September 11, 2026. The BLM completed scoping on these parcels in&nbsp;July 2026 and is now seeking public comment on the parcels and related environmental analysis. The BLM will use input from the public to help complete its review of each parcel. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the&nbsp; National Fluid Lease Sale System . BLM lease sales are held online through&nbsp; Efficient Markets . The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at:&nbsp; https://eplanning.blm.gov/Project-Home/?id=1891DE4D-0564-F111-A824-001DD8029ED0 &nbsp;",
+      "bucket": "pipeline",
+      "states": [
+        "Colorado"
+      ]
+    },
+    {
+      "region": "National",
       "title": "BLM Seeks Initial Input for March 2027 Sale of Oil and Gas Leases in Wyoming",
       "link": "https://www.blm.gov/press-release/blm-seeks-initial-input-march-2027-sale-oil-and-gas-leases-wyoming",
       "pubDate": "Tue, 11 Aug 2026 17:45:06 +0000",
@@ -133,18 +144,6 @@
       "bucket": "pipeline",
       "states": [
         "Arizona"
-      ]
-    },
-    {
-      "region": "National",
-      "title": "BLM Invites Initial Public Feedback on Quarterly Oil and Gas Lease Sale in February 2027 in New Mexico and Oklahoma",
-      "link": "https://www.blm.gov/press-release/blm-invites-initial-public-feedback-quarterly-oil-and-gas-lease-sale-february-2027",
-      "pubDate": "Wed, 05 Aug 2026 14:28:44 +0000",
-      "text": "SANTA FE, N.M.&nbsp;– The Bureau of Land Management today opened a 30-day public scoping period to receive public input on 15 oil and gas parcels totaling 4,054 acres that may be included in a February 2027&nbsp;lease sale in New Mexico and Oklahoma. The scoping period ends&nbsp;Sept. 4, 2026. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the&nbsp; National Fluid Lease Sale System . BLM lease sales are held online through&nbsp; Efficient Markets . The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at:&nbsp; • Carlsbad Field Office:&nbsp; DOI-BLM-NM-P020-2026-1439-EA • Farmington Field Office:&nbsp; DOI-BLM-NM-F010-2026-0077-EA • Oklahoma Field Office:&nbsp; DOI-BLM-NM-0040-2026-0040-EA",
-      "bucket": "pipeline",
-      "states": [
-        "New Mexico",
-        "Oklahoma"
       ]
     },
     {
@@ -187,17 +186,6 @@
     },
     {
       "region": "Colorado",
-      "title": "BLM Seeks Initial Input for December 2026 Sale of Oil And Gas Leases in Colorado",
-      "link": "https://www.blm.gov/press-release/blm-seeks-initial-input-december-2026-sale-oil-and-gas-leases-colorado",
-      "pubDate": "Tue, 09 Jun 2026 15:37:42 +0000",
-      "text": "LAKEWOOD, Colo.– The Bureau of Land Management today opened a 30-day public scoping period to receive public input on 114 oil and gas parcels totaling 126,744 acres that may be included in a December 2026 lease sale in Colorado. The scoping period ends July 9, 2026. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets . The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at: https://eplanning.blm.gov/Project-Home/?id=1891DE4D-0564-F111-A824-001DD8029ED0. &nbsp;",
-      "bucket": "pipeline",
-      "states": [
-        "Colorado"
-      ]
-    },
-    {
-      "region": "Colorado",
       "title": "BLM seeks input for September 2026 sale of oil and gas leases in Colorado",
       "link": "https://www.blm.gov/press-release/blm-seeks-input-september-2026-sale-oil-and-gas-leases-colorado",
       "pubDate": "Wed, 13 May 2026 14:54:59 +0000",
@@ -205,6 +193,18 @@
       "bucket": "pipeline",
       "states": [
         "Colorado"
+      ]
+    },
+    {
+      "region": "New Mexico",
+      "title": "BLM Invites Initial Public Feedback on Quarterly Oil and Gas Lease Sale in February 2027 in New Mexico and Oklahoma",
+      "link": "https://www.blm.gov/press-release/blm-invites-initial-public-feedback-quarterly-oil-and-gas-lease-sale-february-2027",
+      "pubDate": "Wed, 05 Aug 2026 14:28:44 +0000",
+      "text": "SANTA FE, N.M.&nbsp;– The Bureau of Land Management today opened a 30-day public scoping period to receive public input on 15 oil and gas parcels totaling 4,054 acres that may be included in a February 2027&nbsp;lease sale in New Mexico and Oklahoma. The scoping period ends&nbsp;Sept. 4, 2026. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the&nbsp; National Fluid Lease Sale System . BLM lease sales are held online through&nbsp; Efficient Markets . The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at:&nbsp; • Carlsbad Field Office:&nbsp; DOI-BLM-NM-P020-2026-1439-EA • Farmington Field Office:&nbsp; DOI-BLM-NM-F010-2026-0077-EA • Oklahoma Field Office:&nbsp; DOI-BLM-NM-0040-2026-0040-EA",
+      "bucket": "pipeline",
+      "states": [
+        "New Mexico",
+        "Oklahoma"
       ]
     },
     {
@@ -232,17 +232,6 @@
         "New Mexico",
         "Oklahoma",
         "Texas"
-      ]
-    },
-    {
-      "region": "Utah",
-      "title": "BLM Seeks Initial Input for December 2026 Sale of Oil and Gas Leases in Utah",
-      "link": "https://www.blm.gov/press-release/blm-seeks-initial-input-december-2026-sale-oil-and-gas-leases-utah",
-      "pubDate": "Mon, 15 Jun 2026 19:51:21 +0000",
-      "text": "SALT LAKE CITY – The Bureau of Land Management today opened a 30-day public scoping period to receive public input on 44 oil and gas parcels, totaling 74,664 acres that may be included in a December 2026 lease sale in Utah. The scoping period ends July 16, 2026.&nbsp; Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders.&nbsp; All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets .&nbsp; The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at: https://eplanning.blm.gov/Project-Home/?id=E4A3C93E-E468-F111-A824-001DD8029ED0 .&nbsp;",
-      "bucket": "pipeline",
-      "states": [
-        "Utah"
       ]
     },
     {
