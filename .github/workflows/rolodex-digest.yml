@@ -1,0 +1,32 @@
+name: Counsel Outreach Digest
+
+on:
+  schedule:
+    - cron: '0 13 * * 1'      # Mondays ~09:00 ET (same slot as BLM digest)
+  workflow_dispatch:          # manual run button
+    inputs:
+      dry_run:
+        description: 'Dry run (no emails)'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read              # digest only reads the rolodex; never commits
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install nodemailer --no-save
+      - name: Send weekly outreach digest
+        env:
+          ZOHO_USER: ${{ secrets.ZOHO_USER }}
+          ZOHO_APP_PASSWORD: ${{ secrets.ZOHO_APP_PASSWORD }}
+          ROLODEX_RECIPIENTS: ${{ vars.ROLODEX_RECIPIENTS }}
+          BLM_RECIPIENTS: ${{ vars.BLM_RECIPIENTS }}
+          ROLODEX_PRIORITY: ${{ vars.ROLODEX_PRIORITY }}
+        run: node scripts/rolodex-digest.js ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
