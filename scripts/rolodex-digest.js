@@ -104,7 +104,7 @@ function digestEmail(data) {
         Pipeline: ${statusLine}<br><br>
         Language rule: opinions are &ldquo;coordinated through independent licensed counsel, confirmed per state at
         engagement&rdquo; &mdash; never &ldquo;our attorney network.&rdquo; Confirm bar standing for the signing attorney
-        at engagement. Update the pipeline by editing <code>data/attorney-rolodex.json</code> &mdash; this digest reads it every Monday.
+        at engagement. To update the pipeline: after each call or reply, send Jasper a one-liner (who, date, outcome, next step) &mdash; the digest re-deals every Monday.
       </div>
     </div>
     <div style="background:${NAVY};padding:12px 28px;color:${GOLD};font-size:11px;">
