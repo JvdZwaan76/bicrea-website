@@ -1,22 +1,22 @@
 {
-  "updated": "2026-09-07",
+  "updated": "2026-09-08",
   "note": "Internal prospecting data. Framing rule: 'opinions coordinated through independent licensed counsel, confirmed per state at engagement' - never 'our attorney network'. Statuses: not_contacted | contacted | replied | call_scheduled | engaged | declined | parked. Edit this file to update the pipeline; the Monday digest reads it as-is.",
   "candidates": [
     {
       "tier": 1,
       "state": "TX",
       "firm": "Snell Law Firm",
-      "person": "TBD \u2014 successor contact (George A. Snell III deceased)",
+      "person": "None \u2014 George A. Snell III deceased; firm inactive",
       "location": "Amarillo, TX",
       "phone": "806-359-8611",
       "email": "George@gas3rd.com",
       "site": "gas3rd.com",
-      "why": "Firm marketed as 'the landman's attorney', TX+OK, 4,000+ opinions legacy. Founder deceased (confirmed by Sandra 9/7); firm site still live \u2014 practice may continue via successor.",
-      "caveat": "Confirm who is carrying the practice forward before any pitch.",
-      "status": "not_contacted",
-      "owner": "Sandra",
+      "why": "Researched from the still-live marketing site gas3rd.com. Founder George A. Snell III is deceased and the firm is inactive (Sandra confirmed 2026-09-07, reconfirmed 2026-09-08). The similarly named 'The Snell Law Firm' is an unrelated practice in a different field and is NOT a substitute candidate.",
+      "caveat": "Do not pitch. Retained as a record of a corrected research error - the site stays live and will resurface in future searches.",
+      "status": "parked",
+      "owner": "",
       "last_touch": "",
-      "next_step": "Sandra reaching out to identify successor attorney at the firm"
+      "next_step": "None - entry closed 2026-09-08"
     },
     {
       "tier": 1,
