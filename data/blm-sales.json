@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-09",
+  "generated": "2026-09-10",
   "upcoming": [
     {
       "region": "Alaska",
@@ -108,19 +108,6 @@
       "text": "BILLINGS, Mont. – The Bureau of Land Management today opened a 30-day public comment period to receive public input on plans to include 20 oil and gas parcels totaling 3,388 acres in Montana and North Dakota in an October 2026 sale. The comment period ends July 20, 2026.&nbsp; The BLM completed scoping on these parcels in May 2026 and is now seeking public comment on the parcels and related environmental analysis. The BLM will use input from the public to help complete its review of each parcel.&nbsp; Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. &nbsp;&nbsp; All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets .&nbsp; The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at: https://eplanning.blm.gov/Project-Home/?id=361fa75c-cd23-f111-8341-001dd800b811 .&nbsp;&nbsp;",
       "bucket": "pipeline",
       "states": [
-        "Montana",
-        "North Dakota"
-      ]
-    },
-    {
-      "region": "Montana-Dakotas",
-      "title": "BLM seeks input for July 2026 sale of oil and gas leases in Montana, North Dakota",
-      "link": "https://www.blm.gov/announcement/blm-seeks-input-july-2026-sale-oil-and-gas-leases-montana-north-dakota",
-      "pubDate": "Thu, 09 Apr 2026 16:14:08 +0000",
-      "text": "Home Info Press Releases Press Releases &lt; All Public Input &amp; Actions The BLM manages about 245 million acres of public land located primarily in 12 western states, including Alaska, on behalf of the American people. The BLM also administers 700 million acres of sub-surface mineral estate throughout the nation. Our mission is to sustain the health, diversity, and productivity of America’s public lands for the use and enjoyment of present and future generations.",
-      "bucket": "pipeline",
-      "states": [
-        "Alaska",
         "Montana",
         "North Dakota"
       ]
@@ -256,6 +243,18 @@
   "results": [
     {
       "region": "National",
+      "title": "BLM Welcomes Community Perspectives on Proposed Colorado Parcels for March 2027 Oil and Gas Lease Sale",
+      "link": "https://www.blm.gov/press-release/blm-welcomes-community-perspectives-proposed-colorado-parcels-march-2027-oil-and-gas",
+      "pubDate": "Wed, 09 Sep 2026 16:54:41 +0000",
+      "text": "LAKEWOOD, Colo. – The Bureau of Land Management is proposing to offer 38 oil and gas parcels in Colorado, totaling about 66,221 acres, in a March 2027 federal lease sale. The public is invited to provide initial input on this proposal during a 30-day scoping period that closes&nbsp;Oct. 9. This effort is part of the BLM’s commitment to managing federal energy resources in a transparent and balanced way that considers community needs, national energy priorities, and protection of natural and cultural resources. Federal oil and gas leasing helps strengthen U.S. energy security, supports jobs and local economies, and generates revenue that is shared with states and counties to fund schools, roads, and other essential public services. Partnership with the public is central to how the BLM manages public lands. Community perspectives help shape how potential lease areas are evaluated and ensure that future development—if pursued—supports national energy needs while protecting wildlife habitat, water resources, cultural sites, and recreation areas that Coloradans and visitors value. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Maps, parcel details, and instructions for providing comments are available on the BLM National NEPA Register .",
+      "bucket": "result",
+      "sale_date": null,
+      "states": [
+        "Colorado"
+      ]
+    },
+    {
+      "region": "National",
       "title": "BLM Proposes Expansion of Energy Opportunities in Carlsbad Plan",
       "link": "https://www.blm.gov/press-release/blm-proposes-expansion-energy-opportunities-carlsbad-plan",
       "pubDate": "Fri, 04 Sep 2026 16:58:42 +0000",
@@ -293,6 +292,18 @@
         "Montana",
         "North Dakota",
         "South Dakota"
+      ]
+    },
+    {
+      "region": "Colorado",
+      "title": "BLM Welcomes Community Perspectives on Proposed Colorado Parcels for March 2027 Oil and Gas Lease Sale",
+      "link": "https://www.blm.gov/press-release/blm-welcomes-community-perspectives-proposed-colorado-parcels-march-2027-oil-and-gas",
+      "pubDate": "Wed, 09 Sep 2026 16:54:41 +0000",
+      "text": "LAKEWOOD, Colo. – The Bureau of Land Management is proposing to offer 38 oil and gas parcels in Colorado, totaling about 66,221 acres, in a March 2027 federal lease sale. The public is invited to provide initial input on this proposal during a 30-day scoping period that closes&nbsp;Oct. 9. This effort is part of the BLM’s commitment to managing federal energy resources in a transparent and balanced way that considers community needs, national energy priorities, and protection of natural and cultural resources. Federal oil and gas leasing helps strengthen U.S. energy security, supports jobs and local economies, and generates revenue that is shared with states and counties to fund schools, roads, and other essential public services. Partnership with the public is central to how the BLM manages public lands. Community perspectives help shape how potential lease areas are evaluated and ensure that future development—if pursued—supports national energy needs while protecting wildlife habitat, water resources, cultural sites, and recreation areas that Coloradans and visitors value. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Maps, parcel details, and instructions for providing comments are available on the BLM National NEPA Register .",
+      "bucket": "result",
+      "sale_date": null,
+      "states": [
+        "Colorado"
       ]
     },
     {
@@ -357,30 +368,6 @@
       "sale_date": null,
       "states": [
         "Wyoming"
-      ]
-    },
-    {
-      "region": "Alaska",
-      "title": "BLM Holds First Successful Coastal Plain Oil and Gas Lease Sale Under Working Families Tax Cuts Act",
-      "link": "https://www.blm.gov/press-release/blm-holds-first-successful-coastal-plain-oil-and-gas-lease-sale-under-working",
-      "pubDate": "Fri, 05 Jun 2026 19:16:35 +0000",
-      "text": "Anchorage, Alaska &nbsp;— The Bureau of Land Management held an oil and gas lease sale today for the Coastal Plain of the Arctic National Wildlife Refuge in Alaska, resulting in&nbsp;five leases and $3,741,528 in total receipts. President Donald J. Trump was the first and only president to hold a successful lease sale in the Coastal Plain of the Arctic National Wildlife Refuge in Alaska in 2021, as a result of the Tax Cuts and Jobs Act. Under the previous administration, lease sales in the region were deliberately discouraged.&nbsp;&nbsp; This was the second successful sale in the area under President Donald J. Trump’s leadership and the first since the passage of the&nbsp; Working Families Tax Cuts . Congress recognized the significant resource potential of the Coastal Plain through the Alaska National Interest Lands Conservation Act of 1980 and later authorized oil and gas leasing in the area with the Tax Cuts and Jobs Act of 2017. “This lease sale is another important step toward restoring American Energy Dominance and responsibly developing the vast resources Congress directed us to make available in the Coastal Plain,”&nbsp;said BLM Director Steve Pearce .&nbsp;“The previous administration did everything in its power to discourage industry from development in the Coastal Plain. The strong industry interest we saw today reflects confidence in Alaska’s resource potential and the Trump administration’s commitment to providing certainty for investment. These leases will help create jobs, generate significant revenue for Alaska and the nation and support the reliable domestic energy production Americans depend on every day.” The BLM offered 58 tracts across approximately 688,829 acres for bid in today’s sale. In response, two companies submitted bids on five&nbsp;tracts covering 72,049&nbsp;acres. “Today’s lease sale underscores the vision that both industry and government share about the viability of development in the Coastal Plain,” said&nbsp; BLM Alaska State Director Kevin Pendergast . “Alaska is a bedrock of America’s energy security, and this sale will bolster the state’s economy and ultimately lead to additional energy production.” The State of Alaska will receive nearly $2&nbsp;million, representing 50 percent of the bid receipts. Since January 2025, the Bureau of Land Management has worked expeditiously to implement direction aimed at unlocking the plain’s energy potential through Executive Order 14153, Secretary’s Order 3422, and the Working Families Tax Cuts Act. The Bureau reversed the 2023 lease cancellations, issued a new 2025 Record of Decision, and resumed and expanded leasing in the Coastal Plain. Information on previous Coastal Plain sales—as well as maps, GIS shapefiles, and a table with today’s complete sale results by tract—is available on the Bureau of Land Management Alaska’s&nbsp;Oil and Gas Lease Sales website .",
-      "bucket": "result",
-      "sale_date": null,
-      "states": [
-        "Alaska"
-      ]
-    },
-    {
-      "region": "Alaska",
-      "title": "Interior generates over $163 million from National Petroleum Reserve in Alaska oil and gas lease sale",
-      "link": "https://www.blm.gov/press-release/interior-generates-over-163-million-national-petroleum-reserve-alaska-oil-and-gas",
-      "pubDate": "Wed, 18 Mar 2026 23:05:53 +0000",
-      "text": "The Department of the Interior held a landmark oil and gas lease sale today for the National Petroleum Reserve in Alaska, resulting in 187 leases and $163,696,722&nbsp;in total receipts. The sale, which was the first for the reserve since 2019 and the first under President Donald J. Trump’s One Big Beautiful Bill Act, made history&nbsp;for&nbsp;the&nbsp;leasing program in&nbsp;the 23-million-acre&nbsp;National Petroleum Reserve in Alaska, with&nbsp;the most revenue generated&nbsp;ever,&nbsp;the most tracts receiving bids and the second most acreage sold&nbsp;in a single&nbsp;sale.&nbsp; “Today’s lease sale underscores the National Petroleum Reserve in Alaska’s vital role in strengthening America’s energy security while fueling economic growth across Alaska,” said Secretary of the Interior Doug Burgum . “The Reserve was created to support our nation’s energy needs, and this successful sale demonstrates what’s possible when we align responsible development with that original purpose. Revenues from these leases will help bolster local communities, create good‑paying jobs, and ensure that Alaska continues to be a cornerstone of America’s domestic energy production.”&nbsp; The Bureau of Land Management offered 625 tracts across approximately 5.5 million acres for bid in today’s sale. In response, 11 companies submitted bids on 187 tracts covering 1,334,967 acres.&nbsp;&nbsp; The State of Alaska will receive nearly $82 million, 50 percent of the bid receipts.&nbsp; A portion of those proceeds benefit&nbsp;North Slope communities through the National Petroleum Reserve in Alaska Impact&nbsp;Mitigation program.&nbsp; &nbsp;&nbsp; Since January 2025, the Bureau of Land Management has been expeditiously implementing direction to unlock the reserve’s energy potential through Executive Order 14153 , Secretary’s Order 3422 and the One Big Beautiful Bill Act.&nbsp; Actions taken include the rescission of the 2024 rule that restricted leasing and development in the reserve, withdrawal of three policy documents that sought to unnecessarily expand limitations in special areas, and approval of an updated Integrated Activity Plan that reopens nearly 82 percent of the reserve to oil and gas leasing.&nbsp;&nbsp;&nbsp; Under the One Big Beautiful Bill Act, the Bureau of Land Management must hold at least five lease sales in the reserve by 2035, each offering no fewer than four million acres.&nbsp;&nbsp;&nbsp; The Bureau of Land Management’s National Petroleum Reserve in Alaska lease sales have generated more than $457 million since 1999, with revenues supporting the U.S. Treasury, the State of Alaska, and North Slope communities. Information on all National Petroleum Reserve in Alaska sales, as well as a map, GIS shape files, and a table with today’s complete sale results by tract are available at Bureau of Land Management Alaska Oil and Gas Lease Sales website .",
-      "bucket": "result",
-      "sale_date": null,
-      "states": [
-        "Alaska"
       ]
     }
   ]
