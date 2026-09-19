@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-18",
+  "generated": "2026-09-19",
   "upcoming": [
     {
       "region": "Alaska",
@@ -83,6 +83,38 @@
         "Montana",
         "North Dakota",
         "South Dakota"
+      ]
+    },
+    {
+      "region": "National",
+      "title": "BLM Announces November 2026 Sale of Oil and Gas Leases in New Mexico, Oklahoma, Kansas and Texas",
+      "link": "https://www.blm.gov/press-release/blm-announces-november-2026-sale-oil-and-gas-leases-new-mexico-oklahoma-kansas-and",
+      "pubDate": "Fri, 18 Sep 2026 15:44:48 +0000",
+      "text": "SANTA FE, N.M.&nbsp;– The Bureau of Land Management today announced an oil and gas lease sale scheduled for&nbsp;Nov. 18, 2026, to offer&nbsp;30 oil and gas parcels totaling 8,071 acres in New Mexico, Oklahoma, Texas, and Kansas. The BLM completed scoping on these parcels in&nbsp;June 2026 and held a public comment period that closed in&nbsp;August 2026&nbsp;on the parcels and the related environmental analysis. A 30-day public protest period to receive additional public input opened today and will close&nbsp;Oct. 19, 2026. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the&nbsp; National Fluids Lease Sale System . BLM lease sales are held online through&nbsp; Efficient Markets . The parcels BLM analyzed, as well as maps and instructions on how to submit a protest, are available on BLM’s ePlanning website at: Carlsbad Field Office Farmington Field Office Oklahoma Field Office",
+      "bucket": "sale",
+      "sale_date": "2026-11-18",
+      "bid_deadline": null,
+      "states": [
+        "Kansas",
+        "New Mexico",
+        "Oklahoma",
+        "Texas"
+      ]
+    },
+    {
+      "region": "New Mexico",
+      "title": "BLM Announces November 2026 Sale of Oil and Gas Leases in New Mexico, Oklahoma, Kansas and Texas",
+      "link": "https://www.blm.gov/press-release/blm-announces-november-2026-sale-oil-and-gas-leases-new-mexico-oklahoma-kansas-and",
+      "pubDate": "Fri, 18 Sep 2026 15:44:48 +0000",
+      "text": "SANTA FE, N.M.&nbsp;– The Bureau of Land Management today announced an oil and gas lease sale scheduled for&nbsp;Nov. 18, 2026, to offer&nbsp;30 oil and gas parcels totaling 8,071 acres in New Mexico, Oklahoma, Texas, and Kansas. The BLM completed scoping on these parcels in&nbsp;June 2026 and held a public comment period that closed in&nbsp;August 2026&nbsp;on the parcels and the related environmental analysis. A 30-day public protest period to receive additional public input opened today and will close&nbsp;Oct. 19, 2026. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the&nbsp; National Fluids Lease Sale System . BLM lease sales are held online through&nbsp; Efficient Markets . The parcels BLM analyzed, as well as maps and instructions on how to submit a protest, are available on BLM’s ePlanning website at: Carlsbad Field Office Farmington Field Office Oklahoma Field Office",
+      "bucket": "sale",
+      "sale_date": "2026-11-18",
+      "bid_deadline": null,
+      "states": [
+        "Kansas",
+        "New Mexico",
+        "Oklahoma",
+        "Texas"
       ]
     }
   ],
@@ -266,18 +298,6 @@
       ]
     },
     {
-      "region": "National",
-      "title": "BLM Welcomes Community Perspectives on Proposed Colorado Parcels for March 2027 Oil and Gas Lease Sale",
-      "link": "https://www.blm.gov/press-release/blm-welcomes-community-perspectives-proposed-colorado-parcels-march-2027-oil-and-gas",
-      "pubDate": "Wed, 09 Sep 2026 16:54:41 +0000",
-      "text": "LAKEWOOD, Colo. – The Bureau of Land Management is proposing to offer 38 oil and gas parcels in Colorado, totaling about 66,221 acres, in a March 2027 federal lease sale. The public is invited to provide initial input on this proposal during a 30-day scoping period that closes&nbsp;Oct. 9. This effort is part of the BLM’s commitment to managing federal energy resources in a transparent and balanced way that considers community needs, national energy priorities, and protection of natural and cultural resources. Federal oil and gas leasing helps strengthen U.S. energy security, supports jobs and local economies, and generates revenue that is shared with states and counties to fund schools, roads, and other essential public services. Partnership with the public is central to how the BLM manages public lands. Community perspectives help shape how potential lease areas are evaluated and ensure that future development—if pursued—supports national energy needs while protecting wildlife habitat, water resources, cultural sites, and recreation areas that Coloradans and visitors value. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Maps, parcel details, and instructions for providing comments are available on the BLM National NEPA Register .",
-      "bucket": "result",
-      "sale_date": null,
-      "states": [
-        "Colorado"
-      ]
-    },
-    {
       "region": "Montana-Dakotas",
       "title": "BLM Oil and Gas Lease Sale in Montana/Dakotas Generates Over $130 million in Revenue",
       "link": "https://www.blm.gov/press-release/blm-oil-and-gas-lease-sale-montanadakotas-generates-over-130-million-revenue",
@@ -367,6 +387,19 @@
       "states": [
         "New Mexico",
         "Oklahoma",
+        "Texas"
+      ]
+    },
+    {
+      "region": "New Mexico",
+      "title": "Department of the Interior Oil and Gas Lease Sale in New Mexico and Texas Generates Over $4 Billion",
+      "link": "https://www.blm.gov/press-release/department-interior-oil-and-gas-lease-sale-new-mexico-and-texas-generates-over-4",
+      "pubDate": "Wed, 20 May 2026 17:37:00 +0000",
+      "text": "The Department of the Interior generated over $4 billion in total receipts from a Bureau of Land Management oil and gas lease sale in New Mexico and Texas, underscoring strong industry demand for domestic energy development on public lands.&nbsp; The Bureau of Land Management leased 74 parcels totaling 33,530 acres during the quarterly lease sale. Combined bonus bids and rental payments from the sale totaled approximately $4,007,944,870. Revenue generated through lease sales is shared between the federal government and the states where the parcels are located.&nbsp; “America is sitting on some of the richest energy resources in the world, and President Donald J. Trump is committed to putting those resources to work for the American people,” said Secretary of the Interior Doug Burgum . “This over $4 billion lease sale is another sign that President Trump’s American Energy Dominance Agenda is delivering results. By cutting costs and removing barriers to development, we are unleashing American energy, strengthening national security, creating jobs and generating significant revenue for taxpayers and local communities.”&nbsp;&nbsp; &nbsp; The sale was conducted under the Working Families Tax Cuts Act, which lowered the federal royalty rate for new onshore oil and gas production to 12.5%, reversing the 16.67% rate established under the Inflation Reduction Act. The lower royalty rate reduces costs for energy producers operating on public lands and is expected to encourage additional investment, leasing and drilling activity across the West. Oil and gas lease sales support reliable domestic energy production, strengthen American energy independence and help ensure the United States remains a global energy leader. Increased production on federal lands also supports manufacturing, transportation and national defense while helping stabilize energy costs for American families and businesses.&nbsp; Consistent with Executive Order 14154, “ Unleashing American Energy ,” the Department of the Interior and Bureau of Land Management continue to support responsible energy development on public lands while ensuring projects comply with the National Environmental Policy Act and other applicable laws.&nbsp;Leasing is the first step in the process to develop federal oil and gas resources. Oil and gas leases are issued for a term of 10 years and continue as long as oil and gas are produced in paying quantities.&nbsp; Additional information on current and upcoming lease sales is available through the National Fluid Lease Sale System .&nbsp;",
+      "bucket": "result",
+      "sale_date": null,
+      "states": [
+        "New Mexico",
         "Texas"
       ]
     }
