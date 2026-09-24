@@ -1814,6 +1814,10 @@ section[style*="--bg-secondary"] .situation {
     .team-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+    /* a lone card in the last row sits in the middle column */
+    .team-grid > .team-member:last-child:nth-child(3n+1) {
+        grid-column: 2;
+    }
 }
 
 .team-member {
