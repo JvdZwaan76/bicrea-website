@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-25",
+  "generated": "2026-09-26",
   "upcoming": [
     {
       "region": "Alaska",
@@ -146,17 +146,6 @@
   ],
   "pipeline": [
     {
-      "region": "National",
-      "title": "BLM Invites Initial Public Feedback for March 2027 Oil and Gas Lease Sale in Utah",
-      "link": "https://www.blm.gov/press-release/blm-invites-initial-public-feedback-march-2027-oil-and-gas-lease-sale-utah",
-      "pubDate": "Wed, 16 Sep 2026 21:48:44 +0000",
-      "text": "SALT LAKE CITY – The Bureau of Land Management today opened a 30-day public scoping period to receive public input on 54 oil and gas parcels totaling 58,601 acres that may be included in a March 2027 lease sale in Utah. The scoping period ends Oct. 19, 2026. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets . The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at: https://eplanning.blm.gov/Project-Home/?id=07894ca8-4eb0-f111-aaac-001dd80812d0 .",
-      "bucket": "pipeline",
-      "states": [
-        "Utah"
-      ]
-    },
-    {
       "region": "Montana-Dakotas",
       "title": "BLM Invites Initial Public Feedback for January 2027 Oil and Gas Lease Sale in Montana/Dakotas",
       "link": "https://www.blm.gov/press-release/blm-invites-initial-public-feedback-january-2027-oil-and-gas-lease-sale",
@@ -216,6 +205,17 @@
         "New Mexico",
         "Oklahoma",
         "Texas"
+      ]
+    },
+    {
+      "region": "Utah",
+      "title": "BLM Invites Initial Public Feedback for March 2027 Oil and Gas Lease Sale in Utah",
+      "link": "https://www.blm.gov/press-release/blm-invites-initial-public-feedback-march-2027-oil-and-gas-lease-sale-utah",
+      "pubDate": "Wed, 16 Sep 2026 21:48:44 +0000",
+      "text": "SALT LAKE CITY – The Bureau of Land Management today opened a 30-day public scoping period to receive public input on 54 oil and gas parcels totaling 58,601 acres that may be included in a March 2027 lease sale in Utah. The scoping period ends Oct. 19, 2026. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets . The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at: https://eplanning.blm.gov/Project-Home/?id=07894ca8-4eb0-f111-aaac-001dd80812d0 .",
+      "bucket": "pipeline",
+      "states": [
+        "Utah"
       ]
     },
     {
@@ -297,16 +297,6 @@
       "states": [
         "Utah"
       ]
-    },
-    {
-      "region": "National",
-      "title": "BLM Oil and Gas Lease Sale in Ohio Generates Over $11 Million in Revenue",
-      "link": "https://www.blm.gov/press-release/blm-oil-and-gas-lease-sale-ohio-generates-over-11-million-revenue",
-      "pubDate": "Wed, 16 Sep 2026 17:44:45 +0000",
-      "text": "FALLS CHURCH, Va. – The Bureau of Land Management leased 40 parcels totaling 2,777 acres in the Wayne National Forest in Ohio for $11,097,693 in total receipts during a quarterly oil and gas lease sale, held yesterday. Combined lease bonus bids and rentals are distributed between the federal government and state where parcels are located.&nbsp; This lease sale was conducted under the Working Families Tax Cut Act , which resets the royalty rate for new federal onshore oil and gas production to a minimum of 12.5%, reversing the 16.67% rate set by the Inflation Reduction Act. By lowering the federal onshore royalty rate from 16.67% to 12.5%, the Working Families Tax Cut Act, also known as the One Big Beautiful Bill Act, reduces the cost of doing business on public lands, making oil and gas development more economically attractive to industry. This is expected to spur additional leasing and drilling activity, which in turn supports increased domestic energy production and strengthens U.S. energy security.&nbsp; Oil and gas lease sales support domestic energy production and American energy independence, while contributing to the nation’s economic and military security. Consistent with Executive Order 14154 , “Unleashing American Energy,” the BLM's lease sales help meet the energy needs of U.S. citizens and solidify the nation as a global energy leader long into the future.&nbsp; Leasing is the first step in the process to develop federal oil and gas resources. The BLM ensures oil and gas development meets the requirements set forth by the National Environmental Policy Act of 1969 and other applicable legal authorities.&nbsp; Oil and gas leases are awarded for a term of 10 years and as long thereafter as there is production of oil and gas in paying quantities. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System .&nbsp; BLM lease sales are held online through Efficient Markets . Results are available on the National Fluid Lease Sale System . After navigating to the page, filter to the sale, and select the action “View Sale Documents” to view the sale results.&nbsp;",
-      "bucket": "result",
-      "sale_date": null,
-      "states": []
     },
     {
       "region": "Montana-Dakotas",
@@ -412,6 +402,18 @@
       "states": [
         "New Mexico",
         "Texas"
+      ]
+    },
+    {
+      "region": "Utah",
+      "title": "BLM Oil and Gas Lease Sale in Utah Generates Nearly $4.5 Million in Revenue",
+      "link": "https://www.blm.gov/press-release/blm-oil-and-gas-lease-sale-utah-generates-nearly-45-million-revenue",
+      "pubDate": "Tue, 22 Sep 2026 19:43:37 +0000",
+      "text": "SALT LAKE CITY – The Bureau of Land Management leased 35 parcels totaling 34,596 acres in Utah for $4,492,000 in total receipts during a quarterly oil and gas lease sale. Combined lease bonus bids and rentals are distributed between the federal government and state where parcels are located. This lease sale was conducted under the Working Families Tax Cut Act , which resets the royalty rate for new federal onshore oil and gas production to a minimum of 12.5%, reversing the 16.67% rate set by the Inflation Reduction Act. By lowering the federal onshore royalty rate from 16.67% to 12.5%, the Working Families Tax Cut Act, also known as the One Big Beautiful Bill Act, reduces the cost of doing business on public lands, making oil and gas development more economically attractive to industry. This is expected to spur additional leasing and drilling activity, which in turn supports increased domestic energy production and strengthens U.S. energy security. Oil and gas lease sales support domestic energy production and American energy independence, while contributing to the nation’s economic and military security. Consistent with Executive Order 14154 , “Unleashing American Energy,” the BLM's lease sales help meet the energy needs of U.S. citizens and solidify the nation as a global energy leader long into the future. Leasing is the first step in the process to develop federal oil and gas resources. The BLM ensures oil and gas development meets the requirements set forth by the National Environmental Policy Act of 1969 and other applicable legal authorities. Oil and gas leases are awarded for a term of 10 years and as long thereafter as there is production of oil and gas in paying quantities. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets . Results are available on the National Fluid Lease Sale System . After navigating to the page, filter to the sale, and select the action “View Sale Documents” to view the sale results.",
+      "bucket": "result",
+      "sale_date": null,
+      "states": [
+        "Utah"
       ]
     }
   ]
