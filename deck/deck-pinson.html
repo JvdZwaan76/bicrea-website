@@ -50,7 +50,7 @@
   .cardtitle{ font-family:var(--serif); font-weight:700; font-size:21px; color:var(--ink); margin-top:11px; letter-spacing:.024em; }
   .cardbody{ color:var(--dim); font-size:14px; line-height:1.62; margin-top:12px; }
   .rows{ display:flex; flex-direction:column; }
-  .row{ display:flex; gap:18px; align-items:flex-start; padding:16px 0; border-top:1px solid var(--line-soft); }
+  .row{ display:flex; gap:18px; align-items:flex-start; padding:12px 0; border-top:1px solid var(--line-soft); }
   .row:first-child{ border-top:0; }
   .row .rd{ color:var(--gold); font-size:18px; line-height:1.3; flex:0 0 auto; }
   .row h3{ font-family:var(--serif); font-weight:700; font-size:18px; color:var(--ink); letter-spacing:.01em; }
@@ -64,7 +64,7 @@
   .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:26px; }
   .stat{ flex:0 0 auto; }
   .stat .v{ font-family:var(--serif); font-weight:700; font-size:50px; color:var(--gold); line-height:1; letter-spacing:.022em; }
-  .stat .l{ color:var(--dim); font-size:12.5px; letter-spacing:.03em; line-height:1.45; margin-top:12px; max-width:250px; }
+  .stat .l{ color:var(--body); font-size:13.5px; letter-spacing:.02em; line-height:1.45; margin-top:12px; max-width:250px; }
   .dgrid{ display:grid; grid-template-columns:1fr 1fr; gap:26px 44px; }
   .ditem{ display:flex; gap:13px; align-items:flex-start; }
   .ditem .dd{ color:var(--gold); font-size:14px; line-height:1.4; flex:0 0 auto; }
@@ -113,7 +113,7 @@
   .tname .dia{ margin-right:11px; }
   .ttitle{ font-family:var(--sans); font-weight:600; color:var(--gold-bright); font-size:14px; letter-spacing:.02em; margin-top:8px; }
   .tbio{ color:var(--dim); font-size:14px; line-height:1.62; margin-top:16px; }
-  .tcontact{ margin-top:20px; padding-top:18px; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:9px; }
+  .tcontact{ margin-top:14px; padding-top:12px; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:9px; }
   .tc{ font-size:14px; color:var(--ink); display:flex; align-items:center; }
   .tc .ic{ color:var(--gold); width:26px; flex:0 0 auto; }
   .tc .dim{ color:var(--quiet); }
@@ -131,11 +131,12 @@
   .ph{ color:var(--gold-bright); background:rgba(244,208,63,0.12); padding:0 6px; border-radius:4px; white-space:nowrap; }
   .disc{ position:absolute; left:84px; right:84px; bottom:84px; max-width:860px; font-size:10px; color:var(--quiet); font-style:italic; line-height:1.4; }
   .samples{ display:flex; gap:26px; align-items:flex-start; justify-content:center; }
-  .sample{ flex:0 0 auto; height:386px; background:#fff; border-radius:10px; overflow:hidden; border:1px solid var(--line); box-shadow:0 10px 30px rgba(0,0,0,.45); position:relative; }
-  .sample img{ display:block; height:100%; width:auto; }
-  .srcnote{ margin-top:10px; max-width:980px; margin-left:auto; margin-right:auto; font-size:11px; color:var(--quiet); font-style:italic; line-height:1.5; text-align:center; }
-  .sample .cap{ position:absolute; left:0; right:0; bottom:0; background:rgba(10,10,10,.96); color:var(--ink); font-size:11.5px; padding:9px 14px; letter-spacing:.02em; display:flex; align-items:baseline; gap:10px; white-space:nowrap; }
-  .sample .cap b{ color:var(--gold); font-weight:600; letter-spacing:.14em; text-transform:uppercase; font-size:10px; flex:0 0 auto; }
+  .sample{ flex:0 0 auto; display:flex; flex-direction:column; background:#141414; border-radius:10px; overflow:hidden; border:1px solid var(--line); box-shadow:0 10px 30px rgba(0,0,0,.45); position:relative; }
+  .sample .img{ height:346px; width:452px; background:#fff; overflow:hidden; }
+  .sample img{ display:block; height:100%; width:100%; object-fit:contain; object-position:top center; }
+  .srcnote{ margin-top:10px; max-width:1060px; margin-left:auto; margin-right:auto; font-size:11px; color:var(--quiet); font-style:italic; line-height:1.5; text-align:center; }
+  .sample .cap{ height:50px; background:#141414; border-top:1px solid var(--line); color:var(--body); font-size:11.5px; line-height:1.4; padding:8px 14px; display:flex; flex-direction:column; justify-content:center; }
+  .sample .cap b{ display:block; color:var(--gold); font-weight:600; letter-spacing:.14em; text-transform:uppercase; font-size:9.5px; margin-bottom:3px; }
   .stamp{ position:absolute; top:6px; right:10px; background:var(--gold); color:#0a0a0a; font-weight:700; font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; padding:6px 14px; border-radius:4px; }
   .two{ display:grid; grid-template-columns:1fr 1fr; gap:26px; }
   .three{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:26px; }
@@ -150,7 +151,7 @@
   <div class="pad">
     <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Partner Capabilities</div></div>
     <div style="height:96px"></div>
-    <div class="kicker" style="margin-bottom:20px;">Prepared for Pinson Land Services &middot; <span class="ph">[TOM — TITLE]</span> &middot; October 2026</div>
+    <div class="kicker" style="margin-bottom:20px;">Prepared for Pinson Land Services &middot; October 2026</div>
     <h1 style="font-size:44px; line-height:1.18; letter-spacing:.028em;">Mineral Title Research<br>for Renewable Sites,<br><span class="accent">Traced to the Recorded Instrument.</span></h1>
     <p class="lede" style="margin-top:22px; max-width:900px;">Severed-mineral, heirship, and curative research that your title managers can fold straight into Pinson deliverables &mdash; built to the recording conventions of the state it covers, every finding indexed to its recorded instrument. You have seen the Grant County report. This is how we would do that work for you, tract after tract.</p>
     <div class="pills" style="margin-top:32px;">
@@ -167,12 +168,12 @@
 <section class="slide">
   <div class="pad">
     <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Why Severed Minerals Matter on Solar &amp; Wind</div></div>
-    <div class="titleblock" style="margin-top:42px;"><div class="kicker">The problem your developers bring you</div><h1>A severed mineral owner has rights to the surface. A solar array needs all of it.</h1><p class="lede">In most states a severed mineral owner may use as much of the surface as is reasonably necessary to reach the minerals. Texas&rsquo;s El Paso Court of Appeals has held the accommodation doctrine governs solar-versus-mineral disputes (<em>Lyle&nbsp;v.&nbsp;Midway&nbsp;Solar</em>, 618 S.W.3d 857, Tex.&nbsp;App.&mdash;El&nbsp;Paso 2020, pet. denied). Lenders require insurable title; policies except severed minerals in Schedule&nbsp;B, and the array endorsements (ALTA&nbsp;35.3, ALTA&nbsp;36.9) insure improvements, not mineral title &mdash; so underwriters want the severance search done first.</p></div>
-    <div style="height:14px"></div>
+    <div class="titleblock" style="margin-top:30px;"><div class="kicker">The problem your developers bring you</div><h1>A severed mineral owner has rights to the surface.<br>A solar array needs all of it.</h1><p class="lede">In most states a severed mineral owner may use as much of the surface as is reasonably necessary to reach the minerals. Texas&rsquo;s El Paso Court of Appeals has held the accommodation doctrine governs solar-versus-mineral disputes (<em>Lyle&nbsp;v.&nbsp;Midway&nbsp;Solar</em>, 618 S.W.3d 857, Tex.&nbsp;App.&mdash;El&nbsp;Paso 2020, pet. denied). Title policies except severed minerals in Schedule&nbsp;B, and the array endorsements (ALTA&nbsp;35.3, 36.9) insure improvements, not mineral title &mdash; so underwriters want the severance search done first.</p></div>
+    <div style="height:10px"></div>
     <div class="three">
-      <div class="card"><div class="k">What has to be found</div><div class="kt">Every severance, by depth and by product</div><div class="kb">Patent reservations, mineral deeds, fractional heirs, unreleased mineral mortgages, dormant interests &mdash; traced from sovereignty to today, not from the last vesting deed.</div></div>
-      <div class="card"><div class="k">What has to be documented</div><div class="kt">An index an underwriter can work from</div><div class="kb">Chain, fractions, and curative items each tied to a recorded instrument, so waivers and non-disturbance agreements go to the right owners. In <em>Lyle</em>, waivers from people with no interest in the tract clouded the true owners&rsquo; title.</div></div>
-      <div class="card"><div class="k">Where the time goes</div><div class="kt">Owner location</div><div class="kb">Surface-waiver campaigns routinely take the better part of a year &mdash; longer where heirs or dormant interests are involved. The research has to be front-loaded and the heirs found early &mdash; before the waiver campaign starts, not during it.</div></div>
+      <div class="card" style="padding:26px 30px;"><div class="k">What has to be found</div><div class="kt">Every severance, by depth and by product</div><div class="kb">Patent reservations, mineral deeds, fractional heirs, unreleased mineral mortgages, dormant interests &mdash; traced from sovereignty forward, not from the last vesting&nbsp;deed.</div></div>
+      <div class="card" style="padding:26px 30px;"><div class="k">What has to be documented</div><div class="kt">An index an underwriter can work from</div><div class="kb">Chain, fractions, and curative items tied to recorded instruments, so waivers go to the right owners. In <em>Lyle</em>, waivers from people with no interest in the tract clouded the true owners&rsquo; title.</div></div>
+      <div class="card" style="padding:26px 30px;"><div class="k">Where the time goes</div><div class="kt">Owner location</div><div class="kb">Surface-waiver campaigns routinely take the better part of a year &mdash; longer where heirs or dormant interests are involved. The research has to be front-loaded and the heirs found early &mdash; before the waiver campaign starts, not during it.</div></div>
     </div>
     <div class="fill"></div>
   </div>
@@ -182,12 +183,12 @@
 <section class="slide">
   <div class="pad">
     <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Where BIC REA Fits</div></div>
-    <div class="titleblock" style="margin-top:42px;"><div class="kicker">A research bench behind your title managers</div><h1>You keep the client and the deliverable. We do the research behind it.</h1><p class="lede">Pinson&rsquo;s title managers set scope and own the relationship. BIC REA delivers the severed-mineral chain, heirship work, and curative identification in your template &mdash; white-label under Pinson&rsquo;s cover or co-branded, your call &mdash; with a non-circumvention agreement covering every developer you introduce. Use us where your bench is thin &mdash; renewables-heavy states, heirship-heavy tracts, or overflow when a campaign spikes.</p></div>
+    <div class="titleblock" style="margin-top:30px;"><div class="kicker">A research bench behind your title managers</div><h1>You keep the client and the deliverable. We do the research behind it.</h1><p class="lede">Pinson&rsquo;s title managers set scope and own the relationship. BIC REA delivers the severed-mineral chain, heirship work, and curative identification in your template &mdash; white-label under Pinson&rsquo;s cover or co-branded, your call &mdash; with a non-circumvention agreement covering every developer you introduce. Use us where your bench is thin &mdash; renewables-heavy states, heirship-heavy tracts, or overflow when a campaign spikes.</p></div>
     <div style="height:2px"></div>
     <div class="rows">
       <div class="row"><div class="rd">&#9674;</div><div><h3>Severed-mineral chain, sovereignty to current</h3><p>Patent forward. Every reservation, mineral deed, and fractional conveyance logged with grantor, grantee, instrument, and recording data &mdash; the format you saw in the Grant County report.</p></div></div>
       <div class="row"><div class="rd">&#9674;</div><div><h3>Heirship and owner location</h3><p>Probate, estate, and public-record tracing to current owners of record, led by a Florida-licensed private investigator and paralegal applying investigative method to courthouse research.</p></div></div>
-      <div class="row"><div class="rd">&#9674;</div><div><h3>Curative identification and dormant-mineral screening</h3><p>Each item sourced and categorized for your counsel&rsquo;s evaluation &mdash; including statutory cure paths such as Washington&rsquo;s Extinguishment of Unused Mineral Rights statute (ch. 78.22 RCW), which lets a surface owner terminate a mineral interest unused for twenty years after notice.</p></div></div>
+      <div class="row"><div class="rd">&#9674;</div><div><h3>Curative identification and dormant-mineral screening</h3><p>Each item sourced and categorized for your counsel&rsquo;s evaluation &mdash; including statutory cure paths such as Washington&rsquo;s Extinguishment of Unused Mineral Rights statute (ch.&nbsp;78.22&nbsp;RCW) where they&nbsp;apply.</p></div></div>
     </div>
     <div class="fill"></div>
   </div>
@@ -197,13 +198,13 @@
 <section class="slide">
   <div class="pad">
     <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Scope of a BIC REA Mineral Title Report</div></div>
-    <div class="titleblock" style="margin-top:42px;"><div class="kicker">What is &mdash; and is not &mdash; in the report</div><h1>A documented analysis of the record, built for your examiner.</h1></div>
-    <div style="height:22px"></div>
+    <div class="titleblock" style="margin-top:42px;"><div class="kicker">What is &mdash; and is not &mdash; in the report</div><h1>A documented analysis of the record,<br>built for your examiner.</h1></div>
+    <div style="height:14px"></div>
     <div class="two">
-      <div class="card accent"><div class="k">It is</div><div class="kt">Research your counsel can build an opinion on</div><div class="kb">Current record ownership as reflected in the instruments examined &middot; surface and mineral estates separated &middot; undivided-interest fractions computed from the recorded language &middot; encumbrances, leases, and mining claims &middot; curative items identified, sourced, and categorized &middot; a source index so every finding traces to an instrument &middot; BLM and state records cross-referenced.</div></div>
+      <div class="card accent"><div class="k">It is</div><div class="kt">Research your counsel can build an opinion&nbsp;on</div><div class="kb">Current record ownership as reflected in the instruments examined &middot; surface and mineral estates separated &middot; undivided-interest fractions computed from the recorded language &middot; encumbrances, leases, and mining claims &middot; curative items identified, sourced, and categorized &middot; a source index so every finding traces to an instrument &middot; BLM and state records cross-referenced.</div></div>
       <div class="card"><div class="k">It is not</div><div class="kt">A legal opinion, a certified abstract, or title insurance</div><div class="kb">Drilling, division-order, and acquisition opinions are issued by independent licensed counsel engaged directly by the client; we deliver our research in the form counsel needs. We do not issue certified abstracts in states that license abstracting. Off-record matters are outside the scope of records-based research.</div></div>
     </div>
-    <div class="note" style="margin-top:22px;"><span class="dia">&#9674;</span>Every report carries a second-examiner review, independent of the preparer: findings re-traced to source, interest math re-run, curative items checked against their instrument. Standard on every report, rush or not.</div>
+    <div class="note" style="margin-top:16px;"><span class="dia">&#9674;</span>Every report carries a second-examiner review, independent of the preparer: findings re-traced to source, interest math re-run, curative items checked against their instrument. Standard on every report, rush or not.</div>
     <div class="fill"></div>
   </div>
   <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">Scope of a BIC REA Mineral Title Report &nbsp;&middot;&nbsp; 04</span><br>Prepared for Pinson Land Services</div></div>
@@ -215,13 +216,12 @@
     <div class="titleblock" style="margin-top:34px;"><div class="kicker">The report you reviewed &mdash; delivered January 2026</div><h1>Branded cover and title remarks.</h1></div>
     <div style="height:14px"></div>
     <div class="samples">
-      <div class="sample"><div class="stamp">Sample excerpt</div><img src="sample/sample-cover.png" alt="Cover page of the BIC REA sample title report, client and project withheld"><div class="cap"><b>Cover</b>BIC REA letterhead; client, project, and parcel number withheld</div></div>
-      <div class="sample"><div class="stamp">Sample excerpt</div><img src="sample/sample-remarks.png" alt="Title remarks excerpt from the sample report"><div class="cap"><b>Title Remarks</b>Leases, claims, easements &mdash; each tied to an instrument</div></div>
+      <div class="sample"><div class="img"><img src="sample/sample-cover.png" alt="Cover page of the BIC REA sample title report, client and project withheld"></div><div class="cap"><b>Sample excerpt &middot; Cover</b>BIC REA letterhead; client, project, and parcel number withheld</div></div>
+      <div class="sample"><div class="img"><img src="sample/sample-remarks.png" alt="Title remarks excerpt from the sample report"></div><div class="cap"><b>Sample excerpt &middot; Title Remarks</b>Leases, claims, easements &mdash; each tied to an instrument</div></div>
     </div>
-    <p class="srcnote">Client, project, parcel number, and lease counterparties withheld. Shared with the client&rsquo;s authorization.</p>
+    <p class="srcnote">Client, project, parcel number, and lease counterparties withheld; shared with the client&rsquo;s authorization. BIC REA LLC is not a law firm; reports are research deliverables for the client and its&nbsp;counsel.</p>
     <div class="fill"></div>
   </div>
-<div class="disc">BIC REA LLC is not a law firm and does not render legal advice, legal opinions, or title insurance. Reports are research deliverables for use by the client and its licensed counsel.</div>
   <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">Sample Work &middot; Grant County, WA &nbsp;&middot;&nbsp; 05</span><br>Prepared for Pinson Land Services</div></div>
 </section>
 
@@ -231,10 +231,10 @@
     <div class="titleblock" style="margin-top:34px;"><div class="kicker">Same report &mdash; from the 1908 patent to the 2024 solar lease amendment</div><h1>Chain of title and the leasehold layer.</h1></div>
     <div style="height:14px"></div>
     <div class="samples">
-      <div class="sample"><div class="stamp">Sample excerpt</div><img src="sample/sample-chain.png" alt="Chain of title excerpt beginning with the 1908 patent"><div class="cap"><b>Chain of Title</b>Patent (1908) forward: grantor, grantee, instrument, recording data, remarks</div></div>
-      <div class="sample"><div class="stamp">Sample excerpt</div><img src="sample/sample-solar.png" alt="Chain of title excerpt showing the solar lease amendment and vesting deed"><div class="cap"><b>Leasehold &amp; Vesting</b>Lease amendment and vesting deed, logged by Auditor&rsquo;s File No.</div></div>
+      <div class="sample"><div class="img"><img src="sample/sample-chain.png" alt="Chain of title excerpt beginning with the 1908 patent"></div><div class="cap"><b>Sample excerpt &middot; Chain of Title</b>Patent (1908) forward: grantor, grantee, instrument, recording data, remarks</div></div>
+      <div class="sample"><div class="img"><img src="sample/sample-solar.png" alt="Chain of title excerpt showing the solar lease amendment and vesting deed"></div><div class="cap"><b>Sample excerpt &middot; Leasehold &amp; Vesting</b>Lease amendment and vesting deed, logged by Auditor&rsquo;s File No.</div></div>
     </div>
-    <p class="srcnote">Excerpts from the BIC REA comprehensive title report delivered January 2026 for a solar project in Grant County, Washington &mdash; the report Pinson has reviewed in full. Client, project, parcel number, and lease counterparties withheld; recorded instruments omitted from the sample. Shared with the client&rsquo;s authorization. <span class="ph">[CLIENT REFERENCE &mdash; PENDING CONSENT]</span></p>
+    <p class="srcnote">Excerpts from the BIC REA comprehensive title report delivered January 2026 for a solar project in Grant County, Washington &mdash; the report Pinson has reviewed in full. Client, project, parcel number, and lease counterparties withheld; recorded instruments omitted from the sample. Shared with the client&rsquo;s authorization.</p>
     <div class="fill"></div>
   </div>
   <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">Sample Work &middot; Grant County, WA &nbsp;&middot;&nbsp; 06</span><br>Prepared for Pinson Land Services</div></div>
@@ -246,7 +246,7 @@
     <div class="titleblock" style="margin-top:42px;"><div class="kicker">Built to drop into your workflow</div><h1>Your template, your platform, your cover page.</h1><p class="lede">We deliver in whatever form your title managers adopt fastest. Nothing has to be re-keyed.</p></div>
     <div style="height:30px"></div>
     <div class="three">
-      <div class="card"><div class="k">Pinson template</div><div class="kt">Runsheets and ownership reports in your format</div><div class="kb">Send us the template once; every deliverable comes back in it, white-label or co-branded.</div></div>
+      <div class="card"><div class="k">Pinson template</div><div class="kt">Runsheets and ownership reports in your format</div><div class="kb">Send us the template once; every deliverable comes back in it, white-label or&nbsp;co-branded.</div></div>
       <div class="card"><div class="k">Structured data</div><div class="kt">Excel / CSV, import-ready</div><div class="kb">Chain, interests, and curative items as structured rows for import into your project platform, Bridge&trade; included &mdash; one file per tract or one per&nbsp;project.</div></div>
       <div class="card"><div class="k">Review PDF</div><div class="kt">Hyperlinked source index</div><div class="kb">Each finding linked to the recorded instrument image, so your examiner verifies in one click. Copies of the recorded instruments ship with every&nbsp;report.</div></div>
     </div>
@@ -264,7 +264,7 @@
     <div class="team-cards">
       <div class="tcard"><div class="tname"><span class="dia">&#9674;</span>Senior examiners</div><div class="ttitle">Lead and sign off every report</div><div class="tbio">Chain-of-title work completed in 30+ states. Research led by a Florida-licensed private investigator and paralegal who applies investigative method to courthouse and public-record heirship and current-owner-of-record research. Where licensed investigative services are required outside Florida, we engage properly licensed local&nbsp;investigators.</div></div>
       <div class="tcard"><div class="tname"><span class="dia">&#9674;</span>Associate landmen</div><div class="ttitle">Deployable to any U.S. state</div><div class="tbio">Runsheet build-out, courthouse pulls, and instrument retrieval by vetted associate landmen through our contract network &mdash; in most cases people we have worked with before &mdash; sized to the county count and timeline. Retrieval only &mdash; examination and sign-off never leave the senior examiner. Named personnel and r&eacute;sum&eacute;s provided with each&nbsp;engagement.</div></div>
-      <div class="tcard"><div class="tname"><span class="dia">&#9674;</span>Second-examiner review</div><div class="ttitle">Independent of the preparer</div><div class="tbio">A second examiner who did not build the chain re&#8209;traces each finding to its recorded instrument, re&#8209;runs the undivided-interest math, and confirms every curative item is logged with its source. Documented in the engagement letter, not just promised here. On files Sandra prepares, <span class="ph">[ROLE / CREDENTIAL]</span> serves as second examiner.</div></div>
+      <div class="tcard"><div class="tname"><span class="dia">&#9674;</span>Second examiner</div><div class="ttitle">Independent of the preparer</div><div class="tbio">A second examiner who did not build the chain re&#8209;traces each finding to its recorded instrument, re&#8209;runs the undivided-interest math, and confirms every curative item is logged with its source. Named in the engagement letter, not just promised here.</div></div>
     </div>
     <div class="fill"></div>
   </div>
@@ -274,18 +274,18 @@
 <section class="slide">
   <div class="pad">
     <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Capacity, Turnaround &amp; Pricing</div></div>
-    <div class="titleblock" style="margin-top:42px;"><div class="kicker">Numbers you can plan a campaign around</div><h1>Standing capacity, a surge tier, and per-tract pricing.</h1></div>
+    <div class="titleblock" style="margin-top:42px;"><div class="kicker">Terms you can plan a campaign around</div><h1>Fixed turnaround, a surge tier, and per-tract pricing.</h1></div>
     <div style="height:30px"></div>
     <div class="stats">
-      <div class="stat"><div class="v"><span class="ph">[N]</span></div><div class="l">Tracts per week, standing capacity</div></div>
-      <div class="stat"><div class="v"><span class="ph">[N]&times;</span></div><div class="l">Surge within 10 business days by activating pre&#8209;vetted associates</div></div>
-      <div class="stat"><div class="v">7&ndash;14</div><div class="l">Business days, single tract, sovereignty forward; multi-tract scoped by phase</div></div>
-      <div class="stat"><div class="v">1 day</div><div class="l">Response from your named contact; same-day escalation on closing-critical items</div></div>
+      <div class="stat"><div class="v">2</div><div class="l">Examiners on every report: preparer plus independent&nbsp;reviewer</div></div>
+      <div class="stat"><div class="v">30</div><div class="l">Days of post-delivery Q&amp;A on every report, included</div></div>
+      <div class="stat"><div class="v">7&ndash;14</div><div class="l">Business days, single tract from sovereignty; multi-tract by&nbsp;phase</div></div>
+      <div class="stat"><div class="v">1 day</div><div class="l">Response from your named contact; same-day when closing&#8209;critical</div></div>
     </div>
     <div style="height:30px"></div>
     <div class="two">
-      <div class="card"><div class="k">Pricing</div><div class="kt">Fixed per tract, quoted per project</div><div class="kb">Per-tract or per-section fixed fee set at scope, with a stated day-rate fallback for anomalous chains agreed in advance &mdash; no hourly surprises. Scope, fee, and delivery dates in writing before work begins; scope changes priced before the work, not after. Courthouse travel and copy costs stated in the quote, never billed after.</div></div>
-      <div class="card"><div class="k">Coverage</div><div class="kt">Insurance and confidentiality</div><div class="kb">Professional liability (E&amp;O) <span class="ph">[$ LIMIT]</span> &middot; General liability <span class="ph">[$ LIMIT]</span> &middot; certificates provided with the engagement. Mutual NDA; non-circumvention covering Pinson-introduced developers for the term plus <span class="ph">[12–24]</span> months; work product is yours and your client&rsquo;s; methodology and templates stay with BIC REA.</div></div>
+      <div class="card"><div class="k">Pricing</div><div class="kt">Fixed per tract, quoted per project</div><div class="kb">Per-tract or per-section fixed fee set at scope, with a day-rate fallback for anomalous chains agreed in advance &mdash; no hourly surprises. Standing weekly capacity and a surge tier (pre&#8209;vetted associates, live within ten business days) are written into the MSA. Scope changes priced before the work; courthouse travel and copy costs stated in the quote.</div></div>
+      <div class="card"><div class="k">Coverage</div><div class="kt">Insurance and confidentiality</div><div class="kb">Professional liability (E&amp;O) and general liability in force; certificates of insurance provided with the engagement. Mutual NDA; non-circumvention covering Pinson-introduced developers for the term plus a tail period fixed in the MSA; work product is yours and your client&rsquo;s; methodology and templates stay with BIC REA.</div></div>
     </div>
     <div class="fill"></div>
   </div>
@@ -298,11 +298,11 @@
     <div class="titleblock" style="margin-top:42px;"><div class="kicker">Fixed fee, real tracts, your template</div><h1>Ten to twenty tracts on a live Pinson renewable project.</h1><p class="lede">Fixed fee, fifteen business days, delivered in your template with the second-examiner review and the hyperlinked source index. If your title managers can adopt it without rework, we scale from there.</p></div>
     <div style="height:22px"></div>
     <div class="steps" style="grid-template-columns:repeat(3,1fr);">
-      <div class="step"><div class="n">1</div><div class="st">You pick the tracts</div><div class="kb" style="margin-top:8px;">10&ndash;20 tracts in <span class="ph">[STATE / COUNTY]</span> from an active project. Scope, format, and per-tract fee confirmed in writing within two business&nbsp;days.</div></div>
-      <div class="step"><div class="n">2</div><div class="st">We deliver by phase</div><div class="kb" style="margin-top:8px;">Findings reach your title manager as each batch clears second-examiner review &mdash; not at the end. Fifteen business days to completion.</div></div>
-      <div class="step"><div class="n">3</div><div class="st">You decide</div><div class="kb" style="margin-top:8px;">Walk-through with your examiner, then a plain conversation about scaling: standing capacity, surge terms, rush pricing, and an MSA.</div></div>
+      <div class="step"><div class="n">1</div><div class="st">You pick the tracts</div><div class="kb" style="margin-top:8px;">10&ndash;20 tracts you choose from an active project, in any state you work. Scope, format, and per-tract fee confirmed in writing within two business&nbsp;days.</div></div>
+      <div class="step"><div class="n">2</div><div class="st">We deliver by phase</div><div class="kb" style="margin-top:8px;">Findings reach your title manager as each batch clears second-examiner review &mdash; not at the end. Fifteen business days to&nbsp;completion.</div></div>
+      <div class="step"><div class="n">3</div><div class="st">You decide</div><div class="kb" style="margin-top:8px;">Walk-through with your examiner, then a plain conversation about scaling: standing capacity, surge terms, rush pricing, and an&nbsp;MSA.</div></div>
     </div>
-    <div class="note" style="margin-top:22px;"><span class="dia">&#9674;</span>Pilot fee: <span class="ph">[$ FIXED]</span> for up to 20 tracts, inclusive of recorded-document retrieval. Credited against the first month of an MSA if we proceed.</div>
+    <div class="note" style="margin-top:22px;"><span class="dia">&#9674;</span>Pilot fee fixed in writing before work begins, inclusive of recorded-document retrieval, and credited against the first month of an MSA if we proceed.</div>
     <div class="fill"></div>
   </div>
   <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">Proposed Pilot &nbsp;&middot;&nbsp; 10</span><br>Prepared for Pinson Land Services</div></div>
@@ -312,10 +312,10 @@
   <div class="pad">
     <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Your Contacts at BIC REA</div></div>
     <div class="titleblock" style="margin-top:42px;"><div class="kicker">Have a project in mind?</div><h1>Principals on your account &mdash; from scope to delivery.</h1><p class="lede">Christian and Sandra stay close to the engagement from day one, supported by the research team described on slide 8. Reach either directly for a scope and a per-tract quote.</p></div>
-    <div style="height:19px"></div>
+    <div style="height:10px"></div>
     <div class="team-cards">
       <div class="tcard"><div class="tname"><span class="dia">&#9674;</span>Christian Hickey</div><div class="ttitle">Chief Executive Officer</div><div class="tbio">Christian owns the commercial side of every engagement &mdash; scope, the delivery dates fixed in the engagement letter, pricing, and the MSA &mdash; and is the principal your title manager escalates to on closing-critical items.</div><div class="tcontact"><div class="tc"><span class="ic">&#9993;</span>christian.hickey@bicrea.com</div><div class="tc"><span class="ic">&#9742;</span>+1 (805) 233-2942 <span class="dim">&nbsp;&middot;&nbsp; direct line</span></div></div></div>
-      <div class="tcard"><div class="tname"><span class="dia">&#9674;</span>Sandra Petkov</div><div class="ttitle">Chief Operating Officer &middot; Licensed Private Investigator (FL) &middot; Paralegal</div><div class="tbio">Sandra leads the chain-of-title analysis and heirship research and directs the associate landmen on every engagement, with chain-of-title work completed in 30+ states. She is the examiner your title managers will be on the phone with at delivery.</div><div class="tcontact"><div class="tc"><span class="ic">&#9993;</span>sandra.petkov@bicrea.com</div><div class="tc"><span class="ic">&#9742;</span>+1 (310) 963-1569 <span class="dim">&nbsp;&middot;&nbsp; main line</span></div></div></div>
+      <div class="tcard"><div class="tname"><span class="dia">&#9674;</span>Sandra Petkov</div><div class="ttitle">COO &middot; Licensed Private Investigator (FL) &middot; Paralegal</div><div class="tbio">Sandra leads the chain-of-title analysis and heirship research and directs the associate landmen on every engagement, with chain-of-title work completed in 30+ states. She is the examiner your title managers will be on the phone with at delivery.</div><div class="tcontact"><div class="tc"><span class="ic">&#9993;</span>sandra.petkov@bicrea.com</div><div class="tc"><span class="ic">&#9742;</span>+1 (310) 963-1569 <span class="dim">&nbsp;&middot;&nbsp; main line</span></div></div></div>
     </div>
     <div class="fill"></div>
   </div>
