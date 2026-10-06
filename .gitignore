@@ -4,3 +4,4 @@ dist/
 
 # Local dev dependency (nodemailer test install)
 node_modules/
+.DS_Store
