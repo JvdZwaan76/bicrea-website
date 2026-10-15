@@ -1,326 +1,320 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>BIC REA LLC — Mineral Title Research for Renewable Sites — Partner Capabilities</title>
-<meta name="author" content="BIC REA LLC">
-<meta name="description" content="Capabilities overview: mineral and severed-mineral title research for renewable-energy sites — partner capabilities for land services firms.">
-<meta name="keywords" content="mineral title research, chain of title, oil and gas, runsheet, curative, second-examiner review, BIC REA LLC, Sarasota">
-<meta name="dcterms.created" content="2026-10-06">
+<!doctype html>
+<html><head><meta charset="utf-8"><title>BIC REA LLC — Partner Capabilities — Pinson Land Services</title>
 <style>
-  @page { size: 1280px 720px; margin: 0; }
-  :root{
-    --bg:#0a0a0a; --card:#141414; --card2:#171717; --elev:#1e1e1e;
-    --ink:#f5f5f7; --body:rgba(245,245,247,0.82); --dim:rgba(245,245,247,0.62); --quiet:rgba(245,245,247,0.55);
-    --gold:#d4af37; --gold-bright:#f4d03f;
-    --line:rgba(255,255,255,0.08); --line-soft:rgba(255,255,255,0.05);
-    --gold-line:rgba(212,175,55,0.30); --gold-fill:rgba(212,175,55,0.055);
-    --serif:'Cinzel'; --sans:'Inter';
-  }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  html,body{ background:var(--bg); }
-  .slide{ position:relative; width:1280px; height:720px; overflow:hidden; background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.5; page-break-after:always; }
-  .slide:last-child{ page-break-after:auto; }
-  .slide::before{ content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(118deg, rgba(212,175,55,0.045) 0%, rgba(212,175,55,0) 36%), linear-gradient(300deg, rgba(255,255,255,0.018) 0%, rgba(255,255,255,0) 44%); pointer-events:none; }
-  .slide::after{ content:"\25CA"; position:absolute; right:-70px; bottom:-120px; z-index:0; font-family:var(--serif); font-size:420px; line-height:1; color:rgba(212,175,55,0.035); pointer-events:none; }
-  .pad{ position:absolute; left:84px; right:84px; top:58px; bottom:96px; z-index:1; }
-  .top{ display:flex; justify-content:space-between; align-items:center; }
-  .mark{ font-family:var(--serif); font-weight:700; letter-spacing:.15em; font-size:16px; color:var(--ink); white-space:nowrap; }
-  .mark .dia{ color:var(--gold); margin-right:10px; }
-  .tag{ font-family:var(--sans); font-weight:600; color:var(--gold); font-size:10.5px; letter-spacing:.28em; text-transform:uppercase; white-space:nowrap; margin-right:-.28em; }
-  .dia{ color:var(--gold); }
-  .foot{ position:absolute; left:84px; right:84px; bottom:42px; z-index:1; display:flex; justify-content:space-between; align-items:flex-end; }
-  .fmark{ font-family:var(--serif); font-weight:700; letter-spacing:.15em; font-size:11px; color:var(--dim); white-space:nowrap; }
-  .fmark .dia{ margin-right:8px; }
-  .fright{ text-align:right; font-family:var(--sans); font-weight:600; font-size:9.5px; letter-spacing:.20em; text-transform:uppercase; color:var(--quiet); line-height:1.7; white-space:nowrap; margin-right:-.20em; }
-  .fright .sec{ color:var(--dim); }
-  .kicker{ font-family:var(--sans); font-weight:600; color:var(--gold); font-size:11px; letter-spacing:.30em; text-transform:uppercase; }
-  h1{ font-family:var(--serif); font-weight:700; font-size:33px; line-height:1.18; letter-spacing:.030em; color:var(--ink); }
-  h1 .accent{ color:var(--gold); }
-  .lede{ color:var(--body); font-size:15.5px; line-height:1.6; max-width:920px; }
-  .titleblock .kicker{ margin-bottom:14px; }
-  .titleblock .lede{ margin-top:16px; }
-  .pills{ display:flex; align-items:center; gap:14px; flex-wrap:nowrap; }
-  .pill{ display:inline-flex; align-items:center; gap:9px; width:fit-content; white-space:nowrap; height:38px; padding:0 22px; border-radius:19px; background:rgba(212,175,55,0.12); font-size:13.5px; line-height:1; color:var(--body); }
-  .pill .dia{ color:var(--gold); font-size:12px; }
-  .pill.plain{ background:rgba(255,255,255,0.05); }
-  .card{ background:var(--card2); border:1px solid var(--line); border-radius:16px; padding:33px 34px; }
-  .card.accent{ position:relative; } .card.accent::before{ content:""; position:absolute; left:0; top:30px; bottom:30px; width:2px; background:linear-gradient(180deg,var(--gold),rgba(212,175,55,0)); border-radius:2px; }
-  .cardlabel{ font-family:var(--sans); font-weight:600; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); }
-  .cardtitle{ font-family:var(--serif); font-weight:700; font-size:21px; color:var(--ink); margin-top:11px; letter-spacing:.024em; }
-  .cardbody{ color:var(--dim); font-size:14px; line-height:1.62; margin-top:12px; }
-  .rows{ display:flex; flex-direction:column; }
-  .row{ display:flex; gap:18px; align-items:flex-start; padding:10px 0; border-top:1px solid var(--line-soft); }
-  .row:first-child{ border-top:0; }
-  .row .rd{ color:var(--gold); font-size:18px; line-height:1.3; flex:0 0 auto; }
-  .row h3{ font-family:var(--serif); font-weight:700; font-size:18px; color:var(--ink); letter-spacing:.01em; }
-  .row p{ color:var(--dim); font-size:14.5px; line-height:1.6; margin-top:6px; max-width:960px; }
-  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:26px; }
-  .step{ border:1px solid var(--line); background:var(--card2); border-radius:16px; padding:33px 34px; }
-  .step .n{ font-family:var(--serif); font-weight:700; font-size:14px; color:var(--gold); border:1px solid var(--gold-line); background:var(--gold-fill); width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
-  .step .st{ margin-top:14px; font-family:var(--serif); font-weight:700; font-size:17px; letter-spacing:.02em; color:var(--ink); line-height:1.4; }
-  .note{ background:var(--gold-fill); border:1px solid var(--gold-line); border-radius:12px; padding:16px 22px; color:var(--body); font-size:13.5px; line-height:1.62; }
-  .note .dia{ margin-right:9px; }
-  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:26px; }
-  .stat{ flex:0 0 auto; }
-  .stat .v{ font-family:var(--serif); font-weight:700; font-size:50px; color:var(--gold); line-height:1; letter-spacing:.022em; }
-  .stat .l{ color:var(--body); font-size:13.5px; letter-spacing:.02em; line-height:1.45; margin-top:12px; max-width:250px; }
-  .dgrid{ display:grid; grid-template-columns:1fr 1fr; gap:26px 44px; }
-  .ditem{ display:flex; gap:13px; align-items:flex-start; }
-  .ditem .dd{ color:var(--gold); font-size:14px; line-height:1.4; flex:0 0 auto; }
-  .ditem .dt{ font-family:var(--sans); font-weight:600; font-size:14.5px; color:var(--ink); }
-  .ditem .dp{ color:var(--dim); font-size:13px; line-height:1.5; margin-top:3px; }
-  .split{ display:flex; gap:44px; align-items:center; }
-  .split .l{ flex:1; } .split .r{ flex:1; }
-  .bullets{ display:flex; flex-direction:column; gap:20px; }
-  .bullet{ display:flex; gap:14px; align-items:flex-start; }
-  .bullet .bd{ color:var(--gold); font-size:15px; line-height:1.4; flex:0 0 auto; }
-  .bullet .bt{ color:var(--body); font-size:15.5px; line-height:1.5; }
-  .mock{ background:linear-gradient(180deg,#151515,#101010); border:1px solid var(--line); border-radius:16px; padding:13px; }
-  .mockbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:7px; }
-  .mocktitle{ font-family:var(--sans); font-weight:600; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); }
-  .mocktags{ display:flex; gap:8px; }
-  .mtag .dia{ }
-  .mtag{ display:inline-flex; align-items:center; height:22px; padding:0 12px; border-radius:11px; background:rgba(212,175,55,0.14); font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--gold); line-height:1; white-space:nowrap; }
-  .mgrid{ display:grid; grid-template-columns:1fr 1fr; gap:6px; }
-  .mtile{ background:var(--card2); border:1px solid var(--line); border-radius:11px; padding:9px 13px; }
-  .mtile .mv{ font-family:var(--serif); font-weight:700; font-size:21px; color:var(--ink); letter-spacing:.02em; }
-  .mtile .ml{ font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--quiet); margin-top:3px; }
-  .mproj{ margin-top:7px; background:var(--card2); border:1px solid var(--line); border-radius:11px; padding:10px 12px; }
-  .mproj .pt{ font-family:var(--sans); font-weight:600; font-size:13px; color:var(--ink); }
-  .mproj .pm{ font-size:11px; color:var(--dim); margin-top:4px; }
-  .pbar{ height:7px; background:rgba(255,255,255,0.09); border-radius:4px; margin-top:8px; overflow:hidden; }
-  .pbar > span{ display:block; height:100%; width:70%; background:linear-gradient(90deg,var(--gold),var(--gold-bright)); }
-  .mocknote{ font-size:10.5px; color:var(--quiet); font-style:italic; margin-top:7px; }
-  .asteps{ display:flex; flex-direction:column; gap:18px; }
-  .astep{ display:flex; gap:16px; align-items:flex-start; }
-  .astep .an{ font-family:var(--serif); font-weight:700; font-size:14px; color:var(--gold); border:1px solid var(--gold-line); background:var(--gold-fill); min-width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex:0 0 auto; }
-  .astep .at{ font-family:var(--sans); font-weight:600; font-size:15px; color:var(--ink); }
-  .astep .ap{ color:var(--dim); font-size:13.5px; line-height:1.55; margin-top:3px; }
-  .creds{ background:var(--card2); border:1px solid var(--gold-line); border-radius:16px; padding:24px 26px; }
-  .creds h4{ font-family:var(--sans); font-weight:600; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
-  .credrow{ display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid var(--line-soft); font-size:13.5px; }
-  .credrow:last-child{ border-bottom:0; }
-  .credrow .ck{ color:var(--quiet); letter-spacing:.12em; text-transform:uppercase; font-size:10.5px; }
-  .credrow .cvv{ font-family:var(--sans); font-weight:500; color:var(--ink); }
-  .quote{ border-left:2px solid var(--gold); padding-left:24px; }
-  .quote p{ font-family:var(--serif); font-weight:400; font-style:italic; font-size:18px; line-height:1.52; color:var(--body); }
-  .quote .qa{ color:var(--dim); font-size:12px; line-height:1.55; margin-top:14px; max-width:960px; }
-  .team-cards{ display:flex; gap:26px; }
-  .tcard{ flex:1; background:var(--card2); border:1px solid var(--line); border-radius:16px; padding:33px 34px; position:relative; }
-  .tcard::before{ content:""; position:absolute; left:0; top:33px; bottom:33px; width:2px; background:linear-gradient(180deg,var(--gold),rgba(212,175,55,0)); border-radius:2px; }
-  .tname{ font-family:var(--serif); font-weight:700; font-size:22px; color:var(--ink); letter-spacing:.024em; }
-  .tname .dia{ margin-right:11px; }
-  .ttitle{ font-family:var(--sans); font-weight:600; color:var(--gold-bright); font-size:14px; letter-spacing:.02em; margin-top:8px; }
-  .tbio{ color:var(--dim); font-size:14px; line-height:1.62; margin-top:16px; }
-  .tcontact{ margin-top:14px; padding-top:12px; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:9px; }
-  .tc{ font-size:14px; color:var(--ink); display:flex; align-items:center; }
-  .tc .ic{ color:var(--gold); width:26px; flex:0 0 auto; }
-  .tc .dim{ color:var(--quiet); }
-  .fill{ flex:1 1 auto; }
+@font-face{font-family:Cinzel;src:local("Cinzel"),local("Cinzel Regular"),url(cinzel-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:Cinzel;src:local("Cinzel Bold"),local("Cinzel-Bold"),url(cinzel-latin-700-normal.woff2);font-weight:700}
+@page{size:1280px 720px;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#d4af37;--gold-dim:#9e832b;--text:#cacacc;--muted:#878788;--card:#171717;--line:#262626;--white:#f4f2ec}
+html,body{background:#0b0b0a}
+body{font-family:Inter,sans-serif;color:var(--text);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.slide{width:1280px;height:720px;position:relative;overflow:hidden;page-break-after:always;
+ background:linear-gradient(118deg,#14120c 0%,#0b0b0a 38%,#0b0b0a 70%,#0e0e0d 100%)}
+.slide:last-child{page-break-after:auto}
+.deco{position:absolute;right:-60px;bottom:-40px;width:300px;height:460px;opacity:.07}
+.brand{position:absolute;left:84px;top:58px;font-family:Cinzel;font-weight:700;font-size:16px;letter-spacing:.14em;color:var(--white)}
+.brand i,.fbrand i,.d{font-style:normal;color:var(--gold);font-family:Inter;font-weight:400}
+.brand i{margin-right:14px;font-size:13px}
+.section{position:absolute;right:84px;top:62px;font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--gold);text-transform:uppercase}
+.content{position:absolute;left:84px;right:84px;top:120px}
+.eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+h1{font-family:Cinzel;font-weight:700;font-size:31px;line-height:1.25;color:var(--white);letter-spacing:.02em}
+.lead{font-size:15px;line-height:1.65;color:var(--text);margin-top:16px;max-width:930px}
+.cards{display:grid;gap:26px;margin-top:26px}
+.c3{grid-template-columns:1fr 1fr 1fr}.c2{grid-template-columns:1fr 1fr}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:30px 30px 28px;position:relative}
+.card.acc::before{content:"";position:absolute;left:0;top:30px;bottom:60px;width:2px;background:linear-gradient(var(--gold),transparent)}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.24em;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
+h3{font-family:Cinzel;font-weight:700;font-size:17px;line-height:1.5;color:var(--white);margin-bottom:10px}
+.card p{font-size:13.6px;line-height:1.75;color:var(--muted)}
+.sub{font-size:13.6px;font-weight:600;color:#e6c44a;margin:-2px 0 14px}
+.banner{margin-top:22px;border:1px solid #4a3f17;background:linear-gradient(90deg,#1c180c,#121109);border-radius:12px;padding:16px 24px;font-size:13.6px;color:var(--text)}
+.banner .d{margin-right:10px}
+.disc{position:absolute;left:84px;right:84px;bottom:60px;font-size:10px;font-style:italic;color:#7d7d7e;letter-spacing:.01em}
+.fbrand{position:absolute;left:84px;bottom:28px;font-family:Cinzel;font-weight:700;font-size:12px;letter-spacing:.14em;color:#a99d7c}
+.fbrand i{margin-right:10px;font-size:10px}
+.fright{position:absolute;right:84px;bottom:22px;text-align:right;font-size:9.5px;font-weight:600;letter-spacing:.24em;color:#8a8a8b;line-height:1.75;text-transform:uppercase}
+.fright b{font-weight:600;color:#a5a5a6}
+/* cover */
+.cover h1{font-size:43px;line-height:1.24}
+.cover h1 span{color:var(--gold)}
+.pills{display:flex;gap:14px;margin-top:30px}
+.pill{background:#1d1a10;border-radius:22px;padding:11px 22px;font-size:13.6px;color:var(--text)}
+.pill .d{margin-right:10px;font-size:11px}
+/* list slide 3 */
+.items{margin-top:14px}
+.item{display:grid;grid-template-columns:30px 1fr;padding:13px 0;border-bottom:1px solid #1f1f1f}
+.item:last-child{border-bottom:0}
+.item .d{font-size:15px;padding-top:2px}
+.item h3{font-size:16px;margin-bottom:6px}
+.item p{font-size:13.6px;line-height:1.7;color:var(--muted);max-width:870px}
+/* samples */
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:22px 90px 0}
+.shot{border-radius:12px;overflow:hidden;background:#181818;border:1px solid var(--line);display:flex;flex-direction:column}
+.shot .img{height:330px;background:#fff;overflow:hidden}
+.shot img{width:100%;display:block}
+.shot .cap{background:#181818;padding:13px 16px 14px;min-height:68px;flex:1}
+.shot .cap .lbl{margin-bottom:6px;font-size:10.5px}
+.shot .cap p{font-size:12.6px;color:var(--text)}
+.note{text-align:center;font-size:11.2px;font-style:italic;color:#6f6f70;margin-top:14px;line-height:1.6}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:22px}
+.stat .n{font-family:Cinzel;font-weight:700;font-size:46px;color:var(--gold);line-height:1}
+.stat .n small{font-size:19px;margin-left:2px;color:var(--gold-dim)}
+.stat p{font-size:13.6px;line-height:1.55;margin-top:12px;color:var(--text)}
+/* companies */
+.grid5{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+.co{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:15px 16px;font-family:Cinzel;font-weight:700;font-size:14.5px;color:var(--white);display:flex;align-items:center;gap:10px}
+.co .d{font-size:11px}
+.states{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.st{border:1px solid #4a3f17;background:#15130b;border-radius:16px;padding:6px 14px;font-size:12.6px;font-weight:600;letter-spacing:.12em;color:#e6c44a}
+.people .card{padding:30px 34px}
+.people h3{font-size:20px;margin-bottom:8px}
+.contact{border-top:1px solid #2a2a2a;margin-top:18px;padding-top:16px;font-size:14px;color:var(--white);line-height:2}
+.contact .d{margin-right:14px}
+.contact em{font-style:normal;color:var(--muted)}
 
-  /* ---- finishing touches (enterprise typographic detail) ---- */
-  /* tabular, lining figures so every number aligns crisply */
-  .stat .v, .mtile .mv, .tc, .credrow .cvv, .fright, .mproj .pm, .step .n, .astep .an, .pill, .mproj .pt { font-variant-numeric: tabular-nums lining-nums; }
-  /* widow/orphan control — no lone words stranded on their own line */
-  .lede, .cardbody, .row p, .tbio, .astep .ap, .ditem .dp, .quote p, .quote .qa, .bullet .bt, .mproj .pm { orphans:2; widows:2; hyphens:manual; }
-  /* balanced multi-line headings where supported */
-  h1 { text-wrap:balance; }
-  /* refined kerning/ligatures on the serif display face */
-  .mark, .fmark, h1, .cardtitle, .tname, .stat .v, .mtile .mv, .quote p { font-feature-settings:"liga" 1,"kern" 1; }
-  .ph{ color:var(--gold-bright); background:rgba(244,208,63,0.12); padding:0 6px; border-radius:4px; white-space:nowrap; }
-  .disc{ position:absolute; left:84px; right:84px; bottom:84px; max-width:860px; font-size:10px; color:var(--quiet); font-style:italic; line-height:1.4; }
-  .samples{ display:flex; gap:26px; align-items:flex-start; justify-content:center; }
-  .sample{ flex:0 0 auto; display:flex; flex-direction:column; background:#141414; border-radius:10px; overflow:hidden; border:1px solid var(--line); box-shadow:0 10px 30px rgba(0,0,0,.45); position:relative; }
-  .sample .img{ height:330px; width:452px; background:#fff; overflow:hidden; }
-  .sample img{ display:block; height:100%; width:100%; object-fit:contain; object-position:top center; }
-  .srcnote{ margin-top:10px; max-width:1060px; margin-left:auto; margin-right:auto; font-size:11px; color:var(--quiet); font-style:italic; line-height:1.5; text-align:center; }
-  .sample .cap{ height:50px; background:#141414; border-top:1px solid var(--line); color:var(--body); font-size:11.5px; line-height:1.4; padding:8px 14px; display:flex; flex-direction:column; justify-content:center; }
-  .sample .cap b{ display:block; color:var(--gold); font-weight:600; letter-spacing:.14em; text-transform:uppercase; font-size:9.5px; margin-bottom:3px; }
-  .stamp{ position:absolute; top:6px; right:10px; background:var(--gold); color:#0a0a0a; font-weight:700; font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; padding:6px 14px; border-radius:4px; }
-  .two{ display:grid; grid-template-columns:1fr 1fr; gap:26px; }
-  .three{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:26px; }
-  .k{ font-family:var(--sans); font-weight:600; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); }
-  .kt{ font-family:var(--serif); font-weight:700; font-size:18px; color:var(--ink); margin-top:9px; letter-spacing:.02em; }
-  .kb{ color:var(--dim); font-size:13.5px; line-height:1.6; margin-top:9px; }
-</style>
-</head>
-<body>
+:root{--muted:#a3a3a4}
+.content{top:110px}
+.eyebrow{margin-bottom:14px}
+h1,h3{text-wrap:balance}
+.lead{text-wrap:pretty}
+.card p,.item p,.stat p,.shot .cap p,.note{text-wrap:pretty}
+.cards{margin-top:22px}
+.card{padding:26px 28px 24px}
+.card p{font-size:13.6px;line-height:1.7}
+.cards.eq h3{min-height:3em}
+.disc{font-size:10px;color:#8f8f90}
+.fright{font-size:10px;color:#9a9a9b}
+.note{color:#8f8f90;font-size:11.5px}
+.shots + .note{max-width:1000px;margin-left:auto;margin-right:auto}
+.shots{margin:20px 60px 0}
+.shot .img{height:296px;position:relative}
+.shot .img::after{content:"";position:absolute;left:0;right:0;bottom:0;height:40px;background:linear-gradient(rgba(255,255,255,0),#fff)}
+.stats{gap:26px;margin-top:18px}
+.grid5{display:flex;flex-wrap:wrap;gap:14px 12px;margin-top:16px}
+.co{flex:0 0 auto;padding:15px 22px}
+.states{margin-top:14px}
+.contact .d{display:inline-block;width:20px;margin-right:8px;text-align:center}
+.people .card{display:flex;flex-direction:column}.people .card p{margin-bottom:18px}.people .contact{margin-top:auto}
+</style></head><body>
 
-<section class="slide">
-  <div class="pad">
-    <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Partner Capabilities</div></div>
-    <div style="height:96px"></div>
-    <div class="kicker" style="margin-bottom:20px;">Prepared for Pinson Land Services &middot; October 2026</div>
-    <h1 style="font-size:44px; line-height:1.18; letter-spacing:.028em;">Mineral Title Research<br>for Renewable Sites,<br><span class="accent">Traced to the Recorded Instrument.</span></h1>
-    <p class="lede" style="margin-top:22px; max-width:900px;">Severed-mineral, heirship, and curative research that your title managers can fold straight into Pinson deliverables &mdash; built to the recording conventions of the state it covers, every finding indexed to its recorded instrument. You have seen the Grant County report. This is how we would do that work for you, tract after tract.</p>
-    <div class="pills" style="margin-top:32px;">
-      <div class="pill"><span class="dia">&#9674;</span>Principal-led, second-examiner-reviewed</div>
-      <div class="pill"><span class="dia">&#9674;</span>Courthouse research in any U.S. state</div>
-      <div class="pill"><span class="dia">&#9674;</span>White-label or co-branded</div>
-    </div>
-    <div class="fill"></div>
-  </div>
+<!-- ============ 01 COVER ============ -->
+<section class="slide cover">
+<svg class="deco" viewBox="0 0 300 460"><path d="M150 10 L290 230 L150 450 L10 230 Z" fill="none" stroke="#d4af37" stroke-width="22"/></svg>
+<div class="brand"><i>◊</i>BIC REA LLC</div><div class="section">Partner Capabilities</div>
+<div class="content" style="top:184px">
+ <div class="eyebrow" style="margin-bottom:26px">Prepared for Pinson Land Services · October 2026</div>
+ <h1>Mineral Title Research<br>for Renewable Sites,<br><span>Traced to the Recorded Instrument.</span></h1>
+ <p class="lead" style="margin-top:24px;font-size:15.5px">Severed-mineral, heirship, and curative research that your title managers can fold straight into Pinson deliverables — built to the recording conventions of the state it covers, every finding indexed to its recorded instrument.</p>
+ <div class="pills"><div class="pill"><span class="d">◊</span>Principal-led, second-examiner-reviewed</div><div class="pill"><span class="d">◊</span>Courthouse research in any U.S. state</div></div>
+</div>
 <div class="disc">BIC REA LLC is not a law firm and does not render legal advice, legal opinions, or title insurance. Reports are research deliverables for use by the client and its licensed counsel.</div>
-  <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">4360 Winners Circle, Sarasota, FL 34238 &nbsp;&middot;&nbsp; +1 (310) 963-1569 &nbsp;&middot;&nbsp; info@bicrea.com</span><br>Prepared for Pinson Land Services</div></div>
+<div class="fbrand"><i>◊</i>BIC REA LLC</div>
+<div class="fright"><b>4360 Winners Circle, Sarasota, FL 34238 &nbsp;·&nbsp; +1 (310) 963-1569 &nbsp;·&nbsp; info@bicrea.com</b><br>Prepared for Pinson Land Services</div>
 </section>
 
+<!-- ============ 02 ============ -->
 <section class="slide">
-  <div class="pad">
-    <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Why Severed Minerals Matter on Solar &amp; Wind</div></div>
-    <div class="titleblock" style="margin-top:30px;"><div class="kicker">The problem your developers bring you</div><h1>Severed-mineral owners can use the surface.<br>A solar array needs all of it.</h1><p class="lede">In most states a severed-mineral owner may use as much of the surface as is reasonably necessary to reach the minerals. Texas&rsquo;s El Paso Court of Appeals has held the accommodation doctrine governs solar-versus-mineral disputes (<em>Lyle&nbsp;v.&nbsp;Midway&nbsp;Solar</em>, 618 S.W.3d 857, Tex.&nbsp;App.&mdash;El&nbsp;Paso 2020, pet. denied). Title policies except severed minerals in Schedule&nbsp;B, and the array endorsements (ALTA&nbsp;35.3, 36.9) insure improvements, not mineral title &mdash; so underwriters want the severance search done first.</p></div>
-    <div style="height:18px"></div>
-    <div class="three">
-      <div class="card" style="padding:26px 30px;"><div class="k">What has to be found</div><div class="kt">Every severance, by depth and by product</div><div class="kb">Patent reservations, mineral deeds, fractional heirs, unreleased mineral mortgages, dormant interests &mdash; traced from sovereignty forward, not from the last vesting&nbsp;deed.</div></div>
-      <div class="card" style="padding:26px 30px;"><div class="k">What has to be documented</div><div class="kt">An index an underwriter can work from</div><div class="kb">Chain, fractions, and curative items tied to recorded instruments, so waivers go to the right owners. In <em>Lyle</em>, waivers from people with no interest in the tract clouded the true owners&rsquo; title.</div></div>
-      <div class="card" style="padding:26px 30px;"><div class="k">Where the time goes</div><div class="kt">Owner location</div><div class="kb">Surface-waiver campaigns routinely take the better part of a year &mdash; longer where heirs or dormant interests are involved. The research has to be front-loaded and the heirs found early &mdash; before the waiver campaign starts, not during it.</div></div>
-    </div>
-    <div class="fill"></div>
-  </div>
-  <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">Why Severed Minerals Matter on Solar &amp; Wind &nbsp;&middot;&nbsp; 02</span><br>Prepared for Pinson Land Services</div></div>
+<svg class="deco" viewBox="0 0 300 460"><path d="M150 10 L290 230 L150 450 L10 230 Z" fill="none" stroke="#d4af37" stroke-width="22"/></svg>
+<div class="brand"><i>◊</i>BIC REA LLC</div><div class="section">Why severed minerals matter on solar &amp; wind</div>
+<div class="content">
+ <div class="eyebrow">The problem your developers bring you</div>
+ <h1>Severed-mineral owners can use the surface.<br>A solar array needs all of it.</h1>
+ <p class="lead" style="font-size:14.2px;line-height:1.6;margin-top:12px">In most states a severed-mineral owner may use as much of the surface as is reasonably necessary to reach the minerals. Texas’s El Paso Court of Appeals has held the accommodation doctrine governs solar-versus-mineral disputes (<i>Lyle v. Midway Solar</i>, 618 S.W.3d 857, Tex. App.—El Paso 2020, pet. denied). Title policies except severed minerals in Schedule B, and the array endorsements (ALTA 35.3, 36.9) insure improvements, not mineral title — so underwriters want the severance search done first.</p>
+ <div class="cards c3">
+  <div class="card"><div class="lbl">What has to be found</div><h3>Every severance, by depth and by product</h3><p>Patent reservations, mineral deeds, fractional heirs, unreleased mineral mortgages, dormant interests — traced from sovereignty forward, not from the last vesting deed.</p></div>
+  <div class="card"><div class="lbl">What has to be documented</div><h3>An index an underwriter can work from</h3><p>Chain, fractions, and curative items tied to recorded instruments, so agreements go to the right owners. In <i>Lyle</i>, agreements signed by people with no interest in the tract clouded the true owners’ title.</p></div>
+  <div class="card"><div class="lbl">Where the time goes</div><h3>Owner location</h3><p>Most developers want signed agreements from the mineral owners giving up their right to use the surface before they build. Finding those owners can take the better part of a year — longer where heirs or long-dormant interests are involved — so the research has to be done first.</p></div>
+ </div>
+</div>
+<div class="disc">BIC REA LLC is not a law firm and does not render legal advice, legal opinions, or title insurance. Reports are research deliverables for use by the client and its licensed counsel.</div>
+<div class="fbrand"><i>◊</i>BIC REA LLC</div>
+<div class="fright"><b>Why severed minerals matter on solar &amp; wind &nbsp;·&nbsp; 02</b><br>Prepared for Pinson Land Services</div>
 </section>
 
+<!-- ============ 03 ============ -->
 <section class="slide">
-  <div class="pad">
-    <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Where BIC REA Fits</div></div>
-    <div class="titleblock" style="margin-top:22px;"><div class="kicker">A research bench behind your title managers</div><h1>You keep the client and the deliverable. We do the research behind it.</h1><p class="lede">Pinson&rsquo;s title managers set scope and own the relationship. BIC REA delivers the severed-mineral chain, heirship work, and curative identification in your template &mdash; white-label under Pinson&rsquo;s cover or co-branded, your call &mdash; with a non-circumvention agreement covering every developer you introduce. Use us where your bench is thin &mdash; renewables-heavy states, heirship-heavy tracts, or overflow when a campaign spikes.</p></div>
-    <div class="rows">
-      <div class="row"><div class="rd">&#9674;</div><div><h3>Severed-mineral chain, sovereignty to current</h3><p>Patent forward. Every reservation, mineral deed, and fractional conveyance logged with grantor, grantee, instrument, and recording data &mdash; the format you saw in the Grant County report.</p></div></div>
-      <div class="row"><div class="rd">&#9674;</div><div><h3>Heirship and owner location</h3><p>Probate, estate, and public-record tracing to current owners of record, led by a Florida-licensed private investigator and paralegal applying investigative method to courthouse research.</p></div></div>
-      <div class="row"><div class="rd">&#9674;</div><div><h3>Curative identification and dormant-mineral screening</h3><p>Each item sourced and categorized for your counsel&rsquo;s evaluation &mdash; including statutory cure paths where a state provides one &mdash; Washington&rsquo;s Extinguishment of Unused Mineral Rights statute (ch.&nbsp;78.22&nbsp;RCW), for example &mdash; flagged for&nbsp;counsel.</p></div></div>
-    </div>
-    <div class="fill"></div>
-  </div>
-  <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">Where BIC REA Fits &nbsp;&middot;&nbsp; 03</span><br>Prepared for Pinson Land Services</div></div>
+<svg class="deco" viewBox="0 0 300 460"><path d="M150 10 L290 230 L150 450 L10 230 Z" fill="none" stroke="#d4af37" stroke-width="22"/></svg>
+<div class="brand"><i>◊</i>BIC REA LLC</div><div class="section">Where BIC REA fits</div>
+<div class="content">
+ <div class="eyebrow">A research bench behind your title managers</div>
+ <h1>You keep the client and the deliverable.<br>We do the research behind it.</h1>
+ <p class="lead" style="margin-top:12px;font-size:14.2px;line-height:1.6">Pinson’s title managers set scope and own the relationship. BIC REA delivers the severed-mineral chain, heirship work, and curative identification in your template — white-label under Pinson’s cover or co-branded, your call — with a non-circumvention agreement covering every developer you introduce. Use us where your bench is thin — renewables-heavy states, heirship-heavy tracts, or overflow when a campaign spikes.</p>
+ <div class="items">
+  <div class="item" style="padding:9px 0"><span class="d">◊</span><div><h3>Severed-mineral chain, sovereignty to current</h3><p>Patent forward. Every reservation, mineral deed, and fractional conveyance logged with grantor, grantee, instrument, and recording data — the format you saw in the Grant County report.</p></div></div>
+  <div class="item" style="padding:9px 0"><span class="d">◊</span><div><h3>Heirship and owner location</h3><p>Probate, estate, and public-record tracing to current owners of record, led by a California-licensed private investigator and paralegal applying investigative methods to courthouse research.</p></div></div>
+  <div class="item" style="padding:9px 0"><span class="d">◊</span><div><h3>Curative identification and dormant-mineral screening</h3><p>Each item sourced and categorized for counsel’s evaluation, including statutory cure paths where a state provides one (for example, Washington’s Extinguishment of Unused Mineral Rights statute, ch. 78.22 RCW).</p></div></div>
+ </div>
+</div>
+<div class="disc">BIC REA LLC is not a law firm and does not render legal advice, legal opinions, or title insurance. Reports are research deliverables for use by the client and its licensed counsel.</div>
+<div class="fbrand"><i>◊</i>BIC REA LLC</div>
+<div class="fright"><b>Where BIC REA fits &nbsp;·&nbsp; 03</b><br>Prepared for Pinson Land Services</div>
 </section>
 
+<!-- ============ 04 ============ -->
 <section class="slide">
-  <div class="pad">
-    <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Scope of a BIC REA Mineral Title Report</div></div>
-    <div class="titleblock" style="margin-top:42px;"><div class="kicker">What is &mdash; and is not &mdash; in the report</div><h1>A documented analysis of the record,<br>built for your examiner.</h1></div>
-    <div style="height:14px"></div>
-    <div class="two">
-      <div class="card accent"><div class="k">It is</div><div class="kt">Research your counsel can build an&nbsp;opinion&nbsp;on</div><div class="kb">Current record ownership as reflected in the instruments examined &middot; surface and mineral estates separated &middot; undivided-interest fractions computed from the recorded language &middot; encumbrances, leases, and mining claims &middot; curative items identified, sourced, and categorized &middot; a source index so every finding traces to an instrument &middot; BLM and state records cross-referenced.</div></div>
-      <div class="card"><div class="k">It is not</div><div class="kt">A legal opinion, a certified abstract, or title&nbsp;insurance</div><div class="kb">Drilling, division-order, and acquisition opinions are issued by independent licensed counsel engaged directly by the client; we deliver our research in the form counsel needs. We do not issue certified abstracts in states that license abstracting. Off-record matters are outside the scope of records-based research.</div></div>
-    </div>
-    <div class="note" style="margin-top:16px;"><span class="dia">&#9674;</span>Every report carries a second-examiner review, independent of the preparer. Standard on every report &mdash; the detail is on slide 8.</div>
-    <div class="fill"></div>
-  </div>
-  <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">Scope of a BIC REA Mineral Title Report &nbsp;&middot;&nbsp; 04</span><br>Prepared for Pinson Land Services</div></div>
+<svg class="deco" viewBox="0 0 300 460"><path d="M150 10 L290 230 L150 450 L10 230 Z" fill="none" stroke="#d4af37" stroke-width="22"/></svg>
+<div class="brand"><i>◊</i>BIC REA LLC</div><div class="section">Scope of a BIC REA mineral title report</div>
+<div class="content">
+ <div class="eyebrow">What is — and is not — in the report</div>
+ <h1>A documented analysis of the record,<br>built for your examiner.</h1>
+ <div class="cards c2 eq">
+  <div class="card acc"><div class="lbl">It is</div><h3>Research counsel can build an opinion on</h3><p style="color:var(--text)">Current record ownership as reflected in the instruments examined · surface and mineral estates separated · undivided-interest fractions computed from the recorded language · encumbrances, leases, and mining claims · curative items identified, sourced, and categorized · a source index so every finding traces to an instrument · BLM and state records cross-referenced · GIS mapping included with every report.</p></div>
+  <div class="card"><div class="lbl">It is not</div><h3>A legal opinion, a certified abstract, or title insurance</h3><p>Drilling, division-order, and acquisition opinions are issued by independent licensed counsel engaged directly by the client; we deliver our research in the form counsel needs. Attorney title opinions are available upon request through independent licensed counsel. We do not issue certified abstracts in states that license abstracting. Off-record matters are outside the scope of records-based research.</p></div>
+ </div>
+ <div class="banner"><span class="d">◊</span>Every report carries a second-examiner review, independent of the preparer — details on slide 8.</div>
+</div>
+<div class="disc">BIC REA LLC is not a law firm and does not render legal advice, legal opinions, or title insurance. Reports are research deliverables for use by the client and its licensed counsel.</div>
+<div class="fbrand"><i>◊</i>BIC REA LLC</div>
+<div class="fright"><b>Scope of a BIC REA mineral title report &nbsp;·&nbsp; 04</b><br>Prepared for Pinson Land Services</div>
 </section>
 
+<!-- ============ 05 ============ -->
 <section class="slide">
-  <div class="pad">
-    <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Sample Work &middot; Grant County, WA</div></div>
-    <div class="titleblock" style="margin-top:34px;"><div class="kicker">The report you reviewed &mdash; delivered January 2026</div><h1>Branded cover and title remarks.</h1></div>
-    <div style="height:14px"></div>
-    <div class="samples">
-      <div class="sample"><div class="img"><img src="sample/sample-cover.png" alt="Cover page of the BIC REA sample title report, client and project withheld"></div><div class="cap"><b>Sample excerpt &middot; Cover</b>BIC REA letterhead; client, project, and parcel number withheld</div></div>
-      <div class="sample"><div class="img"><img src="sample/sample-remarks.png" alt="Title remarks excerpt from the sample report listing leases, claims, and easements tied to instruments"></div><div class="cap"><b>Sample excerpt &middot; Title Remarks</b>Leases, claims, easements &mdash; each tied to an instrument</div></div>
-    </div>
-    <p class="srcnote">Identifying details withheld; shared with the client&rsquo;s authorization. BIC REA LLC is not a law firm; reports are research deliverables for the client and its&nbsp;counsel.</p>
-    <div class="fill"></div>
-  </div>
-  <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">Sample Work &middot; Grant County, WA &nbsp;&middot;&nbsp; 05</span><br>Prepared for Pinson Land Services</div></div>
+<svg class="deco" viewBox="0 0 300 460"><path d="M150 10 L290 230 L150 450 L10 230 Z" fill="none" stroke="#d4af37" stroke-width="22"/></svg>
+<div class="brand"><i>◊</i>BIC REA LLC</div><div class="section">Sample work · Grant County, WA</div>
+<div class="content">
+ <div class="eyebrow">The report you reviewed — delivered January 2026</div>
+ <h1>Branded cover and title remarks.</h1>
+ <div class="shots">
+  <div class="shot"><div class="img"><img src="sample/sample-cover.png" alt="Cover page of the BIC REA sample title report, client and project withheld"></div><div class="cap"><div class="lbl">Sample excerpt · Cover</div><p>BIC REA letterhead; client, project, and parcel number withheld</p></div></div>
+  <div class="shot"><div class="img"><img src="sample/sample-remarks.png" alt="Title remarks excerpt from the sample report listing leases, claims, and easements tied to instruments"></div><div class="cap"><div class="lbl">Sample excerpt · Title remarks</div><p>Leases, claims, easements — each tied to an instrument</p></div></div>
+ </div>
+ <p class="note">Identifying details withheld; shared with the client’s authorization.</p>
+</div>
+<div class="disc">BIC REA LLC is not a law firm and does not render legal advice, legal opinions, or title insurance. Reports are research deliverables for use by the client and its licensed counsel.</div>
+<div class="fbrand"><i>◊</i>BIC REA LLC</div>
+<div class="fright"><b>Sample work · Grant County, WA &nbsp;·&nbsp; 05</b><br>Prepared for Pinson Land Services</div>
 </section>
 
+<!-- ============ 06 ============ -->
 <section class="slide">
-  <div class="pad">
-    <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Sample Work &middot; Grant County, WA</div></div>
-    <div class="titleblock" style="margin-top:34px;"><div class="kicker">Same report &mdash; from the 1908 patent to the 2024 solar lease amendment</div><h1>Chain of title and the leasehold layer.</h1></div>
-    <div style="height:14px"></div>
-    <div class="samples">
-      <div class="sample"><div class="img"><img src="sample/sample-chain.png" alt="Chain-of-title excerpt beginning with the 1908 patent"></div><div class="cap"><b>Sample excerpt &middot; Chain of Title</b>Patent (1908) forward: grantor, grantee, instrument, recording data, remarks</div></div>
-      <div class="sample"><div class="img"><img src="sample/sample-solar.png" alt="Chain-of-title excerpt showing the 2024 solar lease amendment and vesting deed"></div><div class="cap"><b>Sample excerpt &middot; Leasehold &amp; Vesting</b>Lease amendment and vesting deed, logged by Auditor&rsquo;s File No.</div></div>
-    </div>
-    <p class="srcnote">Excerpts from the BIC REA comprehensive title report delivered January 2026 for a solar project in Grant County, Washington &mdash; the report Pinson has reviewed. Client, project, parcel number, and lease counterparties withheld; recorded-instrument copies omitted from the sample copy only. Shared with the client&rsquo;s authorization.</p>
-    <div class="fill"></div>
-  </div>
-  <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">Sample Work &middot; Grant County, WA &nbsp;&middot;&nbsp; 06</span><br>Prepared for Pinson Land Services</div></div>
+<svg class="deco" viewBox="0 0 300 460"><path d="M150 10 L290 230 L150 450 L10 230 Z" fill="none" stroke="#d4af37" stroke-width="22"/></svg>
+<div class="brand"><i>◊</i>BIC REA LLC</div><div class="section">Sample work · Grant County, WA</div>
+<div class="content">
+ <div class="eyebrow">Same report — from the 1908 patent to the 2024 solar lease amendment</div>
+ <h1>Chain of title and the leasehold layer.</h1>
+ <div class="shots">
+  <div class="shot"><div class="img"><img src="sample/sample-chain.png" alt="Chain-of-title excerpt beginning with the 1908 patent"></div><div class="cap"><div class="lbl">Sample excerpt · Chain of title</div><p>Patent (1908) forward: grantor, grantee, instrument, recording data, remarks</p></div></div>
+  <div class="shot"><div class="img"><img src="sample/sample-solar.png" alt="Chain-of-title excerpt showing the 2024 solar lease amendment and vesting deed"></div><div class="cap"><div class="lbl">Sample excerpt · Leasehold &amp; vesting</div><p>Lease amendment and vesting deed, logged by Auditor’s File No.</p></div></div>
+ </div>
+ <p class="note">Excerpts from the BIC REA comprehensive title report delivered January 2026 for a solar project in Grant County, Washington — the report Pinson has reviewed. Client, project, parcel number, and lease counterparties withheld; recorded-instrument copies omitted from the sample copy only. Shared with the client’s authorization.</p>
+</div>
+<div class="disc">BIC REA LLC is not a law firm and does not render legal advice, legal opinions, or title insurance. Reports are research deliverables for use by the client and its licensed counsel.</div>
+<div class="fbrand"><i>◊</i>BIC REA LLC</div>
+<div class="fright"><b>Sample work · Grant County, WA &nbsp;·&nbsp; 06</b><br>Prepared for Pinson Land Services</div>
 </section>
 
+<!-- ============ 07 ============ -->
 <section class="slide">
-  <div class="pad">
-    <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Deliverable Formats</div></div>
-    <div class="titleblock" style="margin-top:42px;"><div class="kicker">Built to drop into your workflow</div><h1>Your template, your platform, your cover page.</h1><p class="lede">We deliver in whatever form your title managers adopt fastest. Nothing has to be re-keyed.</p></div>
-    <div style="height:30px"></div>
-    <div class="three">
-      <div class="card"><div class="k">Pinson template</div><div class="kt">Runsheets and ownership reports in your format</div><div class="kb">Send us the template once; every deliverable comes back in it, under your cover or&nbsp;ours.</div></div>
-      <div class="card"><div class="k">Structured data</div><div class="kt">Excel / CSV, import-ready</div><div class="kb">Chain, interests, and curative items as structured rows built to your platform&rsquo;s import template (Bridge&trade; or other), mapping confirmed at pilot&nbsp;scoping.</div></div>
-      <div class="card"><div class="k">Review PDF</div><div class="kt">Source index to every&nbsp;instrument</div><div class="kb">Each finding indexed to its recorded instrument, so your examiner verifies against the source, not our summary. Copies of the recorded instruments ship with every&nbsp;report.</div></div>
-    </div>
-    <div class="note" style="margin-top:30px;"><span class="dia">&#9674;</span>Post-delivery Q&amp;A for 30 days on each report, included. Walk-through call with your title manager on delivery.</div>
-    <div class="fill"></div>
-  </div>
-  <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">Deliverable Formats &nbsp;&middot;&nbsp; 07</span><br>Prepared for Pinson Land Services</div></div>
+<svg class="deco" viewBox="0 0 300 460"><path d="M150 10 L290 230 L150 450 L10 230 Z" fill="none" stroke="#d4af37" stroke-width="22"/></svg>
+<div class="brand"><i>◊</i>BIC REA LLC</div><div class="section">Deliverable formats</div>
+<div class="content">
+ <div class="eyebrow">Built to drop into your workflow</div>
+ <h1>Your template, your platform, your cover page.</h1>
+ <p class="lead">We deliver in whatever form your title managers adopt fastest. Nothing has to be re-keyed.</p>
+ <div class="cards c3 eq">
+  <div class="card"><div class="lbl">Pinson template</div><h3>Runsheets and ownership reports in your format</h3><p>Send us the template once; every deliverable comes back in it, under your cover or ours.</p></div>
+  <div class="card"><div class="lbl">Structured data</div><h3>Excel / CSV, import-ready</h3><p>Chain, interests, and curative items as structured rows built to your platform’s import template (Bridge™ or other), mapping confirmed at scoping.</p></div>
+  <div class="card"><div class="lbl">Review PDF</div><h3>Source index to every instrument</h3><p>Each finding indexed to its recorded instrument, so your examiner verifies against the source, not our summary. Copies of the recorded instruments ship with every report.</p></div>
+ </div>
+ <div class="banner"><span class="d">◊</span>Post-delivery Q&amp;A for 30 days on each report, included. Walk-through call with your title manager on delivery.</div>
+</div>
+<div class="disc">BIC REA LLC is not a law firm and does not render legal advice, legal opinions, or title insurance. Reports are research deliverables for use by the client and its licensed counsel.</div>
+<div class="fbrand"><i>◊</i>BIC REA LLC</div>
+<div class="fright"><b>Deliverable formats &nbsp;·&nbsp; 07</b><br>Prepared for Pinson Land Services</div>
 </section>
 
+<!-- ============ 08 ============ -->
 <section class="slide">
-  <div class="pad">
-    <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Team &amp; Review Model</div></div>
-    <div class="titleblock" style="margin-top:42px;"><div class="kicker">Who does the work</div><h1>A senior examiner on every file; associates under her&nbsp;direction; a second set of eyes before anything ships.</h1></div>
-    <div style="height:20px"></div>
-    <div class="team-cards">
-      <div class="tcard"><div class="tname"><span class="dia">&#9674;</span>Senior examiner</div><div class="ttitle">Leads and signs off on every report</div><div class="tbio">Chain-of-title work completed in 30+ states. Research led by a Florida-licensed private investigator and paralegal who applies investigative method to courthouse and public-record heirship and current-owner-of-record tracing. Where licensed investigative services are required outside Florida, we engage properly licensed local&nbsp;investigators.</div></div>
-      <div class="tcard"><div class="tname"><span class="dia">&#9674;</span>Associate landmen</div><div class="ttitle">Courthouse work in any U.S. state</div><div class="tbio">Index searches, runsheet drafting, and instrument retrieval by vetted associate landmen from our contract network &mdash; in most cases people we have worked with before &mdash; sized to the county count and timeline. Chain examination, interest calculation, and sign-off never leave the senior examiner. Named personnel and r&eacute;sum&eacute;s provided with each&nbsp;engagement.</div></div>
-      <div class="tcard"><div class="tname"><span class="dia">&#9674;</span>Second examiner</div><div class="ttitle">Independent of the preparer</div><div class="tbio">A second examiner who did not build the chain re&#8209;traces each finding to its recorded instrument, re&#8209;runs the undivided-interest math, and confirms every curative item is logged with its source. Named in the engagement letter, not just promised here.</div></div>
-    </div>
-    <div class="fill"></div>
-  </div>
-  <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">Team &amp; Review Model &nbsp;&middot;&nbsp; 08</span><br>Prepared for Pinson Land Services</div></div>
+<svg class="deco" viewBox="0 0 300 460"><path d="M150 10 L290 230 L150 450 L10 230 Z" fill="none" stroke="#d4af37" stroke-width="22"/></svg>
+<div class="brand"><i>◊</i>BIC REA LLC</div><div class="section">Team &amp; review model</div>
+<div class="content">
+ <div class="eyebrow">Who does the work</div>
+ <h1>A senior examiner on every file; landmen under<br>her direction; a second set of eyes before anything ships.</h1>
+ <div class="cards c3">
+  <div class="card acc"><h3 style="font-size:18px;margin-bottom:4px"><span class="d" style="margin-right:10px">◊</span>Senior examiner</h3><div class="sub">Leads and signs off on every report</div><p>Chain-of-title work completed in 30+ states. Research led by a California-licensed private investigator and paralegal who applies investigative methods to courthouse and public-record heirship and current-owner-of-record tracing. Where licensed investigative services are required outside California, we engage properly licensed local investigators.</p></div>
+  <div class="card acc"><h3 style="font-size:18px;margin-bottom:4px"><span class="d" style="margin-right:10px">◊</span>Landmen</h3><div class="sub">Courthouse work in any U.S. state</div><p>Index searches, runsheet drafting, and instrument retrieval by our full-time landmen, supplemented by vetted contract landmen — in most cases people we have worked with before — sized to the county count and timeline. Chain examination, interest calculation, and sign-off never leave the senior examiner. Named personnel provided with each engagement.</p></div>
+  <div class="card acc"><h3 style="font-size:18px;margin-bottom:4px"><span class="d" style="margin-right:10px">◊</span>Second examiner</h3><div class="sub">Independent of the preparer</div><p>A second examiner who did not build the chain re‑traces each finding to its recorded instrument, re‑runs the undivided-interest math, and confirms every curative item is logged with its source. Named in the engagement letter, not just promised here.</p></div>
+ </div>
+ <div class="banner"><span class="d">◊</span><b style="color:var(--white);font-weight:600">4 full-time landmen</b> available for any project, and we are adding more — plus <b style="color:var(--white);font-weight:600">at least 3 additional landmen</b> available on a contract, per-project basis.</div>
+</div>
+<div class="disc">BIC REA LLC is not a law firm and does not render legal advice, legal opinions, or title insurance. Reports are research deliverables for use by the client and its licensed counsel.</div>
+<div class="fbrand"><i>◊</i>BIC REA LLC</div>
+<div class="fright"><b>Team &amp; review model &nbsp;·&nbsp; 08</b><br>Prepared for Pinson Land Services</div>
 </section>
 
+<!-- ============ 09 NEW: LANDMAN EXPERIENCE ============ -->
 <section class="slide">
-  <div class="pad">
-    <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Capacity, Turnaround &amp; Pricing</div></div>
-    <div class="titleblock" style="margin-top:42px;"><div class="kicker">Terms you can plan a campaign around</div><h1>Quoted turnaround, a surge tier, and per-tract pricing.</h1></div>
-    <div style="height:20px"></div>
-    <div class="stats">
-      <div class="stat"><div class="v">2</div><div class="l">Examiners on every report: preparer plus independent&nbsp;reviewer</div></div>
-      <div class="stat"><div class="v">30</div><div class="l">Days of post-delivery Q&amp;A on every report, included</div></div>
-      <div class="stat"><div class="v">7&ndash;14</div><div class="l">Business days, single tract from sovereignty; multi-tract by&nbsp;phase</div></div>
-      <div class="stat"><div class="v">1</div><div class="l">Day response from your named contact; faster when closing&#8209;critical</div></div>
-    </div>
-    <div style="height:20px"></div>
-    <div class="two">
-      <div class="card"><div class="k">Pricing</div><div class="kt">Fixed per tract, quoted per project</div><div class="kb">Per-tract or per-section fixed fee set at scope. A pre-agreed day rate applies only after written notice and your approval when a chain exceeds the scoped instrument count &mdash; no hourly surprises. Capacity commitment and surge tier (reference-checked associates, live within 10 business days) written into the master services agreement (MSA). Scope changes priced before the work; travel and copy costs stated in the&nbsp;quote.</div></div>
-      <div class="card"><div class="k">Coverage</div><div class="kt">Insurance and confidentiality</div><div class="kb">Professional liability (E&amp;O) and general liability in force; certificates of insurance provided with the engagement. Mutual NDA and non-circumvention covering Pinson-introduced developers, signed with the pilot engagement letter and carried into the MSA with a tail period; work product is yours and your client&rsquo;s; methodology and templates stay with BIC&nbsp;REA.</div></div>
-    </div>
-    <div class="fill"></div>
-  </div>
-  <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">Capacity, Turnaround &amp; Pricing &nbsp;&middot;&nbsp; 09</span><br>Prepared for Pinson Land Services</div></div>
+<svg class="deco" viewBox="0 0 300 460"><path d="M150 10 L290 230 L150 450 L10 230 Z" fill="none" stroke="#d4af37" stroke-width="22"/></svg>
+<div class="brand"><i>◊</i>BIC REA LLC</div><div class="section">Landman experience</div>
+<div class="content">
+ <div class="eyebrow">Where our landmen have worked</div>
+ <h1>Landman experience across operators, developers,<br>and investors, in at least 14 states.</h1>
+ <div class="lbl" style="margin-top:34px;margin-bottom:0">Some companies our landmen have worked at or done work for</div>
+ <div class="grid5">
+  <div class="co"><span class="d">◊</span>NextEra Energy</div>
+  <div class="co"><span class="d">◊</span>Chevron</div>
+  <div class="co"><span class="d">◊</span>Occidental (Oxy)</div>
+  <div class="co"><span class="d">◊</span>Devon Energy</div>
+  <div class="co"><span class="d">◊</span>BPX Energy</div>
+  <div class="co"><span class="d">◊</span>Goldman Sachs</div>
+  <div class="co"><span class="d">◊</span>Aera Energy</div>
+  <div class="co"><span class="d">◊</span>Sinclair Oil</div>
+  <div class="co"><span class="d">◊</span>Quantum Resources</div>
+  <div class="co"><span class="d">◊</span>Frazier Oil</div>
+  <div class="co"><span class="d">◊</span>ABA Energy</div>
+ </div>
+ <div class="lbl" style="margin-top:34px;margin-bottom:0">Some jurisdictions our landmen have worked in</div>
+ <div class="states"><span class="st">CA</span><span class="st">WA</span><span class="st">OR</span><span class="st">MT</span><span class="st">ND</span><span class="st">MI</span><span class="st">TX</span><span class="st">NM</span><span class="st">WV</span><span class="st">OK</span><span class="st">WY</span><span class="st">CO</span><span class="st">OH</span><span class="st">PA</span></div>
+ <p class="note" style="text-align:left;margin-top:28px">Companies listed reflect prior work by individual BIC REA landmen and do not imply endorsement by, or a current relationship with, any company named.</p>
+</div>
+<div class="disc">BIC REA LLC is not a law firm and does not render legal advice, legal opinions, or title insurance. Reports are research deliverables for use by the client and its licensed counsel.</div>
+<div class="fbrand"><i>◊</i>BIC REA LLC</div>
+<div class="fright"><b>Landman experience &nbsp;·&nbsp; 09</b><br>Prepared for Pinson Land Services</div>
 </section>
 
+<!-- ============ 10 (old 9) ============ -->
 <section class="slide">
-  <div class="pad">
-    <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Proposed Pilot</div></div>
-    <div class="titleblock" style="margin-top:42px;"><div class="kicker">Fixed fee, real tracts, your template</div><h1>10&ndash;20 tracts on a live Pinson renewable project.</h1><p class="lede">Delivered in phases, in your template, with the second-examiner review and the source index; completion date fixed in writing at scoping. If your title managers can adopt it without rework, we scale from there.</p></div>
-    <div style="height:22px"></div>
-    <div class="steps" style="grid-template-columns:repeat(3,1fr);">
-      <div class="step"><div class="n">1</div><div class="st">You pick the tracts</div><div class="kb" style="margin-top:8px;">10&ndash;20 tracts you choose from an active project, in any state you work. Scope, format, and per-tract fee confirmed in writing within 2 business&nbsp;days.</div></div>
-      <div class="step"><div class="n">2</div><div class="st">We deliver by phase</div><div class="kb" style="margin-top:8px;">Findings reach your title manager as each batch clears second-examiner review &mdash; not at the end. Completion date fixed at&nbsp;scoping.</div></div>
-      <div class="step"><div class="n">3</div><div class="st">You decide</div><div class="kb" style="margin-top:8px;">Walk-through with your title manager, then a plain conversation about scaling: standing capacity, surge terms, rush pricing, and an&nbsp;MSA.</div></div>
-    </div>
-    <div class="note" style="margin-top:22px;"><span class="dia">&#9674;</span>Pilot fee fixed in writing before work begins, inclusive of recorded-instrument retrieval, and credited against the first month of an MSA if we proceed.</div>
-    <div class="fill"></div>
-  </div>
-  <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">Proposed Pilot &nbsp;&middot;&nbsp; 10</span><br>Prepared for Pinson Land Services</div></div>
+<svg class="deco" viewBox="0 0 300 460"><path d="M150 10 L290 230 L150 450 L10 230 Z" fill="none" stroke="#d4af37" stroke-width="22"/></svg>
+<div class="brand"><i>◊</i>BIC REA LLC</div><div class="section">Capacity &amp; pricing</div>
+<div class="content">
+ <div class="eyebrow">Published rates, written terms</div>
+ <h1>Two examiners, published day rates, terms in writing.</h1>
+ <div class="stats">
+  <div class="stat"><div class="n">2</div><p>Examiners on every report: preparer<br>plus independent reviewer</p></div>
+  <div class="stat"><div class="n">30</div><p>Days of post-delivery Q&amp;A on every<br>report, included</p></div>
+  <div class="stat"><div class="n">$485<small>/day</small></div><p>Senior landman<br>daily rate</p></div>
+  <div class="stat"><div class="n">$420<small>/day</small></div><p>Junior landman<br>daily rate</p></div>
+ </div>
+ <div class="cards c2">
+  <div class="card"><div class="lbl">Pricing</div><h3>Day rates, quoted per project</h3><p>Senior landman daily rate $485; junior landman daily rate $420. Each project is quoted from these rates at scope, and additional days beyond the scoped day count are billed only after written notice and your approval — no hourly surprises. Capacity commitment and surge tier (reference-checked contract landmen) written into the master services agreement (MSA). Scope changes priced before the work; travel and copy costs stated in the quote.</p></div>
+  <div class="card"><div class="lbl">Terms</div><h3>Confidentiality</h3><p>Mutual NDA and non-circumvention covering Pinson-introduced developers, signed with the engagement letter and carried into the MSA with a tail period; work product is yours and your client’s; methodology and templates stay with BIC REA.</p></div>
+ </div>
+</div>
+<div class="disc">BIC REA LLC is not a law firm and does not render legal advice, legal opinions, or title insurance. Reports are research deliverables for use by the client and its licensed counsel.</div>
+<div class="fbrand"><i>◊</i>BIC REA LLC</div>
+<div class="fright"><b>Capacity &amp; pricing &nbsp;·&nbsp; 10</b><br>Prepared for Pinson Land Services</div>
 </section>
 
+<!-- ============ 11 CONTACTS ============ -->
 <section class="slide">
-  <div class="pad">
-    <div class="top"><div class="mark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="tag">Your Contacts at BIC REA</div></div>
-    <div class="titleblock" style="margin-top:42px;"><div class="kicker">Have a project in mind?</div><h1>Principals on your account &mdash; from scope to delivery.</h1><p class="lede">Christian and Sandra stay close to the engagement from day one, supported by the research team described on slide 8. Reach either directly for a scope and a per-tract quote. BIC REA LLC, 4360 Winners Circle, Sarasota, FL 34238.</p></div>
-    <div style="height:20px"></div>
-    <div class="team-cards">
-      <div class="tcard"><div class="tname"><span class="dia">&#9674;</span>Christian Hickey</div><div class="ttitle">CEO</div><div class="tbio">Christian owns the commercial side of every engagement &mdash; scope, the delivery dates fixed in the engagement letter, pricing, and the MSA &mdash; and is the principal your title manager escalates to when a commercial or timing decision is needed.</div><div class="tcontact"><div class="tc"><span class="ic">&#9993;</span>christian.hickey@bicrea.com</div><div class="tc"><span class="ic">&#9742;</span>+1 (805) 233-2942 <span class="dim">&nbsp;&middot;&nbsp; direct line</span></div></div></div>
-      <div class="tcard"><div class="tname"><span class="dia">&#9674;</span>Sandra Petkov</div><div class="ttitle">COO &middot; Licensed Private Investigator (FL) &middot; Paralegal</div><div class="tbio">Sandra leads the chain-of-title analysis and heirship research and directs the associate landmen on every engagement, with title work completed in 30+ states. She is the examiner your title managers will be on the phone with at delivery.</div><div class="tcontact"><div class="tc"><span class="ic">&#9993;</span>sandra.petkov@bicrea.com</div><div class="tc"><span class="ic">&#9742;</span>+1 (310) 963-1569 <span class="dim">&nbsp;&middot;&nbsp; main line</span></div></div></div>
-    </div>
-    <div class="fill"></div>
-  </div>
-<div class="disc" style="max-width:none;">BIC REA LLC is not a law firm and does not render legal advice, legal opinions, or title insurance. Reports are research deliverables for use by the client and its licensed counsel. Full disclosures at bicrea.com/disclosures.</div>
-  <div class="foot"><div class="fmark"><span class="dia">&#9674;</span>BIC REA LLC</div><div class="fright"><span class="sec">Your Contacts at BIC REA &nbsp;&middot;&nbsp; 11</span><br>Prepared for Pinson Land Services</div></div>
+<svg class="deco" viewBox="0 0 300 460"><path d="M150 10 L290 230 L150 450 L10 230 Z" fill="none" stroke="#d4af37" stroke-width="22"/></svg>
+<div class="brand"><i>◊</i>BIC REA LLC</div><div class="section">Your contacts at BIC REA</div>
+<div class="content">
+ <div class="eyebrow">Have a project in mind?</div>
+ <h1>Principals on your account — from scope to delivery.</h1>
+ <p class="lead">Christian and Sandra stay close to the engagement from day one, supported by the research team described on slide 8.<br>Reach either directly for a scope and a quote. BIC REA LLC, 4360 Winners Circle, Sarasota, FL 34238.</p>
+ <div class="cards c2 people">
+  <div class="card acc"><h3><span class="d" style="margin-right:12px">◊</span>Christian Hickey</h3><div class="sub">CEO</div><p>Christian owns the commercial side of every engagement — scope, pricing, the engagement letter, and the MSA — and is the principal your title manager escalates to when a commercial decision is needed.</p>
+   <div class="contact"><span class="d">✉</span>christian.hickey@bicrea.com<br><span class="d">☎</span>+1 (805) 233-2942 <em>· direct line</em></div></div>
+  <div class="card acc"><h3><span class="d" style="margin-right:12px">◊</span>Sandra Petkov</h3><div class="sub">COO · Licensed Private Investigator (CA) · Paralegal</div><p>Sandra leads the chain-of-title analysis and heirship research and directs the landmen on every engagement, with title work completed in 30+ states. She is the examiner your title managers will be on the phone with at delivery.</p>
+   <div class="contact"><span class="d">✉</span>sandra.petkov@bicrea.com<br><span class="d">☎</span>+1 (310) 963-1569 <em>· main line</em></div></div>
+ </div>
+</div>
+<div class="disc">BIC REA LLC is not a law firm and does not render legal advice, legal opinions, or title insurance. Reports are research deliverables for use by the client and its licensed counsel. Full disclosures at bicrea.com/disclosures.</div>
+<div class="fbrand"><i>◊</i>BIC REA LLC</div>
+<div class="fright"><b>Your contacts at BIC REA &nbsp;·&nbsp; 11</b><br>Prepared for Pinson Land Services</div>
 </section>
-
-</body>
-</html>
+</body></html>
