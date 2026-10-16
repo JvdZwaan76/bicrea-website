@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-15",
+  "generated": "2026-10-16",
   "upcoming": [
     {
       "region": "Alaska",
@@ -126,9 +126,46 @@
       "states": [
         "Wyoming"
       ]
+    },
+    {
+      "region": "National",
+      "title": "BLM Announces December 2026 Sale of Oil and Gas Leases in Utah",
+      "link": "https://www.blm.gov/press-release/blm-announces-december-2026-sale-oil-and-gas-leases-utah",
+      "pubDate": "Thu, 15 Oct 2026 19:07:35 +0000",
+      "text": "SALT LAKE CITY – The Bureau of Land Management today announced an oil and gas lease sale scheduled for Dec. 17, 2026, to offer 43 oil and gas parcels totaling 74,550 acres in Utah. The BLM completed scoping on these parcels in July 2026 and held a public comment period that closed in September 2026 on the parcels and the related environmental analysis. A 30-day public protest period to receive additional public input opened today and will close Nov. 16, 2026. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets . The parcels BLM analyzed, as well as maps and instructions on how to submit a protest, are available on BLM’s ePlanning website at: https://eplanning.blm.gov/Project-Home/?id=E4A3C93E-E468-F111-A824-001DD8029ED0 .",
+      "bucket": "sale",
+      "sale_date": "2026-12-17",
+      "bid_deadline": null,
+      "states": [
+        "Utah"
+      ]
+    },
+    {
+      "region": "Utah",
+      "title": "BLM Announces December 2026 Sale of Oil and Gas Leases in Utah",
+      "link": "https://www.blm.gov/press-release/blm-announces-december-2026-sale-oil-and-gas-leases-utah",
+      "pubDate": "Thu, 15 Oct 2026 19:07:35 +0000",
+      "text": "SALT LAKE CITY – The Bureau of Land Management today announced an oil and gas lease sale scheduled for Dec. 17, 2026, to offer 43 oil and gas parcels totaling 74,550 acres in Utah. The BLM completed scoping on these parcels in July 2026 and held a public comment period that closed in September 2026 on the parcels and the related environmental analysis. A 30-day public protest period to receive additional public input opened today and will close Nov. 16, 2026. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets . The parcels BLM analyzed, as well as maps and instructions on how to submit a protest, are available on BLM’s ePlanning website at: https://eplanning.blm.gov/Project-Home/?id=E4A3C93E-E468-F111-A824-001DD8029ED0 .",
+      "bucket": "sale",
+      "sale_date": "2026-12-17",
+      "bid_deadline": null,
+      "states": [
+        "Utah"
+      ]
     }
   ],
   "pipeline": [
+    {
+      "region": "National",
+      "title": "BLM Announces December Sale of Oil and Gas Leases in Arizona",
+      "link": "https://www.blm.gov/press-release/blm-announces-december-sale-oil-and-gas-leases-arizona",
+      "pubDate": "Thu, 15 Oct 2026 16:44:55 +0000",
+      "text": "PHOENIX – The Bureau of Land Management today announced an oil and gas lease sale scheduled for Dec. 15, to offer 40 oil and gas parcels totaling 78,708 acres in Arizona.&nbsp; The BLM completed scoping on these parcels in June and held a public comment period that closed in September on the parcels and the related environmental analysis. A 30-day public protest period to receive additional public input opens Oct. 16 and will close Nov. 15.&nbsp; Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders.&nbsp; All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets .&nbsp; The parcels BLM analyzed, as well as maps and instructions on how to submit a protest, will be available on BLM’s ePlanning website at: https://eplanning.blm.gov/Project-Home/?id=C5F10790-8349-F111-88B4-001DD8084607 .&nbsp;",
+      "bucket": "pipeline",
+      "states": [
+        "Arizona"
+      ]
+    },
     {
       "region": "National",
       "title": "BLM Announces December Sale of Oil and Gas Leases in Nevada",
