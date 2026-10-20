@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-19",
+  "generated": "2026-10-20",
   "upcoming": [
     {
       "region": "Alaska",
@@ -346,20 +346,6 @@
       ]
     },
     {
-      "region": "Montana-Dakotas",
-      "title": "Record-breaking BLM oil and gas lease sale in the Dakotas generates over $44.3 million in revenue",
-      "link": "https://www.blm.gov/press-release/record-breaking-blm-oil-and-gas-lease-sale-dakotas-generates-over-443-million-revenue",
-      "pubDate": "Tue, 28 Apr 2026 22:02:47 +0000",
-      "text": "BILLINGS, Mont. – The Bureau of Land Management leased 23 parcels totaling 8,989 acres in North Dakota and South Dakota for $44,388,262 in total receipts during a quarterly oil and gas lease sale, setting a record for the highest revenue generated during a BLM Montana/Dakotas lease sale. Combined lease bonus bids and rentals are distributed between the federal government and state where parcels are located.&nbsp; This lease sale was conducted under the One Big Beautiful Bill Act , which resets the royalty rate for new federal onshore oil and gas production to a minimum of 12.5%, reversing the 16.67% rate set by the Inflation Reduction Act. By lowering the federal onshore royalty rate from 16.67% to 12.5%, the One Big Beautiful Bill Act reduces the cost of doing business on public lands, making oil and gas development more economically attractive to industry. This is expected to spur additional leasing and drilling activity, which in turn supports increased domestic energy production and strengthens U.S. energy security.&nbsp; Oil and gas lease sales support domestic energy production and American energy independence, while contributing to the nation’s economic and military security. Consistent with Executive Order 14154 , “Unleashing American Energy,” the BLM's lease sales help meet the energy needs of U.S. citizens and solidify the nation as a global energy leader long into the future.&nbsp; Leasing is the first step in the process to develop federal oil and gas resources. The BLM ensures oil and gas development meets the requirements set forth by the National Environmental Policy Act of 1969 and other applicable legal authorities.&nbsp; Oil and gas leases are awarded for a term of 10 years and as long thereafter as there is production of oil and gas in paying quantities. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System .&nbsp; BLM lease sales are held online through Efficient Markets . Results are available on the National Fluid Lease Sale System . After navigating to the page, filter to the sale, and select the action “View Sale Documents” to view the sale results.&nbsp;",
-      "bucket": "result",
-      "sale_date": null,
-      "states": [
-        "Montana",
-        "North Dakota",
-        "South Dakota"
-      ]
-    },
-    {
       "region": "Colorado",
       "title": "BLM Oil and Gas Lease Sales in Wyoming and Colorado Generate $87 Million in Revenue",
       "link": "https://www.blm.gov/press-release/blm-oil-and-gas-lease-sales-wyoming-and-colorado-generate-87-million-revenue",
@@ -447,6 +433,20 @@
       "sale_date": null,
       "states": [
         "Utah"
+      ]
+    },
+    {
+      "region": "Wyoming",
+      "title": "BLM Oil and Gas Lease Sales in Wyoming and Colorado Generate $87 Million in Revenue",
+      "link": "https://www.blm.gov/press-release/blm-oil-and-gas-lease-sales-wyoming-and-colorado-generate-87-million-revenue",
+      "pubDate": "Thu, 10 Sep 2026 21:33:28 +0000",
+      "text": "WASHINGTON — Demonstrating commitment to Unleashing American Energy in a transparent and balanced way that considers community needs, the Bureau of Land Management recently held two quarterly oil and gas lease sales in Wyoming and Colorado, to the tune of $87,280,361 in total revenue.&nbsp; In Wyoming, BLM leased 99 parcels totaling 114,389 acres for $82,404,165 in total receipts. In Colorado, BLM leased 29 parcels totaling 14,212 acres for $4,876,196 in total receipts. Combined lease bonus bids and rentals are distributed between the federal government and state where parcels are located.&nbsp; These lease sales were conducted under the Working Families Tax Cuts Act , which resets the royalty rate for new federal onshore oil and gas production to a minimum of 12.5%, reversing the 16.67% rate set by the Inflation Reduction Act. By lowering the federal onshore royalty rate from 16.67% to 12.5%, the Working Families Tax Cuts Act, also known as the One Big Beautiful Bill Act, reduces the cost of doing business on public lands, making oil and gas development more economically attractive to industry. This is expected to spur additional leasing and drilling activity, which in turn supports increased domestic energy production and strengthens U.S. energy security while protecting natural and cultural resources.&nbsp; Oil and gas lease sales support domestic energy production and American energy independence, while contributing to the nation’s economic and military security. Consistent with Executive Order 14154 , “Unleashing American Energy,” the BLM's lease sales help meet the energy needs of U.S. citizens and solidify the nation as a global energy leader long into the future.&nbsp; Leasing is the first step in the process to develop federal oil and gas resources. The BLM ensures oil and gas development meets the requirements set forth by the National Environmental Policy Act of 1969 and other applicable legal authorities.&nbsp; Oil and gas leases are awarded for a term of 10 years and as long thereafter as there is production of oil and gas in paying quantities. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System .&nbsp; BLM lease sales are held online through Efficient Markets . Results are available on the National Fluid Lease Sale System . After navigating to the page, filter to the sale, and select the action “View Sale Documents” to view the sale results.",
+      "bucket": "result",
+      "sale_date": null,
+      "states": [
+        "Colorado",
+        "Washington",
+        "Wyoming"
       ]
     }
   ]
