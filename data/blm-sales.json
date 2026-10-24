@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-23",
+  "generated": "2026-10-24",
   "upcoming": [
     {
       "region": "Alaska",
@@ -167,17 +167,6 @@
       ]
     },
     {
-      "region": "National",
-      "title": "BLM Announces December Sale of Oil and Gas Leases in Nevada",
-      "link": "https://www.blm.gov/press-release/blm-announces-december-sale-oil-and-gas-leases-nevada",
-      "pubDate": "Fri, 09 Oct 2026 16:40:03 +0000",
-      "text": "RENO, Nev.– The Bureau of Land Management today announced an oil and gas lease sale scheduled for&nbsp;Dec. 9 to offer&nbsp;three oil and gas parcels totaling 2,601 acres in&nbsp;Nevada. The BLM completed scoping on these parcels in&nbsp;June 2026 and held a public comment period that closed in&nbsp;September 2026&nbsp;on the parcels and the related environmental analysis. A 30-day public protest period to receive additional public input opened today and will close&nbsp;Nov. 8. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the&nbsp; National Fluid Lease Sale System . BLM lease sales are held online through&nbsp; Efficient Markets . The parcels BLM analyzed, as well as maps and instructions on how to submit a protest, are available on BLM’s ePlanning website .",
-      "bucket": "pipeline",
-      "states": [
-        "Nevada"
-      ]
-    },
-    {
       "region": "Montana-Dakotas",
       "title": "BLM Invites Initial Public Feedback for January 2027 Oil and Gas Lease Sale in Montana/Dakotas",
       "link": "https://www.blm.gov/press-release/blm-invites-initial-public-feedback-january-2027-oil-and-gas-lease-sale",
@@ -281,6 +270,17 @@
       "bucket": "pipeline",
       "states": [
         "Wyoming"
+      ]
+    },
+    {
+      "region": "Nevada",
+      "title": "BLM Announces December Sale of Oil and Gas Leases in Nevada",
+      "link": "https://www.blm.gov/press-release/blm-announces-december-sale-oil-and-gas-leases-nevada",
+      "pubDate": "Fri, 09 Oct 2026 16:40:03 +0000",
+      "text": "RENO, Nev.– The Bureau of Land Management today announced an oil and gas lease sale scheduled for&nbsp;Dec. 9 to offer&nbsp;three oil and gas parcels totaling 2,601 acres in&nbsp;Nevada. The BLM completed scoping on these parcels in&nbsp;June 2026 and held a public comment period that closed in&nbsp;September 2026&nbsp;on the parcels and the related environmental analysis. A 30-day public protest period to receive additional public input opened today and will close&nbsp;Nov. 8. Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders. All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the&nbsp; National Fluid Lease Sale System . BLM lease sales are held online through&nbsp; Efficient Markets . The parcels BLM analyzed, as well as maps and instructions on how to submit a protest, are available on BLM’s ePlanning website .",
+      "bucket": "pipeline",
+      "states": [
+        "Nevada"
       ]
     },
     {
