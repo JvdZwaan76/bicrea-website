@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06",
+  "generated": "2026-11-07",
   "upcoming": [
     {
       "region": "Alaska",
@@ -164,17 +164,6 @@
       ]
     },
     {
-      "region": "National",
-      "title": "BLM Invites Additional Public Feedback for March 2027 Oil and Gas Lease Sale in Wyoming",
-      "link": "https://www.blm.gov/press-release/blm-invites-additional-public-feedback-march-2027-oil-and-gas-lease-sale-wyoming",
-      "pubDate": "Mon, 26 Oct 2026 15:15:44 +0000",
-      "text": "The Bureau of Land Management opened a 30-day public comment period today for public input on plans to include 333 oil and gas parcels totaling 426,064 acres in Wyoming in a March 2027 sale. The comment period ends Nov. 26, 2026.&nbsp;&nbsp; The BLM completed scoping on these parcels in September 2026 and is now seeking public comment on the parcels and related environmental analysis. The BLM will use input from the public to help complete its review of each parcel.&nbsp; Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders.&nbsp; All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets .&nbsp; The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at: 2027 March Oil and Gas Lease Sale. &nbsp; &nbsp;&nbsp;",
-      "bucket": "pipeline",
-      "states": [
-        "Wyoming"
-      ]
-    },
-    {
       "region": "Montana-Dakotas",
       "title": "BLM Invites Initial Public Feedback for January 2027 Oil and Gas Lease Sale in Montana/Dakotas",
       "link": "https://www.blm.gov/press-release/blm-invites-initial-public-feedback-january-2027-oil-and-gas-lease-sale",
@@ -245,6 +234,17 @@
       "bucket": "pipeline",
       "states": [
         "Utah"
+      ]
+    },
+    {
+      "region": "Wyoming",
+      "title": "BLM Invites Additional Public Feedback for March 2027 Oil and Gas Lease Sale in Wyoming",
+      "link": "https://www.blm.gov/press-release/blm-invites-additional-public-feedback-march-2027-oil-and-gas-lease-sale-wyoming",
+      "pubDate": "Mon, 26 Oct 2026 15:15:44 +0000",
+      "text": "The Bureau of Land Management opened a 30-day public comment period today for public input on plans to include 333 oil and gas parcels totaling 426,064 acres in Wyoming in a March 2027 sale. The comment period ends Nov. 26, 2026.&nbsp;&nbsp; The BLM completed scoping on these parcels in September 2026 and is now seeking public comment on the parcels and related environmental analysis. The BLM will use input from the public to help complete its review of each parcel.&nbsp; Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders.&nbsp; All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets .&nbsp; The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at: 2027 March Oil and Gas Lease Sale. &nbsp; &nbsp;&nbsp;",
+      "bucket": "pipeline",
+      "states": [
+        "Wyoming"
       ]
     },
     {
