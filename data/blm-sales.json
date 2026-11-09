@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-08",
+  "generated": "2026-11-09",
   "upcoming": [
     {
       "region": "Alaska",
@@ -128,6 +128,20 @@
     }
   ],
   "pipeline": [
+    {
+      "region": "National",
+      "title": "BLM Invites Additional Public Feedback for March 2027 Oil and Gas Lease Sale in Five Eastern States",
+      "link": "https://www.blm.gov/press-release/BLM-Invites-Additional-Public-Feedback-for-March-2027-Oil-and-Gas-Lease-Sale-in-Five-Eastern-States",
+      "pubDate": "Mon, 09 Nov 2026 13:53:34 +0000",
+      "text": "FALLS CHURCH, Va. – The Bureau of Land Management opened a 30-day public comment period today to receive public input on plans to include 15 oil and gas parcels in five Eastern States, including Alabama, Louisiana, Michigan, Mississippi, and Ohio, totaling approximately 2,830 acres, in a March 2027 sale. The comment period ends Dec. 9.&nbsp;&nbsp; The BLM completed scoping on these parcels in July and is now seeking public comment on the parcels and related environmental analysis. The BLM will use input from the public to help complete its review of each parcel.&nbsp;&nbsp; Leasing is the first step in the process to develop federal oil and gas resources. Before development operations can begin, an operator must submit an application for permit to drill detailing development plans. The BLM reviews applications for permits to drill, posts them for public review, conducts an environmental analysis and coordinates with state partners and stakeholders.&nbsp;&nbsp; &nbsp;All parcels that are included in a federal oil and gas lease sale include appropriate stipulations to protect important natural resources. Information on current and upcoming BLM leases is available through the National Fluid Lease Sale System . BLM lease sales are held online through Efficient Markets .&nbsp; The parcels BLM is analyzing, as well as maps and instructions on how to comment, are available on the BLM’s ePlanning website at:&nbsp;&nbsp; Split Estate EOls in Alabama, Louisiana, Mississippi &nbsp; Barksdale Air Force Base in Bossier Parish, Louisiana &nbsp; Conecuh NF Expressions of Interest &nbsp; Jackson County, Michigan &nbsp; Monroe County, Ohio",
+      "bucket": "pipeline",
+      "states": [
+        "Alabama",
+        "Louisiana",
+        "Michigan",
+        "Mississippi"
+      ]
+    },
     {
       "region": "National",
       "title": "BLM Invites Initial Public Feedback for June 2027 Oil and Gas Lease Sale in Nevada",
