@@ -105,6 +105,9 @@
   X-Robots-Tag: noindex, nofollow, noarchive
   Cache-Control: private, no-store
 
+/team/files/*
+  Content-Disposition: attachment
+
 /client-portal
   X-Robots-Tag: noindex, nofollow
 
