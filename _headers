@@ -100,3 +100,16 @@
 /build-info.json
   Cache-Control: public, max-age=300
   Content-Type: application/json; charset=utf-8
+
+/team/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: private, no-store
+
+/client-portal
+  X-Robots-Tag: noindex, nofollow
+
+/welcome
+  X-Robots-Tag: noindex, nofollow
+
+/under-development
+  X-Robots-Tag: noindex, nofollow

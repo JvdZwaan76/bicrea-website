@@ -1,12 +1,12 @@
 /* TEAM */
-Founder & CEO: Devin Molina
-Chief Analyst: Sandra Petkov
-Investment Director: Christian Hickey
+Founder & Chief Financial Officer: Devin Molina
+Chief Operating Officer: Sandra Petkov
+Chief Executive Officer & Co-Founder: Christian Hickey
 Location: Sarasota, Florida, USA
 Contact: info@bicrea.com
 
 /* SITE */
-Last update: 2026-05-10
+Last update: 2026-11-25
 Standards: HTML5, CSS3 (modern: @layer, container queries, color-mix, text-wrap)
 Components: vanilla JS (no framework dependencies)
 Hosting: Cloudflare Pages

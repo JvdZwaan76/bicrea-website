@@ -193,7 +193,7 @@
             '<div class="consent-cat-content">' +
             '<div class="consent-cat-title">Strictly necessary <span class="consent-cat-pill">Always on</span></div>' +
             '<p class="consent-cat-body">Required for the site to work — page navigation, your saved progress in the smart intake form, secure form submission, and remembering this very preference. The site cannot function properly without these.</p>' +
-            '<p class="consent-cat-detail"><strong>Includes:</strong> session storage for the smart form (7-day expiry), this consent record, the Service Worker that enables offline-friendly browsing.</p>' +
+            '<p class="consent-cat-detail"><strong>Includes:</strong> session storage for the smart form (7-day expiry), this consent record, your privacy-choices record, and the form-submission token.</p>' +
             '</div>' +
             '<label class="consent-toggle">' +
             '<input type="checkbox" name="necessary" checked disabled aria-label="Strictly necessary cookies — always on">' +
@@ -205,8 +205,8 @@
             '<div class="consent-cat">' +
             '<div class="consent-cat-content">' +
             '<div class="consent-cat-title">Functional</div>' +
-            '<p class="consent-cat-body">Reserved for future preference features — for example, remembering whether you prefer the chain visualization to autoplay. Currently no functional cookies are set; the toggle records your preference for if and when they are added.</p>' +
-            '<p class="consent-cat-detail"><strong>Currently:</strong> none active.</p>' +
+            '<p class="consent-cat-body">Preference storage. Currently one value: a one-time seasonal-greeting flag, set only after you dismiss the greeting; the toggle records your preference for if and when they are added.</p>' +
+            '<p class="consent-cat-detail"><strong>Currently:</strong> one seasonal-greeting flag (bicrea_seasonal_*), inert outside the greeting dates.</p>' +
             '</div>' +
             '<label class="consent-toggle">' +
             '<input type="checkbox" name="functional" aria-label="Functional cookies">' +
@@ -232,7 +232,7 @@
             '<div class="consent-cat-content">' +
             '<div class="consent-cat-title">Marketing</div>' +
             '<p class="consent-cat-body">Reserved for advertising or remarketing pixels (Google Ads, LinkedIn Insight, Meta Pixel). We do not currently run any. The toggle records your preference in case we ever add them — they will not load unless you opt in here.</p>' +
-            '<p class="consent-cat-detail"><strong>Currently:</strong> none active.</p>' +
+            '<p class="consent-cat-detail"><strong>Currently:</strong> one seasonal-greeting flag (bicrea_seasonal_*), inert outside the greeting dates.</p>' +
             '</div>' +
             '<label class="consent-toggle">' +
             '<input type="checkbox" name="marketing" aria-label="Marketing cookies">' +

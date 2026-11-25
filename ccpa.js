@@ -1,5 +1,5 @@
 /* ==========================================================================
-   BICREA Florida — U.S. State Privacy Rights Module (CCPA / CPRA + all-state)
+   BIC REA — U.S. State Privacy Rights Module (CCPA / CPRA + all-state)
    --------------------------------------------------------------------------
    Companion to consent.js. Where consent.js handles cookie/tracking technology
    consent (ePrivacy/GDPR-equivalent), this module handles STATUTORY privacy
@@ -245,7 +245,7 @@
             'Cloudflare, Inc. (hosting/CDN — required for site delivery)',
             'Formspree, Inc. (form processor — only if you submit the intake form)',
             'Google LLC — Analytics (only if you opt in)',
-            'Google LLC — Maps (only on the Contact page, lazy-loaded)',
+            'Google LLC — Maps (link only from the Contact page; nothing loads until you click it)',
             'Google LLC — Fonts (typefaces only, no cookies)'
         ]
     };
@@ -445,7 +445,7 @@
                 '<p>Use this form to submit any of the privacy rights requests permitted under your state\'s law &mdash; Right to Know, Access (copy), Delete, Correct, Portability, or to Appeal a denial. We respond within <strong>45 days</strong> (extendable once by 45 days where law permits, with notice).</p>' +
             '</div>' +
             '<form class="ccpa-request-form" action="' + esc(formAction) + '" method="' + formMethod + '" novalidate>' +
-                '<input type="hidden" name="_subject" value="BICREA Privacy Rights Request">' +
+                '<input type="hidden" name="_subject" value="BIC REA Privacy Rights Request">' +
                 '<input type="hidden" name="_source" value="ccpa-modal">' +
 
                 '<fieldset class="ccpa-fieldset">' +

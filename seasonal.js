@@ -11,6 +11,8 @@
   var END   = new Date(2026, 10, 27, 0, 0, 0);   // pauses at 00:00 Fri 27 Nov (after Thanksgiving, Thu 26 Nov)
   var DELAY_MS = 3000;
   var KEY = 'bicrea_seasonal_' + CAMPAIGN;
+  // Housekeeping: when the campaign changes, remove the previous year's flag here, e.g.
+  // try { localStorage.removeItem('bicrea_seasonal_thanksgiving-2026'); } catch (e) {}
 
   var now = new Date();
   if (now < START || now >= END) return;
