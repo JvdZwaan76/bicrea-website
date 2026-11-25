@@ -4,6 +4,10 @@
 # Internal: deck source — must be first so it wins over the .html-stripping rules below
 /deck/deck-full.html         /                          301
 /deck/*                      /                          301
+# Internal: working data and portal demo documents — never public
+/data/*                      /                          301
+/documents/*                 /                          301
+/archive/*                   /                          301
 
 # Block internal documentation files from public access.
 # Note: build.js also excludes these from dist/ so they should never appear
@@ -15,6 +19,7 @@
 /SUBSTANTIATION-CHECKLIST.md /                          301
 
 # === TEMPORARY: pages under development — mineral-title focus (reversible) ===
+/client-portal /under-development 302
 /process                     /under-development   302
 /process.html                /under-development   302
 /case-studies                /under-development   302
@@ -27,8 +32,6 @@
 /methodology.html            /methodology               301
 /distressed-properties.html  /distressed-properties     301
 /about.html                  /about                     301
-/process.html                /process                   301
-/case-studies.html           /case-studies              301
 /contact.html                /contact                   301
 /privacy.html                /privacy                   301
 /terms.html                  /terms                     301

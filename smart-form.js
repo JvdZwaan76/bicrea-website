@@ -221,6 +221,16 @@
             var steps = currentSteps();
             if (index < 0) index = 0;
             if (index >= steps.length) index = steps.length - 1;
+            var cameFrom = state.currentStepIndex;
+            // The foreclosure acknowledgement only applies when "active foreclosure" was selected;
+            // otherwise step over it in whichever direction we are moving.
+            if (steps[index] === 'd-foreclosure-ack' && !isForeclosureSelected()) {
+                var dir = index >= cameFrom ? 1 : -1;
+                var next = index + dir;
+                if (next < 0 || next >= steps.length) return;
+                goToStep(next);
+                return;
+            }
             state.currentStepIndex = index;
 
             // Hide all
@@ -239,12 +249,6 @@
             // Special: if on review step, build the summary
             if (stepId === 'review') buildReview();
 
-            // If on foreclosure-ack and "in foreclosure" wasn't selected, skip it
-            if (stepId === 'd-foreclosure-ack' && !isForeclosureSelected()) {
-                advance();
-                return;
-            }
-
             updateProgress();
             announceStep(stepEl);
             focusFirstField(stepEl);
@@ -253,11 +257,13 @@
             var step = currentStep();
             if (!step) return;
             if (!validateStep(step)) {
+                showStepError(step);
                 // Focus first invalid input
                 var invalid = step.querySelector('.has-error .form-control, [aria-invalid="true"]');
                 if (invalid) invalid.focus();
                 return;
             }
+            clearStepError(step);
             captureAnswers(step);
             persist();
 
@@ -279,6 +285,25 @@
             setTimeout(function () {
                 goToStep(state.currentStepIndex + 1);
             }, 200);
+        }
+        function showStepError(step) {
+            var msg = step.getAttribute('data-error-text') || 'Please complete the required field to continue.';
+            var el = step.querySelector('.smart-step-error');
+            if (!el) {
+                el = document.createElement('div');
+                el.className = 'smart-error smart-step-error';
+                el.setAttribute('role', 'alert');
+                var nav = step.querySelector('.smart-step-nav, .smart-nav, .smart-actions');
+                if (nav && nav.parentNode === step) step.insertBefore(el, nav); else step.appendChild(el);
+            }
+            el.textContent = msg;
+            step.classList.add('has-error');
+            if (live) live.textContent = msg;
+        }
+        function clearStepError(step) {
+            step.classList.remove('has-error');
+            var el = step.querySelector('.smart-step-error');
+            if (el) el.textContent = '';
         }
         function retreat() {
             var step = currentStep();
@@ -560,7 +585,7 @@
             formData.set('lead_priority_label', priority.label);
             // Replace the _subject with a tier-prefixed version. Existing inboxes
             // can filter on the bracketed prefix.
-            var origSubject = formData.get('_subject') || 'BICREA Florida — New lead';
+            var origSubject = formData.get('_subject') || 'BIC REA — New lead';
             formData.set('_subject', '[' + priority.tier + ' ' + priority.label + '] ' + origSubject);
 
             fetch(action, {
@@ -633,7 +658,7 @@
                 var pathName = path === 'mineral' ? 'mineral title research' :
                                path === 'distressed' ? 'a Florida property cash sale' :
                                'your inquiry';
-                summary.textContent = 'A BICREA specialist will reply within one business day about ' + pathName + '. ' +
+                summary.textContent = 'A BIC REA specialist will reply within one business day about ' + pathName + '. ' +
                     'If your matter is urgent, you can also reach us directly at +1 (310) 963-1569 or ' + decodeRot13('vasb@ovpern.pbz') + '.';
             }
 

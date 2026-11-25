@@ -106,7 +106,7 @@ ul, ol {
     --text-primary:    #f5f5f7;
     --text-secondary:  rgba(245, 245, 247, 0.78);
     --text-muted:      rgba(245, 245, 247, 0.55);
-    --text-faint:      rgba(245, 245, 247, 0.38);
+    --text-faint:      rgba(245, 245, 247, 0.6);
     --text-inverse:    #0a0a0a;
     --text-accent:     #d4af37;
 
@@ -2611,7 +2611,8 @@ section[style*="--bg-secondary"] .methodology-step {
     line-height: var(--leading-relaxed);
 }
 
-.footer-section h4 {
+.footer-section h4,
+.footer-section .footer-heading {
     font-family: var(--font-body);
     font-size: 0.6875rem;
     font-weight: 600;
@@ -3470,6 +3471,8 @@ section[style*="--bg-secondary"] .map-link {
     }
     .smart-step.has-error .smart-error,
     .smart-input-group.has-error .smart-error { display: block; }
+    .smart-step-error { margin: 0.75rem 0 0; color: var(--error); font-size: 0.9375rem; }
+    .smart-step-error:empty { display: none; }
     .smart-input-group.has-error .form-control { border-color: var(--error); }
 
     /* Submit success — celebratory */

@@ -60,6 +60,7 @@ const ASSETS_DIR = 'assets';  // hashed assets go to dist/assets/
 // it is NOT served as a standalone asset. See IGNORE_NAMES below.
 const HASHED_ASSETS = [
     'styles.css',
+    'seasonal.js',
     'script.js',
     'consent.js',
     'analytics.js',
@@ -71,6 +72,9 @@ const HASHED_ASSETS = [
 // any new documentation file added to the repo without updating this list.
 const IGNORE_NAMES = new Set([
     'dist',
+    'data',        // internal working data (BLM tracker state, rolodex) — never published
+    'documents',   // portal demo documents — never published
+    'archive',
     'node_modules',
     '.git',
     '.github',
@@ -126,13 +130,43 @@ function copyRecursive(src, dst) {
 log('Computing content hashes…');
 const hashMap = {};  // 'styles.css' → 'styles.a3f2c91xxx.css'
 const publicPath = {};  // 'styles.css' → '/assets/styles.a3f2c91xxx.css' (URL)
+/**
+ * Conservative CSS minifier (no dependencies): strips comments, collapses
+ * whitespace, removes spaces around structural characters, drops the last
+ * semicolon in a block. Leaves everything inside strings and url() alone and
+ * never touches spacing inside calc() (operators keep their spaces).
+ */
+function minifyCss(css) {
+    // 1. comments first (an apostrophe inside a comment must not open a "string")
+    let out = css.replace(/\/\*[\s\S]*?\*\//g, '');
+    // 2. protect strings and url() tokens
+    const keep = [];
+    out = out.replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|url\([^)]*\))/g, (m) => {
+        keep.push(m);
+        return `\u0000${keep.length - 1}\u0000`;
+    });
+    out = out.replace(/\s+/g, ' ');
+    out = out.replace(/\s*([{};,>])\s*/g, '$1');
+    out = out.replace(/\s*:\s*(?![^{]*\{)/g, ':');
+    out = out.replace(/;}/g, '}');
+    out = out.replace(/\u0000(\d+)\u0000/g, (_, i) => keep[Number(i)]);
+    return out.trim();
+}
+const builtContent = {};  // asset → Buffer actually written (minified for CSS)
+
 for (const asset of HASHED_ASSETS) {
     const srcPath = path.join(SRC, asset);
     if (!fs.existsSync(srcPath)) {
         log(`  SKIP (not found): ${asset}`);
         continue;
     }
-    const content = fs.readFileSync(srcPath);
+    let content = fs.readFileSync(srcPath);
+    if (asset.endsWith('.css')) {
+        const min = minifyCss(content.toString('utf8'));
+        log(`  minified ${asset}: ${content.length} → ${min.length} bytes`);
+        content = Buffer.from(min, 'utf8');
+    }
+    builtContent[asset] = content;
     const hash = shortHash(content);
     const ext = path.extname(asset);
     const base = path.basename(asset, ext);
@@ -170,7 +204,7 @@ log(`  ${copiedCount} top-level entries copied`);
    ============================================================ */
 log('Writing hashed assets to dist/assets/…');
 for (const [original, hashed] of Object.entries(hashMap)) {
-    const content = fs.readFileSync(path.join(SRC, original));
+    const content = builtContent[original] || fs.readFileSync(path.join(SRC, original));
     fs.writeFileSync(path.join(OUT, ASSETS_DIR, hashed), content);
 }
 

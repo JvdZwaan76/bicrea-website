@@ -1,7 +1,7 @@
 {
-    "name": "BICREA Florida — Mineral Title & Distressed Property",
-    "short_name": "BICREA Florida",
-    "description": "Institutional-grade mineral title research nationwide and cash purchases of difficult Florida properties. Sarasota-based, owner-led.",
+    "name": "BIC REA LLC — Comprehensive Title Research",
+    "short_name": "BIC REA",
+    "description": "Comprehensive title research — surface, mineral, and leasehold — from Sarasota, Florida. Courthouse research in any U.S. state; work completed in 30+ states.",
     "start_url": "/",
     "scope": "/",
     "display": "standalone",
@@ -36,7 +36,7 @@
             "name": "Mineral title research",
             "short_name": "Mineral Title",
             "description": "Chain-of-title research, runsheets, curative work",
-            "url": "/mineral-title",
+            "url": "/title-services",
             "icons": [{ "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192" }]
         },
         {
