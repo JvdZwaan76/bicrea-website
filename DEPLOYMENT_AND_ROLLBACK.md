@@ -59,3 +59,12 @@ curl -sL https://bicrea.com/contact | grep -c '805'              # must be 0
 - Mandatory before any sitewide change. Otherwise weekly / after each batch.
 - Keep last 5 archives. Test-restore one monthly.
 - Backup targets: ~/Backups/bicrea + iCloud Drive/BICREA-Backups.
+
+## Team area on pages.dev hostnames (added 25 Nov 2026)
+
+`functions/team/_middleware.js` is a Pages Function that answers 404 for anything under `/team/`
+unless the request host is `bicrea.com`. Cloudflare Access gates `bicrea.com/team`; the
+Pages-managed Access application gates preview deployments (`*.bicrea-website.pages.dev`) only.
+Do not add the bare `bicrea-website.pages.dev` hostname to that Access application — Pages then
+enforces the policy on the custom domain as well and the whole public site redirects to the login.
+Check: `curl -sI https://bicrea-website.pages.dev/team/` → 404; `https://bicrea.com/team/` → 302 to Access.
