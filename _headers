@@ -1,11 +1,12 @@
 # Cloudflare Pages: Headers configuration
 # https://developers.cloudflare.com/pages/configuration/headers/
 #
-# Pages publishes the repository root as-is (no build output directory is set),
-# so CSS/JS are served at their plain names and are not content-hashed.
-# They get a short cache with revalidation; images and favicons are
-# content-named and cached long. The /assets/* rule is kept for the day the
-# build output directory is switched to dist/ (hashed filenames).
+# Pages runs `node build.js` and publishes dist/. Hashed CSS/JS live under
+# /assets/ and are cached forever; the only unhashed CSS/JS left at the root
+# are ccpa.css and ccpa.js, which get a short cache with revalidation.
+# NOTE: a splat greedily matches "/" too, so `/*.css` would ALSO match
+# /assets/styles.<hash>.css and Cloudflare would comma-join the two
+# Cache-Control values. Never use `/*.css` or `/*.js` here - name files.
 #
 # Cloudflare joins duplicate headers with a comma, so Cache-Control is set
 # once per path category and never on /*.
@@ -56,11 +57,11 @@
   Cache-Control: public, max-age=300, must-revalidate
 
 # ---------------------------------------------------------------------------
-# Unhashed CSS/JS — one hour, revalidate
+# Unhashed CSS/JS (not in build.js HASHED_ASSETS) — one hour, revalidate
 # ---------------------------------------------------------------------------
-/*.css
+/ccpa.css
   Cache-Control: public, max-age=3600, must-revalidate
-/*.js
+/ccpa.js
   Cache-Control: public, max-age=3600, must-revalidate
 
 # ---------------------------------------------------------------------------

@@ -78,10 +78,14 @@ const IGNORE_NAMES = new Set([
     'node_modules',
     '.git',
     '.github',
+    '.gitignore',
     'build.js',
     'critical.css',  // inlined in HTML's <style id="critical-css">, source-only
     'deck',          // internal: editable source for the Capabilities Overview PDF
     'scripts',       // internal: BLM tracker poller/notifier (runs in CI, not served)
+    'functions',     // Pages Functions are read from the repo-root functions/ dir,
+                     // never from the output dir; copying would only expose the source
+    'build-info.json', // (defensive) never copy a stale local build artifact
 ]);
 
 function shouldIgnore(name) {
