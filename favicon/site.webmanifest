@@ -40,7 +40,7 @@
             "icons": [{ "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192" }]
         },
         {
-            "name": "Distressed Florida property cash sale",
+            "name": "Distressed property cash sale",
             "short_name": "Sell Property",
             "description": "Code violations, liens, title clouds — clean cash purchases",
             "url": "/distressed-properties",

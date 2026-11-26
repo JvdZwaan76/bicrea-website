@@ -1,118 +1,102 @@
 # Cloudflare Pages: Headers configuration
 # https://developers.cloudflare.com/pages/configuration/headers/
 #
-# CACHE STRATEGY (v13.5.9 — content-hashed assets under /assets/)
-# ============================================================================
-# The build script (build.js) renames CSS/JS assets to include a content hash
-# (e.g. styles.css → styles.a3f2c91xxx.css) and places them under /assets/.
-# That subdirectory boundary is intentional: it isolates the immutable rule
-# from rules at the root (notably /sw.js), so Cloudflare's "matching rules
-# inherit all headers" semantics can't accidentally apply `immutable` to
-# files we want to revalidate.
+# Pages publishes the repository root as-is (no build output directory is set),
+# so CSS/JS are served at their plain names and are not content-hashed.
+# They get a short cache with revalidation; images and favicons are
+# content-named and cached long. The /assets/* rule is kept for the day the
+# build output directory is switched to dist/ (hashed filenames).
 #
-# Cache invalidation is automatic: when an asset's content changes, its
-# filename changes, the HTML now references a different URL, browsers and
-# CDNs fetch the new file, and the old hashed URL just stops being
-# requested (and naturally evicts from caches).
+# Cloudflare joins duplicate headers with a comma, so Cache-Control is set
+# once per path category and never on /*.
 
-# ============================================================================
-# SECURITY BASELINE (applies to all routes)
-# ----------------------------------------------------------------------------
-# `/*` does NOT set Cache-Control here. Each path category sets its own
-# Cache-Control below. This avoids the inheritance/concatenation problem
-# documented at https://developers.cloudflare.com/pages/configuration/headers/
-# ("If a header is applied twice in the _headers file, the values are joined
-# with a comma separator.")
-# ============================================================================
+# ---------------------------------------------------------------------------
+# Security baseline (all routes)
+# ---------------------------------------------------------------------------
 /*
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-  X-XSS-Protection: 1; mode=block
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https://formspree.io https://www.google-analytics.com https://cloudflareinsights.com; form-action 'self' https://formspree.io; frame-ancestors 'self'; base-uri 'self';
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://cloudflareinsights.com; form-action 'self' https://formspree.io; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests;
 
-# ============================================================================
-# CONTENT-HASHED ASSETS — cache FOREVER (immutable)
-# ----------------------------------------------------------------------------
-# These rules match files under /assets/, output by build.js. The /sw.js
-# at the root is in a different path namespace and cannot match these globs,
-# so there's zero risk of header conflict.
-# ============================================================================
+# ---------------------------------------------------------------------------
+# Content-hashed assets (only present once the dist/ build is published)
+# ---------------------------------------------------------------------------
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-# ============================================================================
-# SERVICE WORKER — never cache (must always check for updates)
-# ----------------------------------------------------------------------------
-# /sw.js cannot be content-hashed (Service Worker spec requires a stable URL).
-# In v13.5.9 it's a "tombstone" SW that unregisters legacy SWs from prior
-# versions on the user's next visit, then exits. It MUST never be cached so
-# the browser checks for updates on every page load.
-# ============================================================================
-/sw.js
-  Cache-Control: public, max-age=0, must-revalidate
-  Content-Type: application/javascript; charset=utf-8
-  Service-Worker-Allowed: /
-
-# ============================================================================
-# HTML — short cache, must revalidate
-# ----------------------------------------------------------------------------
-# HTML is the entry point that references the hashed asset URLs. Brief edge
-# cache for snappy navigation, but always revalidate so users get the new
-# asset references soon after each deploy.
-# ============================================================================
-/*.html
-  Cache-Control: public, max-age=300, must-revalidate
-
+# ---------------------------------------------------------------------------
+# HTML pages — short cache, always revalidate
+# (.html URLs 301 to these extensionless paths, so the rules live here)
+# ---------------------------------------------------------------------------
 /
   Cache-Control: public, max-age=300, must-revalidate
+/title-services
+  Cache-Control: public, max-age=300, must-revalidate
+/methodology
+  Cache-Control: public, max-age=300, must-revalidate
+/distressed-properties
+  Cache-Control: public, max-age=300, must-revalidate
+/about
+  Cache-Control: public, max-age=300, must-revalidate
+/contact
+  Cache-Control: public, max-age=300, must-revalidate
+/faq
+  Cache-Control: public, max-age=300, must-revalidate
+/disclosures
+  Cache-Control: public, max-age=300, must-revalidate
+/privacy
+  Cache-Control: public, max-age=300, must-revalidate
+/terms
+  Cache-Control: public, max-age=300, must-revalidate
+/404.html
+  Cache-Control: public, max-age=300, must-revalidate
 
-# ============================================================================
-# IMAGES AND FAVICONS — long cache
-# ----------------------------------------------------------------------------
-# Image filenames are stable (content-named like hero-mineral-title.webp),
-# so immutable is safe. To replace an image, give it a new filename.
-# ============================================================================
+# ---------------------------------------------------------------------------
+# Unhashed CSS/JS — one hour, revalidate
+# ---------------------------------------------------------------------------
+/*.css
+  Cache-Control: public, max-age=3600, must-revalidate
+/*.js
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# ---------------------------------------------------------------------------
+# Images and favicons — content-named, cache long
+# ---------------------------------------------------------------------------
 /images/*
   Cache-Control: public, max-age=31536000, immutable
-
 /favicon/*
   Cache-Control: public, max-age=31536000, immutable
+/favicon.ico
+  Cache-Control: public, max-age=604800
 
-# ============================================================================
-# OPERATIONAL FILES
-# ============================================================================
+# ---------------------------------------------------------------------------
+# Operational files
+# ---------------------------------------------------------------------------
 /robots.txt
   Cache-Control: public, max-age=3600
-
 /sitemap.xml
   Cache-Control: public, max-age=3600
-
+/llms.txt
+  Cache-Control: public, max-age=3600
 /humans.txt
   Cache-Control: public, max-age=86400
-
 /.well-known/security.txt
   Cache-Control: public, max-age=86400
   Content-Type: text/plain; charset=utf-8
 
-/build-info.json
-  Cache-Control: public, max-age=300
-  Content-Type: application/json; charset=utf-8
-
+# ---------------------------------------------------------------------------
+# Staff area (Cloudflare Access in front) and parked pages
+# ---------------------------------------------------------------------------
 /team/*
   X-Robots-Tag: noindex, nofollow, noarchive
   Cache-Control: private, no-store
-
 /team/files/*
   Content-Disposition: attachment
-
-/client-portal
-  X-Robots-Tag: noindex, nofollow
-
 /welcome
   X-Robots-Tag: noindex, nofollow
-
 /under-development
   X-Robots-Tag: noindex, nofollow
