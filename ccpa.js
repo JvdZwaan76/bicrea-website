@@ -236,7 +236,7 @@
             }
         ],
         sensitiveCategories: [
-            // BICREA does not collect sensitive PI as defined in CCPA §1798.140(ae).
+            // BIC REA does not collect sensitive PI as defined in CCPA §1798.140(ae).
             // If the smart intake form ever adds fields like SSN, financial account,
             // precise geolocation, etc., add entries here.
         ],
@@ -340,7 +340,7 @@
             '<div class="ccpa-panel-intro">' + hintHtml + '</div>' +
             gpcBadge +
             '<div class="ccpa-status-note">' +
-                'BICREA does <strong>not</strong> sell or share personal information for cross-context behavioral advertising. ' +
+                'BIC REA does <strong>not</strong> sell or share personal information for cross-context behavioral advertising. ' +
                 'These toggles record your preference as a formal opt-out signal so that if we ever change that posture, your choice persists.' +
             '</div>' +
             '<div class="ccpa-choices-list">' +
@@ -403,7 +403,7 @@
         }).join('');
 
         var sensitiveHtml = COLLECTION_NOTICE.sensitiveCategories.length === 0
-            ? '<p class="ccpa-empty-state">BICREA does not currently collect sensitive personal information as defined in CCPA §1798.140(ae). If that ever changes, the categories will appear here and your &ldquo;Limit Sensitive PI&rdquo; toggle (Choices tab) will be enforced automatically.</p>'
+            ? '<p class="ccpa-empty-state">BIC REA does not currently collect sensitive personal information as defined in CCPA §1798.140(ae). If that ever changes, the categories will appear here and your &ldquo;Limit Sensitive PI&rdquo; toggle (Choices tab) will be enforced automatically.</p>'
             : '<ul>' + COLLECTION_NOTICE.sensitiveCategories.map(function (c) { return '<li>' + esc(c.name) + ' &mdash; ' + esc(c.purposes) + '</li>'; }).join('') + '</ul>';
 
         var thirdPartiesHtml = '<ul class="ccpa-third-parties">' +
@@ -596,7 +596,7 @@
                         'U.S. Privacy Rights' +
                     '</div>' +
                     '<h2 id="ccpa-modal-title">Your Privacy Choices</h2>' +
-                    '<p>Manage how BICREA processes your personal information under California (CCPA/CPRA), Florida (FDBR), and the other U.S. state privacy laws.</p>' +
+                    '<p>Manage how BIC REA processes your personal information under California (CCPA/CPRA), Florida (FDBR), and the other U.S. state privacy laws.</p>' +
                     '<button type="button" class="consent-dialog-close ccpa-close" data-ccpa-action="close" aria-label="Close privacy choices">' +
                         '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
                     '</button>' +

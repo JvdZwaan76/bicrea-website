@@ -14,7 +14,6 @@
    - Magnetic CTA hover (subtle, hover-only)
    - Chain-of-title scroll-driven SVG visualization
    - View Transitions API for same-origin nav (where supported)
-   - Service Worker registration (where supported)
    ========================================================================== */
 
 (function () {
@@ -381,29 +380,6 @@
         });
     }
 
-    /* ---------------- Service Worker DEACTIVATION ----------------
-       v13.5.9 removed the Service Worker entirely. The site is now served
-       as standard static files with proper cache headers — no SW
-       interception layer. This block actively unregisters any SW that
-       earlier versions (v13.5.6-v13.5.8) installed.
-
-       Belt-and-suspenders alongside the tombstone /sw.js: even if a user
-       has an old SW that for some reason doesn't fetch the tombstone,
-       this client-side code will unregister it on their next page load.
-       After ~30 days from this deploy, this block can be deleted along
-       with the sw.js tombstone file. */
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function (regs) {
-            regs.forEach(function (reg) { reg.unregister(); });
-        }).catch(function () { /* silent */ });
-        if ('caches' in window) {
-            caches.keys().then(function (keys) {
-                keys.forEach(function (k) {
-                    if (k.indexOf('bicrea-') === 0) caches.delete(k);
-                });
-            }).catch(function () { /* silent */ });
-        }
-    }
 })();
 
 /* ==========================================================================

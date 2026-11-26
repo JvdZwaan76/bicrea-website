@@ -10,13 +10,20 @@
 /archive/*                   /                          301
 
 # Block internal documentation files from public access.
-# Note: build.js also excludes these from dist/ so they should never appear
-# at the production origin. This is defense-in-depth in case someone bypasses
-# the build (e.g., manual deploy or build-script failure).
+# Pages publishes the repository root, so every internal file must be
+# redirected here explicitly.
 /README.md                   /                          301
 /EMAIL-ROUTING.md            /                          301
 /GA4-SETUP.md                /                          301
 /SUBSTANTIATION-CHECKLIST.md /                          301
+/SESSION-NOTES.md            /                          301
+/DEPLOYMENT_AND_ROLLBACK.md  /                          301
+/favicon/README.md           /                          301
+/build.js                    /                          301
+/critical.css                /                          301
+/.gitignore                  /                          301
+/.github/*                   /                          301
+/scripts/*                   /                          301
 
 # === TEMPORARY: pages under development — mineral-title focus (reversible) ===
 /client-portal /under-development 302
@@ -61,5 +68,4 @@
 /title-research              /title-services            301
 /title-opinions              /title-services            301
 
-# 404 catch-all (must be last)
-/* /404.html 404
+# 404: Pages serves /404.html automatically for unmatched paths.

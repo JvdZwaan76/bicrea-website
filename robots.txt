@@ -4,11 +4,7 @@
 User-agent: *
 Allow: /
 Disallow: /404
-Disallow: /functions/
-Disallow: /README.md
-Disallow: /EMAIL-ROUTING.md
-Disallow: /GA4-SETUP.md
-Disallow: /SUBSTANTIATION-CHECKLIST.md
+Disallow: /downloads/
 Disallow: /team/
 Disallow: /client-portal
 Disallow: /welcome

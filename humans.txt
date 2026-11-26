@@ -16,7 +16,7 @@ Software: GitHub, Cloudflare DNS, Formspree
 This site is built with care for the people who use it.
 If you find an issue, please tell us at info@bicrea.com.
 
-                       BICREA
+                       BIC REA
                        4360 Winners Circle
                        Sarasota, FL 34238
                        bicrea.com
